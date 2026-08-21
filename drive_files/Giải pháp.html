@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!--
+  ===========================================================================
+  nganh-kho-xuong.html — TRANG "GIẢI PHÁP THEO NGÀNH" (menu riêng, KHÔNG
+  phải nút chuyển view từ category.html)
+  ===========================================================================
+  Quyết định (đảo lại 1 phần quyết định trước — đã trao đổi lại với founder):
+  KHÔNG dùng nút "Dạng lưới/Dạng bảng" gắn trong category.html — làm vậy
+  trang vẫn trông như trang bán lẻ thông thường, không tạo nhận diện riêng.
+
+  Thay vào đó: dạng BẢNG chỉ xuất hiện trong các trang "Giải pháp theo
+  ngành" — vào bằng 1 mục MENU RIÊNG (không lồng trong "Sản phẩm ▾"), mỗi
+  trang có 2 lớp nội dung:
+  1. Đoạn mô tả khó khăn ngành gặp phải + cách nhóm quạt này giải quyết —
+     PHẢI mang tính thực tế/kỹ thuật, không phải văn marketing (founder yêu
+     cầu rõ). Ở bản này dùng đúng tiêu chuẩn TCVN 5687:2010 Winline đã áp
+     dụng ở công cụ tính quạt, không bịa số liệu.
+  2. Bảng thông số — bản thân HÌNH THỨC bảng là tín hiệu: khách vào đây
+     (thợ, nhà thầu nhỏ, khách thương mại, khách kỹ thuật) nhận ra ngay đây
+     là khu dành cho họ, khác khu duyệt hàng thông thường (category.html —
+     GIỮ NGUYÊN dạng lưới, phục vụ khách lẻ/mua ít/nhà hàng-quán).
+
+  ⚠️ CHƯA CHỐT: đây là ví dụ dựng cho đúng 1 ngành đã có dữ liệu thật
+  (Kho-xưởng — bảng 2.3 YEU_CAU_THIET_KE_WEB.md). Founder có nhắc thêm ví dụ
+  "quạt cho phòng sơn" — KHÔNG có trong bất kỳ dữ liệu khách hàng nào của
+  dự án, chưa xác nhận là ngành thật. Cần founder chốt danh sách đầy đủ các
+  ngành trước khi nhân bản thêm trang, tránh dựng nội dung cho ngành chưa
+  xác nhận có khách hàng thật.
+  ===========================================================================
+-->
+
+<title>Quạt cho nhà xưởng, kho bãi — chọn đúng lưu lượng khí | Winline.vn</title>
+<meta name="description" content="Quạt công nghiệp cho nhà xưởng, kho bãi: lưu lượng 8.000–28.000 m³/h, bảng thông số đầy đủ theo công suất/điện áp/giá — tính đúng nhu cầu bằng công cụ TCVN 5687:2010.">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap');
+:root{
+  --navy-950:#00354f; --navy-800:#004e7d; --navy-700:#1f6690; --navy-100:#e6eef3;
+  --paper:#f7f8fa; --white:#ffffff; --ink:#1a2230; --ink-soft:#5c6773; --line:#dde3ea;
+  --orange:#d41e3d; --orange-dark:#a71830; --orange-100:#f4e6e9; --green:#1e8a5f;
+  --radius:6px; --shadow:0 2px 10px rgba(13,31,51,.08);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{font-family:'Be Vietnam Pro',system-ui,sans-serif;color:var(--ink);background:var(--paper);font-size:15px;line-height:1.5;}
+.mono{font-family:'IBM Plex Mono',monospace;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+button{font-family:inherit;cursor:pointer;}
+
+/* ---------- header/nav — y nguyên category.html ---------- */
+.utility-bar{background:var(--navy-950);color:#c9d6e3;font-size:12.5px;}
+.utility-bar .wrap{max-width:1240px;margin:0 auto;padding:7px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;}
+header.site{background:var(--white);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40;}
+.header-inner{max-width:1240px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;gap:24px;}
+.logo{font-weight:800;font-size:24px;letter-spacing:.5px;color:var(--navy-950);display:flex;align-items:baseline;gap:2px;flex-shrink:0;}
+.logo span{color:var(--orange);}
+nav.catnav{background:var(--navy-950);}
+.catnav-inner{max-width:1240px;margin:0 auto;padding:0 20px;display:flex;gap:2px;font-size:13.5px;font-weight:500;overflow-x:auto;}
+.catnav-inner>a{padding:11px 14px;color:#dbe4ee;white-space:nowrap;border-bottom:2px solid transparent;text-decoration:none;}
+.catnav-inner>a:hover{color:#fff;border-bottom-color:var(--orange);background:rgba(255,255,255,.04);}
+.nav-drop{position:relative;}
+.nav-top{padding:11px 14px;color:#dbe4ee;white-space:nowrap;border-bottom:2px solid transparent;cursor:pointer;display:inline-block;text-decoration:none;}
+.nav-drop:hover .nav-top,.nav-top.active{color:#fff;border-bottom-color:var(--orange);background:rgba(255,255,255,.04);}
+.nav-panel{display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid var(--line);box-shadow:0 10px 26px rgba(13,31,51,.16);border-radius:0 0 10px 10px;padding:14px;z-index:60;min-width:230px;flex-direction:column;gap:1px;}
+.nav-drop:hover .nav-panel{display:flex;}
+.nav-panel a{color:var(--navy-950)!important;padding:7px 10px;border-radius:5px;font-size:13px;white-space:nowrap;text-decoration:none;}
+.nav-panel a:hover{background:var(--navy-100);}
+.nav-panel a.current-brand{background:var(--navy-100);font-weight:700;color:var(--orange-dark)!important;}
+.nav-panel-wide{flex-direction:row;gap:26px;min-width:540px;padding:16px;}
+.np-col{display:flex;flex-direction:column;gap:1px;min-width:170px;}
+.np-title{font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft);font-weight:700;padding:4px 10px 6px;}
+@media(max-width:960px){.nav-panel{display:none!important;}}
+
+.breadcrumb{max-width:1320px;margin:0 auto;padding:14px 20px 0;font-size:12.5px;color:var(--ink-soft);}
+.breadcrumb a:hover{color:var(--navy-800);text-decoration:underline;}
+
+.page-head{max-width:1320px;margin:0 auto;padding:14px 20px 0;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:10px;}
+.page-head h1{font-size:22px;color:var(--navy-950);margin:0 0 4px;}
+.page-head .count{font-size:12.5px;color:var(--ink-soft);}
+.view-toggle{display:flex;border:1.5px solid var(--line);border-radius:8px;overflow:hidden;}
+.view-toggle a{padding:8px 14px;font-size:12.5px;font-weight:600;color:var(--ink-soft);background:#fff;}
+.view-toggle a.active{background:var(--navy-950);color:#fff;}
+
+.listing{max-width:1320px;margin:0 auto;padding:18px 20px 60px;display:grid;grid-template-columns:230px 1fr;gap:22px;}
+@media(max-width:880px){.listing{grid-template-columns:1fr;}}
+
+.filters{background:#fff;border:1px solid var(--line);border-radius:9px;padding:16px;align-self:start;position:sticky;top:80px;}
+@media(max-width:880px){.filters{position:static;}}
+.filter-group{margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--line);}
+.filter-group:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.filter-title{font-size:12.5px;font-weight:700;color:var(--navy-950);margin-bottom:9px;}
+.filter-opt{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink);margin-bottom:8px;cursor:pointer;}
+.filter-opt input{accent-color:var(--navy-800);width:14px;height:14px;flex-shrink:0;}
+.filter-opt .fcount{margin-left:auto;color:#9aa7b4;font-size:11px;}
+.filter-clear{font-size:11.5px;color:var(--navy-800);font-weight:700;text-decoration:underline;}
+
+/* ---------- KHỐI GIỚI THIỆU LOẠI — đứng trên bảng, ảnh+tên bấm được ra category.html ---------- */
+/* Đây là phần sửa lại theo đúng ảnh chụp bạn gửi: mỗi bảng thông số đi kèm
+   1 khối giới thiệu loại sản phẩm ở trên — ảnh đại diện + tên loại (bấm được)
+   + mô tả ngắn + 2 nút CTA. KHÁC với hiểu trước đó (click từng hàng trong
+   bảng) — giờ click vào ẢNH/TÊN LOẠI mới là thứ dẫn ra category.html. */
+.type-intro{max-width:1320px;margin:20px auto 0;padding:0 20px;}
+.type-intro-inner{background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px;display:grid;grid-template-columns:220px 1fr 220px;gap:26px;align-items:start;}
+@media(max-width:900px){.type-intro-inner{grid-template-columns:1fr;}}
+.type-img-link{display:block;border-radius:8px;overflow:hidden;border:1px dashed #c3ccd6;background:var(--paper);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:#9aa7b4;font-size:11px;text-align:center;}
+.type-img-link:hover{border-color:var(--navy-700);}
+.type-body h2{margin:0 0 8px;}
+.type-body h2 a{font-size:19px;color:var(--navy-950);}
+.type-body h2 a:hover{color:var(--navy-800);text-decoration:underline;}
+.type-body p{margin:0;font-size:13px;color:var(--ink-soft);line-height:1.65;}
+.type-cta{display:flex;flex-direction:column;gap:10px;}
+.type-cta .btn{display:block;text-align:center;padding:13px 16px;border-radius:8px;font-weight:700;font-size:13.5px;}
+.type-cta .btn-fill{background:var(--navy-800);color:#fff;}
+.type-cta .btn-fill:hover{background:var(--navy-950);}
+.type-cta .btn-outline{background:#fff;color:var(--navy-950);border:1.5px solid var(--line);}
+.type-cta .btn-outline:hover{border-color:var(--navy-700);}
+.type-cta .cms-flag{font-size:10.5px;color:#b3392c;text-align:center;line-height:1.4;}
+
+/* ---------- BẢNG THÔNG SỐ — phần khác biệt chính so với category.html ---------- */
+.table-scroll{background:#fff;border:1px solid var(--line);border-radius:10px;overflow-x:auto;}
+.spec-table{width:100%;border-collapse:collapse;font-size:13px;min-width:920px;}
+.spec-table thead th{
+  background:var(--navy-100);color:var(--navy-950);font-weight:700;font-size:11.5px;
+  text-transform:uppercase;letter-spacing:.02em;padding:12px 14px;text-align:left;
+  white-space:nowrap;position:sticky;top:0;z-index:2;border-bottom:1px solid var(--line);
+}
+.spec-table thead th.num{text-align:right;}
+.spec-table thead th .sort-ic{opacity:.5;font-size:10px;margin-left:3px;}
+.spec-table tbody td{padding:11px 14px;border-bottom:1px solid var(--line);white-space:nowrap;vertical-align:middle;}
+.spec-table tbody tr:last-child td{border-bottom:none;}
+.spec-table tbody tr{cursor:pointer;}
+.spec-table tbody tr:hover{background:var(--paper);}
+.spec-table td.num{text-align:right;font-family:'IBM Plex Mono',monospace;}
+.st-prod{display:flex;align-items:center;gap:10px;white-space:normal;min-width:220px;}
+.st-thumb{width:38px;height:38px;border-radius:6px;background:var(--paper);border:1px dashed #c3ccd6;flex-shrink:0;}
+.st-name{font-weight:600;color:var(--navy-950);font-size:13px;line-height:1.3;}
+.st-sku{font-size:10.5px;color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;}
+.st-brand{color:var(--ink-soft);}
+.st-price{font-weight:700;color:var(--navy-950);font-family:'IBM Plex Mono',monospace;}
+.st-cta{font-size:11.5px;font-weight:700;color:var(--navy-800);}
+.st-cta:hover{text-decoration:underline;}
+.first-col-sticky{position:sticky;left:0;background:#fff;z-index:1;}
+.spec-table thead th.first-col-sticky{z-index:3;}
+.spec-table tbody tr:hover td.first-col-sticky{background:var(--paper);}
+
+.table-note{max-width:1320px;margin:12px auto 0;padding:0 20px;font-size:11.5px;color:var(--ink-soft);}
+
+.pagination{display:flex;justify-content:center;gap:6px;margin-top:24px;}
+.pagination a{width:32px;height:32px;border:1px solid var(--line);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12.5px;color:var(--ink-soft);background:#fff;}
+.pagination a.active{background:var(--navy-950);color:#fff;border-color:var(--navy-950);}
+
+footer{background:var(--navy-950);color:#b9c7d4;padding:34px 20px 18px;margin-top:10px;}
+.footer-inner{max-width:1320px;margin:0 auto;font-size:12px;text-align:center;color:#9fb0bf;}
+</style>
+</head>
+<body>
+
+<div class="utility-bar"><div class="wrap"><span>Hơn 35 năm hoạt động — 12 năm pháp nhân chính thức</span><span>Hotline 0949 761 893</span></div></div>
+<header class="site"><div class="header-inner"><div class="logo">WIN<span>LINE</span></div></div></header>
+<nav class="catnav">
+  <div class="catnav-inner">
+    <a href="homepage.html" class="nav-top">Trang chủ</a>
+    <div class="nav-drop">
+      <a href="category.html" class="nav-top active">Sản phẩm ▾</a>
+      <div class="nav-panel nav-panel-wide">
+        <div class="np-col">
+          <div class="np-title">Quạt dân dụng</div>
+          <a href="category.html">Quạt trần</a>
+          <a href="category.html">Quạt cây / quạt đứng</a>
+          <a href="category.html">Quạt treo tường</a>
+          <a href="category.html">Quạt sàn / quạt quỳ</a>
+        </div>
+        <div class="np-col">
+          <div class="np-title">Quạt công nghiệp</div>
+          <a href="category.html">Quạt cây công nghiệp</a>
+          <a href="category.html">Quạt treo tường công nghiệp</a>
+          <a href="category.html">Quạt sàn công nghiệp</a>
+        </div>
+        <div class="np-col">
+          <div class="np-title">Thông gió &amp; làm mát</div>
+          <a href="category.html">Quạt thông gió dân dụng</a>
+          <a href="category.html">Quạt thông gió công nghiệp</a>
+          <a href="product-detail.html">Quạt cắt gió</a>
+          <a href="category.html">Máy làm mát / điều hoà di động</a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-drop">
+      <span class="nav-top">Thương hiệu ▾</span>
+      <div class="nav-panel">
+        <a href="category.html">Panasonic</a>
+        <a href="category.html">Mitsubishi</a>
+        <a href="category.html">Komasu</a>
+        <a href="category.html">Hatari</a>
+        <a href="category.html">Tico</a>
+        <a href="category.html">Senko</a>
+        <a href="category.html">Nedfon</a>
+        <a href="category.html">Nanyoo</a>
+        <a href="category.html">Kyungjin</a>
+      </div>
+    </div>
+    <div class="nav-drop">
+      <span class="nav-top">Giải pháp theo nhu cầu ▾</span>
+      <div class="nav-panel">
+        <a href="#">Mua cho công trình</a>
+        <a href="#">Mua sỉ — đại lý</a>
+        <a href="#">Quạt cho quán cà phê / nhà hàng</a>
+        <a href="#">Quạt cho nhà xưởng / kho bãi</a>
+      </div>
+    </div>
+    <div class="nav-drop">
+      <a href="nganh-kho-xuong.html" class="nav-top active">Giải pháp theo ngành ▾</a>
+      <div class="nav-panel">
+        <a href="nganh-kho-xuong.html" class="current-brand">Nhà xưởng — Kho bãi</a>
+        <a href="#">Nhà hàng — Khách sạn</a>
+        <!-- [CẦN FOUNDER CHỐT] chỉ 2 mục có dữ liệu thật (bảng 2.3). Không tự
+             thêm ngành khác (VD "phòng sơn") khi chưa xác nhận có khách hàng
+             thật thuộc ngành đó. -->
+      </div>
+    </div>
+
+    <div class="nav-drop">
+      <span class="nav-top">Hồ sơ &amp; Tài liệu ▾</span>
+      <div class="nav-panel">
+        <a href="ho-so-nang-luc.html">Hồ sơ năng lực</a>
+        <a href="du-an-da-trien-khai.html">Đơn hàng tiêu biểu</a>
+        <a href="cong-cu-tinh-quat.html">Công cụ tính quạt</a>
+        <a href="#">Tài liệu &amp; Hồ sơ chung</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="breadcrumb"><a href="homepage.html">Trang chủ</a> › <a href="nganh-kho-xuong.html">Giải pháp theo ngành</a> › Nhà xưởng — Kho bãi</div>
+
+<div class="page-head">
+  <div>
+    <h1>Quạt cho nhà xưởng, kho bãi</h1>
+    <div class="count">7 sản phẩm phù hợp — chọn theo đúng lưu lượng khí cần thiết, không đoán</div>
+  </div>
+</div>
+
+<!-- ============ NỘI DUNG THỰC TẾ — khó khăn ngành + cách giải quyết, KHÔNG viết marketing ============ -->
+<div class="type-intro" style="margin-top:14px;">
+  <div class="type-intro-inner" style="grid-template-columns:1fr;">
+    <div class="type-body">
+      <p style="font-size:14px;color:var(--ink);margin-bottom:12px;">Nhà xưởng, kho bãi thường có trần cao, diện tích lớn, phát sinh nhiệt từ máy móc/hàng hoá — quạt công suất nhỏ không đủ lưu lượng khí, gây tích nhiệt, ảnh hưởng người lao động và chất lượng hàng lưu kho. Chọn sai lưu lượng (theo TCVN 5687:2010) là nguyên nhân phổ biến khiến lắp quạt rồi vẫn nóng.</p>
+      <p style="font-size:14px;color:var(--ink);margin:0;">Nhóm quạt công nghiệp dưới đây đáp ứng lưu lượng lớn (8.000–28.000 m³/h), vận hành liên tục nhiều giờ, chịu được môi trường bụi. Dùng <a href="cong-cu-tinh-quat.html" style="color:var(--navy-800);font-weight:700;">công cụ tính lưu lượng khí</a> theo đúng diện tích thực tế trước khi chọn model, tránh chọn thiếu hoặc thừa công suất gây lãng phí điện.</p>
+      <span class="cms-flag" style="display:block;margin-top:10px;">⚠ Đoạn mô tả trên dựa theo nguyên lý kỹ thuật chung (TCVN 5687:2010) — cần Winline duyệt lại, bổ sung số liệu thật riêng của công ty nếu có (VD tỷ lệ khách kho-xưởng gặp đúng vấn đề này) trước khi lên production.</span>
+    </div>
+  </div>
+</div>
+
+<div class="listing" style="grid-template-columns:1fr;max-width:1320px;">
+  <div class="results">
+    <div class="table-scroll">
+      <table class="spec-table">
+        <thead>
+          <tr>
+            <th class="first-col-sticky">Sản phẩm <span class="sort-ic">↕</span></th>
+            <th>Thương hiệu <span class="sort-ic">↕</span></th>
+            <th class="num">Công suất <span class="sort-ic">↕</span></th>
+            <th class="num">Lưu lượng gió <span class="sort-ic">↕</span></th>
+            <th class="num">Sải cánh / Kích thước <span class="sort-ic">↕</span></th>
+            <th>Điện áp</th>
+            <th class="num">Số động cơ</th>
+            <th class="num">Giá bán <span class="sort-ic">↕</span></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr onclick="location.href='product-detail.html'">
+            <td class="first-col-sticky"><div class="st-prod"><div class="st-thumb"></div><div><div class="st-name">Quạt cây công nghiệp Komasu KM-750S</div><div class="st-sku">SKU: KM-750S</div></div></div></td>
+            <td class="st-brand">Komasu</td>
+            <td class="num">250W</td>
+            <td class="num">15.200–18.000 m³/h</td>
+            <td class="num">Ø750mm</td>
+            <td>220V/50Hz</td>
+            <td class="num">1</td>
+            <td class="num st-price">2.890.000đ</td>
+            <td><a class="st-cta" href="product-detail.html">Xem chi tiết →</a></td>
+          </tr>
+          <tr onclick="location.href='product-detail.html'">
+            <td class="first-col-sticky"><div class="st-prod"><div class="st-thumb"></div><div><div class="st-name">Quạt cây công nghiệp Vinawind VW-650S</div><div class="st-sku">SKU: VW-650S</div></div></div></td>
+            <td class="st-brand">Vinawind</td>
+            <td class="num">220W</td>
+            <td class="num">11.000–13.500 m³/h</td>
+            <td class="num">Ø650mm</td>
+            <td>220V/50Hz</td>
+            <td class="num">1</td>
+            <td class="num st-price">2.150.000đ</td>
+            <td><a class="st-cta" href="product-detail.html">Xem chi tiết →</a></td>
+          </tr>
+          <tr onclick="location.href='product-detail.html'">
+            <td class="first-col-sticky"><div class="st-prod"><div class="st-thumb"></div><div><div class="st-name">Quạt cây công nghiệp Tico TC-800S</div><div class="st-sku">SKU: TC-800S</div></div></div></td>
+            <td class="st-brand">Tico</td>
+            <td class="num">280W</td>
+            <td class="num">18.500–21.000 m³/h</td>
+            <td class="num">Ø800mm</td>
+            <td>220V/50Hz</td>
+            <td class="num">1</td>
+            <td class="num st-price">3.150.000đ</td>
+            <td><a class="st-cta" href="product-detail.html">Xem chi tiết →</a></td>
+          </tr>
+          <tr onclick="location.href='product-detail.html'">
+            <td class="first-col-sticky"><div class="st-prod"><div class="st-thumb"></div><div><div class="st-name">Quạt cây công nghiệp Hatari HT-550S</div><div class="st-sku">SKU: HT-550S</div></div></div></td>
+            <td class="st-brand">Hatari</td>
+            <td class="num">185W</td>
+            <td class="num">9.800–11.200 m³/h</td>
+            <td class="num">Ø550mm</td>
+            <td>220V/50Hz</td>
+            <td class="num">1</td>
+            <td class="num st-price">1.920.000đ</td>
+            <td><a class="st-cta" href="product-detail.html">Xem chi tiết →</a></td>
+          </tr>
+          <tr onclick="location.href='product-detail.html'">
+            <td class="first-col-sticky"><div class="st-prod"><div class="st-thumb"></div><div><div class="st-name">Quạt cây công nghiệp Senko SK-700S</div><div class="st-sku">SKU: SK-700S</div></div></div></td>
+            <td class="st-brand">Senko</td>
+            <td class="num">240W</td>
+            <td class="num">14.200–16.800 m³/h</td>
+            <td class="num">Ø700mm</td>
+            <td>220V/50Hz</td>
+            <td class="num">1</td>
+            <td class="num st-price">2.480.000đ</td>
+            <td><a class="st-cta" href="product-detail.html">Xem chi tiết →</a></td>
+          </tr>
+          <tr onclick="location.href='product-detail.html'">
+            <td class="first-col-sticky"><div class="st-prod"><div class="st-thumb"></div><div><div class="st-name">Quạt cây công nghiệp Komasu KM-1000S</div><div class="st-sku">SKU: KM-1000S</div></div></div></td>
+            <td class="st-brand">Komasu</td>
+            <td class="num">370W</td>
+            <td class="num">24.500–28.000 m³/h</td>
+            <td class="num">Ø1000mm</td>
+            <td>220V/50Hz</td>
+            <td class="num">1</td>
+            <td class="num st-price">3.980.000đ</td>
+            <td><a class="st-cta" href="product-detail.html">Xem chi tiết →</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pagination">
+      <a href="#" class="active">1</a>
+      <a href="#">2</a>
+      <a href="#">3</a>
+      <a href="#">›</a>
+    </div>
+  </div>
+</div>
+
+<div class="table-note">Bảng có thể cuộn ngang trên màn hình nhỏ — cột "Sản phẩm" giữ cố định bên trái để dễ đối chiếu khi cuộn.</div>
+
+<footer><div class="footer-inner">© 2026 Công ty TNHH Winline Việt Nam — Số 7 BT6 Pháp Vân – Tứ Hiệp, Hà Nội — MST 0106085370</div></footer>
+
+</body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đơn hàng tiêu biểu | Winline.vn</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap');
+:root{
+  --navy-950:#00354f;--navy-800:#004e7d;--navy-700:#1f6690;--navy-100:#e6eef3;
+  --paper:#f7f8fa;--white:#ffffff;--ink:#1a2230;--ink-soft:#5c6773;--line:#dde3ea;
+  --orange:#d41e3d;--orange-dark:#a71830;--orange-100:#f4e6e9;--green:#1e8a5f;
+  --shadow:0 2px 10px rgba(13,31,51,.08);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;overflow-x:hidden;max-width:100%;}
+body{font-family:'Be Vietnam Pro',system-ui,sans-serif;color:var(--ink);background:var(--paper);font-size:15px;line-height:1.6;}
+.mono{font-family:'IBM Plex Mono',monospace;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+
+.utility-bar{background:var(--navy-950);color:#c9d6e3;font-size:12.5px;}
+.utility-bar .wrap{max-width:1160px;margin:0 auto;padding:7px 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;}
+header.site{background:#fff;border-bottom:1px solid var(--line);}
+.header-inner{max-width:1160px;margin:0 auto;padding:16px 20px;display:flex;align-items:center;gap:20px;}
+.logo{font-weight:800;font-size:23px;color:var(--navy-950);}
+.logo span{color:var(--orange);}
+nav.catnav{background:var(--navy-950);}
+.catnav-inner{max-width:1160px;margin:0 auto;padding:0 20px;display:flex;gap:2px;font-size:13px;overflow-x:auto;}
+.catnav-inner a{padding:11px 13px;color:#dbe4ee;white-space:nowrap;border-bottom:2px solid transparent;}
+.catnav-inner a.active{color:#fff;border-bottom-color:var(--orange);}
+
+.breadcrumb{max-width:1160px;margin:0 auto;padding:14px 20px 0;font-size:12.5px;color:var(--ink-soft);}
+.page-head{max-width:1160px;margin:0 auto;padding:14px 20px 0;}
+.page-head h1{font-size:24px;color:var(--navy-950);margin:0 0 6px;}
+.page-head p{font-size:13.5px;color:var(--ink-soft);margin:0;max-width:680px;}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:20px 24px;}
+
+.note-flag{
+  max-width:1160px;margin:18px auto 0;padding:0 20px;
+}
+.note-flag .inner{
+  background:var(--orange-100);border-left:3px solid var(--orange);padding:11px 15px;
+  font-size:12.5px;color:var(--orange-dark);border-radius:0 8px 8px 0;
+}
+
+.filter-bar{max-width:1160px;margin:20px auto 0;padding:0 20px;display:flex;gap:8px;flex-wrap:wrap;}
+.f-chip{border:1.5px solid var(--line);background:#fff;color:var(--ink);font-size:12.5px;font-weight:600;padding:7px 14px;border-radius:20px;}
+.f-chip.active{background:var(--navy-950);color:#fff;border-color:var(--navy-950);}
+
+.grid-wrap{max-width:1160px;margin:20px auto 60px;padding:0 20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px;}
+.cs-card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);}
+.cs-img{aspect-ratio:16/10;background:var(--paper);position:relative;display:flex;align-items:center;justify-content:center;
+  background-image:linear-gradient(135deg, var(--navy-100) 25%, transparent 25%),linear-gradient(225deg, var(--navy-100) 25%, transparent 25%);
+  background-position:-20px 0,-20px 0;background-size:34px 34px;
+}
+.cs-img .tag{position:absolute;top:10px;left:10px;background:var(--navy-950);color:#fff;font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:4px;}
+.cs-img .placeholder-mark{font-size:11px;color:var(--navy-700);opacity:.7;}
+.cs-body{padding:16px 17px 18px;}
+.cs-cat{font-size:10.5px;color:var(--orange-dark);font-weight:700;text-transform:uppercase;letter-spacing:.03em;margin-bottom:5px;}
+.cs-title{font-size:15px;font-weight:700;color:var(--navy-950);margin-bottom:8px;line-height:1.35;}
+.cs-stats{display:flex;gap:14px;margin-bottom:10px;flex-wrap:wrap;}
+.cs-stats div{font-size:11.5px;color:var(--ink-soft);}
+.cs-stats b{display:block;color:var(--navy-950);font-family:'IBM Plex Mono',monospace;font-size:13px;}
+.cs-desc{font-size:12.5px;color:var(--ink-soft);line-height:1.6;margin-bottom:10px;}
+.cs-link{font-size:12px;font-weight:700;color:var(--navy-800);}
+
+.cs-card.placeholder{border-style:dashed;background:#fbfbfc;}
+.cs-card.placeholder .cs-title{color:var(--ink-soft);}
+
+.cta-band{background:var(--navy-100);}
+.cta-inner{max-width:1160px;margin:0 auto;padding:34px 20px;text-align:center;}
+.cta-inner h3{font-size:18px;color:var(--navy-950);margin:0 0 8px;}
+.cta-inner p{font-size:13px;color:var(--ink-soft);margin:0 0 16px;max-width:560px;margin-left:auto;margin-right:auto;}
+.btn-cta{display:inline-block;background:var(--orange);color:#fff;padding:11px 24px;border-radius:7px;font-weight:700;font-size:13.5px;}
+
+footer{background:var(--navy-950);color:#9fb0bf;padding:30px 20px;text-align:center;font-size:12px;}
+
+/* ---------- menu chính dạng dropdown — gom theo loại/thương hiệu/nhu cầu/hồ sơ ---------- */
+.nav-drop{position:relative;}
+.nav-top{padding:11px 14px;color:#dbe4ee;white-space:nowrap;border-bottom:2px solid transparent;cursor:pointer;display:inline-block;text-decoration:none;}
+.nav-drop:hover .nav-top,.nav-top.active{color:#fff;border-bottom-color:var(--orange,#d41e3d);background:rgba(255,255,255,.04);}
+.nav-panel{
+  display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid var(--line,#dde3ea);
+  box-shadow:0 10px 26px rgba(13,31,51,.16);border-radius:0 0 10px 10px;padding:14px;z-index:60;
+  min-width:230px;flex-direction:column;gap:1px;
+}
+.nav-drop:hover .nav-panel{display:flex;}
+.nav-panel a{color:var(--navy-950,#00354f)!important;padding:7px 10px;border-radius:5px;font-size:13px;white-space:nowrap;text-decoration:none;}
+.nav-panel a:hover{background:var(--navy-100,#e6eef3);}
+.nav-panel-wide{flex-direction:row;gap:26px;min-width:540px;padding:16px;}
+.np-col{display:flex;flex-direction:column;gap:1px;min-width:170px;}
+.np-title{font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft,#5c6773);font-weight:700;padding:4px 10px 6px;}
+@media(max-width:960px){
+  .nav-panel{display:none!important;}
+}
+
+</style>
+</head>
+<body>
+
+<div class="utility-bar"><div class="wrap"><span>Năng lực xử lý đơn hàng thực tế của Winline</span><span>Hotline 0949 761 893</span></div></div>
+<header class="site"><div class="header-inner"><div class="logo">WIN<span>LINE</span></div></div></header>
+<nav class="catnav">
+  <div class="catnav-inner">
+    <a href="homepage.html" class="nav-top">Trang chủ</a>
+
+    <div class="nav-drop">
+      <a href="category.html" class="nav-top">Sản phẩm ▾</a>
+      <div class="nav-panel nav-panel-wide">
+        <div class="np-col">
+          <div class="np-title">Quạt dân dụng</div>
+          <a href="category.html">Quạt trần</a>
+          <a href="category.html">Quạt cây / quạt đứng</a>
+          <a href="category.html">Quạt treo tường</a>
+          <a href="category.html">Quạt sàn / quạt quỳ</a>
+        </div>
+        <div class="np-col">
+          <div class="np-title">Quạt công nghiệp</div>
+          <a href="category.html">Quạt cây công nghiệp</a>
+          <a href="category.html">Quạt treo tường công nghiệp</a>
+          <a href="category.html">Quạt sàn công nghiệp</a>
+        </div>
+        <div class="np-col">
+          <div class="np-title">Thông gió &amp; làm mát</div>
+          <a href="category.html">Quạt thông gió dân dụng</a>
+          <a href="category.html">Quạt thông gió công nghiệp</a>
+          <a href="product-detail.html">Quạt cắt gió</a>
+          <a href="category.html">Máy làm mát / điều hoà di động</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-drop">
+      <span class="nav-top">Thương hiệu ▾</span>
+      <div class="nav-panel">
+        <a href="category.html">Panasonic</a>
+        <a href="category.html">Mitsubishi</a>
+        <a href="category.html">Komasu</a>
+        <a href="category.html">Hatari</a>
+        <a href="category.html">Tico</a>
+        <a href="category.html">Senko</a>
+        <a href="category.html">Nedfon</a>
+        <a href="category.html">Nanyoo</a>
+        <a href="category.html">Kyungjin</a>
+      </div>
+    </div>
+
+    <div class="nav-drop">
+      <span class="nav-top">Giải pháp theo nhu cầu ▾</span>
+      <div class="nav-panel">
+        <a href="#">Mua cho công trình</a>
+        <a href="#">Mua sỉ — đại lý</a>
+        <a href="#">Quạt cho quán cà phê / nhà hàng</a>
+        <a href="#">Quạt cho nhà xưởng / kho bãi</a>
+      </div>
+    </div>
+
+    <div class="nav-drop">
+      <span class="nav-top active">Hồ sơ &amp; Tài liệu ▾</span>
+      <div class="nav-panel">
+        <a href="ho-so-nang-luc.html">Hồ sơ năng lực</a>
+        <a href="du-an-da-trien-khai.html">Đơn hàng tiêu biểu</a>
+        <a href="cong-cu-tinh-quat.html">Công cụ tính quạt</a>
+        <a href="#">Tài liệu &amp; Hồ sơ chung</a>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+<div class="breadcrumb"><a href="#">Trang chủ</a> › Đơn hàng tiêu biểu <span class="mono" style="background:var(--navy-100);color:var(--navy-800);padding:2px 8px;border-radius:3px;margin-left:8px;">/don-hang-tieu-bieu</span></div>
+
+<div class="page-head">
+  <h1>Đơn hàng tiêu biểu</h1>
+  <p>Winline là đơn vị bán hàng — cung cấp quạt điện, quạt công nghiệp chính hãng, xuất hoá đơn VAT đầy đủ, <b>không thi công lắp đặt</b>. Dưới đây là năng lực xử lý đơn hàng thực tế theo từng nhóm khách, dùng làm căn cứ tham khảo khi bạn cân nhắc đặt hàng số lượng lớn.</p>
+</div>
+
+<section style="max-width:1160px;margin:22px auto 0;padding:0 20px;">
+  <div class="card" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center;">
+    <div><div style="font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:800;color:var(--navy-950);">5.500–8.000</div><div style="font-size:11.5px;color:var(--ink-soft);margin-top:3px;">Đơn hàng xử lý mỗi năm</div></div>
+    <div><div style="font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:800;color:var(--navy-950);">~500</div><div style="font-size:11.5px;color:var(--ink-soft);margin-top:3px;">Đơn giá trị trên 10 triệu</div></div>
+    <div><div style="font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:800;color:var(--navy-950);">73</div><div style="font-size:11.5px;color:var(--ink-soft);margin-top:3px;">Đơn giá trị trên 35 triệu</div></div>
+    <div><div style="font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:800;color:var(--navy-950);">14</div><div style="font-size:11.5px;color:var(--ink-soft);margin-top:3px;">Đơn giá trị trên 80 triệu</div></div>
+  </div>
+</section>
+
+<div class="note-flag"><div class="inner">[CẦN NỘI DUNG THẬT] Số liệu tổng quan ở trên là số thật. Các đơn hàng tiêu biểu bên dưới hiện là <b>ví dụ điển hình theo đúng phân bố thật</b> (chưa phải đơn cụ thể có tên khách) — cần chọn lọc đơn thật + xin phép khách hàng trước khi công bố tên/logo chính thức.</div></div>
+
+<div class="filter-bar">
+  <span class="f-chip active">Tất cả</span>
+  <span class="f-chip">Nhà xưởng</span>
+  <span class="f-chip">Công trình / Nhà thầu</span>
+  <span class="f-chip">Nhà hàng — Siêu thị</span>
+  <span class="f-chip">Bệnh viện — Trường học</span>
+  <span class="f-chip">Văn phòng — Cửa hàng</span>
+</div>
+
+<div class="grid-wrap">
+
+  <div class="cs-card">
+    <div class="cs-img"><span class="tag">Kho-xưởng</span></div>
+    <div class="cs-body">
+      <div class="cs-cat">Xưởng may — khu vực Đông Anh, Hà Nội</div>
+      <div class="cs-title">Đơn hàng 18 quạt cây công nghiệp cùng lúc, đa cấu hình</div>
+      <div class="cs-stats">
+        <div><b>~92 triệu</b>Giá trị đơn</div>
+        <div><b>18 cái · 2 loại</b>Số lượng &amp; chủng loại</div>
+        <div><b>15 phút</b>Duyệt báo giá</div>
+      </div>
+      <div class="cs-desc">Đơn thuộc nhóm giá trị 35–80 triệu — nhóm Winline xử lý khoảng 73 đơn/năm. Giao trong 2 ngày, xuất hoá đơn VAT đầy đủ.</div>
+      <a class="cs-link" href="#">Xem chi tiết đơn hàng →</a>
+    </div>
+  </div>
+
+  <div class="cs-card">
+    <div class="cs-img"><span class="tag">Công trình</span></div>
+    <div class="cs-body">
+      <div class="cs-cat">Nhà thầu cơ điện — Hà Nội</div>
+      <div class="cs-title">Cung cấp quạt cắt gió + hồ sơ CQ/CO cho hạng mục nghiệm thu</div>
+      <div class="cs-stats">
+        <div><b>3 bộ</b>Số lượng</div>
+        <div><b>Trong ngày</b>Gửi hồ sơ CQ/CO</div>
+        <div><b>VAT ✓</b>Hoá đơn</div>
+      </div>
+      <div class="cs-desc">Cung cấp đúng hạn cho hạng mục nghiệm thu, kèm đầy đủ hồ sơ chứng nhận xuất xứ theo yêu cầu chủ đầu tư — Winline bán hàng và cung cấp hồ sơ, không thi công lắp đặt.</div>
+      <a class="cs-link" href="#">Xem chi tiết đơn hàng →</a>
+    </div>
+  </div>
+
+  <div class="cs-card">
+    <div class="cs-img"><span class="tag">Thương mại</span></div>
+    <div class="cs-body">
+      <div class="cs-cat">Cửa hàng vật tư điện — Bắc Ninh</div>
+      <div class="cs-title">Đơn sỉ nhiều thương hiệu trong 1 lần đặt, giao thẳng về kho khách</div>
+      <div class="cs-stats">
+        <div><b>~14 triệu</b>Giá trị đơn</div>
+        <div><b>4 thương hiệu</b>Đa dạng SP</div>
+        <div><b>5 phút</b>Duyệt báo giá</div>
+      </div>
+      <div class="cs-desc">Đơn thuộc "vùng vàng" 5–20 triệu — nhóm đơn Winline xử lý nhanh và ổn định nhất. Gom nhiều thương hiệu trong 1 lần đặt, không phải làm việc với nhiều nhà cung cấp.</div>
+      <a class="cs-link" href="#">Xem chi tiết đơn hàng →</a>
+    </div>
+  </div>
+
+  <div class="cs-card placeholder">
+    <div class="cs-img"><span class="placeholder-mark">Ảnh đơn hàng thật — đang thu thập</span></div>
+    <div class="cs-body">
+      <div class="cs-cat">[Cần bổ sung]</div>
+      <div class="cs-title">Đơn hàng nhà hàng / siêu thị — chưa có dữ liệu</div>
+      <div class="cs-desc">Vị trí này dành cho đơn hàng tiêu biểu nhóm Nhà hàng-khách sạn, chưa chọn được đơn nào đủ số liệu để công bố.</div>
+    </div>
+  </div>
+
+  <div class="cs-card placeholder">
+    <div class="cs-img"><span class="placeholder-mark">Ảnh đơn hàng thật — đang thu thập</span></div>
+    <div class="cs-body">
+      <div class="cs-cat">[Cần bổ sung]</div>
+      <div class="cs-title">Đơn hàng bệnh viện / trường học — chưa có dữ liệu</div>
+      <div class="cs-desc">Vị trí này dành cho đơn hàng tiêu biểu nhóm Bệnh viện-trường học.</div>
+    </div>
+  </div>
+
+  <div class="cs-card placeholder">
+    <div class="cs-img"><span class="placeholder-mark">Ảnh đơn hàng thật — đang thu thập</span></div>
+    <div class="cs-body">
+      <div class="cs-cat">[Cần bổ sung]</div>
+      <div class="cs-title">Đơn hàng kho-xưởng quy mô lớn (trên 80 triệu) — chưa có dữ liệu</div>
+      <div class="cs-desc">Nhóm đơn ≥80 triệu chỉ có 14 đơn/năm — hiếm nên càng cần 1 ví dụ thật cụ thể, ưu tiên bổ sung trước.</div>
+    </div>
+  </div>
+
+  <div class="cs-card placeholder">
+    <div class="cs-img"><span class="placeholder-mark">Ảnh đơn hàng thật — đang thu thập</span></div>
+    <div class="cs-body">
+      <div class="cs-cat">[Cần bổ sung]</div>
+      <div class="cs-title">Đơn hàng văn phòng / cửa hàng — chưa có dữ liệu</div>
+      <div class="cs-desc">Vị trí này dành cho đơn hàng tiêu biểu nhóm Văn phòng-cửa hàng.</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="cta-band">
+  <div class="cta-inner">
+    <h3>Cần giải pháp cho không gian tương tự?</h3>
+    <p>Cho chúng tôi biết diện tích, mục đích sử dụng — đội tư vấn Winline sẽ đề xuất phương án cụ thể trong 1 giờ.</p>
+    <a class="btn-cta" href="#">Yêu cầu tư vấn đơn hàng</a>
+  </div>
+</div>
+
+<footer>© 2026 Công ty TNHH Winline Việt Nam — MST 0106085370 — Số 7 BT6 Pháp Vân-Tứ Hiệp, Hà Nội</footer>
+
+</body>
+</html>
