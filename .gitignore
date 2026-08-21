@@ -1,0 +1,11 @@
+# System & Editor files
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
+
+# Python cache & temp
+__pycache__/
+*.pyc
+*_inspect.jpg

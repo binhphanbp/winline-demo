@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sản Phẩm Quạt Công Nghiệp & Thiết Bị Thông Gió | Winline.vn</title>
+  <meta name="description" content="Danh mục quạt công nghiệp, quạt cây công nghiệp, quạt thông gió, quạt ly tâm chính hãng Komasu, Vinawind, Deton, Dasin tại Winline Việt Nam. Hotline: 0949.761.893">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="https://bizweb.dktcdn.net/100/391/557/themes/903209/assets/favicon.png?1786933451521" type="image/x-icon">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Be Vietnam Pro"', '"Inter"', 'sans-serif'],
+            heading: ['"Be Vietnam Pro"', 'sans-serif']
+          },
+          colors: {
+            brandNavy: '#0b1f3a',
+            brandNavyDark: '#071529',
+            brandRed: '#e51a24',
+            brandRedHover: '#c4121b',
+            brandTeal: '#26a69a',
+            brandTealHover: '#00897b'
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom CSS with Be Vietnam Pro font -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-[#f8fafc] text-slate-800 flex flex-col min-h-screen">
+
+  <!-- ================= TOP HEADER ================= -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-xs">
+    <!-- Super Top Notification Bar -->
+    <div class="bg-brandNavyDark text-slate-300 text-xs py-2 px-4 hidden md:block border-b border-slate-800">
+      <div class="custom-container flex justify-between items-center">
+        <div class="flex items-center gap-6">
+          <span><i class="fas fa-certificate text-brandRed mr-1.5"></i> Công ty TNHH Winline Việt Nam - MST: <strong>0106085370</strong></span>
+          <span><i class="fas fa-truck-fast text-brandTeal mr-1.5"></i> Giao hàng toàn quốc - Hỗ trợ kỹ thuật 24/7</span>
+        </div>
+        <div class="flex items-center gap-5 text-xs">
+          <a href="tel:0949761893" class="hover:text-white transition"><i class="fas fa-phone-volume text-brandRed mr-1"></i> Bán hàng: <strong>0949.761.893</strong></a>
+          <span class="text-slate-600">|</span>
+          <a href="tel:0963230665" class="hover:text-white transition"><i class="fas fa-wrench text-amber-400 mr-1"></i> Bảo hành: <strong>0963.230.665</strong></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Header -->
+    <div class="custom-container py-3.5 flex items-center justify-between gap-6">
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center gap-2 flex-shrink-0 group">
+        <div class="flex flex-col">
+          <div class="text-2xl md:text-3xl font-black tracking-tight text-brandRed font-heading flex items-center">
+            Winline<span class="text-brandNavy text-base align-super ml-0.5">®</span>
+          </div>
+          <span class="text-[9px] uppercase tracking-widest font-bold text-brandNavy -mt-1 group-hover:text-brandRed transition">
+            Chất lượng tạo niềm tin
+          </span>
+        </div>
+      </a>
+
+      <!-- Search Bar with Live Suggestions -->
+      <div class="search-container relative flex-1 max-w-2xl mx-2 hidden sm:block">
+        <div class="flex">
+          <input 
+            type="text" 
+            id="catalog-search-input"
+            class="header-search-input w-full bg-slate-50 border border-slate-300 rounded-l-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brandRed focus:border-brandRed" 
+            placeholder="Tìm sản phẩm, quạt công nghiệp, quạt cây, model..."
+          >
+          <button class="bg-brandRed hover:bg-brandRedHover text-white px-6 rounded-r-lg transition flex items-center justify-center">
+            <i class="fas fa-search text-sm"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Header Action Items (Tech Support, Catalogue, Cart) -->
+      <div class="flex items-center gap-4 md:gap-7 flex-shrink-0 text-xs">
+        <!-- Tech support -->
+        <a href="tel:1900099806" class="hidden lg:flex items-center gap-2.5 text-slate-700 hover:text-brandRed transition">
+          <div class="w-10 h-10 rounded-full bg-red-50 text-brandRed flex items-center justify-center text-base">
+            <i class="fas fa-headset"></i>
+          </div>
+          <div>
+            <div class="text-[11px] text-slate-400">Hỗ trợ kỹ thuật</div>
+            <div class="font-bold text-slate-900 text-sm">1900 099 806</div>
+          </div>
+        </a>
+
+        <!-- Catalogue download -->
+        <button onclick="downloadCatalogue()" class="hidden md:flex items-center gap-2.5 text-slate-700 hover:text-brandRed transition text-left">
+          <div class="w-10 h-10 rounded-full bg-blue-50 text-brandNavy flex items-center justify-center text-base">
+            <i class="fas fa-file-pdf"></i>
+          </div>
+          <div>
+            <div class="text-[11px] text-slate-400">Tài liệu</div>
+            <div class="font-bold text-slate-900">Hướng dẫn, Catalogue</div>
+          </div>
+        </button>
+
+        <!-- Shopping Cart -->
+        <button onclick="openCartDrawer()" class="relative flex items-center gap-2 text-slate-800 hover:text-brandRed transition bg-slate-50 hover:bg-red-50 border border-slate-200 px-4 py-2.5 rounded-xl shadow-2xs">
+          <div class="relative">
+            <i class="fas fa-shopping-cart text-lg text-brandRed"></i>
+            <span class="cart-badge-count absolute -top-2 -right-2 bg-brandRed text-white text-[10px] font-black rounded-full w-5 h-5 flex items-center justify-center border-2 border-white">
+              0
+            </span>
+          </div>
+          <span class="font-bold hidden sm:inline text-xs">Giỏ hàng</span>
+        </button>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobile-menu-btn" class="md:hidden text-slate-700 hover:text-brandRed text-xl p-2">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- ================= MAIN NAVIGATION MENU (7 ITEMS) ================= -->
+    <nav class="main-navbar">
+      <div class="custom-container">
+        <ul class="flex items-center overflow-x-auto no-scrollbar">
+          <li><a href="index.html" class="nav-link-item whitespace-nowrap">Trang chủ</a></li>
+          <li><a href="gioi-thieu.html" class="nav-link-item whitespace-nowrap">Giới thiệu</a></li>
+          <li><a href="san-pham.html" class="nav-link-item active whitespace-nowrap">Sản phẩm</a></li>
+          <li><a href="giai-phap.html" class="nav-link-item whitespace-nowrap">Giải pháp</a></li>
+          <li><a href="thuong-hieu.html" class="nav-link-item whitespace-nowrap">Thương hiệu</a></li>
+          <li><a href="cong-cu-tinh-quat.html" class="nav-link-item whitespace-nowrap text-amber-300 font-bold"><i class="fas fa-calculator mr-1"></i> Công cụ tính quạt</a></li>
+          <li><a href="du-an.html" class="nav-link-item whitespace-nowrap">Dự án</a></li>
+          <li class="ml-auto hidden xl:block"><a href="lien-he.html" class="nav-link-item text-xs text-slate-300 hover:text-white font-medium">Liên hệ & Báo giá</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ================= BREADCRUMB ================= -->
+  <div class="bg-white border-b border-slate-200 py-3 text-xs text-slate-500">
+    <div class="custom-container flex items-center gap-2 flex-wrap" id="products-top-anchor">
+      <a href="index.html" class="hover:text-brandRed transition">Trang chủ</a>
+      <i class="fas fa-chevron-right text-[10px] text-slate-300"></i>
+      <a href="san-pham.html" class="hover:text-brandRed transition">Sản phẩm</a>
+      <i class="fas fa-chevron-right text-[10px] text-slate-300"></i>
+      <a href="san-pham.html?category=quat-cong-nghiep" class="hover:text-brandRed transition">Quạt công nghiệp</a>
+      <i class="fas fa-chevron-right text-[10px] text-slate-300"></i>
+      <span class="text-slate-900 font-bold" id="breadcrumb-current">Quạt cây công nghiệp</span>
+    </div>
+  </div>
+
+  <!-- ================= MAIN CONTENT AREA ================= -->
+  <main class="custom-container py-8 flex-1 w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- ================= LEFT SIDEBAR (FILTERS & CATEGORIES) ================= -->
+      <aside class="lg:col-span-3 space-y-6">
+        
+        <!-- 1. DANH MỤC SẢN PHẨM -->
+        <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-xs">
+          <h2 class="filter-heading mb-4 font-heading">DANH MỤC SẢN PHẨM</h2>
+          
+          <div class="space-y-3 text-sm" id="category-accordion">
+            
+            <!-- Quạt dân dụng -->
+            <div class="category-item border-b border-slate-100 pb-2.5">
+              <div class="cat-header flex items-center justify-between cursor-pointer py-1.5 text-slate-700 hover:text-brandRed transition font-medium">
+                <span>Quạt dân dụng</span>
+                <i class="fas fa-chevron-right text-xs text-slate-400 cat-arrow transition-transform"></i>
+              </div>
+              <ul class="subcategory-list pl-4 pt-2 space-y-2 text-xs text-slate-600 hidden">
+                <li><a href="#" data-subcat="quat-cay-dan-dung" class="subcategory-item block hover:text-brandRed py-0.5">Quạt cây dân dụng</a></li>
+                <li><a href="#" data-subcat="quat-treo-dan-dung" class="subcategory-item block hover:text-brandRed py-0.5">Quạt treo gia đình</a></li>
+                <li><a href="#" data-subcat="quat-tran" class="subcategory-item block hover:text-brandRed py-0.5">Quạt trần & Đảo trần</a></li>
+                <li><a href="#" data-subcat="quat-ban-hop" class="subcategory-item block hover:text-brandRed py-0.5">Quạt bàn & Quạt hộp</a></li>
+              </ul>
+            </div>
+
+            <!-- Quạt công nghiệp (ACTIVE) -->
+            <div class="category-item active border-b border-slate-100 pb-2.5">
+              <div class="cat-header flex items-center justify-between cursor-pointer py-1.5 text-brandRed font-bold transition">
+                <span>Quạt công nghiệp</span>
+                <i class="fas fa-chevron-down text-xs text-brandRed cat-arrow transition-transform"></i>
+              </div>
+              <ul class="subcategory-list pl-4 pt-2 space-y-2 text-xs text-slate-600">
+                <li><a href="#" data-subcat="quat-cay-cong-nghiep" class="subcategory-item active text-brandRed font-bold block hover:text-brandRed py-0.5">Quạt cây công nghiệp</a></li>
+                <li><a href="#" data-subcat="quat-treo-cong-nghiep" class="subcategory-item block hover:text-brandRed py-0.5">Quạt treo tường công nghiệp</a></li>
+                <li><a href="#" data-subcat="quat-thong-gio-vuong" class="subcategory-item block hover:text-brandRed py-0.5">Quạt thông gió vuông</a></li>
+                <li><a href="#" data-subcat="quat-thong-gio-tron" class="subcategory-item block hover:text-brandRed py-0.5">Quạt thông gió tròn</a></li>
+                <li><a href="#" data-subcat="quat-ly-tam" class="subcategory-item block hover:text-brandRed py-0.5">Quạt ly tâm</a></li>
+                <li><a href="#" data-subcat="quat-huong-truc" class="subcategory-item block hover:text-brandRed py-0.5">Quạt hướng trục</a></li>
+                <li><a href="#" data-subcat="quat-hut-nuoc" class="subcategory-item block hover:text-brandRed py-0.5">Quạt hút nước công nghiệp</a></li>
+              </ul>
+            </div>
+
+            <!-- Thông gió & làm mát -->
+            <div class="category-item border-b border-slate-100 pb-2.5">
+              <div class="cat-header flex items-center justify-between cursor-pointer py-1.5 text-slate-700 hover:text-brandRed transition font-medium">
+                <span>Thông gió & làm mát</span>
+                <i class="fas fa-chevron-right text-xs text-slate-400 cat-arrow transition-transform"></i>
+              </div>
+              <ul class="subcategory-list pl-4 pt-2 space-y-2 text-xs text-slate-600 hidden">
+                <li><a href="#" data-subcat="may-lam-mat-nha-xuong" class="subcategory-item block hover:text-brandRed py-0.5">Máy làm mát nhà xưởng</a></li>
+                <li><a href="#" data-subcat="tam-cooling-pad" class="subcategory-item block hover:text-brandRed py-0.5">Tấm làm mát Cooling Pad</a></li>
+                <li><a href="#" data-subcat="quat-hut-am-tran" class="subcategory-item block hover:text-brandRed py-0.5">Quạt hút âm trần</a></li>
+              </ul>
+            </div>
+
+            <!-- Phụ kiện & khác -->
+            <div class="category-item pb-1">
+              <div class="cat-header flex items-center justify-between cursor-pointer py-1.5 text-slate-700 hover:text-brandRed transition font-medium">
+                <span>Phụ kiện & khác</span>
+                <i class="fas fa-chevron-right text-xs text-slate-400 cat-arrow transition-transform"></i>
+              </div>
+              <ul class="subcategory-list pl-4 pt-2 space-y-2 text-xs text-slate-600 hidden">
+                <li><a href="#" data-subcat="canh-quat-long" class="subcategory-item block hover:text-brandRed py-0.5">Cánh quạt & Lồng quạt</a></li>
+                <li><a href="#" data-subcat="dong-co-motor" class="subcategory-item block hover:text-brandRed py-0.5">Động cơ Motor quạt</a></li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 2. BỘ LỌC SẢN PHẨM -->
+        <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-xs space-y-6">
+          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+            <h2 class="filter-heading font-heading mb-0">BỘ LỌC SẢN PHẨM</h2>
+            <button id="btn-reset-filters" class="text-[11px] font-bold text-slate-400 hover:text-brandRed transition">
+              Đặt lại
+            </button>
+          </div>
+
+          <!-- Thương hiệu -->
+          <div>
+            <h3 class="text-xs font-bold text-slate-800 uppercase tracking-wider mb-3">Thương hiệu</h3>
+            <div class="space-y-2 text-xs text-slate-600 max-h-48 overflow-y-auto pr-1">
+              <label class="custom-checkbox flex items-center gap-2.5 cursor-pointer hover:text-brandRed">
+                <input type="checkbox" data-filter="brand" value="komasu">
+                <span>Komasu <span class="text-slate-400 text-[11px] font-normal">(12)</span></span>
+              </label>
+              <label class="custom-checkbox flex items-center gap-2.5 cursor-pointer hover:text-brandRed">
+                <input type="checkbox" data-filter="brand" value="vinawind">
+                <span>Vinawind <span class="text-slate-400 text-[11px] font-normal">(8)</span></span>
+              </label>
+              <label class="custom-checkbox flex items-center gap-2.5 cursor-pointer hover:text-brandRed">
+                <input type="checkbox" data-filter="brand" value="deton">
+                <span>Deton <span class="text-slate-400 text-[11px] font-normal">(7)</span></span>
+              </label>
+              <label class="custom-checkbox flex items-center gap-2.5 cursor-pointer hover:text-brandRed">
+                <input type="checkbox" data-filter="brand" value="dasin">
+                <span>Dasin <span class="text-slate-400 text-[11px] font-normal">(6)</span></span>
+              </label>
+              <label class="custom-checkbox flex items-center gap-2.5 cursor-pointer hover:text-brandRed">
+                <input type="checkbox" data-filter="brand" value="chinghai">
+                <span>Chinghai <span class="text-slate-400 text-[11px] font-normal">(15)</span></span>
+              </label>
+              <label class="custom-checkbox flex items-center gap-2.5 cursor-pointer hover:text-brandRed">
+                <input type="checkbox" data-filter="brand" value="hatari">
+                <span>Hatari <span class="text-slate-400 text-[11px] font-normal">(9)</span></span>
+              </label>
+              <label class="custom-checkbox flex items-center gap-2.5 cursor-pointer hover:text-brandRed">
+                <input type="checkbox" data-filter="brand" value="panasonic">
+                <span>Panasonic <span class="text-slate-400 text-[11px] font-normal">(10)</span></span>
+              </label>
+              <label class="custom-checkbox flex items-center gap-2.5 cursor-pointer hover:text-brandRed">
+                <input type="checkbox" data-filter="brand" value="khac">
+                <span>Khác <span class="text-slate-400 text-[11px] font-normal">(10)</span></span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Công suất -->
+          <div class="border-t border-slate-100 pt-4">
+            <h3 class="text-xs font-bold text-slate-800 uppercase tracking-wider mb-3">Công suất</h3>
+            <div class="space-y-2 text-xs text-slate-600">
+              <label class="custom-checkbox flex items-center gap-2.5 cursor-pointer hover:text-brandRed">
+                <input type="checkbox" data-filter="power" value="under-200">
+                <span>Dưới 200W</span>
+              </label>
+              <label class="custom-checkbox flex items-center gap-2.5 cursor-pointer hover:text-brandRed">
+                <input type="checkbox" data-filter="power" value="200-300">
+                <span>200W - 300W</span>
+              </label>
+              <label class="custom-checkbox flex items-center gap-2.5 cursor-pointer hover:text-brandRed">
+                <input type="checkbox" data-filter="power" value="300-500">
+                <span>300W - 500W</span>
+              </label>
+              <label class="custom-checkbox flex items-center gap-2.5 cursor-pointer hover:text-brandRed">
+                <input type="checkbox" data-filter="power" value="above-500">
+                <span>Trên 500W</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- ================= LỌC THEO GIÁ (EXACT AS SCREENSHOT) ================= -->
+          <div class="border-t border-slate-100 pt-4">
+            <div class="mb-3">
+              <h3 class="text-xs font-bold text-slate-800 uppercase tracking-wider">LỌC THEO GIÁ</h3>
+              <div class="w-8 h-0.5 bg-slate-300 mt-1"></div>
+            </div>
+
+            <!-- Dual Range Slider Track -->
+            <div class="price-slider-container my-4">
+              <div class="price-slider-track">
+                <div id="price-slider-range" class="price-slider-range" style="left: 0%; width: 100%;"></div>
+              </div>
+              <div class="range-input">
+                <input type="range" id="price-min" min="0" max="10000000" step="50000" value="0">
+                <input type="range" id="price-max" min="0" max="10000000" step="50000" value="10000000">
+              </div>
+            </div>
+
+            <!-- Action button & Readout matching exact customer screenshot -->
+            <div class="flex items-center justify-between gap-3 mt-4 pt-2">
+              <button type="button" id="btn-apply-price-filter" class="btn-filter-price">
+                LỌC
+              </button>
+              <div id="price-display-label" class="text-xs text-slate-600 text-right leading-tight">
+                Giá: <strong>0₫</strong> — <strong>10.000.000₫</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sải cánh -->
+          <div class="border-t border-slate-100 pt-4">
+            <h3 class="text-xs font-bold text-slate-800 uppercase tracking-wider mb-3">Đường kính cánh</h3>
+            <div class="grid grid-cols-2 gap-2 text-xs text-slate-600">
+              <label class="custom-checkbox flex items-center gap-2 cursor-pointer hover:text-brandRed">
+                <input type="checkbox" data-filter="blade" value="450">
+                <span>450 mm</span>
+              </label>
+              <label class="custom-checkbox flex items-center gap-2 cursor-pointer hover:text-brandRed">
+                <input type="checkbox" data-filter="blade" value="500">
+                <span>500 mm</span>
+              </label>
+              <label class="custom-checkbox flex items-center gap-2 cursor-pointer hover:text-brandRed">
+                <input type="checkbox" data-filter="blade" value="650">
+                <span>650 mm</span>
+              </label>
+              <label class="custom-checkbox flex items-center gap-2 cursor-pointer hover:text-brandRed">
+                <input type="checkbox" data-filter="blade" value="750">
+                <span>750 mm</span>
+              </label>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Banner Khuyến Mãi -->
+        <div class="bg-gradient-to-br from-brandNavy to-slate-900 text-white rounded-xl p-6 text-center shadow-sm">
+          <i class="fas fa-calculator text-3xl text-amber-400 mb-2"></i>
+          <h4 class="font-bold text-sm font-heading">Tính Quạt Thông Gió?</h4>
+          <p class="text-xs text-slate-300 mt-1 mb-4">Tính nhanh lưu lượng khí theo diện tích xưởng & gợi ý số quạt chuẩn xác.</p>
+          <a href="cong-cu-tinh-quat.html" class="block w-full bg-brandRed hover:bg-brandRedHover text-white py-2.5 rounded-lg text-xs font-bold transition shadow-md">
+            Dùng công cụ ngay →
+          </a>
+        </div>
+
+      </aside>
+
+      <!-- ================= RIGHT MAIN PRODUCT GRID ================= -->
+      <section class="lg:col-span-9">
+        
+        <!-- Active Filter Chips -->
+        <div id="active-filter-chips" class="hidden"></div>
+
+        <!-- Toolbar (View Switcher, Count, Sort, Limit) -->
+        <div class="bg-white rounded-xl border border-slate-200 p-4 mb-5 flex items-center justify-between flex-wrap gap-4 shadow-xs">
+          <!-- Left: View Mode & Counter -->
+          <div class="flex items-center gap-4">
+            <div class="flex items-center border border-slate-200 rounded-lg p-0.5 bg-slate-50">
+              <button id="view-grid-btn" title="Chế độ lưới" class="w-9 h-8 flex items-center justify-center rounded-md text-brandRed bg-white shadow-2xs text-xs font-bold transition">
+                <i class="fas fa-th-large"></i>
+              </button>
+              <button id="view-list-btn" title="Chế độ danh sách" class="w-9 h-8 flex items-center justify-center rounded-md text-slate-500 hover:text-brandRed text-xs transition">
+                <i class="fas fa-list"></i>
+              </button>
+            </div>
+            <span id="products-count-label" class="text-xs text-slate-600 font-semibold">
+              Hiển thị 12 sản phẩm
+            </span>
+          </div>
+
+          <!-- Right: Sort & Limit -->
+          <div class="flex items-center gap-3 text-xs">
+            <div class="flex items-center gap-2">
+              <label class="text-slate-500 hidden sm:inline font-medium">Sắp xếp:</label>
+              <select id="sort-select" class="bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-xs font-medium focus:outline-none focus:border-brandRed cursor-pointer">
+                <option value="newest">Mới nhất</option>
+                <option value="price-asc">Giá: Thấp đến Cao</option>
+                <option value="price-desc">Giá: Cao đến Thấp</option>
+                <option value="best-seller">Bán chạy nhất</option>
+                <option value="name-asc">Tên: A - Z</option>
+              </select>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <label class="text-slate-500 hidden sm:inline font-medium">Hiển thị:</label>
+              <select id="limit-select" class="bg-slate-50 border border-slate-300 rounded-lg px-2.5 py-2 text-xs font-medium focus:outline-none focus:border-brandRed cursor-pointer">
+                <option value="12">12</option>
+                <option value="24">24</option>
+                <option value="48">48</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Cards Grid Container -->
+        <div id="products-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          <!-- Dynamic rendering via filter.js -->
+        </div>
+
+        <!-- Pagination -->
+        <div id="pagination-container"></div>
+
+        <!-- ================= 2. NỘI DUNG HỖ TRỢ SEO (DƯỚI TRANG) ================= -->
+        <div class="bg-white rounded-xl border border-slate-200 p-6 mt-8 shadow-xs">
+          <div class="border-b border-slate-100 pb-2 mb-3">
+            <h2 class="text-xs font-bold text-slate-800 uppercase tracking-wider font-heading">NỘI DUNG HỖ TRỢ SEO</h2>
+          </div>
+
+          <div class="relative">
+            <div id="seo-content-wrapper" class="seo-content-wrapper text-xs text-slate-600 leading-relaxed space-y-3">
+              <p>
+                <strong>Quạt cây công nghiệp</strong> là giải pháp làm mát hiệu quả, linh động và tiết kiệm chi phí tối ưu cho các không gian rộng như nhà xưởng sản xuất, kho bãi logistic, nhà hàng, quán ăn sân vườn và các sự kiện ngoài trời. Winline Việt Nam tự hào là đơn vị phân phối chính hãng đa dạng các mẫu quạt cây công nghiệp từ các thương hiệu hàng đầu như <strong>Komasu, Vinawind (Điện cơ Thống Nhất), Deton, Dasin, Chinghai, Hatari...</strong> với lưu lượng gió cực lớn, độ bền vượt trội và khả năng tiết kiệm điện năng tối đa.
+              </p>
+              <p>
+                Tất cả sản phẩm tại Winline đều được bảo hành chính hãng từ 12 đến 36 tháng, cam kết cung cấp đầy đủ chứng chỉ chất lượng CO/CQ, xuất hóa đơn VAT đầy đủ và hỗ trợ kỹ thuật tận tình 24/7. Hãy liên hệ ngay Hotline: <strong>0949.761.893</strong> để nhận tư vấn kỹ thuật và bảng báo giá ưu đãi tốt nhất cho dự án của bạn!
+              </p>
+              <h3 class="text-sm font-bold text-slate-800 pt-2 font-heading">Ưu Điểm Nổi Bật Của Quạt Cây Công Nghiệp Phân Phối Bởi Winline:</h3>
+              <ul class="list-disc pl-5 space-y-1.5">
+                <li><strong>Động cơ 100% dây đồng nguyên chất:</strong> Vận hành liên tục 24/7 không bị nóng máy, trang bị rơ-le nhiệt tự ngắt bảo vệ an toàn tuyệt đối.</li>
+                <li><strong>Lưu lượng gió mạnh mẽ:</strong> Sải cánh từ 600mm đến 750mm bằng hợp kim nhôm định hình hoặc thép mạ chống ăn mòn, tạo lưu lượng gió lên tới 20.000 m³/h.</li>
+                <li><strong>Chân đế gang đúc chống rung lắc:</strong> Thiết kế chân đế tròn hoặc chân chạc chữ thập có đệm cao su giảm chấn, vững chắc tuyệt đối khi quạt quay ở tốc độ cao.</li>
+                <li><strong>Độ ồn đạt chuẩn kiểm định:</strong> Hoạt động êm ái, phù hợp cả trong không gian công nghiệp lẫn hội trường, nhà hàng dịch vụ.</li>
+              </ul>
+            </div>
+            
+            <!-- Gradient fade overlay -->
+            <div class="seo-gradient-overlay"></div>
+          </div>
+
+          <!-- Toggle Button -->
+          <div class="text-center pt-3 border-t border-slate-100 mt-2">
+            <button id="seo-toggle-btn" class="inline-flex items-center gap-1.5 text-xs font-bold text-slate-700 hover:text-brandRed transition px-5 py-2 rounded-full hover:bg-slate-50 border border-slate-200">
+              <span id="seo-toggle-text">Xem thêm</span>
+              <i id="seo-toggle-icon" class="fas fa-chevron-down text-[10px] transition-transform"></i>
+            </button>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-slate-900 text-slate-300 text-xs mt-12 border-t-4 border-brandRed">
+    <!-- Top Footer Features Bar -->
+    <div class="bg-slate-800/80 border-b border-slate-800 py-6">
+      <div class="custom-container grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-brandRed/20 text-brandRed flex items-center justify-center text-lg flex-shrink-0">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <div>
+            <div class="font-bold text-white text-sm">100% Chính Hãng</div>
+            <div class="text-[11px] text-slate-400">Cam kết hoàn tiền 200% nếu phát hiện hàng giả</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-brandTeal/20 text-brandTeal flex items-center justify-center text-lg flex-shrink-0">
+            <i class="fas fa-truck-fast"></i>
+          </div>
+          <div>
+            <div class="font-bold text-white text-sm">Giao Hàng Toàn Quốc</div>
+            <div class="text-[11px] text-slate-400">Giao siêu tốc 2h tại Hà Nội</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-lg flex-shrink-0">
+            <i class="fas fa-tools"></i>
+          </div>
+          <div>
+            <div class="font-bold text-white text-sm">Bảo Hành Tận Tâm</div>
+            <div class="text-[11px] text-slate-400">12 - 36 tháng, đổi mới 7 ngày</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-lg flex-shrink-0">
+            <i class="fas fa-calculator"></i>
+          </div>
+          <div>
+            <div class="font-bold text-white text-sm">Tư Vấn Miễn Phí</div>
+            <div class="text-[11px] text-slate-400">Khảo sát & tính toán lưu lượng gió tận nơi</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Footer Content -->
+    <div class="custom-container py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Col 1: Company Profile -->
+      <div class="space-y-3">
+        <div class="text-xl font-black text-white font-heading">
+          Winline<span class="text-brandRed">.vn</span>
+        </div>
+        <p class="text-slate-400 leading-relaxed text-[11px]">
+          <strong>Công ty TNHH Winline Việt Nam</strong> - Giấy chứng nhận ĐKKD & MST: <strong>0106085370</strong> do Sở KH & ĐT TP Hà Nội cấp lần đầu ngày 15/01/2013.
+        </p>
+        <div class="space-y-1.5 text-[11px] text-slate-400 pt-1">
+          <div><i class="fas fa-map-marker-alt text-brandRed mr-2"></i> <strong>Showroom:</strong> Số 17 Ngõ 46 Quan Nhân, P. Thanh Xuân, Hà Nội</div>
+          <div><i class="fas fa-building text-blue-400 mr-2"></i> <strong>Trụ sở:</strong> Số 7 BT6 KĐT Pháp Vân - Tứ Hiệp, Hà Nội</div>
+          <div><i class="fas fa-envelope text-amber-400 mr-2"></i> Winlinevietnam@gmail.com</div>
+        </div>
+      </div>
+
+      <!-- Col 2: Customer Support -->
+      <div>
+        <h3 class="text-white font-bold text-sm mb-3 font-heading uppercase tracking-wider">Hỗ Trợ Khách Hàng</h3>
+        <ul class="space-y-2 text-[11px] text-slate-400">
+          <li><a href="gioi-thieu.html" class="hover:text-white transition">Giới thiệu về Winline</a></li>
+          <li><a href="san-pham.html" class="hover:text-white transition">Chính sách bảo hành & bảo trì</a></li>
+          <li><a href="san-pham.html" class="hover:text-white transition">Chính sách đổi trả hàng</a></li>
+          <li><a href="san-pham.html" class="hover:text-white transition">Phương thức thanh toán & giao hàng</a></li>
+          <li><a href="san-pham.html" class="hover:text-white transition">Chính sách bảo mật thông tin</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Product Categories -->
+      <div>
+        <h3 class="text-white font-bold text-sm mb-3 font-heading uppercase tracking-wider">Danh Mục Nổi Bật</h3>
+        <ul class="space-y-2 text-[11px] text-slate-400">
+          <li><a href="san-pham.html?subcat=quat-cay-cong-nghiep" class="hover:text-white transition">Quạt cây công nghiệp Komasu, Deton</a></li>
+          <li><a href="san-pham.html?subcat=quat-thong-gio-vuong" class="hover:text-white transition">Quạt thông gió vuông nhà xưởng 1380</a></li>
+          <li><a href="san-pham.html?subcat=may-lam-mat-nha-xuong" class="hover:text-white transition">Máy làm mát công nghiệp Air Cooler</a></li>
+          <li><a href="san-pham.html?subcat=tam-cooling-pad" class="hover:text-white transition">Tấm làm mát Cooling Pad chống rêu</a></li>
+          <li><a href="cong-cu-tinh-quat.html" class="hover:text-white transition font-bold text-amber-400">Công cụ tính toán lưu lượng thông gió</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Contact Hotlines & Newsletter -->
+      <div class="space-y-3">
+        <h3 class="text-white font-bold text-sm font-heading uppercase tracking-wider">Hotline Tư Vấn 24/7</h3>
+        <div class="bg-slate-800 p-3 rounded-lg border border-slate-700 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] text-slate-400">Bán hàng (8h-17h30):</span>
+            <a href="tel:0949761893" class="text-brandRed font-bold hover:underline">0949 761 893</a>
+          </div>
+          <div class="flex items-center justify-between border-t border-slate-700/60 pt-1.5">
+            <span class="text-[11px] text-slate-400">Hỗ trợ kỹ thuật:</span>
+            <a href="tel:1900099806" class="text-brandTeal font-bold hover:underline">1900 099 806</a>
+          </div>
+          <div class="flex items-center justify-between border-t border-slate-700/60 pt-1.5">
+            <span class="text-[11px] text-slate-400">Bảo hành:</span>
+            <a href="tel:0963230665" class="text-amber-400 font-bold hover:underline">0963 230 665</a>
+          </div>
+        </div>
+
+        <div class="pt-2">
+          <div class="text-[11px] font-bold text-slate-300 mb-1.5">Đăng ký nhận báo giá dự án:</div>
+          <form onsubmit="event.preventDefault(); showToast('Cảm ơn bạn đã đăng ký nhận thông tin!', 'success')" class="flex">
+            <input type="email" placeholder="Email của bạn..." class="bg-slate-800 border border-slate-700 rounded-l px-3 py-2 text-xs text-white focus:outline-none focus:border-brandRed flex-1" required>
+            <button type="submit" class="bg-brandRed hover:bg-brandRedHover text-white px-4 py-2 rounded-r font-bold transition">Gửi</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Copyright & Network Bar -->
+    <div class="bg-black/40 border-t border-slate-800/80 py-4 text-center text-[11px] text-slate-500">
+      <div class="custom-container flex flex-col sm:flex-row justify-between items-center gap-2">
+        <div>
+          Hệ thống Website: <span class="text-slate-400">Winline.vn | Quatdiencothongnhat.vn | Chinghaihanoi.vn | Quatdienco.vn</span>
+        </div>
+        <div>
+          © 2013 - 2026 Bản quyền thuộc về <strong>Winline.vn</strong>. Thiết kế chuẩn UX/UI.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= FLOATING ACTION WIDGETS ================= -->
+  <div class="fixed bottom-6 right-5 z-40 flex flex-col items-center gap-2.5">
+    <a href="cong-cu-tinh-quat.html" title="Công cụ tính toán quạt" class="floating-contact-btn bg-amber-500 hover:bg-amber-600">
+      <i class="fas fa-calculator text-lg"></i>
+    </a>
+    
+    <a href="https://zalo.me/0949761893" target="_blank" title="Chat Zalo tư vấn" class="floating-contact-btn bg-blue-600 hover:bg-blue-700">
+      <span class="font-black text-xs">Zalo</span>
+    </a>
+
+    <a href="tel:0949761893" title="Gọi ngay 0949 761 893" class="floating-contact-btn bg-brandRed hover:bg-brandRedHover animate-pulse">
+      <i class="fas fa-phone-alt"></i>
+    </a>
+
+    <button id="btn-back-to-top" title="Lên đầu trang" class="floating-contact-btn bg-slate-800 hover:bg-slate-700 opacity-0 pointer-events-none transition-opacity">
+      <i class="fas fa-chevron-up"></i>
+    </button>
+  </div>
+
+  <!-- ================= CART DRAWER ================= -->
+  <div id="cart-drawer" class="fixed inset-0 z-50 pointer-events-none opacity-0 transition-opacity">
+    <div onclick="closeCartDrawer()" class="drawer-backdrop absolute inset-0"></div>
+    <div id="cart-drawer-panel" class="drawer-panel absolute top-0 right-0 bottom-0 w-full max-w-md bg-white shadow-2xl flex flex-col transform translate-x-full transition-transform">
+      <div class="p-4 bg-brandNavy text-white flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <i class="fas fa-shopping-cart text-brandRed"></i>
+          <h3 class="font-bold text-sm font-heading">Giỏ Hàng Của Bạn (<span class="cart-badge-count">0</span>)</h3>
+        </div>
+        <button onclick="closeCartDrawer()" class="text-slate-300 hover:text-white text-lg"><i class="fas fa-times"></i></button>
+      </div>
+
+      <div class="flex-1 overflow-y-auto p-4">
+        <div id="cart-empty-state" class="text-center py-16 text-slate-400">
+          <i class="fas fa-shopping-basket text-5xl text-slate-200 mb-3"></i>
+          <p class="text-sm font-semibold text-slate-600">Giỏ hàng của bạn đang trống</p>
+          <p class="text-xs text-slate-400 mt-1 mb-4">Hãy chọn các sản phẩm quạt chất lượng từ Winline</p>
+          <button onclick="closeCartDrawer()" class="bg-brandRed hover:bg-brandRedHover text-white px-4 py-2 rounded-lg text-xs font-bold transition">
+            Khám phá sản phẩm
+          </button>
+        </div>
+
+        <div id="cart-filled-state" class="hidden flex flex-col justify-between h-full">
+          <div id="cart-drawer-items" class="space-y-1"></div>
+
+          <div class="pt-4 mt-4 border-t border-slate-200 bg-slate-50 -mx-4 -mb-4 p-4">
+            <div class="flex justify-between items-baseline mb-3">
+              <span class="text-xs text-slate-500 font-medium">Tổng tiền tạm tính:</span>
+              <span id="cart-drawer-total" class="text-lg font-black text-brandRed font-heading">0₫</span>
+            </div>
+
+            <form onsubmit="handleCheckout(event)" class="space-y-2 text-xs">
+              <input type="text" name="customer_name" placeholder="Họ và tên người nhận..." class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-brandRed" required>
+              <input type="tel" name="customer_phone" placeholder="Số điện thoại nhận hàng..." class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-brandRed" required>
+              <input type="text" name="customer_address" placeholder="Địa chỉ giao hàng..." class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-brandRed" required>
+              <label class="flex items-center gap-2 text-[11px] text-slate-600 cursor-pointer pt-1">
+                <input type="checkbox" name="vat" class="rounded text-brandRed">
+                <span>Yêu cầu xuất hóa đơn đỏ VAT cho công ty</span>
+              </label>
+              <button type="submit" class="w-full bg-brandRed hover:bg-brandRedHover text-white font-bold py-2.5 rounded-lg text-sm transition shadow-md flex items-center justify-center gap-2">
+                <i class="fas fa-check-circle"></i> Đặt Hàng Nhanh
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= ENLARGED QUICK VIEW MODAL ================= -->
+  <div id="quickview-modal" class="fixed inset-0 z-50 pointer-events-none opacity-0 transition-opacity flex items-center justify-center p-4">
+    <div onclick="closeQuickView()" class="drawer-backdrop absolute inset-0"></div>
+    <div class="relative bg-white rounded-2xl shadow-2xl max-w-4xl w-full overflow-hidden z-10 max-h-[92vh] overflow-y-auto">
+      <button onclick="closeQuickView()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition z-20 shadow-xs">
+        <i class="fas fa-times text-sm"></i>
+      </button>
+      <div id="quickview-modal-content"></div>
+    </div>
+  </div>
+
+  <!-- ================= PRODUCT COMPARISON MODAL & DRAWER ================= -->
+  <div id="compare-drawer" class="fixed bottom-0 left-0 right-0 bg-slate-900 text-white z-40 p-3 shadow-2xl border-t border-slate-700 transform translate-y-full transition-transform">
+    <div class="custom-container flex items-center justify-between gap-4 flex-wrap">
+      <div class="flex items-center gap-3">
+        <span class="text-xs font-bold text-brandRed bg-red-950/60 px-2.5 py-1 rounded-lg">
+          Đang so sánh: <span id="compare-count">0</span>/3 sản phẩm
+        </span>
+        <div id="compare-items-list" class="flex items-center gap-2 flex-wrap"></div>
+      </div>
+      <div class="flex items-center gap-2">
+        <button onclick="openCompareModal()" class="bg-brandRed hover:bg-brandRedHover text-white px-4 py-2 rounded-lg text-xs font-bold transition shadow-md">
+          Xem bảng so sánh →
+        </button>
+        <button onclick="compareList=[]; updateCompareUI();" class="text-slate-400 hover:text-white text-xs px-2">
+          Xóa
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="compare-modal" class="fixed inset-0 z-50 pointer-events-none opacity-0 transition-opacity flex items-center justify-center p-4">
+    <div onclick="closeCompareModal()" class="drawer-backdrop absolute inset-0"></div>
+    <div class="relative bg-white rounded-2xl shadow-2xl max-w-5xl w-full overflow-hidden z-10 max-h-[90vh] overflow-y-auto">
+      <div id="compare-modal-content"></div>
+    </div>
+  </div>
+
+  <!-- ================= CONSULTATION / QUOTE MODAL ================= -->
+  <div id="consult-modal" class="fixed inset-0 z-50 pointer-events-none opacity-0 transition-opacity flex items-center justify-center p-4">
+    <div onclick="closeConsultModal()" class="drawer-backdrop absolute inset-0"></div>
+    <div class="relative bg-white rounded-2xl shadow-2xl max-w-md w-full overflow-hidden z-10 p-6">
+      <button onclick="closeConsultModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600">
+        <i class="fas fa-times text-lg"></i>
+      </button>
+      <div class="text-center mb-4">
+        <div class="w-12 h-12 rounded-full bg-red-50 text-brandRed flex items-center justify-center mx-auto mb-2 text-xl">
+          <i class="fas fa-headset"></i>
+        </div>
+        <h3 class="text-base font-bold text-slate-800 font-heading">Yêu Cầu Tư Vấn & Báo Giá Sỉ</h3>
+        <p class="text-xs text-slate-500 mt-1">Đội ngũ kỹ sư Winline sẽ liên hệ hỗ trợ trong 15 phút</p>
+      </div>
+
+      <form onsubmit="handleConsultSubmit(event)" class="space-y-3 text-xs">
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Nội dung yêu cầu</label>
+          <input type="text" id="consult-subject" name="subject" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-brandRed font-medium" readonly>
+        </div>
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Họ tên của bạn *</label>
+          <input type="text" name="name" placeholder="Ví dụ: Nguyễn Văn A" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-brandRed" required>
+        </div>
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Số điện thoại liên hệ *</label>
+          <input type="tel" name="phone" placeholder="Ví dụ: 0949761893" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-brandRed" required>
+        </div>
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Ghi chú thêm (Diện tích xưởng, địa chỉ...)</label>
+          <textarea name="note" rows="2" placeholder="Nhập thông tin chi tiết..." class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-brandRed"></textarea>
+        </div>
+        <button type="submit" class="w-full bg-brandRed hover:bg-brandRedHover text-white font-bold py-2.5 rounded-lg transition shadow-md mt-2">
+          Gửi Yêu Cầu Tư Vấn Ngay
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/products-data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/filter.js"></script>
+</body>
+</html>

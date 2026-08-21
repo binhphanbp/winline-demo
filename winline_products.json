@@ -1,0 +1,47 @@
+[
+  {
+    "url": "https://winline.vn/quat-tran-vinawind",
+    "title": "Quạt trần Vinawind",
+    "image": "https://bizweb.dktcdn.net/100/391/557/themes/903209/assets/index-cate-icon-2.png?1786933451521"
+  },
+  {
+    "url": "https://winline.vn/komasu",
+    "title": "Komasu",
+    "image": "https://bizweb.dktcdn.net/100/391/557/collections/komasu.jpg?v=1697429142357"
+  },
+  {
+    "url": "https://winline.vn/panasonic",
+    "title": "Panasonic",
+    "image": "https://bizweb.dktcdn.net/100/391/557/collections/panasonic.jpg?v=1697427590277"
+  },
+  {
+    "url": "https://winline.vn/mountain",
+    "title": "Mountain Air",
+    "image": "https://bizweb.dktcdn.net/100/391/557/collections/mountain-air.jpg?v=1697435729987"
+  },
+  {
+    "url": "https://winline.vn/nedfon",
+    "title": "Nedfon",
+    "image": "https://bizweb.dktcdn.net/100/391/557/collections/nedfon-5ac972f2-4824-41dc-8221-d8f33818c04b.png?v=1628916965917"
+  },
+  {
+    "url": "https://winline.vn/nanyoo",
+    "title": "Nanyoo",
+    "image": "https://bizweb.dktcdn.net/100/391/557/collections/nanyoo.jpg?v=1697431995853"
+  },
+  {
+    "url": "https://winline.vn/hatari",
+    "title": "Hatari",
+    "image": "https://bizweb.dktcdn.net/100/391/557/collections/hatari.jpg?v=1697428658653"
+  },
+  {
+    "url": "https://winline.vn//www.dmca.com/Protection/Status.aspx?ID=3f723c36-556b-42f7-a859-5d907c0fa3b5",
+    "title": "DMCA.com Protection Status",
+    "image": "https://bizweb.dktcdn.net/100/391/557/themes/903209/assets/bocongthuong.png?1786933451521"
+  },
+  {
+    "url": "' + item.url + '",
+    "title": "' + item.name + '",
+    "image": "' + link_img1 +  '"
+  }
+]

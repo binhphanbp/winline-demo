@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Winline Việt Nam - Quạt Điện, Quạt Công Nghiệp, Thông Gió & Làm Mát Hàng Đầu</title>
+  <meta name="description" content="Công ty TNHH Winline Việt Nam (MST: 0106085370) chuyên phân phối quạt điện, quạt công nghiệp Komasu, Vinawind, Deton, Dasin, quạt thông gió nhà xưởng. Hotline: 0949.761.893">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="https://bizweb.dktcdn.net/100/391/557/themes/903209/assets/favicon.png?1786933451521" type="image/x-icon">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Be Vietnam Pro"', '"Inter"', 'sans-serif'],
+            heading: ['"Be Vietnam Pro"', 'sans-serif']
+          },
+          colors: {
+            brandNavy: '#0b1f3a',
+            brandNavyDark: '#071529',
+            brandRed: '#e51a24',
+            brandRedHover: '#c4121b',
+            brandTeal: '#26a69a',
+            brandTealHover: '#00897b'
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom CSS with Be Vietnam Pro font -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-[#f8fafc] text-slate-800 flex flex-col min-h-screen">
+
+  <!-- ================= TOP HEADER ================= -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-xs">
+    <!-- Super Top Notification Bar -->
+    <div class="bg-brandNavyDark text-slate-300 text-xs py-2 px-4 hidden md:block border-b border-slate-800">
+      <div class="custom-container flex justify-between items-center">
+        <div class="flex items-center gap-6">
+          <span><i class="fas fa-certificate text-brandRed mr-1.5"></i> Công ty TNHH Winline Việt Nam - MST: <strong>0106085370</strong></span>
+          <span><i class="fas fa-truck-fast text-brandTeal mr-1.5"></i> Giao hàng toàn quốc - Hỗ trợ kỹ thuật 24/7</span>
+        </div>
+        <div class="flex items-center gap-5 text-xs">
+          <a href="tel:0949761893" class="hover:text-white transition"><i class="fas fa-phone-volume text-brandRed mr-1"></i> Bán hàng: <strong>0949.761.893</strong></a>
+          <span class="text-slate-600">|</span>
+          <a href="tel:0963230665" class="hover:text-white transition"><i class="fas fa-wrench text-amber-400 mr-1"></i> Bảo hành: <strong>0963.230.665</strong></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Header -->
+    <div class="custom-container py-3.5 flex items-center justify-between gap-6">
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center gap-2 flex-shrink-0 group">
+        <div class="flex flex-col">
+          <div class="text-2xl md:text-3xl font-black tracking-tight text-brandRed font-heading flex items-center">
+            Winline<span class="text-brandNavy text-base align-super ml-0.5">®</span>
+          </div>
+          <span class="text-[9px] uppercase tracking-widest font-bold text-brandNavy -mt-1 group-hover:text-brandRed transition">
+            Chất lượng tạo niềm tin
+          </span>
+        </div>
+      </a>
+
+      <!-- Search Bar -->
+      <div class="search-container relative flex-1 max-w-2xl mx-2 hidden sm:block">
+        <div class="flex">
+          <input 
+            type="text" 
+            class="header-search-input w-full bg-slate-50 border border-slate-300 rounded-l-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brandRed focus:border-brandRed" 
+            placeholder="Tìm kiếm quạt công nghiệp, quạt cây, quạt thông gió..."
+          >
+          <button class="bg-brandRed hover:bg-brandRedHover text-white px-6 rounded-r-lg transition flex items-center justify-center">
+            <i class="fas fa-search text-sm"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Header Action Items -->
+      <div class="flex items-center gap-4 md:gap-7 flex-shrink-0 text-xs">
+        <a href="tel:1900099806" class="hidden lg:flex items-center gap-2.5 text-slate-700 hover:text-brandRed transition">
+          <div class="w-10 h-10 rounded-full bg-red-50 text-brandRed flex items-center justify-center text-base">
+            <i class="fas fa-headset"></i>
+          </div>
+          <div>
+            <div class="text-[11px] text-slate-400">Hỗ trợ kỹ thuật</div>
+            <div class="font-bold text-slate-900 text-sm">1900 099 806</div>
+          </div>
+        </a>
+
+        <button onclick="downloadCatalogue()" class="hidden md:flex items-center gap-2.5 text-slate-700 hover:text-brandRed transition text-left">
+          <div class="w-10 h-10 rounded-full bg-blue-50 text-brandNavy flex items-center justify-center text-base">
+            <i class="fas fa-file-pdf"></i>
+          </div>
+          <div>
+            <div class="text-[11px] text-slate-400">Tài liệu</div>
+            <div class="font-bold text-slate-900">Hướng dẫn, Catalogue</div>
+          </div>
+        </button>
+
+        <button onclick="openCartDrawer()" class="relative flex items-center gap-2 text-slate-800 hover:text-brandRed transition bg-slate-50 hover:bg-red-50 border border-slate-200 px-4 py-2.5 rounded-xl shadow-2xs">
+          <div class="relative">
+            <i class="fas fa-shopping-cart text-lg text-brandRed"></i>
+            <span class="cart-badge-count absolute -top-2 -right-2 bg-brandRed text-white text-[10px] font-black rounded-full w-5 h-5 flex items-center justify-center border-2 border-white">
+              0
+            </span>
+          </div>
+          <span class="font-bold hidden sm:inline text-xs">Giỏ hàng</span>
+        </button>
+
+        <button id="mobile-menu-btn" class="md:hidden text-slate-700 hover:text-brandRed text-xl p-2">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- ================= MAIN NAVIGATION MENU (7 ITEMS) ================= -->
+    <nav class="main-navbar">
+      <div class="custom-container">
+        <ul class="flex items-center overflow-x-auto no-scrollbar">
+          <li><a href="index.html" class="nav-link-item active whitespace-nowrap">Trang chủ</a></li>
+          <li><a href="gioi-thieu.html" class="nav-link-item whitespace-nowrap">Giới thiệu</a></li>
+          <li><a href="san-pham.html" class="nav-link-item whitespace-nowrap">Sản phẩm</a></li>
+          <li><a href="giai-phap.html" class="nav-link-item whitespace-nowrap">Giải pháp</a></li>
+          <li><a href="thuong-hieu.html" class="nav-link-item whitespace-nowrap">Thương hiệu</a></li>
+          <li><a href="cong-cu-tinh-quat.html" class="nav-link-item whitespace-nowrap text-amber-300 font-bold"><i class="fas fa-calculator mr-1"></i> Công cụ tính quạt</a></li>
+          <li><a href="du-an.html" class="nav-link-item whitespace-nowrap">Dự án</a></li>
+          <li class="ml-auto hidden xl:block"><a href="lien-he.html" class="nav-link-item text-xs text-slate-300 hover:text-white font-medium">Liên hệ & Báo giá</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ================= HERO BANNER SECTION ================= -->
+  <section class="bg-gradient-to-r from-brandNavyDark via-brandNavy to-slate-900 text-white py-14 md:py-20 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+    <div class="custom-container relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      
+      <!-- Left Hero Text -->
+      <div class="lg:col-span-7 space-y-6">
+        <div class="inline-flex items-center gap-2 bg-brandRed/20 border border-brandRed/40 text-red-300 px-3.5 py-1.5 rounded-full text-xs font-semibold">
+          <i class="fas fa-check-circle text-brandRed"></i> Tổng Đại Lý Phân Phối Quạt Công Nghiệp Chính Hãng
+        </div>
+        <h1 class="text-3xl md:text-5xl lg:text-6xl font-black font-heading leading-tight tracking-tight">
+          Giải Pháp Thông Gió & Làm Mát Nhà Xưởng <span class="text-brandRed">Toàn Diện</span>
+        </h1>
+        <p class="text-slate-300 text-sm md:text-base leading-relaxed max-w-2xl font-normal">
+          Winline Việt Nam cung cấp hơn 500+ dòng quạt cây, quạt thông gió vuông, quạt ly tâm, máy làm mát công nghiệp và hệ thống Cooling Pad tiêu chuẩn cao cho hàng ngàn nhà máy, trang trại trên toàn quốc.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-3.5 pt-2">
+          <a href="san-pham.html" class="bg-brandRed hover:bg-brandRedHover text-white px-7 py-3.5 rounded-xl text-sm font-bold transition shadow-lg flex items-center gap-2">
+            <i class="fas fa-th-large"></i> Xem Danh Mục Sản Phẩm
+          </a>
+          <a href="cong-cu-tinh-quat.html" class="bg-amber-500 hover:bg-amber-600 text-slate-950 px-7 py-3.5 rounded-xl text-sm font-bold transition shadow-lg flex items-center gap-2">
+            <i class="fas fa-calculator"></i> Tính Lưu Lượng Quạt Ngay
+          </a>
+          <button onclick="openConsultModal()" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-6 py-3.5 rounded-xl text-sm font-semibold transition">
+            Yêu Cầu Báo Giá Sỉ
+          </button>
+        </div>
+
+        <!-- Trust Badges -->
+        <div class="grid grid-cols-3 gap-6 pt-6 border-t border-slate-700/60 text-xs">
+          <div>
+            <div class="text-2xl md:text-3xl font-black text-brandRed font-heading">12+ Năm</div>
+            <div class="text-slate-400 text-xs mt-0.5">Kinh nghiệm từ 2013</div>
+          </div>
+          <div>
+            <div class="text-2xl md:text-3xl font-black text-brandTeal font-heading">15.000+</div>
+            <div class="text-slate-400 text-xs mt-0.5">Nhà máy & Công trình</div>
+          </div>
+          <div>
+            <div class="text-2xl md:text-3xl font-black text-amber-400 font-heading">100%</div>
+            <div class="text-slate-400 text-xs mt-0.5">Bảo hành chính hãng</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Hero Graphic / Featured Products Card -->
+      <div class="lg:col-span-5 relative">
+        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-7 shadow-2xl space-y-5">
+          <div class="flex items-center justify-between border-b border-white/10 pb-3">
+            <span class="text-xs font-bold text-amber-300 uppercase tracking-wider">
+              <i class="fas fa-bolt mr-1"></i> Sản Phẩm Bán Chạy Nhất
+            </span>
+            <span class="text-xs bg-red-600 text-white px-2.5 py-0.5 rounded font-bold">Giảm 11%</span>
+          </div>
+
+          <div class="flex items-center gap-5">
+            <div class="w-32 h-32 bg-white rounded-2xl p-3 flex items-center justify-center flex-shrink-0 shadow-md">
+              <img src="assets/images/km750s.jpg" alt="Quạt Komasu KM-750S" class="max-h-full max-w-full object-contain">
+            </div>
+            <div class="space-y-1.5">
+              <div class="text-xs text-brandTeal font-bold uppercase tracking-wider">Komasu Nhật Bản</div>
+              <h3 class="text-lg font-bold text-white font-heading">Quạt Komasu KM-750S</h3>
+              <div class="text-xs text-slate-300 font-normal">Công suất: 250W • Lưu lượng: 15.200 m³/h</div>
+              <div class="text-xl font-black text-red-400 pt-1">2.890.000₫ <span class="text-xs text-slate-400 line-through font-normal">3.250.000₫</span></div>
+            </div>
+          </div>
+
+          <div class="pt-2 flex gap-3">
+            <button onclick="addToCart('p1')" class="flex-1 bg-brandRed hover:bg-brandRedHover text-white py-3 rounded-xl text-xs font-bold transition flex items-center justify-center gap-2 shadow-lg">
+              <i class="fas fa-cart-plus"></i> Đặt Mua Ngay
+            </button>
+            <button onclick="openQuickView('p1')" class="px-5 py-3 bg-white/20 hover:bg-white/30 text-white rounded-xl text-xs font-semibold transition">
+              Chi tiết
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= QUICK CATEGORY ICONS BAR ================= -->
+  <section class="bg-white border-b border-slate-200 py-8 shadow-xs">
+    <div class="custom-container">
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+        
+        <a href="san-pham.html?subcat=quat-cay-cong-nghiep" class="group flex flex-col items-center p-4 rounded-2xl border border-slate-100 hover:border-brandRed hover:bg-red-50/50 transition text-center shadow-2xs">
+          <div class="w-14 h-14 rounded-2xl bg-red-50 group-hover:bg-brandRed text-brandRed group-hover:text-white flex items-center justify-center text-2xl transition mb-2.5">
+            <i class="fas fa-fan"></i>
+          </div>
+          <span class="text-xs font-bold text-slate-800 group-hover:text-brandRed">Quạt Cây CN</span>
+          <span class="text-[10px] text-slate-400 mt-0.5">28+ Model</span>
+        </a>
+
+        <a href="san-pham.html?subcat=quat-treo-cong-nghiep" class="group flex flex-col items-center p-4 rounded-2xl border border-slate-100 hover:border-brandRed hover:bg-red-50/50 transition text-center shadow-2xs">
+          <div class="w-14 h-14 rounded-2xl bg-blue-50 group-hover:bg-brandNavy text-brandNavy group-hover:text-white flex items-center justify-center text-2xl transition mb-2.5">
+            <i class="fas fa-wind"></i>
+          </div>
+          <span class="text-xs font-bold text-slate-800 group-hover:text-brandRed">Quạt Treo Tường</span>
+          <span class="text-[10px] text-slate-400 mt-0.5">24+ Model</span>
+        </a>
+
+        <a href="san-pham.html?subcat=quat-thong-gio-vuong" class="group flex flex-col items-center p-4 rounded-2xl border border-slate-100 hover:border-brandRed hover:bg-red-50/50 transition text-center shadow-2xs">
+          <div class="w-14 h-14 rounded-2xl bg-teal-50 group-hover:bg-brandTeal text-brandTeal group-hover:text-white flex items-center justify-center text-2xl transition mb-2.5">
+            <i class="fas fa-square"></i>
+          </div>
+          <span class="text-xs font-bold text-slate-800 group-hover:text-brandRed">Quạt Vuông 1380</span>
+          <span class="text-[10px] text-slate-400 mt-0.5">19+ Model</span>
+        </a>
+
+        <a href="san-pham.html?subcat=quat-ly-tam" class="group flex flex-col items-center p-4 rounded-2xl border border-slate-100 hover:border-brandRed hover:bg-red-50/50 transition text-center shadow-2xs">
+          <div class="w-14 h-14 rounded-2xl bg-purple-50 group-hover:bg-purple-600 text-purple-600 group-hover:text-white flex items-center justify-center text-2xl transition mb-2.5">
+            <i class="fas fa-circle-notch"></i>
+          </div>
+          <span class="text-xs font-bold text-slate-800 group-hover:text-brandRed">Quạt Ly Tâm</span>
+          <span class="text-[10px] text-slate-400 mt-0.5">16+ Model</span>
+        </a>
+
+        <a href="san-pham.html?subcat=may-lam-mat-nha-xuong" class="group flex flex-col items-center p-4 rounded-2xl border border-slate-100 hover:border-brandRed hover:bg-red-50/50 transition text-center shadow-2xs">
+          <div class="w-14 h-14 rounded-2xl bg-sky-50 group-hover:bg-sky-600 text-sky-600 group-hover:text-white flex items-center justify-center text-2xl transition mb-2.5">
+            <i class="fas fa-temperature-low"></i>
+          </div>
+          <span class="text-xs font-bold text-slate-800 group-hover:text-brandRed">Máy Làm Mát</span>
+          <span class="text-[10px] text-slate-400 mt-0.5">12+ Model</span>
+        </a>
+
+        <a href="san-pham.html?subcat=tam-cooling-pad" class="group flex flex-col items-center p-4 rounded-2xl border border-slate-100 hover:border-brandRed hover:bg-red-50/50 transition text-center shadow-2xs">
+          <div class="w-14 h-14 rounded-2xl bg-emerald-50 group-hover:bg-emerald-600 text-emerald-600 group-hover:text-white flex items-center justify-center text-2xl transition mb-2.5">
+            <i class="fas fa-border-all"></i>
+          </div>
+          <span class="text-xs font-bold text-slate-800 group-hover:text-brandRed">Cooling Pad</span>
+          <span class="text-[10px] text-slate-400 mt-0.5">8+ Kích thước</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FEATURED PRODUCTS SHOWCASE ================= -->
+  <section class="custom-container py-12 w-full">
+    <div class="flex items-center justify-between mb-8">
+      <div>
+        <div class="text-xs font-bold text-brandRed uppercase tracking-wider">Chất Lượng Vượt Trội</div>
+        <h2 class="text-2xl md:text-3xl font-black text-slate-900 font-heading">Sản Phẩm Quạt Công Nghiệp Tiêu Biểu</h2>
+      </div>
+      <a href="san-pham.html" class="text-xs font-bold text-brandNavy hover:text-brandRed flex items-center gap-1.5 transition">
+        Xem tất cả sản phẩm <i class="fas fa-arrow-right text-[10px]"></i>
+      </a>
+    </div>
+
+    <!-- 8 Highlighted Products -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="home-featured-products">
+      <!-- Generated via JS -->
+    </div>
+  </section>
+
+  <!-- ================= INTERACTIVE FAN CALCULATOR TEASER ================= -->
+  <section class="bg-gradient-to-br from-slate-900 via-brandNavy to-slate-950 text-white py-14 my-6">
+    <div class="custom-container grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <div class="lg:col-span-6 space-y-4">
+        <span class="bg-amber-400 text-slate-950 text-xs font-black px-3.5 py-1 rounded-full uppercase tracking-wider">
+          <i class="fas fa-calculator mr-1"></i> Tính Toán Tự Động
+        </span>
+        <h2 class="text-2xl md:text-4xl font-black font-heading leading-tight">
+          Công Cụ Tính Toán Lưu Lượng Gió Nhà Xưởng
+        </h2>
+        <p class="text-slate-300 text-sm leading-relaxed font-normal">
+          Chỉ cần nhập kích thước nhà xưởng (Dài x Rộng x Cao) và ngành nghề hoạt động, hệ thống sẽ tự động tính toán tổng lưu lượng gió $Q (m^3/h)$ và đề xuất chính xác số lượng quạt công nghiệp Winline cần lắp đặt.
+        </p>
+        <div class="flex items-center gap-4 pt-2">
+          <a href="cong-cu-tinh-quat.html" class="bg-brandRed hover:bg-brandRedHover text-white px-7 py-3.5 rounded-xl text-sm font-bold transition shadow-lg flex items-center gap-2">
+            Mở Công Cụ Tính Chi Tiết <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Mini Calculator Widget -->
+      <div class="lg:col-span-6 bg-white text-slate-800 rounded-3xl p-7 shadow-2xl">
+        <h3 class="text-base font-bold text-slate-900 mb-4 font-heading border-b border-slate-100 pb-3 flex items-center gap-2">
+          <i class="fas fa-wind text-brandTeal"></i> Tính Nhanh Lưu Lượng Không Khí
+        </h3>
+        <div class="grid grid-cols-3 gap-3 text-xs mb-4">
+          <div>
+            <label class="block font-bold text-slate-600 mb-1">Dài (m)</label>
+            <input type="number" id="quick-len" value="30" class="w-full border border-slate-300 rounded-lg p-2.5 focus:outline-none focus:border-brandRed text-center font-bold text-sm">
+          </div>
+          <div>
+            <label class="block font-bold text-slate-600 mb-1">Rộng (m)</label>
+            <input type="number" id="quick-wid" value="20" class="w-full border border-slate-300 rounded-lg p-2.5 focus:outline-none focus:border-brandRed text-center font-bold text-sm">
+          </div>
+          <div>
+            <label class="block font-bold text-slate-600 mb-1">Cao (m)</label>
+            <input type="number" id="quick-hei" value="6" class="w-full border border-slate-300 rounded-lg p-2.5 focus:outline-none focus:border-brandRed text-center font-bold text-sm">
+          </div>
+        </div>
+
+        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 flex items-center justify-between mb-4">
+          <div>
+            <div class="text-xs text-slate-500">Lưu lượng gió khuyến nghị:</div>
+            <div id="quick-result-q" class="text-xl md:text-2xl font-black text-brandRed font-heading">180.000 m³/h</div>
+          </div>
+          <div class="text-right">
+            <div class="text-xs text-slate-500">Đề xuất Quạt 1380:</div>
+            <div id="quick-result-fans" class="text-xl md:text-2xl font-black text-brandTeal font-heading">5 Quạt</div>
+          </div>
+        </div>
+
+        <a href="cong-cu-tinh-quat.html" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white py-3 rounded-xl text-xs font-bold transition shadow-md">
+          Xem Bảng Phân Bổ Chi Tiết & Báo Giá →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SOLUTIONS BY INDUSTRY ================= -->
+  <section class="custom-container py-12 w-full">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <div class="text-xs font-bold text-brandRed uppercase tracking-wider">Giải Pháp Chuyên Sâu</div>
+      <h2 class="text-2xl md:text-3xl font-black text-slate-900 font-heading">Hệ Thống Thông Gió Theo Từng Ngành Nghề</h2>
+      <p class="text-xs text-slate-500 mt-2">Winline cung cấp giải pháp làm mát thông gió tối ưu hóa chi phí điện năng và đáp ứng tiêu chuẩn PCCC.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
+      <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-2xs group hover:shadow-md transition">
+        <div class="h-48 overflow-hidden relative">
+          <img src="https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=600&q=80" alt="Nhà xưởng may" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+          <div class="absolute top-3.5 left-3.5 bg-brandRed text-white text-xs font-bold px-2.5 py-0.5 rounded-lg shadow-xs">Dệt may & Da giày</div>
+        </div>
+        <div class="p-6 space-y-2">
+          <h3 class="font-bold text-slate-900 text-base font-heading">Hệ Thống Làm Mát Áp Suất Âm</h3>
+          <p class="text-xs text-slate-500 leading-relaxed font-normal">Kết hợp quạt thông gió vuông 1380 và dàn tấm Cooling Pad giúp hạ nhiệt độ từ 5-8°C, lọc sạch bụi bông.</p>
+          <a href="giai-phap.html" class="inline-block text-xs font-bold text-brandRed hover:underline pt-2">Tìm hiểu giải pháp →</a>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-2xs group hover:shadow-md transition">
+        <div class="h-48 overflow-hidden relative">
+          <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80" alt="Xưởng cơ khí" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+          <div class="absolute top-3.5 left-3.5 bg-brandNavy text-white text-xs font-bold px-2.5 py-0.5 rounded-lg shadow-xs">Cơ khí & Đúc kim loại</div>
+        </div>
+        <div class="p-6 space-y-2">
+          <h3 class="font-bold text-slate-900 text-base font-heading">Hút Khói Hàn & Khí Thải Lò Nung</h3>
+          <p class="text-xs text-slate-500 leading-relaxed font-normal">Sử dụng quạt ly tâm áp suất cao và quạt hút công nghiệp chịu nhiệt độ cao, bảo vệ sức khỏe người lao động.</p>
+          <a href="giai-phap.html" class="inline-block text-xs font-bold text-brandRed hover:underline pt-2">Tìm hiểu giải pháp →</a>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-2xs group hover:shadow-md transition">
+        <div class="h-48 overflow-hidden relative">
+          <img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=600&q=80" alt="Trang trại chăn nuôi" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+          <div class="absolute top-3.5 left-3.5 bg-brandTeal text-white text-xs font-bold px-2.5 py-0.5 rounded-lg shadow-xs">Trang trại chăn nuôi</div>
+        </div>
+        <div class="p-6 space-y-2">
+          <h3 class="font-bold text-slate-900 text-base font-heading">Thông Gió Chuồng Trại Khép Kín</h3>
+          <p class="text-xs text-slate-500 leading-relaxed font-normal">Hút khí amoniac độc hại, cung cấp oxy tươi liên tục giúp vật nuôi tăng trưởng khỏe mạnh, ngăn ngừa dịch bệnh.</p>
+          <a href="giai-phap.html" class="inline-block text-xs font-bold text-brandRed hover:underline pt-2">Tìm hiểu giải pháp →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= BRAND PARTNERS ================= -->
+  <section class="bg-slate-100 py-10 border-y border-slate-200">
+    <div class="custom-container">
+      <div class="text-center mb-6">
+        <h3 class="text-xs font-bold text-slate-600 uppercase tracking-widest font-heading">Thương Hiệu Phân Phối Chính Hãng</h3>
+      </div>
+      <div class="flex items-center justify-center gap-6 md:gap-10 flex-wrap">
+        <a href="san-pham.html?brand=komasu" class="bg-white px-6 py-3.5 rounded-xl border border-slate-200 hover:border-brandRed transition font-bold text-slate-800 text-sm flex items-center gap-2 shadow-2xs">
+          <span class="w-2.5 h-2.5 rounded-full bg-red-600"></span> KOMASU
+        </a>
+        <a href="san-pham.html?brand=vinawind" class="bg-white px-6 py-3.5 rounded-xl border border-slate-200 hover:border-brandRed transition font-bold text-slate-800 text-sm flex items-center gap-2 shadow-2xs">
+          <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span> VINAWIND
+        </a>
+        <a href="san-pham.html?brand=deton" class="bg-white px-6 py-3.5 rounded-xl border border-slate-200 hover:border-brandRed transition font-bold text-slate-800 text-sm flex items-center gap-2 shadow-2xs">
+          <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> DETON
+        </a>
+        <a href="san-pham.html?brand=dasin" class="bg-white px-6 py-3.5 rounded-xl border border-slate-200 hover:border-brandRed transition font-bold text-slate-800 text-sm flex items-center gap-2 shadow-2xs">
+          <span class="w-2.5 h-2.5 rounded-full bg-teal-600"></span> DASIN
+        </a>
+        <a href="san-pham.html?brand=chinghai" class="bg-white px-6 py-3.5 rounded-xl border border-slate-200 hover:border-brandRed transition font-bold text-slate-800 text-sm flex items-center gap-2 shadow-2xs">
+          <span class="w-2.5 h-2.5 rounded-full bg-indigo-600"></span> CHINGHAI
+        </a>
+        <a href="san-pham.html?brand=hatari" class="bg-white px-6 py-3.5 rounded-xl border border-slate-200 hover:border-brandRed transition font-bold text-slate-800 text-sm flex items-center gap-2 shadow-2xs">
+          <span class="w-2.5 h-2.5 rounded-full bg-rose-600"></span> HATARI
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-slate-900 text-slate-300 text-xs mt-auto border-t-4 border-brandRed">
+    <div class="custom-container py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="space-y-3">
+        <div class="text-xl font-black text-white font-heading">
+          Winline<span class="text-brandRed">.vn</span>
+        </div>
+        <p class="text-slate-400 leading-relaxed text-[11px]">
+          <strong>Công ty TNHH Winline Việt Nam</strong> - MST: <strong>0106085370</strong> do Sở KH & ĐT TP Hà Nội cấp ngày 15/01/2013.
+        </p>
+        <div class="space-y-1.5 text-[11px] text-slate-400 pt-1">
+          <div><i class="fas fa-map-marker-alt text-brandRed mr-2"></i> Số 17 Ngõ 46 Quan Nhân, P. Thanh Xuân, Hà Nội</div>
+          <div><i class="fas fa-phone-alt text-brandTeal mr-2"></i> Hotline: 0949.761.893 - 1900.099.806</div>
+          <div><i class="fas fa-envelope text-amber-400 mr-2"></i> Winlinevietnam@gmail.com</div>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-white font-bold text-sm mb-3 font-heading uppercase tracking-wider">Hệ Thống Menu</h3>
+        <ul class="space-y-2 text-[11px] text-slate-400">
+          <li><a href="index.html" class="hover:text-white transition">Trang chủ</a></li>
+          <li><a href="gioi-thieu.html" class="hover:text-white transition">Giới thiệu</a></li>
+          <li><a href="san-pham.html" class="hover:text-white transition">Sản phẩm</a></li>
+          <li><a href="giai-phap.html" class="hover:text-white transition">Giải pháp</a></li>
+          <li><a href="thuong-hieu.html" class="hover:text-white transition">Thương hiệu</a></li>
+          <li><a href="cong-cu-tinh-quat.html" class="hover:text-white transition text-amber-300 font-bold">Công cụ tính quạt</a></li>
+          <li><a href="du-an.html" class="hover:text-white transition">Dự án</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-white font-bold text-sm mb-3 font-heading uppercase tracking-wider">Sản Phẩm Chủ Lực</h3>
+        <ul class="space-y-2 text-[11px] text-slate-400">
+          <li><a href="san-pham.html?subcat=quat-cay-cong-nghiep" class="hover:text-white transition">Quạt cây công nghiệp Komasu</a></li>
+          <li><a href="san-pham.html?subcat=quat-thong-gio-vuong" class="hover:text-white transition">Quạt thông gió vuông 1380x1380</a></li>
+          <li><a href="san-pham.html?subcat=may-lam-mat-nha-xuong" class="hover:text-white transition">Máy làm mát công nghiệp 18000</a></li>
+          <li><a href="san-pham.html?subcat=tam-cooling-pad" class="hover:text-white transition">Tấm làm mát Cooling Pad chống rêu</a></li>
+          <li><a href="san-pham.html?subcat=quat-ly-tam" class="hover:text-white transition">Quạt ly tâm hút khói cao áp</a></li>
+        </ul>
+      </div>
+
+      <div class="space-y-3">
+        <h3 class="text-white font-bold text-sm font-heading uppercase tracking-wider">Liên Hệ Báo Giá Sỉ</h3>
+        <div class="bg-slate-800 p-3.5 rounded-xl border border-slate-700 space-y-2">
+          <div>Hotline bán hàng: <a href="tel:0949761893" class="text-brandRed font-bold">0949 761 893</a></div>
+          <div>Kỹ thuật 24/7: <a href="tel:1900099806" class="text-brandTeal font-bold">1900 099 806</a></div>
+        </div>
+        <button onclick="openConsultModal()" class="w-full bg-brandRed hover:bg-brandRedHover text-white py-2.5 rounded-xl text-xs font-bold transition shadow-md">
+          Gửi Yêu Cầu Khảo Sát Dự Án
+        </button>
+      </div>
+    </div>
+
+    <div class="bg-black/40 border-t border-slate-800/80 py-4 text-center text-[11px] text-slate-500">
+      <div class="custom-container flex flex-col sm:flex-row justify-between items-center gap-2">
+        <div>Hệ thống: Winline.vn | Quatdiencothongnhat.vn | Chinghaihanoi.vn</div>
+        <div>© 2013 - 2026 Bản quyền thuộc về <strong>Winline.vn</strong>.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Action Widgets -->
+  <div class="fixed bottom-6 right-5 z-40 flex flex-col items-center gap-2.5">
+    <a href="cong-cu-tinh-quat.html" title="Công cụ tính toán quạt" class="floating-contact-btn bg-amber-500 hover:bg-amber-600">
+      <i class="fas fa-calculator text-lg"></i>
+    </a>
+    <a href="https://zalo.me/0949761893" target="_blank" title="Chat Zalo tư vấn" class="floating-contact-btn bg-blue-600 hover:bg-blue-700">
+      <span class="font-black text-xs">Zalo</span>
+    </a>
+    <a href="tel:0949761893" title="Gọi ngay 0949 761 893" class="floating-contact-btn bg-brandRed hover:bg-brandRedHover animate-pulse">
+      <i class="fas fa-phone-alt"></i>
+    </a>
+    <button id="btn-back-to-top" title="Lên đầu trang" class="floating-contact-btn bg-slate-800 hover:bg-slate-700 opacity-0 pointer-events-none transition-opacity">
+      <i class="fas fa-chevron-up"></i>
+    </button>
+  </div>
+
+  <!-- Shared Modals (Cart, Quick View, Consult) -->
+  <div id="cart-drawer" class="fixed inset-0 z-50 pointer-events-none opacity-0 transition-opacity">
+    <div onclick="closeCartDrawer()" class="drawer-backdrop absolute inset-0"></div>
+    <div id="cart-drawer-panel" class="drawer-panel absolute top-0 right-0 bottom-0 w-full max-w-md bg-white shadow-2xl flex flex-col transform translate-x-full transition-transform">
+      <div class="p-4 bg-brandNavy text-white flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <i class="fas fa-shopping-cart text-brandRed"></i>
+          <h3 class="font-bold text-sm font-heading">Giỏ Hàng Của Bạn (<span class="cart-badge-count">0</span>)</h3>
+        </div>
+        <button onclick="closeCartDrawer()" class="text-slate-300 hover:text-white text-lg"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="flex-1 overflow-y-auto p-4">
+        <div id="cart-empty-state" class="text-center py-16 text-slate-400">
+          <i class="fas fa-shopping-basket text-5xl text-slate-200 mb-3"></i>
+          <p class="text-sm font-semibold text-slate-600">Giỏ hàng của bạn đang trống</p>
+        </div>
+        <div id="cart-filled-state" class="hidden flex flex-col justify-between h-full">
+          <div id="cart-drawer-items" class="space-y-1"></div>
+          <div class="pt-4 mt-4 border-t border-slate-200 bg-slate-50 -mx-4 -mb-4 p-4">
+            <div class="flex justify-between items-baseline mb-3">
+              <span class="text-xs text-slate-500 font-medium">Tổng tiền:</span>
+              <span id="cart-drawer-total" class="text-lg font-black text-brandRed font-heading">0₫</span>
+            </div>
+            <form onsubmit="handleCheckout(event)" class="space-y-2 text-xs">
+              <input type="text" name="customer_name" placeholder="Họ và tên..." class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2" required>
+              <input type="tel" name="customer_phone" placeholder="Số điện thoại..." class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2" required>
+              <button type="submit" class="w-full bg-brandRed hover:bg-brandRedHover text-white font-bold py-2.5 rounded-lg text-sm">
+                Đặt Hàng Nhanh
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="quickview-modal" class="fixed inset-0 z-50 pointer-events-none opacity-0 transition-opacity flex items-center justify-center p-4">
+    <div onclick="closeQuickView()" class="drawer-backdrop absolute inset-0"></div>
+    <div class="relative bg-white rounded-2xl shadow-2xl max-w-4xl w-full overflow-hidden z-10 max-h-[92vh] overflow-y-auto">
+      <button onclick="closeQuickView()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition z-20 shadow-xs"><i class="fas fa-times text-sm"></i></button>
+      <div id="quickview-modal-content"></div>
+    </div>
+  </div>
+
+  <div id="consult-modal" class="fixed inset-0 z-50 pointer-events-none opacity-0 transition-opacity flex items-center justify-center p-4">
+    <div onclick="closeConsultModal()" class="drawer-backdrop absolute inset-0"></div>
+    <div class="relative bg-white rounded-2xl shadow-2xl max-w-md w-full overflow-hidden z-10 p-6">
+      <button onclick="closeConsultModal()" class="absolute top-4 right-4 text-slate-400"><i class="fas fa-times"></i></button>
+      <div class="text-center mb-4">
+        <h3 class="text-base font-bold text-slate-800 font-heading">Yêu Cầu Tư Vấn & Báo Giá Sỉ</h3>
+      </div>
+      <form onsubmit="handleConsultSubmit(event)" class="space-y-3 text-xs">
+        <input type="text" id="consult-subject" name="subject" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2" readonly>
+        <input type="text" name="name" placeholder="Họ tên của bạn..." class="w-full border border-slate-300 rounded-lg px-3 py-2" required>
+        <input type="tel" name="phone" placeholder="Số điện thoại..." class="w-full border border-slate-300 rounded-lg px-3 py-2" required>
+        <button type="submit" class="w-full bg-brandRed hover:bg-brandRedHover text-white font-bold py-2.5 rounded-lg transition">Gửi Yêu Cầu</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/products-data.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const featContainer = document.getElementById("home-featured-products");
+      if (featContainer && WINLINE_DATA) {
+        const topProds = WINLINE_DATA.products.slice(0, 8);
+        featContainer.innerHTML = topProds.map(p => `
+          <div class="product-card group">
+            <div class="absolute top-2.5 left-2.5 z-10 flex flex-col gap-1 pointer-events-none">
+              ${p.discount ? `<span class="badge-discount">-${p.discount}%</span>` : ''}
+              ${p.isBestSeller ? `<span class="bg-amber-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded shadow-xs">HOT</span>` : ''}
+            </div>
+            <div class="img-wrap cursor-pointer" onclick="openQuickView('${p.id}')">
+              <img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.src='assets/images/km750s.jpg'">
+            </div>
+            <div class="p-4 flex-1 flex flex-col justify-between bg-white">
+              <div>
+                <h3 onclick="openQuickView('${p.id}')" class="text-sm font-bold text-slate-900 group-hover:text-red-600 transition cursor-pointer line-clamp-1 mb-2 font-heading" title="${p.name}">
+                  ${p.name}
+                </h3>
+                <div class="text-[12px] text-slate-600 space-y-0.5 mb-3 font-normal">
+                  <div>Công suất: <strong class="text-slate-800 font-semibold">${p.powerText}</strong></div>
+                  <div>Lưu lượng: <strong class="text-slate-800 font-semibold">${p.airflowText}</strong></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex items-baseline gap-2 mb-3">
+                  <span class="price-red">${formatVND(p.price)}</span>
+                  ${p.oldPrice ? `<span class="text-xs text-slate-400 line-through">${formatVND(p.oldPrice)}</span>` : ''}
+                </div>
+                <div class="grid grid-cols-5 gap-2">
+                  <button onclick="openQuickView('${p.id}')" class="col-span-3 btn-detail-outline">Xem chi tiết</button>
+                  <button onclick="addToCart('${p.id}')" class="col-span-2 bg-red-600 hover:bg-red-700 text-white rounded-lg text-xs font-semibold py-1.5 flex items-center justify-center gap-1 transition shadow-xs">
+                    <i class="fas fa-cart-plus"></i> Mua
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `).join("");
+      }
+
+      function updateQuickCalc() {
+        const l = parseFloat(document.getElementById("quick-len")?.value) || 30;
+        const w = parseFloat(document.getElementById("quick-wid")?.value) || 20;
+        const h = parseFloat(document.getElementById("quick-hei")?.value) || 6;
+        const q = l * w * h * 50;
+        const fans = Math.ceil(q / 44500);
+        document.getElementById("quick-result-q").textContent = `${q.toLocaleString("vi-VN")} m³/h`;
+        document.getElementById("quick-result-fans").textContent = `${fans} Quạt 1380`;
+      }
+      ["quick-len", "quick-wid", "quick-hei"].forEach(id => {
+        document.getElementById(id)?.addEventListener("input", updateQuickCalc);
+      });
+    });
+  </script>
+</body>
+</html>
