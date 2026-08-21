@@ -1,630 +1,624 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Winline Việt Nam - Quạt Điện, Quạt Công Nghiệp, Thông Gió & Làm Mát Hàng Đầu</title>
-  <meta name="description" content="Công ty TNHH Winline Việt Nam (MST: 0106085370) chuyên phân phối quạt điện, quạt công nghiệp Komasu, Vinawind, Deton, Dasin, quạt thông gió nhà xưởng. Hotline: 0949.761.893">
-  
-  <!-- Favicon -->
-  <link rel="icon" href="https://bizweb.dktcdn.net/100/391/557/themes/903209/assets/favicon.png?1786933451521" type="image/x-icon">
-  
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['"Be Vietnam Pro"', '"Inter"', 'sans-serif'],
-            heading: ['"Be Vietnam Pro"', 'sans-serif']
-          },
-          colors: {
-            brandNavy: '#0b1f3a',
-            brandNavyDark: '#071529',
-            brandRed: '#e51a24',
-            brandRedHover: '#c4121b',
-            brandTeal: '#26a69a',
-            brandTealHover: '#00897b'
-          }
-        }
-      }
-    }
-  </script>
-  
-  <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
-  <!-- Custom CSS with Be Vietnam Pro font -->
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Winline.vn — Quạt điện, quạt công nghiệp chính hãng</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+:root{
+  /* Đồng bộ đúng hệ màu mới nhất (v11, từ product-detail.html) — 1 hue xanh
+     #004e7d, 1 mã đỏ #d41e3d duy nhất. Trước đây file này còn dùng bảng màu
+     cũ (#0d1f33/#e2600f) trong khi product-detail.html đã đổi — nay gộp lại. */
+  --navy-950:#00354f; --navy-800:#004e7d; --navy-700:#1f6690; --navy-100:#e6eef3;
+  --paper:#f7f8fa; --white:#ffffff; --ink:#1a2230; --ink-soft:#5c6773; --line:#dde3ea;
+  --orange:#d41e3d; --orange-dark:#a71830; --orange-100:#f4e6e9; --green:#1e8a5f;
+  --radius:6px; --shadow:0 2px 10px rgba(13,31,51,.08);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{font-family:'Be Vietnam Pro',system-ui,sans-serif;color:var(--ink);background:var(--paper);font-size:15px;line-height:1.5;}
+.mono{font-family:'IBM Plex Mono',monospace;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+button{font-family:inherit;cursor:pointer;}
+
+/* ---------- utility / header / nav (đồng bộ trang sản phẩm) ---------- */
+.utility-bar{background:var(--navy-950);color:#c9d6e3;font-size:12.5px;}
+.utility-bar .wrap{max-width:1240px;margin:0 auto;padding:7px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;}
+.utility-bar a{color:#c9d6e3;opacity:.9;} .utility-bar a:hover{opacity:1;text-decoration:underline;}
+.utility-bar .sep{opacity:.4;margin:0 10px;}
+
+header.site{background:var(--white);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40;}
+.header-inner{max-width:1240px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;gap:24px;}
+.logo{font-weight:800;font-size:24px;letter-spacing:.5px;color:var(--navy-950);display:flex;align-items:baseline;gap:2px;flex-shrink:0;}
+.logo span{color:var(--orange);}
+.search-wrap{flex:1;position:relative;max-width:640px;}
+.search-box{width:100%;padding:11px 46px 11px 16px;border:1.5px solid var(--line);border-radius:var(--radius);font-size:14.5px;background:var(--paper);font-family:inherit;}
+.search-box:focus{outline:none;border-color:var(--navy-700);background:var(--white);}
+.search-btn{position:absolute;right:6px;top:50%;transform:translateY(-50%);background:var(--navy-950);border:none;color:#fff;width:34px;height:34px;border-radius:4px;display:flex;align-items:center;justify-content:center;}
+.search-suggest{position:absolute;top:calc(100% + 6px);left:0;right:0;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:10px;font-size:13px;color:var(--ink-soft);display:none;}
+.search-suggest .hint{padding:6px 10px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#9aa7b4;}
+.search-suggest .row{display:flex;justify-content:space-between;padding:8px 10px;border-radius:4px;}
+.search-suggest .row:hover{background:var(--navy-100);}
+.search-suggest .row b{color:var(--ink);font-weight:600;}
+.header-actions{display:flex;align-items:center;gap:18px;flex-shrink:0;}
+.header-actions .item{display:flex;flex-direction:column;align-items:center;font-size:11px;color:var(--ink-soft);gap:3px;}
+.header-actions .icon{width:22px;height:22px;color:var(--navy-800);}
+
+nav.catnav{background:var(--navy-950);}
+.catnav-inner{max-width:1240px;margin:0 auto;padding:0 20px;display:flex;gap:2px;font-size:13.5px;font-weight:500;overflow-x:auto;}
+.catnav-inner a{padding:11px 14px;color:#dbe4ee;white-space:nowrap;border-bottom:2px solid transparent;}
+.catnav-inner a:hover{color:#fff;border-bottom-color:var(--orange);background:rgba(255,255,255,.04);}
+.catnav-inner a.active{color:#fff;border-bottom-color:var(--orange);}
+
+section{max-width:1240px;margin:0 auto;padding:44px 20px;}
+.sec-head{margin-bottom:22px;}
+.sec-head h2{font-size:21px;color:var(--navy-950);margin:0 0 4px;}
+.sec-head p{font-size:13px;color:var(--ink-soft);margin:0;}
+
+/* ---------- hero: định vị, không phải banner khuyến mãi ---------- */
+.hero{background:linear-gradient(120deg,var(--navy-950),var(--navy-800));padding:0;}
+.hero-inner{max-width:1240px;margin:0 auto;padding:52px 20px 0;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;}
+@media(max-width:880px){.hero-inner{grid-template-columns:1fr;padding-top:34px;}}
+.hero-text{color:#fff;}
+.hero-eyebrow{display:inline-block;background:rgba(255,255,255,.1);color:#cfe0f0;font-size:12px;font-weight:600;padding:5px 12px;border-radius:20px;margin-bottom:16px;}
+.hero-text h1{font-size:33px;line-height:1.28;margin:0 0 14px;font-weight:800;}
+.hero-text h1 b{color:var(--orange);}
+.hero-text p{font-size:14.5px;color:#c9d6e3;line-height:1.7;max-width:480px;margin:0 0 26px;}
+.hero-cta{display:flex;gap:12px;margin-bottom:30px;flex-wrap:wrap;}
+.btn{padding:13px 20px;border-radius:6px;font-weight:700;font-size:14.5px;border:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;}
+.btn-primary{background:var(--orange);color:#fff;} .btn-primary:hover{background:var(--orange-dark);}
+.btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1.5px solid rgba(255,255,255,.35);}
+.btn-ghost:hover{background:rgba(255,255,255,.16);}
+.hero-photo{
+  aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:
+    linear-gradient(135deg, rgba(255,255,255,.06) 25%, transparent 25%) -20px 0/40px 40px,
+    linear-gradient(225deg, rgba(255,255,255,.06) 25%, transparent 25%) -20px 0/40px 40px,
+    rgba(255,255,255,.03);
+  display:flex;align-items:center;justify-content:center;color:#9db2c7;font-size:13px;text-align:center;padding:20px;
+  border:1px solid rgba(255,255,255,.12);
+}
+
+.trust-strip{background:var(--navy-800);border-top:1px solid rgba(255,255,255,.08);margin-top:44px;}
+.trust-strip-inner{max-width:1240px;margin:0 auto;padding:20px 20px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+@media(max-width:760px){.trust-strip-inner{grid-template-columns:repeat(2,1fr);}}
+.trust-item{display:flex;align-items:center;gap:11px;color:#e3ecf4;}
+.trust-item .ti-num{font-family:'IBM Plex Mono',monospace;font-size:19px;font-weight:700;color:#fff;white-space:nowrap;}
+.trust-item .ti-label{font-size:11.5px;color:#a9bdd0;line-height:1.4;}
+
+/* ---------- mua theo nhu cầu — 3 cột ---------- */
+.need-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+@media(max-width:760px){.need-grid{grid-template-columns:1fr;}}
+.need-card{
+  border:1px solid var(--line);border-radius:10px;background:#fff;padding:24px 22px;
+  display:flex;flex-direction:column;gap:10px;transition:.15s;
+}
+.need-card:hover{border-color:var(--navy-700);box-shadow:var(--shadow);}
+.need-card .n-icon{
+  width:46px;height:46px;border-radius:10px;background:var(--navy-100);color:var(--navy-800);
+  display:flex;align-items:center;justify-content:center;font-size:21px;
+}
+.need-card h3{font-size:16.5px;margin:2px 0 0;color:var(--navy-950);}
+.need-card p{font-size:13px;color:var(--ink-soft);margin:0;line-height:1.6;}
+.need-card .n-link{font-size:12.5px;font-weight:700;color:var(--orange-dark);margin-top:6px;}
+
+/* ---------- danh mục dạng lưới (mobile-friendly) ---------- */
+.cat-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;}
+@media(max-width:760px){.cat-grid{grid-template-columns:repeat(3,1fr);}}
+.cat-tile{
+  border:1px solid var(--line);border-radius:10px;background:#fff;padding:16px 10px;
+  display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;
+}
+.cat-tile:hover{border-color:var(--orange);}
+.cat-tile .ct-icon{width:38px;height:38px;border-radius:50%;background:var(--orange-100);color:var(--orange-dark);display:flex;align-items:center;justify-content:center;font-size:17px;}
+.cat-tile span{font-size:12px;font-weight:600;color:var(--navy-950);line-height:1.3;}
+
+/* ---------- product card dùng chung (bán chạy) ---------- */
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:16px;}
+.prod-card{background:#fff;border:1px solid var(--line);border-radius:9px;overflow:hidden;position:relative;}
+.prod-card .p-img{aspect-ratio:1/1;background:var(--paper);display:flex;align-items:center;justify-content:center;color:#9aa7b4;font-size:11px;text-align:center;padding:10px;position:relative;}
+.prod-card .p-badge{position:absolute;top:9px;left:9px;background:var(--navy-950);color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:3px;}
+.prod-card .p-body{padding:12px 13px 13px;}
+.prod-card .p-brand{font-size:10.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.04em;font-weight:600;margin-bottom:3px;}
+.prod-card .p-name{font-size:13.5px;font-weight:600;color:var(--navy-950);line-height:1.35;min-height:37px;margin-bottom:6px;}
+.prod-card .p-specs{list-style:none;margin:0 0 8px;padding:0;font-size:11px;color:var(--ink-soft);line-height:1.6;}
+.prod-card .p-specs li::before{content:"• ";color:var(--orange);}
+.prod-card .p-price{font-weight:700;color:var(--navy-950);font-family:'IBM Plex Mono',monospace;font-size:15.5px;}
+.prod-card .p-bulk{font-size:10.5px;color:var(--navy-800);margin-top:3px;}
+.prod-card .p-rating{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--orange);margin-top:6px;}
+.prod-card .p-rating span{color:var(--ink-soft);}
+.prod-card .p-stock{font-size:10.5px;color:var(--green);font-weight:600;margin-top:6px;display:flex;align-items:center;gap:4px;}
+.prod-card .p-stock .d{width:5px;height:5px;border-radius:50%;background:var(--green);}
+
+/* ---------- thương hiệu ---------- */
+.brand-strip{display:grid;grid-template-columns:repeat(8,1fr);gap:12px;}
+@media(max-width:760px){.brand-strip{grid-template-columns:repeat(4,1fr);}}
+.brand-tile{
+  border:1px solid var(--line);border-radius:8px;background:#fff;padding:16px 8px;
+  display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--navy-800);
+  font-size:12.5px;text-align:center;min-height:60px;
+}
+
+/* ---------- case study / đánh giá ---------- */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+@media(max-width:820px){.testi-grid{grid-template-columns:1fr;}}
+.testi-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px;}
+.testi-card .t-stars{color:var(--orange);font-size:13px;margin-bottom:10px;}
+.testi-card p{font-size:13.5px;color:var(--ink);line-height:1.65;margin:0 0 14px;}
+.testi-card .t-who{display:flex;align-items:center;gap:10px;}
+.testi-card .t-avatar{width:34px;height:34px;border-radius:50%;background:var(--navy-100);color:var(--navy-800);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;}
+.testi-card .t-meta{font-size:12px;color:var(--ink-soft);}
+.testi-card .t-meta b{display:block;color:var(--navy-950);font-size:13px;}
+
+/* ---------- chat lễ tân ---------- */
+.reception-band{background:var(--navy-100);}
+.reception-inner{max-width:1240px;margin:0 auto;padding:30px 20px;display:flex;align-items:center;gap:26px;flex-wrap:wrap;}
+.reception-text{flex:1;min-width:220px;}
+.reception-text h3{margin:0 0 4px;font-size:16.5px;color:var(--navy-950);}
+.reception-text p{margin:0;font-size:12.5px;color:var(--ink-soft);}
+.reception-staff{display:flex;gap:12px;}
+.r-card{background:#fff;border:1px solid var(--line);border-radius:9px;padding:10px 14px;display:flex;align-items:center;gap:10px;}
+.r-avatar{width:38px;height:38px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0;}
+.r-meta{font-size:11.5px;line-height:1.3;}
+.r-meta b{display:block;font-size:12.5px;color:var(--navy-950);}
+.r-zalo{background:#0068ff;color:#fff;font-size:11px;font-weight:700;padding:5px 9px;border-radius:5px;margin-left:4px;}
+
+/* ---------- footer ---------- */
+footer{background:var(--navy-950);color:#b9c7d4;padding:44px 20px 20px;margin-top:20px;}
+.footer-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px;}
+@media(max-width:820px){.footer-inner{grid-template-columns:1fr 1fr;}}
+.footer-inner h4{color:#fff;font-size:13.5px;margin:0 0 12px;}
+.footer-inner p, .footer-inner a{font-size:12.5px;color:#9fb0bf;line-height:2;display:block;}
+.footer-inner a:hover{color:#fff;}
+.footer-bottom{max-width:1240px;margin:26px auto 0;padding-top:18px;border-top:1px solid rgba(255,255,255,.08);font-size:11.5px;color:#7c8fa0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+
+/* ---------- sticky mobile bar — 4 icon tròn, chia đều ---------- */
+.mobile-sticky{
+  display:none;position:fixed;bottom:0;left:0;right:0;background:#fff;
+  border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(13,31,51,.10);
+  padding:9px 10px calc(9px + env(safe-area-inset-bottom));z-index:50;
+  justify-content:space-around;align-items:flex-start;
+}
+.msb-icon{display:flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none;flex:1;background:none;border:none;font-family:inherit;}
+.msb-circle{
+  width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  color:#fff;box-shadow:0 2px 7px rgba(0,0,0,.14);
+}
+.msb-icon.menu .msb-circle{background:var(--navy-800);}
+.msb-icon.zalo .msb-circle{background:#0068ff;}
+.msb-icon.call .msb-circle{background:var(--green);}
+.msb-icon.quote .msb-circle{background:var(--orange);}
+.msb-label{font-size:10px;font-weight:700;color:var(--ink-soft);}
+.msb-icon.menu .msb-label{color:var(--navy-800);}
+.msb-icon.zalo .msb-label{color:#0068ff;}
+.msb-icon.call .msb-label{color:var(--green);}
+.msb-icon.quote .msb-label{color:var(--orange-dark);}
+@media(max-width:640px){
+  .mobile-sticky{display:flex;}
+  body{padding-bottom:80px;}
+  .quick-specs{grid-template-columns:1fr;}
+}
+
+
+/* ---------- desktop float call ---------- */
+.float-contact{
+  position:fixed;right:22px;bottom:90px;display:flex;flex-direction:column;gap:10px;z-index:45;
+}
+@media(max-width:640px){.float-contact{display:none;}}
+.float-contact a{
+  width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  color:#fff;box-shadow:0 3px 10px rgba(0,0,0,.2);
+}
+.float-contact .fc-zalo{background:#0068ff;}
+.float-contact .fc-call{background:var(--green);}
+/* ---------- lớp phủ danh mục dạng lưới — mobile "Danh mục" ---------- */
+.menu-sheet-overlay{
+  display:none;position:fixed;inset:0;background:rgba(13,31,51,.55);z-index:110;
+  align-items:flex-end;justify-content:center;
+}
+.menu-sheet-overlay.open{display:flex;}
+.menu-sheet{
+  background:#fff;border-radius:16px 16px 0 0;width:100%;max-width:520px;
+  padding:20px 20px calc(20px + env(safe-area-inset-bottom));
+  max-height:80vh;overflow-y:auto;position:relative;
+}
+.menu-sheet-handle{width:38px;height:4px;background:var(--line);border-radius:3px;margin:0 auto 14px;}
+.menu-sheet h3{margin:0 0 16px;font-size:16px;color:var(--navy-950);}
+.menu-sheet .ms-close{position:absolute;top:16px;right:18px;background:none;border:none;font-size:20px;color:var(--ink-soft);}
+.ms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.ms-tile{
+  display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;
+  border:1px solid var(--line);border-radius:12px;padding:16px 8px;background:var(--paper);
+  text-decoration:none;
+}
+.ms-tile .ms-icon{
+  width:44px;height:44px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;
+  font-size:20px;box-shadow:0 2px 6px rgba(13,31,51,.1);
+}
+.ms-tile span:last-child{font-size:11.5px;font-weight:600;color:var(--navy-950);line-height:1.3;}
+
+/* ---------- menu chính dạng dropdown — gom theo loại/thương hiệu/nhu cầu/hồ sơ ---------- */
+.nav-drop{position:relative;}
+.nav-top{padding:11px 14px;color:#dbe4ee;white-space:nowrap;border-bottom:2px solid transparent;cursor:pointer;display:inline-block;text-decoration:none;}
+.nav-drop:hover .nav-top,.nav-top.active{color:#fff;border-bottom-color:var(--orange,#d41e3d);background:rgba(255,255,255,.04);}
+.nav-panel{
+  display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid var(--line,#dde3ea);
+  box-shadow:0 10px 26px rgba(13,31,51,.16);border-radius:0 0 10px 10px;padding:14px;z-index:60;
+  min-width:230px;flex-direction:column;gap:1px;
+}
+.nav-drop:hover .nav-panel{display:flex;}
+.nav-panel a{color:var(--navy-950,#00354f)!important;padding:7px 10px;border-radius:5px;font-size:13px;white-space:nowrap;text-decoration:none;}
+.nav-panel a:hover{background:var(--navy-100,#e6eef3);}
+.nav-panel-wide{flex-direction:row;gap:26px;min-width:540px;padding:16px;}
+.np-col{display:flex;flex-direction:column;gap:1px;min-width:170px;}
+.np-title{font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft,#5c6773);font-weight:700;padding:4px 10px 6px;}
+@media(max-width:960px){
+  .nav-panel{display:none!important;}
+}
+
+</style>
 </head>
-<body class="bg-[#f8fafc] text-slate-800 flex flex-col min-h-screen">
+<body>
 
-  <!-- ================= TOP HEADER ================= -->
-  <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-xs">
-    <!-- Super Top Notification Bar -->
-    <div class="bg-brandNavyDark text-slate-300 text-xs py-2 px-4 hidden md:block border-b border-slate-800">
-      <div class="custom-container flex justify-between items-center">
-        <div class="flex items-center gap-6">
-          <span><i class="fas fa-certificate text-brandRed mr-1.5"></i> Công ty TNHH Winline Việt Nam - MST: <strong>0106085370</strong></span>
-          <span><i class="fas fa-truck-fast text-brandTeal mr-1.5"></i> Giao hàng toàn quốc - Hỗ trợ kỹ thuật 24/7</span>
+<div class="utility-bar">
+  <div class="wrap">
+    <div>Hơn 20 năm cung cấp quạt điện, quạt công nghiệp — giao hàng toàn quốc<span class="sep">|</span><a href="#">Tra cứu đơn hàng</a></div>
+    <div><a href="#">Tài liệu &amp; Hồ sơ</a><span class="sep">|</span><a href="#">Hotline 0949 761 893</a></div>
+  </div>
+</div>
+
+<header class="site">
+  <div class="header-inner">
+    <a href="index.html" class="logo" style="text-decoration:none;">WIN<span>LINE</span></a>
+    <div class="search-wrap">
+      <input class="search-box" type="text" placeholder="Tìm theo tên sản phẩm hoặc mã model...">
+      <button class="search-btn" aria-label="Tìm kiếm">⌕</button>
+      <div class="search-suggest" id="searchSuggest">
+        <div class="hint">Danh mục liên quan</div>
+        <div class="row"><span>Quạt cây công nghiệp</span><span class="mono" style="color:#9aa7b4">128 sản phẩm</span></div>
+        <div class="row"><span>Quạt treo tường công nghiệp</span><span class="mono" style="color:#9aa7b4">64 sản phẩm</span></div>
+        <div class="hint">Sản phẩm nổi bật</div>
+        <div class="row"><b>Quạt cây công nghiệp Komasu KM-750S</b><span class="mono">2.630.000đ</span></div>
+      </div>
+    </div>
+    <div class="header-actions">
+      <div class="item"><div class="icon">☎</div>Gọi ngay</div>
+      <div class="item"><div class="icon">🛒</div>Giỏ hàng</div>
+    </div>
+  </div>
+</header>
+
+<nav class="catnav">
+  <div class="catnav-inner">
+    <a href="index.html" class="nav-top active">Trang chủ</a>
+    <a href="gioi-thieu.html" class="nav-top ">Giới thiệu</a>
+
+    <div class="nav-drop">
+      <a href="san-pham.html" class="nav-top ">Sản phẩm ▾</a>
+      <div class="nav-panel nav-panel-wide">
+        <div class="np-col">
+          <div class="np-title">Quạt dân dụng</div>
+          <a href="san-pham.html">Quạt trần</a>
+          <a href="san-pham.html">Quạt cây / quạt đứng</a>
+          <a href="san-pham.html">Quạt treo tường</a>
+          <a href="san-pham.html">Quạt sàn / quạt quỳ</a>
         </div>
-        <div class="flex items-center gap-5 text-xs">
-          <a href="tel:0949761893" class="hover:text-white transition"><i class="fas fa-phone-volume text-brandRed mr-1"></i> Bán hàng: <strong>0949.761.893</strong></a>
-          <span class="text-slate-600">|</span>
-          <a href="tel:0963230665" class="hover:text-white transition"><i class="fas fa-wrench text-amber-400 mr-1"></i> Bảo hành: <strong>0963.230.665</strong></a>
+        <div class="np-col">
+          <div class="np-title">Quạt công nghiệp</div>
+          <a href="san-pham.html">Quạt cây công nghiệp</a>
+          <a href="san-pham.html">Quạt treo tường công nghiệp</a>
+          <a href="san-pham.html">Quạt sàn công nghiệp</a>
+        </div>
+        <div class="np-col">
+          <div class="np-title">Thông gió &amp; làm mát</div>
+          <a href="san-pham.html">Quạt thông gió dân dụng</a>
+          <a href="san-pham.html">Quạt thông gió công nghiệp</a>
+          <a href="san-pham.html">Quạt cắt gió</a>
+          <a href="san-pham.html">Máy làm mát / điều hoà di động</a>
         </div>
       </div>
     </div>
 
-    <!-- Main Header -->
-    <div class="custom-container py-3.5 flex items-center justify-between gap-6">
-      <!-- Logo -->
-      <a href="index.html" class="flex items-center gap-2 flex-shrink-0 group">
-        <div class="flex flex-col">
-          <div class="text-2xl md:text-3xl font-black tracking-tight text-brandRed font-heading flex items-center">
-            Winline<span class="text-brandNavy text-base align-super ml-0.5">®</span>
-          </div>
-          <span class="text-[9px] uppercase tracking-widest font-bold text-brandNavy -mt-1 group-hover:text-brandRed transition">
-            Chất lượng tạo niềm tin
-          </span>
-        </div>
-      </a>
+    <a href="giai-phap.html" class="nav-top ">Giải pháp</a>
 
-      <!-- Search Bar -->
-      <div class="search-container relative flex-1 max-w-2xl mx-2 hidden sm:block">
-        <div class="flex">
-          <input 
-            type="text" 
-            class="header-search-input w-full bg-slate-50 border border-slate-300 rounded-l-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brandRed focus:border-brandRed" 
-            placeholder="Tìm kiếm quạt công nghiệp, quạt cây, quạt thông gió..."
-          >
-          <button class="bg-brandRed hover:bg-brandRedHover text-white px-6 rounded-r-lg transition flex items-center justify-center">
-            <i class="fas fa-search text-sm"></i>
-          </button>
-        </div>
-      </div>
-
-      <!-- Header Action Items -->
-      <div class="flex items-center gap-4 md:gap-7 flex-shrink-0 text-xs">
-        <a href="tel:1900099806" class="hidden lg:flex items-center gap-2.5 text-slate-700 hover:text-brandRed transition">
-          <div class="w-10 h-10 rounded-full bg-red-50 text-brandRed flex items-center justify-center text-base">
-            <i class="fas fa-headset"></i>
-          </div>
-          <div>
-            <div class="text-[11px] text-slate-400">Hỗ trợ kỹ thuật</div>
-            <div class="font-bold text-slate-900 text-sm">1900 099 806</div>
-          </div>
-        </a>
-
-        <button onclick="downloadCatalogue()" class="hidden md:flex items-center gap-2.5 text-slate-700 hover:text-brandRed transition text-left">
-          <div class="w-10 h-10 rounded-full bg-blue-50 text-brandNavy flex items-center justify-center text-base">
-            <i class="fas fa-file-pdf"></i>
-          </div>
-          <div>
-            <div class="text-[11px] text-slate-400">Tài liệu</div>
-            <div class="font-bold text-slate-900">Hướng dẫn, Catalogue</div>
-          </div>
-        </button>
-
-        <button onclick="openCartDrawer()" class="relative flex items-center gap-2 text-slate-800 hover:text-brandRed transition bg-slate-50 hover:bg-red-50 border border-slate-200 px-4 py-2.5 rounded-xl shadow-2xs">
-          <div class="relative">
-            <i class="fas fa-shopping-cart text-lg text-brandRed"></i>
-            <span class="cart-badge-count absolute -top-2 -right-2 bg-brandRed text-white text-[10px] font-black rounded-full w-5 h-5 flex items-center justify-center border-2 border-white">
-              0
-            </span>
-          </div>
-          <span class="font-bold hidden sm:inline text-xs">Giỏ hàng</span>
-        </button>
-
-        <button id="mobile-menu-btn" class="md:hidden text-slate-700 hover:text-brandRed text-xl p-2">
-          <i class="fas fa-bars"></i>
-        </button>
+    <div class="nav-drop">
+      <a href="thuong-hieu.html" class="nav-top ">Thương hiệu ▾</a>
+      <div class="nav-panel">
+        <a href="thuong-hieu.html">Vinawind (Điện cơ Thống Nhất)</a>
+        <a href="thuong-hieu.html">Komasu Nhật Bản</a>
+        <a href="thuong-hieu.html">Deton</a>
+        <a href="thuong-hieu.html">Dasin</a>
+        <a href="thuong-hieu.html">Chinghai</a>
+        <a href="thuong-hieu.html">Hatari</a>
+        <a href="thuong-hieu.html">Panasonic</a>
+        <a href="thuong-hieu.html">Nedfon</a>
       </div>
     </div>
 
-    <!-- ================= MAIN NAVIGATION MENU (7 ITEMS) ================= -->
-    <nav class="main-navbar">
-      <div class="custom-container">
-        <ul class="flex items-center overflow-x-auto no-scrollbar">
-          <li><a href="index.html" class="nav-link-item active whitespace-nowrap">Trang chủ</a></li>
-          <li><a href="gioi-thieu.html" class="nav-link-item whitespace-nowrap">Giới thiệu</a></li>
-          <li><a href="san-pham.html" class="nav-link-item whitespace-nowrap">Sản phẩm</a></li>
-          <li><a href="giai-phap.html" class="nav-link-item whitespace-nowrap">Giải pháp</a></li>
-          <li><a href="thuong-hieu.html" class="nav-link-item whitespace-nowrap">Thương hiệu</a></li>
-          <li><a href="cong-cu-tinh-quat.html" class="nav-link-item whitespace-nowrap text-amber-300 font-bold"><i class="fas fa-calculator mr-1"></i> Công cụ tính quạt</a></li>
-          <li><a href="du-an.html" class="nav-link-item whitespace-nowrap">Dự án</a></li>
-          <li class="ml-auto hidden xl:block"><a href="lien-he.html" class="nav-link-item text-xs text-slate-300 hover:text-white font-medium">Liên hệ & Báo giá</a></li>
-        </ul>
-      </div>
-    </nav>
-  </header>
+    <a href="cong-cu-tinh-quat.html" class="nav-top ">Công cụ tính quạt</a>
+    <a href="du-an.html" class="nav-top ">Dự án</a>
+  </div>
+</nav>
 
-  <!-- ================= HERO BANNER SECTION ================= -->
-  <section class="bg-gradient-to-r from-brandNavyDark via-brandNavy to-slate-900 text-white py-14 md:py-20 relative overflow-hidden">
-    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]"></div>
-    <div class="custom-container relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-      
-      <!-- Left Hero Text -->
-      <div class="lg:col-span-7 space-y-6">
-        <div class="inline-flex items-center gap-2 bg-brandRed/20 border border-brandRed/40 text-red-300 px-3.5 py-1.5 rounded-full text-xs font-semibold">
-          <i class="fas fa-check-circle text-brandRed"></i> Tổng Đại Lý Phân Phối Quạt Công Nghiệp Chính Hãng
-        </div>
-        <h1 class="text-3xl md:text-5xl lg:text-6xl font-black font-heading leading-tight tracking-tight">
-          Giải Pháp Thông Gió & Làm Mát Nhà Xưởng <span class="text-brandRed">Toàn Diện</span>
-        </h1>
-        <p class="text-slate-300 text-sm md:text-base leading-relaxed max-w-2xl font-normal">
-          Winline Việt Nam cung cấp hơn 500+ dòng quạt cây, quạt thông gió vuông, quạt ly tâm, máy làm mát công nghiệp và hệ thống Cooling Pad tiêu chuẩn cao cho hàng ngàn nhà máy, trang trại trên toàn quốc.
-        </p>
-
-        <div class="flex flex-wrap items-center gap-3.5 pt-2">
-          <a href="san-pham.html" class="bg-brandRed hover:bg-brandRedHover text-white px-7 py-3.5 rounded-xl text-sm font-bold transition shadow-lg flex items-center gap-2">
-            <i class="fas fa-th-large"></i> Xem Danh Mục Sản Phẩm
-          </a>
-          <a href="cong-cu-tinh-quat.html" class="bg-amber-500 hover:bg-amber-600 text-slate-950 px-7 py-3.5 rounded-xl text-sm font-bold transition shadow-lg flex items-center gap-2">
-            <i class="fas fa-calculator"></i> Tính Lưu Lượng Quạt Ngay
-          </a>
-          <button onclick="openConsultModal()" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-6 py-3.5 rounded-xl text-sm font-semibold transition">
-            Yêu Cầu Báo Giá Sỉ
-          </button>
-        </div>
-
-        <!-- Trust Badges -->
-        <div class="grid grid-cols-3 gap-6 pt-6 border-t border-slate-700/60 text-xs">
-          <div>
-            <div class="text-2xl md:text-3xl font-black text-brandRed font-heading">12+ Năm</div>
-            <div class="text-slate-400 text-xs mt-0.5">Kinh nghiệm từ 2013</div>
-          </div>
-          <div>
-            <div class="text-2xl md:text-3xl font-black text-brandTeal font-heading">15.000+</div>
-            <div class="text-slate-400 text-xs mt-0.5">Nhà máy & Công trình</div>
-          </div>
-          <div>
-            <div class="text-2xl md:text-3xl font-black text-amber-400 font-heading">100%</div>
-            <div class="text-slate-400 text-xs mt-0.5">Bảo hành chính hãng</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Right Hero Graphic / Featured Products Card -->
-      <div class="lg:col-span-5 relative">
-        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-7 shadow-2xl space-y-5">
-          <div class="flex items-center justify-between border-b border-white/10 pb-3">
-            <span class="text-xs font-bold text-amber-300 uppercase tracking-wider">
-              <i class="fas fa-bolt mr-1"></i> Sản Phẩm Bán Chạy Nhất
-            </span>
-            <span class="text-xs bg-red-600 text-white px-2.5 py-0.5 rounded font-bold">Giảm 11%</span>
-          </div>
-
-          <div class="flex items-center gap-5">
-            <div class="w-32 h-32 bg-white rounded-2xl p-3 flex items-center justify-center flex-shrink-0 shadow-md">
-              <img src="assets/images/km750s.jpg" alt="Quạt Komasu KM-750S" class="max-h-full max-w-full object-contain">
-            </div>
-            <div class="space-y-1.5">
-              <div class="text-xs text-brandTeal font-bold uppercase tracking-wider">Komasu Nhật Bản</div>
-              <h3 class="text-lg font-bold text-white font-heading">Quạt Komasu KM-750S</h3>
-              <div class="text-xs text-slate-300 font-normal">Công suất: 250W • Lưu lượng: 15.200 m³/h</div>
-              <div class="text-xl font-black text-red-400 pt-1">2.890.000₫ <span class="text-xs text-slate-400 line-through font-normal">3.250.000₫</span></div>
-            </div>
-          </div>
-
-          <div class="pt-2 flex gap-3">
-            <button onclick="addToCart('p1')" class="flex-1 bg-brandRed hover:bg-brandRedHover text-white py-3 rounded-xl text-xs font-bold transition flex items-center justify-center gap-2 shadow-lg">
-              <i class="fas fa-cart-plus"></i> Đặt Mua Ngay
-            </button>
-            <button onclick="openQuickView('p1')" class="px-5 py-3 bg-white/20 hover:bg-white/30 text-white rounded-xl text-xs font-semibold transition">
-              Chi tiết
-            </button>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ================= QUICK CATEGORY ICONS BAR ================= -->
-  <section class="bg-white border-b border-slate-200 py-8 shadow-xs">
-    <div class="custom-container">
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
-        
-        <a href="san-pham.html?subcat=quat-cay-cong-nghiep" class="group flex flex-col items-center p-4 rounded-2xl border border-slate-100 hover:border-brandRed hover:bg-red-50/50 transition text-center shadow-2xs">
-          <div class="w-14 h-14 rounded-2xl bg-red-50 group-hover:bg-brandRed text-brandRed group-hover:text-white flex items-center justify-center text-2xl transition mb-2.5">
-            <i class="fas fa-fan"></i>
-          </div>
-          <span class="text-xs font-bold text-slate-800 group-hover:text-brandRed">Quạt Cây CN</span>
-          <span class="text-[10px] text-slate-400 mt-0.5">28+ Model</span>
-        </a>
-
-        <a href="san-pham.html?subcat=quat-treo-cong-nghiep" class="group flex flex-col items-center p-4 rounded-2xl border border-slate-100 hover:border-brandRed hover:bg-red-50/50 transition text-center shadow-2xs">
-          <div class="w-14 h-14 rounded-2xl bg-blue-50 group-hover:bg-brandNavy text-brandNavy group-hover:text-white flex items-center justify-center text-2xl transition mb-2.5">
-            <i class="fas fa-wind"></i>
-          </div>
-          <span class="text-xs font-bold text-slate-800 group-hover:text-brandRed">Quạt Treo Tường</span>
-          <span class="text-[10px] text-slate-400 mt-0.5">24+ Model</span>
-        </a>
-
-        <a href="san-pham.html?subcat=quat-thong-gio-vuong" class="group flex flex-col items-center p-4 rounded-2xl border border-slate-100 hover:border-brandRed hover:bg-red-50/50 transition text-center shadow-2xs">
-          <div class="w-14 h-14 rounded-2xl bg-teal-50 group-hover:bg-brandTeal text-brandTeal group-hover:text-white flex items-center justify-center text-2xl transition mb-2.5">
-            <i class="fas fa-square"></i>
-          </div>
-          <span class="text-xs font-bold text-slate-800 group-hover:text-brandRed">Quạt Vuông 1380</span>
-          <span class="text-[10px] text-slate-400 mt-0.5">19+ Model</span>
-        </a>
-
-        <a href="san-pham.html?subcat=quat-ly-tam" class="group flex flex-col items-center p-4 rounded-2xl border border-slate-100 hover:border-brandRed hover:bg-red-50/50 transition text-center shadow-2xs">
-          <div class="w-14 h-14 rounded-2xl bg-purple-50 group-hover:bg-purple-600 text-purple-600 group-hover:text-white flex items-center justify-center text-2xl transition mb-2.5">
-            <i class="fas fa-circle-notch"></i>
-          </div>
-          <span class="text-xs font-bold text-slate-800 group-hover:text-brandRed">Quạt Ly Tâm</span>
-          <span class="text-[10px] text-slate-400 mt-0.5">16+ Model</span>
-        </a>
-
-        <a href="san-pham.html?subcat=may-lam-mat-nha-xuong" class="group flex flex-col items-center p-4 rounded-2xl border border-slate-100 hover:border-brandRed hover:bg-red-50/50 transition text-center shadow-2xs">
-          <div class="w-14 h-14 rounded-2xl bg-sky-50 group-hover:bg-sky-600 text-sky-600 group-hover:text-white flex items-center justify-center text-2xl transition mb-2.5">
-            <i class="fas fa-temperature-low"></i>
-          </div>
-          <span class="text-xs font-bold text-slate-800 group-hover:text-brandRed">Máy Làm Mát</span>
-          <span class="text-[10px] text-slate-400 mt-0.5">12+ Model</span>
-        </a>
-
-        <a href="san-pham.html?subcat=tam-cooling-pad" class="group flex flex-col items-center p-4 rounded-2xl border border-slate-100 hover:border-brandRed hover:bg-red-50/50 transition text-center shadow-2xs">
-          <div class="w-14 h-14 rounded-2xl bg-emerald-50 group-hover:bg-emerald-600 text-emerald-600 group-hover:text-white flex items-center justify-center text-2xl transition mb-2.5">
-            <i class="fas fa-border-all"></i>
-          </div>
-          <span class="text-xs font-bold text-slate-800 group-hover:text-brandRed">Cooling Pad</span>
-          <span class="text-[10px] text-slate-400 mt-0.5">8+ Kích thước</span>
-        </a>
-
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <span class="hero-eyebrow">Đại lý ủy quyền Komasu · Tico · Senko · Panasonic · Nedfon · Nanyoo · Kyungjin · Hatari</span>
+      <h1>Hơn 20 năm cung cấp <b>quạt điện, quạt công nghiệp</b> — giao hàng toàn quốc, đầy đủ hoá đơn hồ sơ</h1>
+      <p>Từ quạt gia đình đến quạt công nghiệp cho nhà xưởng, công trình — tư vấn đúng nhu cầu, giao đúng hẹn, hồ sơ minh bạch ngay từ báo giá đầu tiên.</p>
+      <div class="hero-cta">
+        <button class="btn btn-primary">☎ Gọi ngay: 0949 761 893</button>
+        <button class="btn btn-ghost">💬 Chat Zalo tư vấn</button>
       </div>
     </div>
-  </section>
-
-  <!-- ================= FEATURED PRODUCTS SHOWCASE ================= -->
-  <section class="custom-container py-12 w-full">
-    <div class="flex items-center justify-between mb-8">
-      <div>
-        <div class="text-xs font-bold text-brandRed uppercase tracking-wider">Chất Lượng Vượt Trội</div>
-        <h2 class="text-2xl md:text-3xl font-black text-slate-900 font-heading">Sản Phẩm Quạt Công Nghiệp Tiêu Biểu</h2>
-      </div>
-      <a href="san-pham.html" class="text-xs font-bold text-brandNavy hover:text-brandRed flex items-center gap-1.5 transition">
-        Xem tất cả sản phẩm <i class="fas fa-arrow-right text-[10px]"></i>
-      </a>
+    <div class="hero-photo">Ảnh thực tế: kho hàng /<br>đội giao hàng Winline</div>
+  </div>
+  <div class="trust-strip">
+    <div class="trust-strip-inner">
+      <div class="trust-item"><span class="ti-num">98–99%</span><span class="ti-label">Đơn hàng<br>giao đúng hạn</span></div>
+      <div class="trust-item"><span class="ti-num">30 ngày</span><span class="ti-label">Đổi trả miễn phí<br>nếu lỗi</span></div>
+      <div class="trust-item"><span class="ti-num">12 tháng</span><span class="ti-label">Bảo hành<br>hư gì đổi nấy</span></div>
+      <div class="trust-item"><span class="ti-num">VAT · CQ/CO</span><span class="ti-label">Xuất hoá đơn,<br>hồ sơ đầy đủ</span></div>
     </div>
+  </div>
+</div>
 
-    <!-- 8 Highlighted Products -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="home-featured-products">
-      <!-- Generated via JS -->
-    </div>
-  </section>
-
-  <!-- ================= INTERACTIVE FAN CALCULATOR TEASER ================= -->
-  <section class="bg-gradient-to-br from-slate-900 via-brandNavy to-slate-950 text-white py-14 my-6">
-    <div class="custom-container grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-      <div class="lg:col-span-6 space-y-4">
-        <span class="bg-amber-400 text-slate-950 text-xs font-black px-3.5 py-1 rounded-full uppercase tracking-wider">
-          <i class="fas fa-calculator mr-1"></i> Tính Toán Tự Động
-        </span>
-        <h2 class="text-2xl md:text-4xl font-black font-heading leading-tight">
-          Công Cụ Tính Toán Lưu Lượng Gió Nhà Xưởng
-        </h2>
-        <p class="text-slate-300 text-sm leading-relaxed font-normal">
-          Chỉ cần nhập kích thước nhà xưởng (Dài x Rộng x Cao) và ngành nghề hoạt động, hệ thống sẽ tự động tính toán tổng lưu lượng gió $Q (m^3/h)$ và đề xuất chính xác số lượng quạt công nghiệp Winline cần lắp đặt.
-        </p>
-        <div class="flex items-center gap-4 pt-2">
-          <a href="cong-cu-tinh-quat.html" class="bg-brandRed hover:bg-brandRedHover text-white px-7 py-3.5 rounded-xl text-sm font-bold transition shadow-lg flex items-center gap-2">
-            Mở Công Cụ Tính Chi Tiết <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- Quick Mini Calculator Widget -->
-      <div class="lg:col-span-6 bg-white text-slate-800 rounded-3xl p-7 shadow-2xl">
-        <h3 class="text-base font-bold text-slate-900 mb-4 font-heading border-b border-slate-100 pb-3 flex items-center gap-2">
-          <i class="fas fa-wind text-brandTeal"></i> Tính Nhanh Lưu Lượng Không Khí
-        </h3>
-        <div class="grid grid-cols-3 gap-3 text-xs mb-4">
-          <div>
-            <label class="block font-bold text-slate-600 mb-1">Dài (m)</label>
-            <input type="number" id="quick-len" value="30" class="w-full border border-slate-300 rounded-lg p-2.5 focus:outline-none focus:border-brandRed text-center font-bold text-sm">
-          </div>
-          <div>
-            <label class="block font-bold text-slate-600 mb-1">Rộng (m)</label>
-            <input type="number" id="quick-wid" value="20" class="w-full border border-slate-300 rounded-lg p-2.5 focus:outline-none focus:border-brandRed text-center font-bold text-sm">
-          </div>
-          <div>
-            <label class="block font-bold text-slate-600 mb-1">Cao (m)</label>
-            <input type="number" id="quick-hei" value="6" class="w-full border border-slate-300 rounded-lg p-2.5 focus:outline-none focus:border-brandRed text-center font-bold text-sm">
-          </div>
-        </div>
-
-        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 flex items-center justify-between mb-4">
-          <div>
-            <div class="text-xs text-slate-500">Lưu lượng gió khuyến nghị:</div>
-            <div id="quick-result-q" class="text-xl md:text-2xl font-black text-brandRed font-heading">180.000 m³/h</div>
-          </div>
-          <div class="text-right">
-            <div class="text-xs text-slate-500">Đề xuất Quạt 1380:</div>
-            <div id="quick-result-fans" class="text-xl md:text-2xl font-black text-brandTeal font-heading">5 Quạt</div>
-          </div>
-        </div>
-
-        <a href="cong-cu-tinh-quat.html" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white py-3 rounded-xl text-xs font-bold transition shadow-md">
-          Xem Bảng Phân Bổ Chi Tiết & Báo Giá →
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= SOLUTIONS BY INDUSTRY ================= -->
-  <section class="custom-container py-12 w-full">
-    <div class="text-center max-w-2xl mx-auto mb-10">
-      <div class="text-xs font-bold text-brandRed uppercase tracking-wider">Giải Pháp Chuyên Sâu</div>
-      <h2 class="text-2xl md:text-3xl font-black text-slate-900 font-heading">Hệ Thống Thông Gió Theo Từng Ngành Nghề</h2>
-      <p class="text-xs text-slate-500 mt-2">Winline cung cấp giải pháp làm mát thông gió tối ưu hóa chi phí điện năng và đáp ứng tiêu chuẩn PCCC.</p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
-      <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-2xs group hover:shadow-md transition">
-        <div class="h-48 overflow-hidden relative">
-          <img src="https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=600&q=80" alt="Nhà xưởng may" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-          <div class="absolute top-3.5 left-3.5 bg-brandRed text-white text-xs font-bold px-2.5 py-0.5 rounded-lg shadow-xs">Dệt may & Da giày</div>
-        </div>
-        <div class="p-6 space-y-2">
-          <h3 class="font-bold text-slate-900 text-base font-heading">Hệ Thống Làm Mát Áp Suất Âm</h3>
-          <p class="text-xs text-slate-500 leading-relaxed font-normal">Kết hợp quạt thông gió vuông 1380 và dàn tấm Cooling Pad giúp hạ nhiệt độ từ 5-8°C, lọc sạch bụi bông.</p>
-          <a href="giai-phap.html" class="inline-block text-xs font-bold text-brandRed hover:underline pt-2">Tìm hiểu giải pháp →</a>
-        </div>
-      </div>
-
-      <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-2xs group hover:shadow-md transition">
-        <div class="h-48 overflow-hidden relative">
-          <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80" alt="Xưởng cơ khí" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-          <div class="absolute top-3.5 left-3.5 bg-brandNavy text-white text-xs font-bold px-2.5 py-0.5 rounded-lg shadow-xs">Cơ khí & Đúc kim loại</div>
-        </div>
-        <div class="p-6 space-y-2">
-          <h3 class="font-bold text-slate-900 text-base font-heading">Hút Khói Hàn & Khí Thải Lò Nung</h3>
-          <p class="text-xs text-slate-500 leading-relaxed font-normal">Sử dụng quạt ly tâm áp suất cao và quạt hút công nghiệp chịu nhiệt độ cao, bảo vệ sức khỏe người lao động.</p>
-          <a href="giai-phap.html" class="inline-block text-xs font-bold text-brandRed hover:underline pt-2">Tìm hiểu giải pháp →</a>
-        </div>
-      </div>
-
-      <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-2xs group hover:shadow-md transition">
-        <div class="h-48 overflow-hidden relative">
-          <img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=600&q=80" alt="Trang trại chăn nuôi" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-          <div class="absolute top-3.5 left-3.5 bg-brandTeal text-white text-xs font-bold px-2.5 py-0.5 rounded-lg shadow-xs">Trang trại chăn nuôi</div>
-        </div>
-        <div class="p-6 space-y-2">
-          <h3 class="font-bold text-slate-900 text-base font-heading">Thông Gió Chuồng Trại Khép Kín</h3>
-          <p class="text-xs text-slate-500 leading-relaxed font-normal">Hút khí amoniac độc hại, cung cấp oxy tươi liên tục giúp vật nuôi tăng trưởng khỏe mạnh, ngăn ngừa dịch bệnh.</p>
-          <a href="giai-phap.html" class="inline-block text-xs font-bold text-brandRed hover:underline pt-2">Tìm hiểu giải pháp →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= BRAND PARTNERS ================= -->
-  <section class="bg-slate-100 py-10 border-y border-slate-200">
-    <div class="custom-container">
-      <div class="text-center mb-6">
-        <h3 class="text-xs font-bold text-slate-600 uppercase tracking-widest font-heading">Thương Hiệu Phân Phối Chính Hãng</h3>
-      </div>
-      <div class="flex items-center justify-center gap-6 md:gap-10 flex-wrap">
-        <a href="san-pham.html?brand=komasu" class="bg-white px-6 py-3.5 rounded-xl border border-slate-200 hover:border-brandRed transition font-bold text-slate-800 text-sm flex items-center gap-2 shadow-2xs">
-          <span class="w-2.5 h-2.5 rounded-full bg-red-600"></span> KOMASU
-        </a>
-        <a href="san-pham.html?brand=vinawind" class="bg-white px-6 py-3.5 rounded-xl border border-slate-200 hover:border-brandRed transition font-bold text-slate-800 text-sm flex items-center gap-2 shadow-2xs">
-          <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span> VINAWIND
-        </a>
-        <a href="san-pham.html?brand=deton" class="bg-white px-6 py-3.5 rounded-xl border border-slate-200 hover:border-brandRed transition font-bold text-slate-800 text-sm flex items-center gap-2 shadow-2xs">
-          <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> DETON
-        </a>
-        <a href="san-pham.html?brand=dasin" class="bg-white px-6 py-3.5 rounded-xl border border-slate-200 hover:border-brandRed transition font-bold text-slate-800 text-sm flex items-center gap-2 shadow-2xs">
-          <span class="w-2.5 h-2.5 rounded-full bg-teal-600"></span> DASIN
-        </a>
-        <a href="san-pham.html?brand=chinghai" class="bg-white px-6 py-3.5 rounded-xl border border-slate-200 hover:border-brandRed transition font-bold text-slate-800 text-sm flex items-center gap-2 shadow-2xs">
-          <span class="w-2.5 h-2.5 rounded-full bg-indigo-600"></span> CHINGHAI
-        </a>
-        <a href="san-pham.html?brand=hatari" class="bg-white px-6 py-3.5 rounded-xl border border-slate-200 hover:border-brandRed transition font-bold text-slate-800 text-sm flex items-center gap-2 shadow-2xs">
-          <span class="w-2.5 h-2.5 rounded-full bg-rose-600"></span> HATARI
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= FOOTER ================= -->
-  <footer class="bg-slate-900 text-slate-300 text-xs mt-auto border-t-4 border-brandRed">
-    <div class="custom-container py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-      <div class="space-y-3">
-        <div class="text-xl font-black text-white font-heading">
-          Winline<span class="text-brandRed">.vn</span>
-        </div>
-        <p class="text-slate-400 leading-relaxed text-[11px]">
-          <strong>Công ty TNHH Winline Việt Nam</strong> - MST: <strong>0106085370</strong> do Sở KH & ĐT TP Hà Nội cấp ngày 15/01/2013.
-        </p>
-        <div class="space-y-1.5 text-[11px] text-slate-400 pt-1">
-          <div><i class="fas fa-map-marker-alt text-brandRed mr-2"></i> Số 17 Ngõ 46 Quan Nhân, P. Thanh Xuân, Hà Nội</div>
-          <div><i class="fas fa-phone-alt text-brandTeal mr-2"></i> Hotline: 0949.761.893 - 1900.099.806</div>
-          <div><i class="fas fa-envelope text-amber-400 mr-2"></i> Winlinevietnam@gmail.com</div>
-        </div>
-      </div>
-
-      <div>
-        <h3 class="text-white font-bold text-sm mb-3 font-heading uppercase tracking-wider">Hệ Thống Menu</h3>
-        <ul class="space-y-2 text-[11px] text-slate-400">
-          <li><a href="index.html" class="hover:text-white transition">Trang chủ</a></li>
-          <li><a href="gioi-thieu.html" class="hover:text-white transition">Giới thiệu</a></li>
-          <li><a href="san-pham.html" class="hover:text-white transition">Sản phẩm</a></li>
-          <li><a href="giai-phap.html" class="hover:text-white transition">Giải pháp</a></li>
-          <li><a href="thuong-hieu.html" class="hover:text-white transition">Thương hiệu</a></li>
-          <li><a href="cong-cu-tinh-quat.html" class="hover:text-white transition text-amber-300 font-bold">Công cụ tính quạt</a></li>
-          <li><a href="du-an.html" class="hover:text-white transition">Dự án</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h3 class="text-white font-bold text-sm mb-3 font-heading uppercase tracking-wider">Sản Phẩm Chủ Lực</h3>
-        <ul class="space-y-2 text-[11px] text-slate-400">
-          <li><a href="san-pham.html?subcat=quat-cay-cong-nghiep" class="hover:text-white transition">Quạt cây công nghiệp Komasu</a></li>
-          <li><a href="san-pham.html?subcat=quat-thong-gio-vuong" class="hover:text-white transition">Quạt thông gió vuông 1380x1380</a></li>
-          <li><a href="san-pham.html?subcat=may-lam-mat-nha-xuong" class="hover:text-white transition">Máy làm mát công nghiệp 18000</a></li>
-          <li><a href="san-pham.html?subcat=tam-cooling-pad" class="hover:text-white transition">Tấm làm mát Cooling Pad chống rêu</a></li>
-          <li><a href="san-pham.html?subcat=quat-ly-tam" class="hover:text-white transition">Quạt ly tâm hút khói cao áp</a></li>
-        </ul>
-      </div>
-
-      <div class="space-y-3">
-        <h3 class="text-white font-bold text-sm font-heading uppercase tracking-wider">Liên Hệ Báo Giá Sỉ</h3>
-        <div class="bg-slate-800 p-3.5 rounded-xl border border-slate-700 space-y-2">
-          <div>Hotline bán hàng: <a href="tel:0949761893" class="text-brandRed font-bold">0949 761 893</a></div>
-          <div>Kỹ thuật 24/7: <a href="tel:1900099806" class="text-brandTeal font-bold">1900 099 806</a></div>
-        </div>
-        <button onclick="openConsultModal()" class="w-full bg-brandRed hover:bg-brandRedHover text-white py-2.5 rounded-xl text-xs font-bold transition shadow-md">
-          Gửi Yêu Cầu Khảo Sát Dự Án
-        </button>
-      </div>
-    </div>
-
-    <div class="bg-black/40 border-t border-slate-800/80 py-4 text-center text-[11px] text-slate-500">
-      <div class="custom-container flex flex-col sm:flex-row justify-between items-center gap-2">
-        <div>Hệ thống: Winline.vn | Quatdiencothongnhat.vn | Chinghaihanoi.vn</div>
-        <div>© 2013 - 2026 Bản quyền thuộc về <strong>Winline.vn</strong>.</div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Floating Action Widgets -->
-  <div class="fixed bottom-6 right-5 z-40 flex flex-col items-center gap-2.5">
-    <a href="cong-cu-tinh-quat.html" title="Công cụ tính toán quạt" class="floating-contact-btn bg-amber-500 hover:bg-amber-600">
-      <i class="fas fa-calculator text-lg"></i>
+<section>
+  <div class="sec-head"><h2>Bạn đang cần mua cho việc gì?</h2><p>Chọn đúng nhu cầu để xem sản phẩm và chính sách phù hợp nhất</p></div>
+  <div class="need-grid">
+    <a class="need-card" href="#">
+      <div class="n-icon">🏠</div>
+      <h3>Mua cho gia đình</h3>
+      <p>Quạt trần, quạt cây, quạt treo tường dân dụng — giao nhanh, giá rõ ràng, đổi trả dễ dàng.</p>
+      <span class="n-link">Xem sản phẩm →</span>
     </a>
-    <a href="https://zalo.me/0949761893" target="_blank" title="Chat Zalo tư vấn" class="floating-contact-btn bg-blue-600 hover:bg-blue-700">
-      <span class="font-black text-xs">Zalo</span>
+    <a class="need-card" href="#">
+      <div class="n-icon">🏭</div>
+      <h3>Mua cho nhà xưởng — công trình</h3>
+      <p>Quạt công nghiệp, quạt thông gió công suất lớn — có hồ sơ năng lực, bản vẽ lắp đặt, báo giá dự án.</p>
+      <span class="n-link">Xem giải pháp →</span>
     </a>
-    <a href="tel:0949761893" title="Gọi ngay 0949 761 893" class="floating-contact-btn bg-brandRed hover:bg-brandRedHover animate-pulse">
-      <i class="fas fa-phone-alt"></i>
+    <a class="need-card" href="#">
+      <div class="n-icon">📦</div>
+      <h3>Mua sỉ — đại lý</h3>
+      <p>Nhập hàng số lượng lớn để bán lại — chính sách giá sỉ riêng, hỗ trợ hình ảnh &amp; thông tin sản phẩm.</p>
+      <span class="n-link">Nhận báo giá sỉ →</span>
     </a>
-    <button id="btn-back-to-top" title="Lên đầu trang" class="floating-contact-btn bg-slate-800 hover:bg-slate-700 opacity-0 pointer-events-none transition-opacity">
-      <i class="fas fa-chevron-up"></i>
-    </button>
   </div>
+</section>
 
-  <!-- Shared Modals (Cart, Quick View, Consult) -->
-  <div id="cart-drawer" class="fixed inset-0 z-50 pointer-events-none opacity-0 transition-opacity">
-    <div onclick="closeCartDrawer()" class="drawer-backdrop absolute inset-0"></div>
-    <div id="cart-drawer-panel" class="drawer-panel absolute top-0 right-0 bottom-0 w-full max-w-md bg-white shadow-2xl flex flex-col transform translate-x-full transition-transform">
-      <div class="p-4 bg-brandNavy text-white flex items-center justify-between">
-        <div class="flex items-center gap-2">
-          <i class="fas fa-shopping-cart text-brandRed"></i>
-          <h3 class="font-bold text-sm font-heading">Giỏ Hàng Của Bạn (<span class="cart-badge-count">0</span>)</h3>
-        </div>
-        <button onclick="closeCartDrawer()" class="text-slate-300 hover:text-white text-lg"><i class="fas fa-times"></i></button>
+<section style="padding-top:0;">
+  <div class="sec-head"><h2>Danh mục sản phẩm</h2></div>
+  <div class="cat-grid">
+    <a class="cat-tile" href="#"><div class="ct-icon">🌀</div><span>Quạt trần</span></a>
+    <a class="cat-tile" href="#"><div class="ct-icon">🧍</div><span>Quạt cây</span></a>
+    <a class="cat-tile" href="#"><div class="ct-icon">🪟</div><span>Quạt treo tường</span></a>
+    <a class="cat-tile" href="#"><div class="ct-icon">📦</div><span>Quạt hộp</span></a>
+    <a class="cat-tile" href="#"><div class="ct-icon">🏭</div><span>Quạt công nghiệp</span></a>
+    <a class="cat-tile" href="#"><div class="ct-icon">💨</div><span>Quạt thông gió</span></a>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="sec-head"><h2>Sản phẩm bán chạy</h2><p>Sắp xếp theo số lượng đã bán, cập nhật liên tục</p></div>
+  <div class="prod-grid">
+    <div class="prod-card">
+      <div class="p-img" style="background:#fff; display:flex; align-items:center; justify-content:center; height:180px; position:relative; padding:10px; border-bottom:1px solid #f0f2f5;"><span class="p-badge">Bán chạy</span><img src="assets/images/km750s.jpg" alt="Sản phẩm" style="max-height:160px; max-width:100%; object-fit:contain; margin:auto;" onerror="this.src='assets/images/km750s.jpg'"></div>
+      <div class="p-body">
+        <div class="p-brand">Komasu</div>
+        <div class="p-name"><a href="chi-tiet-san-pham.html" style="color:inherit; text-decoration:none;">Quạt cây công nghiệp Komasu KM-750S</a></div>
+        <ul class="p-specs"><li>Công suất 250W</li><li>Sải cánh 750mm · 3 tốc độ</li></ul>
+        <div class="p-price">2.630.000đ</div>
+        <div class="p-bulk">Giá tốt hơn khi mua từ 6 sản phẩm</div>
+        <div class="p-rating">★★★★★ <span>4.8 (36)</span></div>
+        <div class="p-stock"><span class="d"></span>Còn hàng</div>
       </div>
-      <div class="flex-1 overflow-y-auto p-4">
-        <div id="cart-empty-state" class="text-center py-16 text-slate-400">
-          <i class="fas fa-shopping-basket text-5xl text-slate-200 mb-3"></i>
-          <p class="text-sm font-semibold text-slate-600">Giỏ hàng của bạn đang trống</p>
-        </div>
-        <div id="cart-filled-state" class="hidden flex flex-col justify-between h-full">
-          <div id="cart-drawer-items" class="space-y-1"></div>
-          <div class="pt-4 mt-4 border-t border-slate-200 bg-slate-50 -mx-4 -mb-4 p-4">
-            <div class="flex justify-between items-baseline mb-3">
-              <span class="text-xs text-slate-500 font-medium">Tổng tiền:</span>
-              <span id="cart-drawer-total" class="text-lg font-black text-brandRed font-heading">0₫</span>
-            </div>
-            <form onsubmit="handleCheckout(event)" class="space-y-2 text-xs">
-              <input type="text" name="customer_name" placeholder="Họ và tên..." class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2" required>
-              <input type="tel" name="customer_phone" placeholder="Số điện thoại..." class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2" required>
-              <button type="submit" class="w-full bg-brandRed hover:bg-brandRedHover text-white font-bold py-2.5 rounded-lg text-sm">
-                Đặt Hàng Nhanh
-              </button>
-            </form>
-          </div>
-        </div>
+    </div>
+    <div class="prod-card">
+      <div class="p-img" style="background:#fff; display:flex; align-items:center; justify-content:center; height:180px; position:relative; padding:10px; border-bottom:1px solid #f0f2f5;"><img src="assets/images/km750s.jpg" alt="Sản phẩm" style="max-height:160px; max-width:100%; object-fit:contain; margin:auto;" onerror="this.src='assets/images/km750s.jpg'"></div>
+      <div class="p-body">
+        <div class="p-brand">Tico</div>
+        <div class="p-name"><a href="chi-tiet-san-pham.html" style="color:inherit; text-decoration:none;">Quạt cây công nghiệp Tico TC-750</a></div>
+        <ul class="p-specs"><li>Công suất 220W</li><li>Sải cánh 750mm · 3 tốc độ</li></ul>
+        <div class="p-price">2.480.000đ</div>
+        <div class="p-bulk">Giá tốt hơn khi mua từ 6 sản phẩm</div>
+        <div class="p-rating">★★★★★ <span>4.7 (18)</span></div>
+        <div class="p-stock"><span class="d"></span>Còn hàng</div>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="p-img" style="background:#fff; display:flex; align-items:center; justify-content:center; height:180px; position:relative; padding:10px; border-bottom:1px solid #f0f2f5;"><img src="assets/images/km750s.jpg" alt="Sản phẩm" style="max-height:160px; max-width:100%; object-fit:contain; margin:auto;" onerror="this.src='assets/images/km750s.jpg'"></div>
+      <div class="p-body">
+        <div class="p-brand">Senko</div>
+        <div class="p-name"><a href="chi-tiet-san-pham.html" style="color:inherit; text-decoration:none;">Quạt sàn công nghiệp Senko QS-500</a></div>
+        <ul class="p-specs"><li>Công suất 165W</li><li>Sải cánh 500mm</li></ul>
+        <div class="p-price">1.650.000đ</div>
+        <div class="p-bulk">Giá tốt hơn khi mua từ 6 sản phẩm</div>
+        <div class="p-rating">★★★★☆ <span>4.4 (9)</span></div>
+        <div class="p-stock"><span class="d"></span>Còn hàng</div>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="p-img" style="background:#fff; display:flex; align-items:center; justify-content:center; height:180px; position:relative; padding:10px; border-bottom:1px solid #f0f2f5;"><img src="assets/images/km750s.jpg" alt="Sản phẩm" style="max-height:160px; max-width:100%; object-fit:contain; margin:auto;" onerror="this.src='assets/images/km750s.jpg'"></div>
+      <div class="p-body">
+        <div class="p-brand">Kyungjin</div>
+        <div class="p-name"><a href="chi-tiet-san-pham.html" style="color:inherit; text-decoration:none;">Quạt thông gió công nghiệp Kyungjin KR-1000</a></div>
+        <ul class="p-specs"><li>Lưu lượng 8.500 m³/h</li><li>Lắp âm trần / tường</li></ul>
+        <div class="p-price">4.150.000đ</div>
+        <div class="p-bulk">Giá tốt hơn khi mua từ 6 sản phẩm</div>
+        <div class="p-rating">★★★★★ <span>4.9 (11)</span></div>
+        <div class="p-stock"><span class="d"></span>Còn hàng</div>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="p-img" style="background:#fff; display:flex; align-items:center; justify-content:center; height:180px; position:relative; padding:10px; border-bottom:1px solid #f0f2f5;"><img src="assets/images/km750s.jpg" alt="Sản phẩm" style="max-height:160px; max-width:100%; object-fit:contain; margin:auto;" onerror="this.src='assets/images/km750s.jpg'"></div>
+      <div class="p-body">
+        <div class="p-brand">Nedfon</div>
+        <div class="p-name"><a href="chi-tiet-san-pham.html" style="color:inherit; text-decoration:none;">Quạt treo tường công nghiệp Nedfon NF-650</a></div>
+        <ul class="p-specs"><li>Công suất 190W</li><li>Sải cánh 650mm</li></ul>
+        <div class="p-price">1.890.000đ</div>
+        <div class="p-bulk">Giá tốt hơn khi mua từ 6 sản phẩm</div>
+        <div class="p-rating">★★★★★ <span>4.6 (22)</span></div>
+        <div class="p-stock"><span class="d"></span>Còn hàng</div>
       </div>
     </div>
   </div>
+</section>
 
-  <div id="quickview-modal" class="fixed inset-0 z-50 pointer-events-none opacity-0 transition-opacity flex items-center justify-center p-4">
-    <div onclick="closeQuickView()" class="drawer-backdrop absolute inset-0"></div>
-    <div class="relative bg-white rounded-2xl shadow-2xl max-w-4xl w-full overflow-hidden z-10 max-h-[92vh] overflow-y-auto">
-      <button onclick="closeQuickView()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition z-20 shadow-xs"><i class="fas fa-times text-sm"></i></button>
-      <div id="quickview-modal-content"></div>
+<section style="padding-top:0;">
+  <div class="sec-head"><h2>Thương hiệu đang phân phối</h2><p>Đại lý ủy quyền chính hãng</p></div>
+  <div class="brand-strip">
+    <div class="brand-tile">KOMASU</div>
+    <div class="brand-tile">TICO</div>
+    <div class="brand-tile">SENKO</div>
+    <div class="brand-tile">PANASONIC</div>
+    <div class="brand-tile">NEDFON</div>
+    <div class="brand-tile">NANYOO</div>
+    <div class="brand-tile">KYUNGJIN</div>
+    <div class="brand-tile">HATARI</div>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="sec-head"><h2>Khách hàng nói gì về Winline</h2></div>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="t-stars">★★★★★</div>
+      <p>Đặt 8 quạt công nghiệp cho xưởng may, giao đúng hẹn dù đơn gấp. Nhân viên tư vấn đúng công suất theo diện tích, không phải tự đoán.</p>
+      <div class="t-who"><div class="t-avatar">D</div><div class="t-meta"><b>Anh Dũng</b>Xưởng may — Đông Anh, Hà Nội</div></div>
+    </div>
+    <div class="testi-card">
+      <div class="t-stars">★★★★★</div>
+      <p>Mua sỉ 20 quạt trần về bán lại, có bảng giá rõ ràng theo số lượng, không phải mặc cả từng đơn như chỗ khác.</p>
+      <div class="t-who"><div class="t-avatar">H</div><div class="t-meta"><b>Chị Hằng</b>Cửa hàng điện máy — Bắc Ninh</div></div>
+    </div>
+    <div class="testi-card">
+      <div class="t-stars">★★★★★</div>
+      <p>Công trình cần gấp hồ sơ CQ/CO để trình chủ đầu tư, Winline gửi đủ trong ngày, không phải chờ đợi nhiều lần.</p>
+      <div class="t-who"><div class="t-avatar">M</div><div class="t-meta"><b>Anh Minh</b>Nhà thầu cơ điện — Hà Nội</div></div>
     </div>
   </div>
+</section>
 
-  <div id="consult-modal" class="fixed inset-0 z-50 pointer-events-none opacity-0 transition-opacity flex items-center justify-center p-4">
-    <div onclick="closeConsultModal()" class="drawer-backdrop absolute inset-0"></div>
-    <div class="relative bg-white rounded-2xl shadow-2xl max-w-md w-full overflow-hidden z-10 p-6">
-      <button onclick="closeConsultModal()" class="absolute top-4 right-4 text-slate-400"><i class="fas fa-times"></i></button>
-      <div class="text-center mb-4">
-        <h3 class="text-base font-bold text-slate-800 font-heading">Yêu Cầu Tư Vấn & Báo Giá Sỉ</h3>
+<div class="reception-band">
+  <div class="reception-inner">
+    <div class="reception-text">
+      <h3>Cần tư vấn nhanh?</h3>
+      <p>Đội tư vấn Winline sẵn sàng hỗ trợ trong giờ làm việc — chọn đúng người phụ trách để được phản hồi nhanh nhất.</p>
+    </div>
+    <div class="reception-staff">
+      <div class="r-card">
+        <div class="r-avatar" style="background:linear-gradient(135deg,#d41e3d,#a71830);">KH</div>
+        <div class="r-meta"><b>Kim Huệ</b>Tư vấn mua lẻ, mua nhanh</div>
+        <a class="r-zalo" href="#">Zalo</a>
       </div>
-      <form onsubmit="handleConsultSubmit(event)" class="space-y-3 text-xs">
-        <input type="text" id="consult-subject" name="subject" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2" readonly>
-        <input type="text" name="name" placeholder="Họ tên của bạn..." class="w-full border border-slate-300 rounded-lg px-3 py-2" required>
-        <input type="tel" name="phone" placeholder="Số điện thoại..." class="w-full border border-slate-300 rounded-lg px-3 py-2" required>
-        <button type="submit" class="w-full bg-brandRed hover:bg-brandRedHover text-white font-bold py-2.5 rounded-lg transition">Gửi Yêu Cầu</button>
-      </form>
+      <div class="r-card">
+        <div class="r-avatar" style="background:linear-gradient(135deg,#1f6690,#00354f);">NY</div>
+        <div class="r-meta"><b>Ngọc Yến</b>Tư vấn chung, mọi trang</div>
+        <a class="r-zalo" href="#">Zalo</a>
+      </div>
     </div>
   </div>
+</div>
 
-  <!-- Scripts -->
-  <script src="js/products-data.js"></script>
-  <script src="js/app.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const featContainer = document.getElementById("home-featured-products");
-      if (featContainer && WINLINE_DATA) {
-        const topProds = WINLINE_DATA.products.slice(0, 8);
-        featContainer.innerHTML = topProds.map(p => `
-          <div class="product-card group">
-            <div class="absolute top-2.5 left-2.5 z-10 flex flex-col gap-1 pointer-events-none">
-              ${p.discount ? `<span class="badge-discount">-${p.discount}%</span>` : ''}
-              ${p.isBestSeller ? `<span class="bg-amber-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded shadow-xs">HOT</span>` : ''}
-            </div>
-            <div class="img-wrap cursor-pointer" onclick="openQuickView('${p.id}')">
-              <img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.src='assets/images/km750s.jpg'">
-            </div>
-            <div class="p-4 flex-1 flex flex-col justify-between bg-white">
-              <div>
-                <h3 onclick="openQuickView('${p.id}')" class="text-sm font-bold text-slate-900 group-hover:text-red-600 transition cursor-pointer line-clamp-1 mb-2 font-heading" title="${p.name}">
-                  ${p.name}
-                </h3>
-                <div class="text-[12px] text-slate-600 space-y-0.5 mb-3 font-normal">
-                  <div>Công suất: <strong class="text-slate-800 font-semibold">${p.powerText}</strong></div>
-                  <div>Lưu lượng: <strong class="text-slate-800 font-semibold">${p.airflowText}</strong></div>
-                </div>
-              </div>
-              <div>
-                <div class="flex items-baseline gap-2 mb-3">
-                  <span class="price-red">${formatVND(p.price)}</span>
-                  ${p.oldPrice ? `<span class="text-xs text-slate-400 line-through">${formatVND(p.oldPrice)}</span>` : ''}
-                </div>
-                <div class="grid grid-cols-5 gap-2">
-                  <button onclick="openQuickView('${p.id}')" class="col-span-3 btn-detail-outline">Xem chi tiết</button>
-                  <button onclick="addToCart('${p.id}')" class="col-span-2 bg-red-600 hover:bg-red-700 text-white rounded-lg text-xs font-semibold py-1.5 flex items-center justify-center gap-1 transition shadow-xs">
-                    <i class="fas fa-cart-plus"></i> Mua
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        `).join("");
-      }
+<footer>
+  <div class="footer-inner">
+    <div>
+      <h4>CÔNG TY TNHH WINLINE VIỆT NAM</h4>
+      <p>Văn phòng: Số 7 BT6, Pháp Vân – Tứ Hiệp, P. Yên Sở, Hà Nội</p>
+      <p>Cửa hàng: Số 17 ngõ 46 phố Quan Nhân, P. Thanh Xuân, Hà Nội</p>
+      <p>MST: 0106085370</p>
+      <p>Giờ làm việc: 8:00–17:30, Thứ 2 – Thứ 7</p>
+    </div>
+    <div>
+      <h4>Về Winline</h4>
+      <a href="#">Giới thiệu công ty</a>
+      <a href="ho-so-nang-luc.html">Hồ sơ năng lực</a>
+      <a href="du-an.html">Đơn hàng tiêu biểu</a>
+      <a href="#">Tài liệu &amp; Hồ sơ</a>
+    </div>
+    <div>
+      <h4>Chính sách</h4>
+      <a href="#">Chính sách bán hàng</a>
+      <a href="#">Chính sách giao hàng</a>
+      <a href="#">Bảo hành &amp; đổi trả</a>
+      <a href="#">Hướng dẫn mua hàng</a>
+    </div>
+    <div>
+      <h4>Liên hệ</h4>
+      <a href="tel:0949761893">Hotline: 0949 761 893</a>
+      <a href="#">Kim Huệ — bán lẻ</a>
+      <a href="#">Ngọc Yến — tư vấn chung</a>
+      <a href="#">Zalo Official Account</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Công ty TNHH Winline Việt Nam</span>
+    <span>/quat-cay-cong-nghiep/ · /quat-treo-tuong-cong-nghiep/ · /quat-thong-gio/</span>
+  </div>
+</footer>
 
-      function updateQuickCalc() {
-        const l = parseFloat(document.getElementById("quick-len")?.value) || 30;
-        const w = parseFloat(document.getElementById("quick-wid")?.value) || 20;
-        const h = parseFloat(document.getElementById("quick-hei")?.value) || 6;
-        const q = l * w * h * 50;
-        const fans = Math.ceil(q / 44500);
-        document.getElementById("quick-result-q").textContent = `${q.toLocaleString("vi-VN")} m³/h`;
-        document.getElementById("quick-result-fans").textContent = `${fans} Quạt 1380`;
-      }
-      ["quick-len", "quick-wid", "quick-hei"].forEach(id => {
-        document.getElementById(id)?.addEventListener("input", updateQuickCalc);
-      });
-    });
-  </script>
+<div class="float-contact">
+  <a class="fc-zalo" href="#" aria-label="Chat Zalo">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="#fff"><path d="M12 3C6.48 3 2 6.94 2 11.8c0 2.68 1.4 5.08 3.6 6.7-.12.9-.5 2.16-1.4 3.4a.5.5 0 00.55.78c1.8-.5 3.2-1.33 4.1-1.98A11.6 11.6 0 0012 20.6c5.52 0 10-3.94 10-8.8S17.52 3 12 3z"/></svg>
+  </a>
+  <a class="fc-call" href="tel:0949761893" aria-label="Gọi ngay">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="#fff"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.02l-2.2 2.19z"/></svg>
+  </a>
+</div>
+<div class="mobile-sticky">
+  <button class="msb-icon menu" onclick="toggleMobileMenu()">
+    <span class="msb-circle">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="#fff"><rect x="3" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5"/></svg>
+    </span>
+    <span class="msb-label">Danh mục</span>
+  </button>
+  <a class="msb-icon zalo" href="#">
+    <span class="msb-circle">
+      <svg viewBox="0 0 24 24" width="19" height="19" fill="#fff"><path d="M12 3C6.48 3 2 6.94 2 11.8c0 2.68 1.4 5.08 3.6 6.7-.12.9-.5 2.16-1.4 3.4a.5.5 0 00.55.78c1.8-.5 3.2-1.33 4.1-1.98A11.6 11.6 0 0012 20.6c5.52 0 10-3.94 10-8.8S17.52 3 12 3z"/></svg>
+    </span>
+    <span class="msb-label">Zalo</span>
+  </a>
+  <a class="msb-icon call" href="tel:0949761893">
+    <span class="msb-circle">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="#fff"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.02l-2.2 2.19z"/></svg>
+    </span>
+    <span class="msb-label">Gọi ngay</span>
+  </a>
+  <a class="msb-icon quote" href="san-pham.html">
+    <span class="msb-circle">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="#fff"><path d="M4 4h7v7H4V4zm9 0h7v7h-7V4zM4 13h7v7H4v-7zm9 0h7v7h-7v-7z"/></svg>
+    </span>
+    <span class="msb-label">Sản phẩm</span>
+  </a>
+</div>
+
+<div class="menu-sheet-overlay" id="menuSheet">
+  <div class="menu-sheet">
+    <button class="ms-close" onclick="closeMobileMenu()">✕</button>
+    <div class="menu-sheet-handle"></div>
+    <h3>Danh mục</h3>
+    <div class="ms-grid">
+      <a class="ms-tile" href="san-pham.html"><span class="ms-icon">🌀</span><span>Quạt dân dụng</span></a>
+      <a class="ms-tile" href="san-pham.html"><span class="ms-icon">🏭</span><span>Quạt công nghiệp</span></a>
+      <a class="ms-tile" href="san-pham.html"><span class="ms-icon">💨</span><span>Thông gió &amp; làm mát</span></a>
+      <a class="ms-tile" href="san-pham.html"><span class="ms-icon">🏷️</span><span>Thương hiệu</span></a>
+      <a class="ms-tile" href="#"><span class="ms-icon">🏗️</span><span>Giải pháp theo nhu cầu</span></a>
+      <a class="ms-tile" href="ho-so-nang-luc.html"><span class="ms-icon">📁</span><span>Hồ sơ &amp; Tài liệu</span></a>
+    </div>
+  </div>
+</div>
+
+<script>
+const searchBox=document.querySelector('.search-box');
+const suggest=document.getElementById('searchSuggest');
+searchBox.addEventListener('focus',()=>suggest.style.display='block');
+searchBox.addEventListener('blur',()=>setTimeout(()=>suggest.style.display='none',150));
+function toggleMobileMenu(){document.getElementById('menuSheet').classList.add('open');}
+function closeMobileMenu(){document.getElementById('menuSheet').classList.remove('open');}
+</script>
+
 </body>
 </html>

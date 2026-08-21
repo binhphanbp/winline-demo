@@ -1,236 +1,339 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Giải Pháp Thông Gió & Làm Mát Nhà Xưởng | Winline.vn</title>
-  <meta name="description" content="Các giải pháp làm mát nhà xưởng áp suất âm, thông gió chuồng trại chăn nuôi, hút khói PCCC tòa nhà bằng quạt công nghiệp Winline. Hotline: 0949.761.893">
-  
-  <link rel="icon" href="https://bizweb.dktcdn.net/100/391/557/themes/903209/assets/favicon.png?1786933451521" type="image/x-icon">
-  
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['"Be Vietnam Pro"', '"Inter"', 'sans-serif'],
-            heading: ['"Be Vietnam Pro"', 'sans-serif']
-          },
-          colors: {
-            brandNavy: '#0b1f3a',
-            brandNavyDark: '#071529',
-            brandRed: '#e51a24',
-            brandRedHover: '#c4121b',
-            brandTeal: '#26a69a',
-            brandTealHover: '#00897b'
-          }
-        }
-      }
-    }
-  </script>
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!--
+  ===========================================================================
+  nganh-kho-xuong.html — TRANG "GIẢI PHÁP THEO NGÀNH" (menu riêng, KHÔNG
+  phải nút chuyển view từ category.html)
+  ===========================================================================
+  Quyết định (đảo lại 1 phần quyết định trước — đã trao đổi lại với founder):
+  KHÔNG dùng nút "Dạng lưới/Dạng bảng" gắn trong category.html — làm vậy
+  trang vẫn trông như trang bán lẻ thông thường, không tạo nhận diện riêng.
+
+  Thay vào đó: dạng BẢNG chỉ xuất hiện trong các trang "Giải pháp theo
+  ngành" — vào bằng 1 mục MENU RIÊNG (không lồng trong "Sản phẩm ▾"), mỗi
+  trang có 2 lớp nội dung:
+  1. Đoạn mô tả khó khăn ngành gặp phải + cách nhóm quạt này giải quyết —
+     PHẢI mang tính thực tế/kỹ thuật, không phải văn marketing (founder yêu
+     cầu rõ). Ở bản này dùng đúng tiêu chuẩn TCVN 5687:2010 Winline đã áp
+     dụng ở công cụ tính quạt, không bịa số liệu.
+  2. Bảng thông số — bản thân HÌNH THỨC bảng là tín hiệu: khách vào đây
+     (thợ, nhà thầu nhỏ, khách thương mại, khách kỹ thuật) nhận ra ngay đây
+     là khu dành cho họ, khác khu duyệt hàng thông thường (category.html —
+     GIỮ NGUYÊN dạng lưới, phục vụ khách lẻ/mua ít/nhà hàng-quán).
+
+  ⚠️ CHƯA CHỐT: đây là ví dụ dựng cho đúng 1 ngành đã có dữ liệu thật
+  (Kho-xưởng — bảng 2.3 YEU_CAU_THIET_KE_WEB.md). Founder có nhắc thêm ví dụ
+  "quạt cho phòng sơn" — KHÔNG có trong bất kỳ dữ liệu khách hàng nào của
+  dự án, chưa xác nhận là ngành thật. Cần founder chốt danh sách đầy đủ các
+  ngành trước khi nhân bản thêm trang, tránh dựng nội dung cho ngành chưa
+  xác nhận có khách hàng thật.
+  ===========================================================================
+-->
+
+<title>Quạt cho nhà xưởng, kho bãi — chọn đúng lưu lượng khí | Winline.vn</title>
+<meta name="description" content="Quạt công nghiệp cho nhà xưởng, kho bãi: lưu lượng 8.000–28.000 m³/h, bảng thông số đầy đủ theo công suất/điện áp/giá — tính đúng nhu cầu bằng công cụ TCVN 5687:2010.">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap');
+:root{
+  --navy-950:#00354f; --navy-800:#004e7d; --navy-700:#1f6690; --navy-100:#e6eef3;
+  --paper:#f7f8fa; --white:#ffffff; --ink:#1a2230; --ink-soft:#5c6773; --line:#dde3ea;
+  --orange:#d41e3d; --orange-dark:#a71830; --orange-100:#f4e6e9; --green:#1e8a5f;
+  --radius:6px; --shadow:0 2px 10px rgba(13,31,51,.08);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{font-family:'Be Vietnam Pro',system-ui,sans-serif;color:var(--ink);background:var(--paper);font-size:15px;line-height:1.5;}
+.mono{font-family:'IBM Plex Mono',monospace;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+button{font-family:inherit;cursor:pointer;}
+
+/* ---------- header/nav — y nguyên category.html ---------- */
+.utility-bar{background:var(--navy-950);color:#c9d6e3;font-size:12.5px;}
+.utility-bar .wrap{max-width:1240px;margin:0 auto;padding:7px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;}
+header.site{background:var(--white);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40;}
+.header-inner{max-width:1240px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;gap:24px;}
+.logo{font-weight:800;font-size:24px;letter-spacing:.5px;color:var(--navy-950);display:flex;align-items:baseline;gap:2px;flex-shrink:0;}
+.logo span{color:var(--orange);}
+nav.catnav{background:var(--navy-950);}
+.catnav-inner{max-width:1240px;margin:0 auto;padding:0 20px;display:flex;gap:2px;font-size:13.5px;font-weight:500;overflow-x:auto;}
+.catnav-inner>a{padding:11px 14px;color:#dbe4ee;white-space:nowrap;border-bottom:2px solid transparent;text-decoration:none;}
+.catnav-inner>a:hover{color:#fff;border-bottom-color:var(--orange);background:rgba(255,255,255,.04);}
+.nav-drop{position:relative;}
+.nav-top{padding:11px 14px;color:#dbe4ee;white-space:nowrap;border-bottom:2px solid transparent;cursor:pointer;display:inline-block;text-decoration:none;}
+.nav-drop:hover .nav-top,.nav-top.active{color:#fff;border-bottom-color:var(--orange);background:rgba(255,255,255,.04);}
+.nav-panel{display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid var(--line);box-shadow:0 10px 26px rgba(13,31,51,.16);border-radius:0 0 10px 10px;padding:14px;z-index:60;min-width:230px;flex-direction:column;gap:1px;}
+.nav-drop:hover .nav-panel{display:flex;}
+.nav-panel a{color:var(--navy-950)!important;padding:7px 10px;border-radius:5px;font-size:13px;white-space:nowrap;text-decoration:none;}
+.nav-panel a:hover{background:var(--navy-100);}
+.nav-panel a.current-brand{background:var(--navy-100);font-weight:700;color:var(--orange-dark)!important;}
+.nav-panel-wide{flex-direction:row;gap:26px;min-width:540px;padding:16px;}
+.np-col{display:flex;flex-direction:column;gap:1px;min-width:170px;}
+.np-title{font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft);font-weight:700;padding:4px 10px 6px;}
+@media(max-width:960px){.nav-panel{display:none!important;}}
+
+.breadcrumb{max-width:1320px;margin:0 auto;padding:14px 20px 0;font-size:12.5px;color:var(--ink-soft);}
+.breadcrumb a:hover{color:var(--navy-800);text-decoration:underline;}
+
+.page-head{max-width:1320px;margin:0 auto;padding:14px 20px 0;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:10px;}
+.page-head h1{font-size:22px;color:var(--navy-950);margin:0 0 4px;}
+.page-head .count{font-size:12.5px;color:var(--ink-soft);}
+.view-toggle{display:flex;border:1.5px solid var(--line);border-radius:8px;overflow:hidden;}
+.view-toggle a{padding:8px 14px;font-size:12.5px;font-weight:600;color:var(--ink-soft);background:#fff;}
+.view-toggle a.active{background:var(--navy-950);color:#fff;}
+
+.listing{max-width:1320px;margin:0 auto;padding:18px 20px 60px;display:grid;grid-template-columns:230px 1fr;gap:22px;}
+@media(max-width:880px){.listing{grid-template-columns:1fr;}}
+
+.filters{background:#fff;border:1px solid var(--line);border-radius:9px;padding:16px;align-self:start;position:sticky;top:80px;}
+@media(max-width:880px){.filters{position:static;}}
+.filter-group{margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--line);}
+.filter-group:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.filter-title{font-size:12.5px;font-weight:700;color:var(--navy-950);margin-bottom:9px;}
+.filter-opt{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink);margin-bottom:8px;cursor:pointer;}
+.filter-opt input{accent-color:var(--navy-800);width:14px;height:14px;flex-shrink:0;}
+.filter-opt .fcount{margin-left:auto;color:#9aa7b4;font-size:11px;}
+.filter-clear{font-size:11.5px;color:var(--navy-800);font-weight:700;text-decoration:underline;}
+
+/* ---------- KHỐI GIỚI THIỆU LOẠI — đứng trên bảng, ảnh+tên bấm được ra category.html ---------- */
+/* Đây là phần sửa lại theo đúng ảnh chụp bạn gửi: mỗi bảng thông số đi kèm
+   1 khối giới thiệu loại sản phẩm ở trên — ảnh đại diện + tên loại (bấm được)
+   + mô tả ngắn + 2 nút CTA. KHÁC với hiểu trước đó (click từng hàng trong
+   bảng) — giờ click vào ẢNH/TÊN LOẠI mới là thứ dẫn ra category.html. */
+.type-intro{max-width:1320px;margin:20px auto 0;padding:0 20px;}
+.type-intro-inner{background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px;display:grid;grid-template-columns:220px 1fr 220px;gap:26px;align-items:start;}
+@media(max-width:900px){.type-intro-inner{grid-template-columns:1fr;}}
+.type-img-link{display:block;border-radius:8px;overflow:hidden;border:1px dashed #c3ccd6;background:var(--paper);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:#9aa7b4;font-size:11px;text-align:center;}
+.type-img-link:hover{border-color:var(--navy-700);}
+.type-body h2{margin:0 0 8px;}
+.type-body h2 a{font-size:19px;color:var(--navy-950);}
+.type-body h2 a:hover{color:var(--navy-800);text-decoration:underline;}
+.type-body p{margin:0;font-size:13px;color:var(--ink-soft);line-height:1.65;}
+.type-cta{display:flex;flex-direction:column;gap:10px;}
+.type-cta .btn{display:block;text-align:center;padding:13px 16px;border-radius:8px;font-weight:700;font-size:13.5px;}
+.type-cta .btn-fill{background:var(--navy-800);color:#fff;}
+.type-cta .btn-fill:hover{background:var(--navy-950);}
+.type-cta .btn-outline{background:#fff;color:var(--navy-950);border:1.5px solid var(--line);}
+.type-cta .btn-outline:hover{border-color:var(--navy-700);}
+.type-cta .cms-flag{font-size:10.5px;color:#b3392c;text-align:center;line-height:1.4;}
+
+/* ---------- BẢNG THÔNG SỐ — phần khác biệt chính so với category.html ---------- */
+.table-scroll{background:#fff;border:1px solid var(--line);border-radius:10px;overflow-x:auto;}
+.spec-table{width:100%;border-collapse:collapse;font-size:13px;min-width:920px;}
+.spec-table thead th{
+  background:var(--navy-100);color:var(--navy-950);font-weight:700;font-size:11.5px;
+  text-transform:uppercase;letter-spacing:.02em;padding:12px 14px;text-align:left;
+  white-space:nowrap;position:sticky;top:0;z-index:2;border-bottom:1px solid var(--line);
+}
+.spec-table thead th.num{text-align:right;}
+.spec-table thead th .sort-ic{opacity:.5;font-size:10px;margin-left:3px;}
+.spec-table tbody td{padding:11px 14px;border-bottom:1px solid var(--line);white-space:nowrap;vertical-align:middle;}
+.spec-table tbody tr:last-child td{border-bottom:none;}
+.spec-table tbody tr{cursor:pointer;}
+.spec-table tbody tr:hover{background:var(--paper);}
+.spec-table td.num{text-align:right;font-family:'IBM Plex Mono',monospace;}
+.st-prod{display:flex;align-items:center;gap:10px;white-space:normal;min-width:220px;}
+.st-thumb{width:38px;height:38px;border-radius:6px;background:var(--paper);border:1px dashed #c3ccd6;flex-shrink:0;}
+.st-name{font-weight:600;color:var(--navy-950);font-size:13px;line-height:1.3;}
+.st-sku{font-size:10.5px;color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;}
+.st-brand{color:var(--ink-soft);}
+.st-price{font-weight:700;color:var(--navy-950);font-family:'IBM Plex Mono',monospace;}
+.st-cta{font-size:11.5px;font-weight:700;color:var(--navy-800);}
+.st-cta:hover{text-decoration:underline;}
+.first-col-sticky{position:sticky;left:0;background:#fff;z-index:1;}
+.spec-table thead th.first-col-sticky{z-index:3;}
+.spec-table tbody tr:hover td.first-col-sticky{background:var(--paper);}
+
+.table-note{max-width:1320px;margin:12px auto 0;padding:0 20px;font-size:11.5px;color:var(--ink-soft);}
+
+.pagination{display:flex;justify-content:center;gap:6px;margin-top:24px;}
+.pagination a{width:32px;height:32px;border:1px solid var(--line);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12.5px;color:var(--ink-soft);background:#fff;}
+.pagination a.active{background:var(--navy-950);color:#fff;border-color:var(--navy-950);}
+
+footer{background:var(--navy-950);color:#b9c7d4;padding:34px 20px 18px;margin-top:10px;}
+.footer-inner{max-width:1320px;margin:0 auto;font-size:12px;text-align:center;color:#9fb0bf;}
+</style>
 </head>
-<body class="bg-[#f8fafc] text-slate-800 flex flex-col min-h-screen">
+<body>
 
-  <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-xs">
-    <div class="bg-brandNavyDark text-slate-300 text-xs py-1.5 px-4 hidden md:block border-b border-slate-800">
-      <div class="custom-container flex justify-between items-center">
-        <span><i class="fas fa-certificate text-brandRed mr-1.5"></i> Công ty TNHH Winline Việt Nam - MST: <strong>0106085370</strong></span>
-        <span><i class="fas fa-phone-volume text-brandRed mr-1"></i> Tư vấn giải pháp: <strong>0949.761.893</strong></span>
+<div class="utility-bar"><div class="wrap"><span>Hơn 35 năm hoạt động — 12 năm pháp nhân chính thức</span><span>Hotline 0949 761 893</span></div></div>
+<header class="site"><div class="header-inner"><a href="index.html" class="logo" style="text-decoration:none;">WIN<span>LINE</span></a></div></header>
+<nav class="catnav">
+  <div class="catnav-inner">
+    <a href="index.html" class="nav-top ">Trang chủ</a>
+    <a href="gioi-thieu.html" class="nav-top ">Giới thiệu</a>
+
+    <div class="nav-drop">
+      <a href="san-pham.html" class="nav-top ">Sản phẩm ▾</a>
+      <div class="nav-panel nav-panel-wide">
+        <div class="np-col">
+          <div class="np-title">Quạt dân dụng</div>
+          <a href="san-pham.html">Quạt trần</a>
+          <a href="san-pham.html">Quạt cây / quạt đứng</a>
+          <a href="san-pham.html">Quạt treo tường</a>
+          <a href="san-pham.html">Quạt sàn / quạt quỳ</a>
+        </div>
+        <div class="np-col">
+          <div class="np-title">Quạt công nghiệp</div>
+          <a href="san-pham.html">Quạt cây công nghiệp</a>
+          <a href="san-pham.html">Quạt treo tường công nghiệp</a>
+          <a href="san-pham.html">Quạt sàn công nghiệp</a>
+        </div>
+        <div class="np-col">
+          <div class="np-title">Thông gió &amp; làm mát</div>
+          <a href="san-pham.html">Quạt thông gió dân dụng</a>
+          <a href="san-pham.html">Quạt thông gió công nghiệp</a>
+          <a href="san-pham.html">Quạt cắt gió</a>
+          <a href="san-pham.html">Máy làm mát / điều hoà di động</a>
+        </div>
       </div>
     </div>
 
-    <div class="custom-container py-3 flex items-center justify-between gap-4">
-      <a href="index.html" class="flex items-center gap-2 flex-shrink-0">
-        <div class="flex flex-col">
-          <div class="text-2xl md:text-3xl font-black text-brandRed font-heading flex items-center">
-            Winline<span class="text-brandNavy text-base align-super ml-0.5">®</span>
-          </div>
-          <span class="text-[9px] uppercase tracking-widest font-bold text-brandNavy -mt-1">
-            Chất lượng tạo niềm tin
-          </span>
-        </div>
-      </a>
+    <a href="giai-phap.html" class="nav-top active">Giải pháp</a>
 
-      <div class="search-container relative flex-1 max-w-xl mx-2 hidden sm:block">
-        <div class="flex">
-          <input type="text" class="header-search-input w-full bg-slate-50 border border-slate-300 rounded-l-md px-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-brandRed" placeholder="Tìm sản phẩm...">
-          <button class="bg-brandRed text-white px-5 rounded-r-md"><i class="fas fa-search"></i></button>
-        </div>
-      </div>
-
-      <div class="flex items-center gap-4 text-xs">
-        <button onclick="openCartDrawer()" class="relative flex items-center gap-2 bg-slate-50 border border-slate-200 px-3.5 py-2 rounded-lg">
-          <i class="fas fa-shopping-cart text-lg text-brandRed"></i>
-          <span class="cart-badge-count absolute -top-2 -right-2 bg-brandRed text-white text-[10px] font-black rounded-full w-5 h-5 flex items-center justify-center border-2 border-white">0</span>
-          <span class="font-bold hidden sm:inline text-xs">Giỏ hàng</span>
-        </button>
+    <div class="nav-drop">
+      <a href="thuong-hieu.html" class="nav-top ">Thương hiệu ▾</a>
+      <div class="nav-panel">
+        <a href="thuong-hieu.html">Vinawind (Điện cơ Thống Nhất)</a>
+        <a href="thuong-hieu.html">Komasu Nhật Bản</a>
+        <a href="thuong-hieu.html">Deton</a>
+        <a href="thuong-hieu.html">Dasin</a>
+        <a href="thuong-hieu.html">Chinghai</a>
+        <a href="thuong-hieu.html">Hatari</a>
+        <a href="thuong-hieu.html">Panasonic</a>
+        <a href="thuong-hieu.html">Nedfon</a>
       </div>
     </div>
 
-    <nav class="main-navbar">
-      <div class="custom-container">
-        <ul class="flex items-center overflow-x-auto no-scrollbar">
-          <li><a href="index.html" class="nav-link-item whitespace-nowrap">Trang chủ</a></li>
-          <li><a href="gioi-thieu.html" class="nav-link-item whitespace-nowrap">Giới thiệu</a></li>
-          <li><a href="san-pham.html" class="nav-link-item whitespace-nowrap">Sản phẩm</a></li>
-          <li><a href="giai-phap.html" class="nav-link-item active whitespace-nowrap">Giải pháp</a></li>
-          <li><a href="thuong-hieu.html" class="nav-link-item whitespace-nowrap">Thương hiệu</a></li>
-          <li><a href="cong-cu-tinh-quat.html" class="nav-link-item whitespace-nowrap text-amber-300 font-bold"><i class="fas fa-calculator mr-1"></i> Công cụ tính quạt</a></li>
-          <li><a href="du-an.html" class="nav-link-item whitespace-nowrap">Dự án</a></li>
-        </ul>
-      </div>
-    </nav>
-  </header>
+    <a href="cong-cu-tinh-quat.html" class="nav-top ">Công cụ tính quạt</a>
+    <a href="du-an.html" class="nav-top ">Dự án</a>
+  </div>
+</nav>
 
-  <div class="bg-white border-b border-slate-200 py-3 text-xs text-slate-500">
-    <div class="custom-container flex items-center gap-2">
-      <a href="index.html" class="hover:text-brandRed">Trang chủ</a>
-      <i class="fas fa-chevron-right text-[10px]"></i>
-      <span class="text-slate-900 font-bold">Giải pháp thông gió & làm mát theo ngành</span>
+<div class="breadcrumb"><a href="index.html">Trang chủ</a> › <a href="nganh-kho-xuong.html">Giải pháp theo ngành</a> › Nhà xưởng — Kho bãi</div>
+
+<div class="page-head">
+  <div>
+    <h1>Quạt cho nhà xưởng, kho bãi</h1>
+    <div class="count">7 sản phẩm phù hợp — chọn theo đúng lưu lượng khí cần thiết, không đoán</div>
+  </div>
+</div>
+
+<!-- ============ NỘI DUNG THỰC TẾ — khó khăn ngành + cách giải quyết, KHÔNG viết marketing ============ -->
+<div class="type-intro" style="margin-top:14px;">
+  <div class="type-intro-inner" style="grid-template-columns:1fr;">
+    <div class="type-body">
+      <p style="font-size:14px;color:var(--ink);margin-bottom:12px;">Nhà xưởng, kho bãi thường có trần cao, diện tích lớn, phát sinh nhiệt từ máy móc/hàng hoá — quạt công suất nhỏ không đủ lưu lượng khí, gây tích nhiệt, ảnh hưởng người lao động và chất lượng hàng lưu kho. Chọn sai lưu lượng (theo TCVN 5687:2010) là nguyên nhân phổ biến khiến lắp quạt rồi vẫn nóng.</p>
+      <p style="font-size:14px;color:var(--ink);margin:0;">Nhóm quạt công nghiệp dưới đây đáp ứng lưu lượng lớn (8.000–28.000 m³/h), vận hành liên tục nhiều giờ, chịu được môi trường bụi. Dùng <a href="cong-cu-tinh-quat.html" style="color:var(--navy-800);font-weight:700;">công cụ tính lưu lượng khí</a> theo đúng diện tích thực tế trước khi chọn model, tránh chọn thiếu hoặc thừa công suất gây lãng phí điện.</p>
+      <span class="cms-flag" style="display:block;margin-top:10px;">⚠ Đoạn mô tả trên dựa theo nguyên lý kỹ thuật chung (TCVN 5687:2010) — cần Winline duyệt lại, bổ sung số liệu thật riêng của công ty nếu có (VD tỷ lệ khách kho-xưởng gặp đúng vấn đề này) trước khi lên production.</span>
     </div>
   </div>
+</div>
 
-  <main class="custom-container py-10 flex-1 w-full space-y-12">
-    <div class="text-center max-w-3xl mx-auto">
-      <span class="text-xs font-bold text-brandRed uppercase tracking-wider">Hệ Thống Kỹ Thuật HVAC Toàn Diện</span>
-      <h1 class="text-2xl md:text-4xl font-black text-slate-900 font-heading mt-2 mb-3">
-        Giải Pháp Thông Gió & Làm Mát Cho Từng Loại Công Trình
-      </h1>
-      <p class="text-xs md:text-sm text-slate-600 leading-relaxed">
-        Winline chuyên thiết kế, tư vấn cung ứng và thi công trọn gói các hệ thống làm mát áp suất âm, làm mát điểm, hút bụi lọc khí và cấp khí tươi đạt chuẩn kỹ thuật quốc tế.
-      </p>
+<div class="listing" style="grid-template-columns:1fr;max-width:1320px;">
+  <div class="results">
+    <div class="table-scroll">
+      <table class="spec-table">
+        <thead>
+          <tr>
+            <th class="first-col-sticky">Sản phẩm <span class="sort-ic">↕</span></th>
+            <th>Thương hiệu <span class="sort-ic">↕</span></th>
+            <th class="num">Công suất <span class="sort-ic">↕</span></th>
+            <th class="num">Lưu lượng gió <span class="sort-ic">↕</span></th>
+            <th class="num">Sải cánh / Kích thước <span class="sort-ic">↕</span></th>
+            <th>Điện áp</th>
+            <th class="num">Số động cơ</th>
+            <th class="num">Giá bán <span class="sort-ic">↕</span></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr onclick="location.href='product-detail.html'">
+            <td class="first-col-sticky"><div class="st-prod"><div class="st-thumb"></div><div><div class="st-name">Quạt cây công nghiệp Komasu KM-750S</div><div class="st-sku">SKU: KM-750S</div></div></div></td>
+            <td class="st-brand">Komasu</td>
+            <td class="num">250W</td>
+            <td class="num">15.200–18.000 m³/h</td>
+            <td class="num">Ø750mm</td>
+            <td>220V/50Hz</td>
+            <td class="num">1</td>
+            <td class="num st-price">2.890.000đ</td>
+            <td><a class="st-cta" href="chi-tiet-san-pham.html">Xem chi tiết →</a></td>
+          </tr>
+          <tr onclick="location.href='product-detail.html'">
+            <td class="first-col-sticky"><div class="st-prod"><div class="st-thumb"></div><div><div class="st-name">Quạt cây công nghiệp Vinawind VW-650S</div><div class="st-sku">SKU: VW-650S</div></div></div></td>
+            <td class="st-brand">Vinawind</td>
+            <td class="num">220W</td>
+            <td class="num">11.000–13.500 m³/h</td>
+            <td class="num">Ø650mm</td>
+            <td>220V/50Hz</td>
+            <td class="num">1</td>
+            <td class="num st-price">2.150.000đ</td>
+            <td><a class="st-cta" href="chi-tiet-san-pham.html">Xem chi tiết →</a></td>
+          </tr>
+          <tr onclick="location.href='product-detail.html'">
+            <td class="first-col-sticky"><div class="st-prod"><div class="st-thumb"></div><div><div class="st-name">Quạt cây công nghiệp Tico TC-800S</div><div class="st-sku">SKU: TC-800S</div></div></div></td>
+            <td class="st-brand">Tico</td>
+            <td class="num">280W</td>
+            <td class="num">18.500–21.000 m³/h</td>
+            <td class="num">Ø800mm</td>
+            <td>220V/50Hz</td>
+            <td class="num">1</td>
+            <td class="num st-price">3.150.000đ</td>
+            <td><a class="st-cta" href="chi-tiet-san-pham.html">Xem chi tiết →</a></td>
+          </tr>
+          <tr onclick="location.href='product-detail.html'">
+            <td class="first-col-sticky"><div class="st-prod"><div class="st-thumb"></div><div><div class="st-name">Quạt cây công nghiệp Hatari HT-550S</div><div class="st-sku">SKU: HT-550S</div></div></div></td>
+            <td class="st-brand">Hatari</td>
+            <td class="num">185W</td>
+            <td class="num">9.800–11.200 m³/h</td>
+            <td class="num">Ø550mm</td>
+            <td>220V/50Hz</td>
+            <td class="num">1</td>
+            <td class="num st-price">1.920.000đ</td>
+            <td><a class="st-cta" href="chi-tiet-san-pham.html">Xem chi tiết →</a></td>
+          </tr>
+          <tr onclick="location.href='product-detail.html'">
+            <td class="first-col-sticky"><div class="st-prod"><div class="st-thumb"></div><div><div class="st-name">Quạt cây công nghiệp Senko SK-700S</div><div class="st-sku">SKU: SK-700S</div></div></div></td>
+            <td class="st-brand">Senko</td>
+            <td class="num">240W</td>
+            <td class="num">14.200–16.800 m³/h</td>
+            <td class="num">Ø700mm</td>
+            <td>220V/50Hz</td>
+            <td class="num">1</td>
+            <td class="num st-price">2.480.000đ</td>
+            <td><a class="st-cta" href="chi-tiet-san-pham.html">Xem chi tiết →</a></td>
+          </tr>
+          <tr onclick="location.href='product-detail.html'">
+            <td class="first-col-sticky"><div class="st-prod"><div class="st-thumb"></div><div><div class="st-name">Quạt cây công nghiệp Komasu KM-1000S</div><div class="st-sku">SKU: KM-1000S</div></div></div></td>
+            <td class="st-brand">Komasu</td>
+            <td class="num">370W</td>
+            <td class="num">24.500–28.000 m³/h</td>
+            <td class="num">Ø1000mm</td>
+            <td>220V/50Hz</td>
+            <td class="num">1</td>
+            <td class="num st-price">3.980.000đ</td>
+            <td><a class="st-cta" href="chi-tiet-san-pham.html">Xem chi tiết →</a></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-
-    <!-- 4 Key Solutions Detailed -->
-    <div class="space-y-8">
-      
-      <!-- Solution 1 -->
-      <div class="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-xs grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        <div class="lg:col-span-6 space-y-3">
-          <span class="bg-red-50 text-brandRed text-xs font-bold px-2.5 py-1 rounded">Giải Pháp 01</span>
-          <h2 class="text-xl md:text-2xl font-bold text-slate-900 font-heading">
-            Hệ Thống Làm Mát Áp Suất Âm (Quạt Vuông 1380 + Tấm Cooling Pad)
-          </h2>
-          <p class="text-xs text-slate-600 leading-relaxed">
-            <strong>Nguyên lý:</strong> Quạt hút vuông 1380x1380 lắp một đầu nhà xưởng tạo áp suất âm hút khí nóng ra ngoài. Đầu đối diện lắp đặt dàn tấm làm mát Cooling Pad có nước tuần hoàn. Không khí nóng đi qua màng nước hạ nhiệt độ từ 5°C - 8°C và lọc sạch bụi mịn.
-          </p>
-          <ul class="text-xs text-slate-600 space-y-1.5 list-disc pl-5">
-            <li>Chi phí đầu tư chỉ bằng <strong>1/3</strong> so với lắp máy điều hòa trung tâm.</li>
-            <li>Tiết kiệm tới <strong>80%</strong> điện năng tiêu thụ hàng tháng.</li>
-            <li>Ứng dụng tối ưu cho xưởng may mặc, giày da, nhà xưởng lắp ráp linh kiện, trang trại chăn nuôi.</li>
-          </ul>
-          <div class="pt-3">
-            <button onclick="openConsultModal('Tư vấn hệ thống làm mát áp suất âm Cooling Pad')" class="bg-brandRed hover:bg-brandRedHover text-white px-5 py-2.5 rounded-lg text-xs font-bold transition">
-              Yêu Cầu Khảo Sát Tận Nơi →
-            </button>
-          </div>
-        </div>
-        <div class="lg:col-span-6">
-          <img src="https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80" class="rounded-xl object-cover h-72 w-full shadow-md">
-        </div>
-      </div>
-
-      <!-- Solution 2 -->
-      <div class="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-xs grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        <div class="lg:col-span-6 order-2 lg:order-1">
-          <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80" class="rounded-xl object-cover h-72 w-full shadow-md">
-        </div>
-        <div class="lg:col-span-6 order-1 lg:order-2 space-y-3">
-          <span class="bg-blue-50 text-brandNavy text-xs font-bold px-2.5 py-1 rounded">Giải Pháp 02</span>
-          <h2 class="text-xl md:text-2xl font-bold text-slate-900 font-heading">
-            Hệ Thống Quạt Ly Tâm Hút Khói & Khí Thải Lò Nung Áp Suất Cao
-          </h2>
-          <p class="text-xs text-slate-600 leading-relaxed">
-            <strong>Nguyên lý:</strong> Sử dụng quạt ly tâm công suất lớn (2.2kW - 15kW) kết hợp hệ thống đường ống gió xoắn chịu nhiệt để hút triệt để khói hàn cơ khí, bụi sơn, hơi axit và khí nóng tại nguồn phát sinh.
-          </p>
-          <ul class="text-xs text-slate-600 space-y-1.5 list-disc pl-5">
-            <li>Động cơ chịu nhiệt độ cao 280°C trong vòng 2 giờ liên tục.</li>
-            <li>Đáp ứng nghiêm ngặt tiêu chuẩn PCCC QCVN 06:2022/BXD.</li>
-            <li>Ứng dụng cho xưởng cơ khí, bếp ăn công nghiệp, tầng hầm để xe, nhà máy xi măng, luyện kim.</li>
-          </ul>
-          <div class="pt-3">
-            <button onclick="openConsultModal('Tư vấn hệ thống quạt ly tâm hút khói công nghiệp')" class="bg-brandNavy hover:bg-slate-900 text-white px-5 py-2.5 rounded-lg text-xs font-bold transition">
-              Tư Vấn Thiết Kế Đường Ống →
-            </button>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- 5 Steps Process -->
-    <div class="bg-slate-900 text-white rounded-2xl p-8 shadow-lg">
-      <div class="text-center max-w-2xl mx-auto mb-8">
-        <h3 class="text-xl md:text-2xl font-bold font-heading">Quy Trình Triển Khai Giải Pháp Của Winline</h3>
-        <p class="text-xs text-slate-400 mt-1">5 bước làm việc chuyên nghiệp, minh bạch và nhanh chóng</p>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-5 gap-4 text-center text-xs">
-        <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
-          <div class="w-8 h-8 rounded-full bg-brandRed text-white font-bold mx-auto flex items-center justify-center mb-2">1</div>
-          <div class="font-bold text-slate-200">Tiếp Nhận & Khảo Sát</div>
-          <div class="text-[11px] text-slate-400 mt-1">Đo đạc mặt bằng thực tế</div>
-        </div>
-        <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
-          <div class="w-8 h-8 rounded-full bg-brandRed text-white font-bold mx-auto flex items-center justify-center mb-2">2</div>
-          <div class="font-bold text-slate-200">Tính Toán HVAC</div>
-          <div class="text-[11px] text-slate-400 mt-1">Lên sơ đồ lưu lượng $Q$</div>
-        </div>
-        <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
-          <div class="w-8 h-8 rounded-full bg-brandRed text-white font-bold mx-auto flex items-center justify-center mb-2">3</div>
-          <div class="font-bold text-slate-200">Báo Giá Cạnh Tranh</div>
-          <div class="text-[11px] text-slate-400 mt-1">Chiết khấu trực tiếp</div>
-        </div>
-        <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
-          <div class="w-8 h-8 rounded-full bg-brandRed text-white font-bold mx-auto flex items-center justify-center mb-2">4</div>
-          <div class="font-bold text-slate-200">Giao Hàng & Thi Công</div>
-          <div class="text-[11px] text-slate-400 mt-1">Đúng tiến độ cam kết</div>
-        </div>
-        <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
-          <div class="w-8 h-8 rounded-full bg-brandRed text-white font-bold mx-auto flex items-center justify-center mb-2">5</div>
-          <div class="font-bold text-slate-200">Bảo Hành Tận Nơi</div>
-          <div class="text-[11px] text-slate-400 mt-1">Bảo trì định kỳ 24/7</div>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <footer class="bg-slate-900 text-slate-300 text-xs mt-auto border-t-4 border-brandRed">
-    <div class="custom-container py-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-      <div><strong>Công ty TNHH Winline Việt Nam</strong> - MST: 0106085370 - Hotline: <strong>0949.761.893</strong></div>
-      <div class="text-slate-500">© 2013 - 2026 Winline.vn. Giải pháp kỹ thuật thông gió công nghiệp.</div>
-    </div>
-  </footer>
-
-  <div id="cart-drawer" class="fixed inset-0 z-50 pointer-events-none opacity-0 transition-opacity">
-    <div onclick="closeCartDrawer()" class="drawer-backdrop absolute inset-0"></div>
-    <div id="cart-drawer-panel" class="drawer-panel absolute top-0 right-0 bottom-0 w-full max-w-md bg-white shadow-2xl flex flex-col transform translate-x-full transition-transform">
-      <div class="p-4 bg-brandNavy text-white flex items-center justify-between">
-        <h3 class="font-bold text-sm font-heading">Giỏ Hàng (<span class="cart-badge-count">0</span>)</h3>
-        <button onclick="closeCartDrawer()"><i class="fas fa-times"></i></button>
-      </div>
-      <div class="flex-1 overflow-y-auto p-4"><div id="cart-drawer-items"></div></div>
+    <div class="pagination">
+      <a href="#" class="active">1</a>
+      <a href="#">2</a>
+      <a href="#">3</a>
+      <a href="#">›</a>
     </div>
   </div>
+</div>
 
-  <div id="consult-modal" class="fixed inset-0 z-50 pointer-events-none opacity-0 transition-opacity flex items-center justify-center p-4">
-    <div onclick="closeConsultModal()" class="drawer-backdrop absolute inset-0"></div>
-    <div class="relative bg-white rounded-xl shadow-2xl max-w-md w-full overflow-hidden z-10 p-6">
-      <button onclick="closeConsultModal()" class="absolute top-4 right-4 text-slate-400"><i class="fas fa-times"></i></button>
-      <h3 class="text-base font-bold text-slate-800 font-heading text-center mb-3">Tư Vấn Giải Pháp Công Trình</h3>
-      <form onsubmit="handleConsultSubmit(event)" class="space-y-3 text-xs">
-        <input type="text" id="consult-subject" name="subject" class="w-full bg-slate-50 border p-2 rounded" readonly>
-        <input type="text" name="name" placeholder="Họ tên..." class="w-full border p-2 rounded" required>
-        <input type="tel" name="phone" placeholder="Số điện thoại..." class="w-full border p-2 rounded" required>
-        <button type="submit" class="w-full bg-brandRed text-white font-bold py-2.5 rounded">Gửi Yêu Cầu</button>
-      </form>
-    </div>
-  </div>
+<div class="table-note">Bảng có thể cuộn ngang trên màn hình nhỏ — cột "Sản phẩm" giữ cố định bên trái để dễ đối chiếu khi cuộn.</div>
 
-  <script src="js/products-data.js"></script>
-  <script src="js/app.js"></script>
+<footer><div class="footer-inner">© 2026 Công ty TNHH Winline Việt Nam — Số 7 BT6 Pháp Vân – Tứ Hiệp, Hà Nội — MST 0106085370</div></footer>
+
 </body>
 </html>

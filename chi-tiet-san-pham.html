@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quạt cây công nghiệp Komasu KM-750S | Winline.vn</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+:root{
+  /* Hệ màu xanh đồng nhất về 1 gốc #004e7d (xanh công nghiệp) — thay cho việc trước đây
+     có 3 mã xanh không liên quan nhau cùng tồn tại (navy-950 cho khung sườn, #0b5fa5
+     hardcode riêng cho nút báo giá, --deal-blue cho vài chi tiết nhỏ). Giờ chỉ còn 1 hue,
+     4 sắc độ suy ra từ đúng hue đó — đậm cho khung sườn/tiêu đề, giữa là màu gốc 004e7d
+     (dùng cho nút Nhận báo giá + text/icon phụ), nhạt cho nền badge/chip. */
+  --navy-950:#00354f;
+  --navy-800:#004e7d;
+  --navy-700:#1f6690;
+  --navy-100:#e6eef3;
+  --paper:#f7f8fa;
+  --white:#ffffff;
+  --ink:#1a2230;
+  --ink-soft:#5c6773;
+  --line:#dde3ea;
+  /* Màu phụ đổi từ cam sang đỏ đô theo yêu cầu — dùng nguyên biến --orange/--orange-dark/
+     --orange-100 (không đổi tên) vì toàn bộ trang đã tham chiếu qua biến, chỉ cần đổi giá
+     trị ở đây là cascade khắp trang. Giá bán (trước hardcode #d92b2b riêng, khác mã) giờ
+     cũng trỏ về đúng var(--orange) — toàn trang chỉ còn 1 mã đỏ duy nhất #d41e3d, không còn
+     2 đỏ gần giống nhau cạnh tranh nhau trong cùng khối giá. */
+  --orange:#d41e3d;
+  --orange-dark:#a71830;
+  --orange-100:#f4e6e9;
+  --green:#1e8a5f;
+  --deal-blue:#004e7d;
+  --deal-blue-100:#e6eef3;
+  --radius:6px;
+  --shadow:0 2px 10px rgba(13,31,51,.08);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;overflow-x:hidden;max-width:100%;}
+body{
+  font-family:'Be Vietnam Pro',system-ui,sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  font-size:15px;
+  line-height:1.5;
+}
+.mono{font-family:'IBM Plex Mono',monospace;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+button{font-family:inherit;cursor:pointer;}
+
+/* ---------- utility top bar ---------- */
+.utility-bar{
+  background:var(--navy-950);
+  color:#c9d6e3;
+  font-size:12.5px;
+}
+.utility-bar .wrap{
+  max-width:1240px;margin:0 auto;padding:7px 20px;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:6px;
+}
+.utility-bar a{color:#c9d6e3;opacity:.9;}
+.utility-bar a:hover{opacity:1;text-decoration:underline;}
+.utility-bar .sep{opacity:.4;margin:0 10px;}
+
+/* ---------- header ---------- */
+header.site{
+  background:var(--white);
+  border-bottom:1px solid var(--line);
+  position:sticky;top:0;z-index:40;
+}
+.header-inner{
+  max-width:1240px;margin:0 auto;padding:14px 20px;
+  display:flex;align-items:center;gap:24px;
+}
+.logo{
+  font-weight:800;font-size:24px;letter-spacing:.5px;
+  color:var(--navy-950);
+  display:flex;align-items:baseline;gap:2px;
+  flex-shrink:0;
+}
+.logo span{color:var(--orange);}
+.search-wrap{flex:1;position:relative;max-width:640px;}
+.search-box{
+  width:100%;padding:11px 46px 11px 16px;
+  border:1.5px solid var(--line);border-radius:var(--radius);
+  font-size:14.5px;background:var(--paper);
+  font-family:inherit;
+}
+.search-box:focus{outline:none;border-color:var(--navy-700);background:var(--white);}
+.search-btn{
+  position:absolute;right:6px;top:50%;transform:translateY(-50%);
+  background:var(--navy-950);border:none;color:#fff;
+  width:34px;height:34px;border-radius:4px;
+  display:flex;align-items:center;justify-content:center;
+}
+.search-suggest{
+  position:absolute;top:calc(100% + 6px);left:0;right:0;
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:10px;font-size:13px;color:var(--ink-soft);
+  display:none;
+}
+.search-suggest .hint{padding:6px 10px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#9aa7b4;}
+.search-suggest .row{display:flex;justify-content:space-between;padding:8px 10px;border-radius:4px;}
+.search-suggest .row:hover{background:var(--navy-100);}
+.search-suggest .row b{color:var(--ink);font-weight:600;}
+.header-actions{display:flex;align-items:center;gap:18px;flex-shrink:0;}
+.header-actions .item{display:flex;flex-direction:column;align-items:center;font-size:11px;color:var(--ink-soft);gap:3px;}
+.header-actions .icon{width:22px;height:22px;color:var(--navy-800);}
+
+/* ---------- category nav (grid-friendly for mobile ref) ---------- */
+nav.catnav{background:var(--navy-950);}
+.catnav-inner{
+  max-width:1240px;margin:0 auto;padding:0 20px;
+  display:flex;gap:2px;font-size:13.5px;font-weight:500;
+  overflow-x:auto;
+}
+.catnav-inner a{
+  padding:11px 14px;color:#dbe4ee;white-space:nowrap;
+  border-bottom:2px solid transparent;
+}
+.catnav-inner a:hover{color:#fff;border-bottom-color:var(--orange);background:rgba(255,255,255,.04);}
+.catnav-inner a.active{color:#fff;border-bottom-color:var(--orange);}
+
+/* ---------- breadcrumb ---------- */
+.breadcrumb{max-width:1240px;margin:0 auto;padding:14px 20px 0;font-size:12.5px;color:var(--ink-soft);}
+.breadcrumb a:hover{color:var(--navy-800);text-decoration:underline;}
+
+/* ---------- title block (theo mẫu Haravan: tiêu đề nằm trên, full width) ---------- */
+.title-block{max-width:1240px;margin:0 auto;padding:10px 20px 0;}
+.stock-badge{
+  display:inline-flex;align-items:center;gap:6px;background:var(--orange-100);color:var(--orange-dark);
+  font-size:11.5px;font-weight:700;padding:4px 11px;border-radius:20px;margin-bottom:10px;
+}
+.stock-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--green);}
+h1.ptitle{font-size:22px;font-weight:700;margin:8px 0;line-height:1.32;color:var(--navy-950);}
+
+/* ---------- phím tắt thông số + spec chip — phục vụ khách kỹ thuật ---------- */
+.quick-jump{
+  font-size:12.5px;color:var(--navy-800);font-weight:700;margin:0 0 14px;
+  display:inline-flex;align-items:center;gap:4px;cursor:pointer;background:none;border:none;padding:0;
+  font-family:inherit;
+}
+.quick-jump:hover{text-decoration:underline;}
+.spec-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;}
+.spec-chip{
+  background:var(--navy-100);color:var(--navy-800);border-radius:6px;padding:6px 11px;
+  display:flex;flex-direction:column;line-height:1.3;
+}
+.spec-chip .sc-label{font-size:9.5px;color:var(--ink-soft);font-weight:600;text-transform:uppercase;letter-spacing:.03em;}
+.spec-chip .sc-value{font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:12.5px;}
+.sla-badge{
+  display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;color:var(--navy-800);
+  background:var(--navy-100);padding:4px 10px;border-radius:20px;margin-left:6px;
+}
+.rating-row{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--ink-soft);flex-wrap:wrap;}
+.stars{color:var(--orange);letter-spacing:1px;font-size:14px;}
+.rating-row .sold{color:var(--green);font-weight:600;}
+
+/* ---------- dải "Chúng tôi cam kết" — full width, dưới cả 2 cột ---------- */
+.commit-band{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:30px;}
+.commit-inner{
+  max-width:1240px;margin:0 auto;padding:22px 20px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+}
+@media(max-width:760px){.commit-inner{grid-template-columns:repeat(2,1fr);}}
+.commit-item{display:flex;align-items:center;gap:12px;}
+.commit-item .c-icon{
+  width:42px;height:42px;border-radius:50%;background:var(--navy-100);color:var(--navy-800);
+  display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;
+}
+.commit-item .c-text{font-size:12.5px;color:var(--navy-950);font-weight:600;line-height:1.4;}
+.commit-item .c-text span{display:block;font-weight:400;color:var(--ink-soft);font-size:11.5px;margin-top:1px;}
+
+/* ---------- product main ---------- */
+.product-main{
+  max-width:1240px;margin:0 auto;padding:18px 20px 10px;
+  display:grid;grid-template-columns:1fr 460px;gap:20px 34px;
+  grid-template-areas:
+    "img    info"
+    "commit info"
+    "tabs   info";
+  align-items:start;
+}
+@media(max-width:960px){
+  .product-main{
+    grid-template-columns:1fr;gap:16px;
+    grid-template-areas:
+      "img"
+      "info"
+      "commit"
+      "tabs";
+  }
+}
+
+.gallery-img{grid-area:img;min-width:0;}
+.pinfo{grid-area:info;min-width:0;}
+.commit-card{grid-area:commit;min-width:0;}
+.tabs-section{grid-area:tabs;min-width:0;}
+
+.pinfo{
+  position:sticky;top:82px;
+  background:#fff;border:1px solid var(--line);border-radius:12px;
+  box-shadow:var(--shadow);
+  padding:26px 28px 28px;
+}
+@media(max-width:960px){.pinfo{position:static;}}
+
+.gallery-img{
+  background:#fff;border:1px solid var(--line);border-radius:12px;
+  box-shadow:var(--shadow);
+  padding:24px 26px 26px;
+}
+.commit-card{
+  background:#fff;border:1px solid var(--line);border-radius:12px;
+  box-shadow:var(--shadow);
+  padding:20px 24px;
+}
+.tabs-section{
+  background:#fff;border:1px solid var(--line);border-radius:12px;
+  box-shadow:var(--shadow);
+  padding:20px 24px 26px;
+}
+
+.gallery-main{
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--paper);
+  aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;position:relative;
+}
+.gallery-main .ph{
+  width:100%;height:100%;
+  background:
+    linear-gradient(135deg, var(--navy-100) 25%, transparent 25%) -20px 0/40px 40px,
+    linear-gradient(225deg, var(--navy-100) 25%, transparent 25%) -20px 0/40px 40px,
+    var(--paper);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+  color:var(--navy-700);font-size:13px;text-align:center;padding:20px;
+}
+.gallery-main .ph .ph-icon{
+  width:74px;height:74px;border-radius:50%;background:#fff;border:1.5px dashed var(--navy-700);
+  display:flex;align-items:center;justify-content:center;font-size:32px;opacity:.55;
+}
+.gallery-main .ph .ph-text{line-height:1.5;opacity:.85;}
+.gallery-main .ph .ph-text b{display:block;font-size:14px;color:var(--navy-950);margin-bottom:2px;}
+.gallery-main .tag-real{
+  position:absolute;top:12px;left:12px;background:var(--navy-950);color:#fff;
+  font-size:11px;padding:4px 9px;border-radius:3px;font-weight:600;letter-spacing:.02em;
+}
+.gallery-thumbs{display:flex;gap:9px;margin-top:10px;flex-wrap:wrap;}
+.gallery-thumbs .thumb{
+  width:70px;height:70px;border:1.5px solid var(--line);border-radius:6px;
+  background:var(--paper);display:flex;align-items:center;justify-content:center;
+  font-size:9px;color:var(--ink-soft);text-align:center;overflow:hidden;
+}
+.gallery-thumbs .thumb.play{position:relative;}
+.gallery-thumbs .thumb.play::after{
+  content:"▶";position:absolute;color:var(--white);background:rgba(13,31,51,.65);
+  width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;
+}
+.gallery-thumbs .thumb.active{border-color:var(--orange);}
+
+.swipe-hint{display:none;align-items:center;gap:5px;font-size:11px;color:var(--ink-soft);margin-top:8px;}
+.swipe-hint .arrows{color:var(--orange);font-weight:700;}
+
+@media(max-width:640px){
+  .gallery-thumbs{
+    flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px;
+  }
+  .gallery-thumbs::-webkit-scrollbar{display:none;}
+  .gallery-thumbs .thumb{scroll-snap-align:start;flex:0 0 auto;}
+  .swipe-hint{display:flex;}
+}
+
+.pinfo .brandline{
+  display:flex;align-items:center;gap:10px;margin-bottom:8px;font-size:13px;
+}
+.pinfo .brandline .brand{
+  font-weight:700;color:var(--navy-800);
+}
+.pinfo .brandline .dealer-tag{
+  background:var(--navy-100);color:var(--navy-800);font-size:11px;padding:2px 8px;border-radius:3px;font-weight:600;
+}
+
+.price-block{
+  background:var(--navy-100);border-radius:8px;padding:16px 18px;margin-bottom:14px;
+}
+.price-block .price{font-size:30px;font-weight:800;color:var(--orange);font-family:'IBM Plex Mono',monospace;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+.price-block .price small{font-size:14px;font-weight:600;color:var(--ink-soft);margin-left:2px;}
+.price-block .price .vat-inline{
+  font-size:12px;font-weight:600;color:var(--navy-800);background:#fff;border:1px solid #c3d2e0;
+  padding:3px 9px;border-radius:20px;font-family:'Be Vietnam Pro',sans-serif;
+}
+.price-block .ship-note{
+  margin-top:12px;padding-top:12px;border-top:1px dashed #c3d2e0;
+  font-size:12.5px;color:var(--navy-800);display:flex;gap:7px;align-items:flex-start;line-height:1.6;
+}
+.price-block .ship-note .ic{flex-shrink:0;}
+.ship-note .ship-more{color:var(--navy-950);font-weight:700;text-decoration:none;white-space:nowrap;}
+.ship-note .ship-more:hover{text-decoration:underline;}
+
+/* ---------- phím tắt xuống 3 tab (khối ngay dưới tên SP) ---------- */
+.quick-jump-row{display:flex;align-items:center;flex-wrap:wrap;gap:2px;margin-bottom:12px;}
+.qj-sep{color:var(--line);margin:0 7px;font-size:12px;}
+
+/* ---------- mã ưu đãi Zalo + khối ưu đãi (accent xanh Haravan, chỉ dùng cho khối khuyến mãi) ---------- */
+.meta-line{font-size:12px;color:var(--ink-soft);margin-bottom:12px;}
+.meta-line b{color:var(--navy-950);font-weight:600;}
+.meta-line .sep2{margin:0 6px;color:var(--line);}
+
+.promo-row{margin-bottom:14px;}
+.promo-row .plabel{font-size:12px;color:var(--ink-soft);margin-bottom:7px;}
+.promo-chips{display:flex;gap:7px;flex-wrap:wrap;}
+.promo-chip{
+  background:var(--deal-blue-100);color:var(--deal-blue);border:1px dashed var(--deal-blue);
+  font-size:11.5px;font-weight:700;padding:5px 10px;border-radius:5px;font-family:'IBM Plex Mono',monospace;
+}
+.promo-hint{font-size:11px;color:var(--ink-soft);margin-top:6px;}
+
+.offer-box{
+  background:var(--deal-blue-100);border:1px solid #c7dafa;border-radius:8px;padding:13px 15px;margin-bottom:16px;
+}
+.offer-box .ob-title{display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:var(--deal-blue);margin-bottom:8px;}
+.offer-box .ob-placeholder{font-size:11.5px;color:#5c6773;font-style:italic;}
+.btn-quote-link{
+  font-size:13px;font-weight:700;color:var(--orange-dark);border:1.5px solid var(--orange);
+  padding:6px 12px;border-radius:5px;background:#fff;white-space:nowrap;
+}
+.btn-quote-link:hover{background:var(--orange-100);}
+
+/* ---------- công cụ tra cứu/tính theo nhu cầu (khối 4) — chỉ hiện khi phù hợp nhóm SP ----------
+   Bản trước để trạng thái nghỉ quá trung tính (nền paper/chữ xám) nhằm không cạnh tranh với
+   nút "Nhận báo giá" — founder phản hồi là nhạt quá, giảm chú ý, trong khi màu lúc hover (nền
+   navy-100 phớt xanh + chữ đậm) nhận diện tốt hơn. Đưa trạng thái hover cũ lên làm mặc định,
+   hover mới đậm thêm 1 nấc để vẫn có phản hồi khi trỏ chuột. Vẫn KHÔNG dùng đúng var(--navy-800)
+   (màu nút báo giá) cho chữ — giữ 1 bậc nhạt hơn để không lẫn thành CTA ngang hàng. */
+.tool-link{
+  display:flex;align-items:center;gap:9px;background:var(--navy-100);border:1px solid #c9dce8;color:var(--ink);
+  font-size:13px;font-weight:600;padding:11px 14px;border-radius:8px;margin-bottom:16px;text-decoration:none;
+}
+.tool-link:hover{background:#d6e6ef;border-color:var(--navy-700);color:var(--navy-950);}
+.tool-link .ti{font-size:15px;flex-shrink:0;}
+
+/* ---------- Báo giá B2B — điểm nhận diện chủ đạo (khối 5, đứng trước Mua ngay) ----------
+   Đứng trước "Mua ngay" vì theo số liệu thật của Winline: 5% doanh thu qua giỏ hàng
+   là gần như toàn bộ khách lẻ — không có công trình/kho-xưởng/thương mại nào mua qua
+   đường này. Phần doanh thu B2B (đa số) đi qua Zalo/Call.
+   Nút đặc var(--navy-800) (=#004e7d, màu thương hiệu duy nhất sau khi gộp hệ màu), 1 dòng
+   chữ trắng duy nhất, căn giữa — đồng bộ với cách "Mua ngay" (.btn) vẫn căn giữa, để 2 nút
+   cùng hệ chữ, khác nhau ở trọng lượng màu. Dòng phụ (tệp khách + tốc độ) tách ra NGOÀI nút,
+   nằm ngay dưới nút, chữ nhỏ xám nhẹ — không tô đậm. */
+.btn-quote-2tier{
+  width:100%;background:var(--navy-800);border:none;border-radius:8px;padding:14px 18px;
+  cursor:pointer;font-family:inherit;text-align:center;display:block;
+  font-size:14.5px;font-weight:700;color:#fff;line-height:1.35;
+}
+.btn-quote-2tier:hover{background:var(--navy-950);}
+.quote-caption{
+  font-size:11.5px;color:var(--ink-soft);font-weight:400;text-align:center;
+  margin:9px 0 16px;line-height:1.6;
+}
+
+
+.trust-row{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;}
+.trust-chip{
+  display:flex;align-items:center;gap:6px;font-size:12px;color:var(--navy-800);
+  background:#fff;border:1px solid var(--line);border-radius:20px;padding:6px 12px;font-weight:500;
+}
+.trust-chip .dot{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0;}
+
+.quick-specs{
+  list-style:none;margin:0 0 18px;padding:0;
+  display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;
+  font-size:13.5px;
+}
+.quick-specs li{display:flex;justify-content:space-between;border-bottom:1px dotted var(--line);padding-bottom:6px;}
+.quick-specs li b{font-weight:600;color:var(--navy-950);}
+.quick-specs li .k{color:var(--ink-soft);}
+
+.variant-row{margin-bottom:14px;}
+.variant-row .vlabel{font-size:12px;color:var(--ink-soft);margin-bottom:6px;font-weight:500;}
+.variant-chips{display:flex;gap:6px;flex-wrap:wrap;}
+.vchip{
+  border:1.5px solid var(--line);border-radius:5px;padding:5px 11px;font-size:12px;
+  background:#fff;text-align:center;
+}
+.vchip .vname{font-weight:700;color:var(--navy-950);}
+.vchip .vspec{font-size:10.5px;color:var(--ink-soft);}
+.vchip .vspec::before{content:" · ";}
+.vchip.current{border-color:var(--navy-800);background:var(--navy-100);}
+
+@media(max-width:640px){
+  /* Mặc định ≤3 model: ép vừa đủ 1 hàng, không vuốt */
+  .variant-chips{flex-wrap:nowrap;gap:6px;}
+  .vchip{flex:1 1 0;padding:6px 4px;min-width:0;}
+  .vchip .vname,.vchip .vspec{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .vchip .vspec::before{content:"";}
+
+  /* Từ 4 model trở lên: thêm class "scrollable" vào .variant-chips để chuyển sang vuốt ngang thay vì ép nhỏ dần */
+  .variant-chips.scrollable{
+    overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+  }
+  .variant-chips.scrollable::-webkit-scrollbar{display:none;}
+  .variant-chips.scrollable .vchip{flex:0 0 30%;scroll-snap-align:start;}
+}
+
+/* ---------- nhóm "mua lẻ ngay" (số lượng + nút Mua ngay) — tách riêng khỏi khối báo giá ----------
+   Số lượng chỉ có ý nghĩa với "Mua ngay" (giỏ hàng bán lẻ) — modal báo giá đã có ô "Số lượng"
+   riêng theo từng tệp khách (VD "20", "15"...), không đọc giá trị ở đây. Trước đây ô Số lượng
+   nằm giữa 2 nút nên trông như dùng chung cho cả 2, gộp nó liền với Mua ngay cho đúng chức năng
+   và có 1 đường kẻ mờ ngăn với khối báo giá phía trên để 2 lối đi (báo giá / mua lẻ) tách bạch. */
+.buy-now-group{border-top:1px dashed var(--line);padding-top:14px;margin-top:2px;}
+.cta-row{display:flex;gap:12px;margin-bottom:20px;}
+.qty-row{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
+.qty-row .qlabel{font-size:13px;color:var(--ink-soft);font-weight:500;}
+.qty-stepper{display:flex;align-items:center;border:1.5px solid var(--line);border-radius:6px;overflow:hidden;}
+.qty-stepper button{width:34px;height:34px;background:var(--paper);border:none;font-size:16px;color:var(--navy-800);font-weight:700;}
+.qty-stepper button:hover{background:var(--navy-100);}
+.qty-stepper input{width:44px;height:34px;border:none;border-left:1px solid var(--line);border-right:1px solid var(--line);text-align:center;font-family:'IBM Plex Mono',monospace;font-size:13.5px;font-weight:600;color:var(--navy-950);}
+.qty-stepper input:focus{outline:none;}
+.btn{
+  flex:1;padding:10px 16px;border-radius:7px;font-weight:700;font-size:13.5px;border:none;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  transition:background .15s,border-color .15s;
+}
+.btn-primary{background:var(--orange);color:#fff;}
+.btn-primary:hover{background:var(--orange-dark);}
+/* ---------- Mua ngay — de-emphasize chủ đích: khách lẻ (5% doanh thu) mới dùng nút này,
+   phần lớn khách đi qua khối báo giá/Zalo phía trên. Viền cam mảnh thay vì nền cam đặc.
+   Đặt SAU .btn ở đây để border không bị .btn{border:none} đè mất theo thứ tự cascade. */
+.btn-outline-orange{
+  background:#fff;color:var(--orange);border:1.5px solid var(--orange);
+  font-weight:700;letter-spacing:.02em;
+}
+.btn-outline-orange:hover{background:var(--orange-100);}
+.btn-outline{background:#fff;color:var(--navy-950);border:1.5px solid var(--line);}
+.btn-outline:hover{border-color:var(--navy-950);}
+
+.staff-card{
+  display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:8px;
+  padding:12px 14px;background:#fff;
+}
+.staff-avatar{
+  width:42px;height:42px;border-radius:50%;background:var(--navy-700);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;flex-shrink:0;
+}
+.staff-meta{flex:1;font-size:12.5px;color:var(--ink-soft);}
+.staff-meta b{display:block;font-size:13.5px;color:var(--navy-950);}
+.staff-zalo{
+  background:#0068ff;color:#fff;font-size:12px;font-weight:700;padding:7px 12px;border-radius:5px;
+  display:flex;align-items:center;gap:5px;flex-shrink:0;
+}
+
+/* ---------- staff team (3 nhân viên) ---------- */
+.staff-team{margin-bottom:20px;}
+.staff-team-label{
+  font-size:12.5px;font-weight:600;color:var(--ink-soft);margin-bottom:9px;
+  display:flex;align-items:center;gap:6px;
+}
+.staff-team-label .dot{width:6px;height:6px;border-radius:50%;background:var(--green);}
+.staff-rows{display:flex;flex-direction:column;gap:8px;}
+.staff-row{
+  display:flex;align-items:center;gap:11px;border:1px solid var(--line);border-radius:9px;
+  background:#fff;padding:9px 12px;position:relative;
+}
+.staff-row .avatar-photo{
+  width:40px;height:40px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#fff;
+  border:2px solid var(--white);box-shadow:0 0 0 2px var(--navy-100);
+}
+.staff-row .online-dot{
+  position:absolute;left:38px;top:31px;width:10px;height:10px;border-radius:50%;
+  background:var(--green);border:2px solid #fff;
+}
+.staff-row .online-dot.offline{background:#b6bec7;}
+.staff-row .sname{font-size:13.5px;font-weight:700;color:var(--navy-950);}
+.staff-row .sphone{
+  font-size:11.5px;font-family:'IBM Plex Mono',monospace;color:var(--ink-soft);margin-top:1px;
+}
+.staff-row .meta{flex:1;min-width:0;}
+.staff-row .btn-row{display:flex;gap:6px;flex-shrink:0;}
+.staff-row .btn-call-sm{
+  background:var(--navy-100);color:var(--navy-800);border:1.5px solid transparent;font-size:11.5px;font-weight:700;
+  padding:5.5px 10px;border-radius:6px;display:flex;align-items:center;justify-content:center;gap:4px;
+}
+.staff-row .btn-zalo-sm{
+  background:#fff;color:#0068ff;border:1.5px solid #0068ff;font-size:11.5px;font-weight:700;
+  padding:5.5px 10px;border-radius:6px;display:flex;align-items:center;justify-content:center;gap:4px;
+}
+.staff-row .btn-zalo-sm:active{background:#eaf2ff;}
+
+/* ---------- tabs ---------- */
+.tabs-nav{display:flex;gap:2px;border-bottom:2px solid var(--line);}
+.tab-btn{
+  padding:13px 22px;font-size:14.5px;font-weight:600;color:var(--ink-soft);
+  background:none;border:none;border-bottom:3px solid transparent;margin-bottom:-2px;
+}
+.tab-btn.active{color:var(--navy-950);border-bottom-color:var(--orange);}
+.tab-panel{display:none;padding:26px 4px 10px;}
+.tab-panel.active{display:block;}
+
+table.spec-table{width:100%;max-width:680px;border-collapse:collapse;font-size:14px;}
+table.spec-table tr{border-bottom:1px solid var(--line);}
+table.spec-table tr:nth-child(odd){background:var(--paper);}
+table.spec-table td{padding:11px 16px;}
+table.spec-table td:first-child{color:var(--ink-soft);width:230px;font-weight:500;}
+table.spec-table td:last-child{font-weight:600;color:var(--navy-950);font-family:'IBM Plex Mono',monospace;font-size:13.5px;}
+
+/* ---------- mô tả sản phẩm tab ---------- */
+.desc-intro{font-size:14.5px;line-height:1.75;color:var(--ink);max-width:760px;margin-bottom:30px;}
+.desc-intro b{color:var(--navy-950);}
+
+.block-title{font-size:16px;font-weight:700;color:var(--navy-950);margin-bottom:4px;}
+.block-sub{font-size:12.5px;color:var(--ink-soft);margin-bottom:16px;}
+
+.desc-card{
+  background:var(--paper);border:1px solid var(--line);border-radius:12px;
+  padding:24px 26px 26px;
+}
+.desc-card .block-title:not(:first-child){margin-top:30px;}
+
+.size-compare{
+  display:flex;gap:34px;align-items:flex-end;background:#fff;border:1px solid var(--line);
+  border-radius:10px;padding:24px 30px 14px;margin-bottom:36px;max-width:760px;flex-wrap:wrap;
+}
+.size-compare svg{display:block;}
+.size-compare .sc-note{flex:1;min-width:220px;font-size:13px;color:var(--ink-soft);line-height:1.7;padding-bottom:20px;}
+.size-compare .sc-note ul{margin:8px 0 0;padding-left:18px;}
+.size-compare .sc-note li{margin-bottom:5px;}
+.size-compare .sc-note b{color:var(--navy-950);font-family:'IBM Plex Mono',monospace;}
+
+/* ---------- ảnh thật có chú thích kích thước — dùng lại ở gallery + tab mô tả ---------- */
+.dim-photo-wrap{max-width:520px;margin-bottom:10px;}
+.dim-photo{
+  aspect-ratio:4/3;border:1px solid var(--line);border-radius:10px;overflow:hidden;
+  position:relative;background:
+    linear-gradient(135deg, var(--navy-100) 25%, transparent 25%) -20px 0/40px 40px,
+    linear-gradient(225deg, var(--navy-100) 25%, transparent 25%) -20px 0/40px 40px,
+    var(--paper);
+}
+.dim-photo .ph-label{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  color:var(--navy-700);font-size:12.5px;text-align:center;padding:20px;
+}
+.dim-photo .dim-line{position:absolute;background:var(--orange);}
+.dim-photo .dim-h{width:2px;top:18%;bottom:18%;left:12%;}
+.dim-photo .dim-h::before,.dim-photo .dim-h::after{content:"";position:absolute;left:-3px;width:8px;height:2px;background:var(--orange);}
+.dim-photo .dim-h::before{top:0;} .dim-photo .dim-h::after{bottom:0;}
+.dim-photo .dim-w{height:2px;left:30%;right:14%;bottom:10%;}
+.dim-photo .dim-w::before,.dim-photo .dim-w::after{content:"";position:absolute;top:-3px;width:2px;height:8px;background:var(--orange);}
+.dim-photo .dim-w::before{left:0;} .dim-photo .dim-w::after{right:0;}
+.dim-photo .dim-label{
+  position:absolute;background:var(--navy-950);color:#fff;font-size:11px;font-weight:700;
+  padding:3px 8px;border-radius:4px;font-family:'IBM Plex Mono',monospace;
+}
+.dim-photo .dl-h{left:6%;top:46%;transform:rotate(-90deg) translateX(50%);transform-origin:left center;}
+.dim-photo .dl-w{left:50%;bottom:3%;transform:translateX(-50%);}
+.dim-photo-caption{font-size:12px;color:var(--ink-soft);margin-top:8px;}
+
+/* ---------- khối cam kết — thẻ riêng trong cột trái ---------- */
+.commit-card .cc-title{font-size:14px;font-weight:700;color:var(--navy-950);margin-bottom:14px;}
+.commit-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px 18px;}
+@media(max-width:480px){.commit-grid-2{grid-template-columns:1fr;}}
+.commit-card .cc-item{display:flex;gap:10px;align-items:center;font-size:12.5px;color:var(--ink);line-height:1.4;font-weight:500;}
+.commit-card .cc-item .ci{
+  width:30px;height:30px;border-radius:50%;background:var(--navy-100);color:var(--navy-800);
+  display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;
+}
+
+.material-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:820px;margin-bottom:10px;}
+@media(max-width:700px){.material-grid{grid-template-columns:1fr;}}
+.material-card{
+  border:1.5px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;position:relative;
+}
+.material-card.selected{border-color:var(--orange);}
+.material-card .mtag{
+  position:absolute;top:10px;right:10px;background:var(--orange);color:#fff;font-size:10.5px;
+  font-weight:700;padding:3px 9px;border-radius:20px;z-index:2;
+}
+.material-swatch{height:88px;position:relative;}
+.material-card .mbody{padding:13px 14px 15px;}
+.material-card .mname{font-size:13.5px;font-weight:700;color:var(--navy-950);margin-bottom:6px;}
+.material-card .mpts{list-style:none;margin:0;padding:0;font-size:12px;color:var(--ink-soft);line-height:1.65;}
+.material-card .mpts li{padding-left:14px;position:relative;}
+.material-card .mpts li::before{content:"–";position:absolute;left:0;}
+.material-card .mpts li.good{color:var(--green);}
+.material-card .mpts li.good::before{content:"✓";}
+
+/* ---------- tài liệu kỹ thuật — có ảnh xem trước, gom nhóm rõ ---------- */
+.doc-group{margin-bottom:28px;}
+.doc-group:last-child{margin-bottom:0;}
+.doc-group-title{font-size:13px;font-weight:700;color:var(--navy-950);margin-bottom:3px;}
+.doc-group-sub{font-size:11.5px;color:var(--ink-soft);margin-bottom:13px;}
+.doc-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;}
+.doc-card{
+  border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;
+}
+.doc-preview{
+  aspect-ratio:4/3;background:var(--paper);position:relative;
+  display:flex;align-items:center;justify-content:center;
+  background-image:
+    linear-gradient(135deg, var(--navy-100) 25%, transparent 25%),
+    linear-gradient(225deg, var(--navy-100) 25%, transparent 25%);
+  background-position:-20px 0,-20px 0;background-size:36px 36px;
+}
+.doc-preview .dp-icon{font-size:26px;opacity:.5;}
+.doc-preview .dp-format{
+  position:absolute;top:8px;left:8px;background:var(--navy-950);color:#fff;
+  font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;letter-spacing:.03em;
+}
+.doc-body{padding:12px 13px;}
+.doc-body .doc-name{font-size:13px;font-weight:700;color:var(--navy-950);line-height:1.35;margin-bottom:3px;}
+.doc-body .doc-size{font-size:11px;color:var(--ink-soft);margin-bottom:10px;}
+.doc-actions{display:flex;gap:7px;}
+.doc-actions a{
+  flex:1;text-align:center;font-size:12px;font-weight:700;padding:7px 8px;border-radius:6px;
+}
+.doc-view{background:var(--navy-100);color:var(--navy-800);}
+.doc-dl{background:var(--orange);color:#fff;}
+
+.review-summary{display:flex;gap:28px;align-items:center;margin-bottom:24px;padding-bottom:22px;border-bottom:1px solid var(--line);}
+.review-score{text-align:center;}
+.review-score .num{font-size:40px;font-weight:800;color:var(--navy-950);font-family:'IBM Plex Mono',monospace;}
+.review-score .stars{display:block;margin:4px 0;}
+.review-score .count{font-size:12px;color:var(--ink-soft);}
+.review-item{padding:16px 0;border-bottom:1px solid var(--line);}
+.review-item .rhead{display:flex;justify-content:space-between;margin-bottom:6px;}
+.review-item .rname{font-weight:700;font-size:13.5px;color:var(--navy-950);}
+.review-item .rdate{font-size:11.5px;color:#9aa7b4;}
+.review-photos{display:flex;gap:8px;margin-top:10px;}
+.review-photos .rp{width:58px;height:58px;border-radius:5px;background:var(--paper);border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;font-size:8px;color:var(--ink-soft);text-align:center;}
+.note-inline{
+  background:var(--orange-100);border-left:3px solid var(--orange);padding:10px 14px;font-size:12.5px;
+  color:var(--orange-dark);border-radius:0 6px 6px 0;margin-bottom:18px;max-width:680px;
+}
+
+/* ---------- "Winline trong thực tế" + Case study — dải bằng chứng cuối trang, trước "Sản phẩm liên quan" ----------
+   Khung dựng sẵn (ảnh placeholder nét đứt, đồng bộ kiểu placeholder đang dùng ở gallery/tài liệu). Ảnh/case
+   study THẬT do bên thiết kế (Mắt Bão, ~20-30 ngày) làm và gắn link sau — đây là điều kiện bắt buộc trước khi
+   lên production, không được thay bằng ảnh/case tự dựng (mục 7 bo-nho-winline.md: không bịa bằng chứng).
+   Câu tagline cuối (.proof-tagline) cần đưa vào quản trị web (CMS) để founder tự sửa khi cần — bản mẫu này chỉ
+   đánh dấu vùng nội dung động bằng data-cms-field, không thiết kế giao diện chỉnh sửa. */
+.proof-band{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:32px 0 36px;}
+.proof-inner{max-width:1240px;margin:0 auto;padding:0 20px;}
+.proof-inner > h2{font-size:19px;color:var(--navy-950);margin:0 0 6px;}
+.proof-sub{font-size:13px;color:var(--ink-soft);margin:0 0 20px;max-width:640px;line-height:1.6;}
+.proof-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+@media(max-width:760px){.proof-grid{grid-template-columns:1fr;}}
+.proof-card{border:1px solid var(--line);border-radius:12px;padding:20px 22px 22px;background:#fff;}
+.proof-card-title{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700;color:var(--navy-950);margin-bottom:14px;}
+.proof-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:14px;}
+.proof-photo{
+  aspect-ratio:4/3;border:1px dashed var(--line);border-radius:8px;background:var(--paper);
+  display:flex;align-items:center;justify-content:center;font-size:10.5px;color:#9aa7b4;text-align:center;padding:6px;
+}
+.proof-caption{font-size:12.5px;color:var(--ink-soft);line-height:1.6;margin:0 0 12px;}
+.proof-link{font-size:12.5px;font-weight:700;color:var(--navy-800);text-decoration:none;}
+.proof-link:hover{text-decoration:underline;}
+.proof-tagline{
+  margin:24px 0 0;padding:16px 20px;background:var(--navy-100);border-left:3px solid var(--navy-800);
+  border-radius:0 8px 8px 0;font-size:14px;font-weight:600;color:var(--navy-950);line-height:1.6;
+}
+
+/* ---------- related ---------- */
+.related-section{max-width:1240px;margin:38px auto 0;padding:0 20px 60px;}
+.related-section h2{font-size:19px;color:var(--navy-950);margin-bottom:16px;}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;}
+.rp-card{background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;}
+.rp-card .rp-img{aspect-ratio:1/1;background:var(--paper);display:flex;align-items:center;justify-content:center;color:#9aa7b4;font-size:11px;}
+.rp-card .rp-body{padding:12px 13px;}
+.rp-card .rp-name{font-size:13.5px;font-weight:600;color:var(--navy-950);margin-bottom:6px;line-height:1.35;min-height:36px;}
+.rp-card .rp-specs{font-size:11.5px;color:var(--ink-soft);margin-bottom:8px;line-height:1.6;}
+.rp-card .rp-price{font-weight:700;color:var(--navy-950);font-family:'IBM Plex Mono',monospace;font-size:15px;}
+.rp-card .rp-stars{color:var(--orange);font-size:11px;margin-top:4px;}
+
+@media(max-width:640px){
+  .related-grid{
+    display:flex;overflow-x:auto;scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none;gap:12px;padding-bottom:2px;
+  }
+  .related-grid::-webkit-scrollbar{display:none;}
+  .rp-card{flex:0 0 165px;scroll-snap-align:start;}
+}
+
+/* ---------- sticky mobile bar — 4 icon tròn, chia đều ---------- */
+.mobile-sticky{
+  display:none;position:fixed;bottom:0;left:0;right:0;background:#fff;
+  border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(13,31,51,.10);
+  padding:9px 10px calc(9px + env(safe-area-inset-bottom));z-index:50;
+  justify-content:space-around;align-items:flex-start;
+}
+.msb-icon{display:flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none;flex:1;background:none;border:none;font-family:inherit;}
+.msb-circle{
+  width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  color:#fff;box-shadow:0 2px 7px rgba(0,0,0,.14);
+}
+/* "Báo giá" trên mobile giờ dùng đúng var(--navy-800) — cùng màu với nút Nhận báo giá
+   trên desktop, để 2 nền tảng gửi cùng 1 tín hiệu ưu tiên. "Menu" chuyển sang xám trung
+   tính (var(--ink-soft)) thay vì cũng xanh thương hiệu, để không bị nhầm là 1 CTA khác. */
+.msb-icon.menu .msb-circle{background:var(--ink-soft);}
+.msb-icon.zalo .msb-circle{background:#0068ff;}
+.msb-icon.call .msb-circle{background:var(--green);}
+.msb-icon.quote .msb-circle{background:var(--navy-800);}
+.msb-label{font-size:10px;font-weight:700;color:var(--ink-soft);}
+.msb-icon.menu .msb-label{color:var(--ink-soft);}
+.msb-icon.zalo .msb-label{color:#0068ff;}
+.msb-icon.call .msb-label{color:var(--green);}
+.msb-icon.quote .msb-label{color:var(--navy-800);}
+@media(max-width:640px){
+  .mobile-sticky{display:flex;}
+  body{padding-bottom:80px;}
+  .quick-specs{grid-template-columns:1fr;}
+}
+
+/* ---------- desktop float call ---------- */
+.float-contact{
+  position:fixed;right:22px;bottom:90px;display:flex;flex-direction:column;gap:10px;z-index:45;
+}
+@media(max-width:640px){.float-contact{display:none;}}
+.float-contact a{
+  width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  color:#fff;box-shadow:0 3px 10px rgba(0,0,0,.2);
+}
+.float-contact .fc-zalo{background:#0068ff;}
+.float-contact .fc-call{background:var(--green);}
+
+/* ---------- modal ---------- */
+.modal-overlay{
+  display:none;position:fixed;inset:0;background:rgba(13,31,51,.55);z-index:100;
+  align-items:center;justify-content:center;padding:20px;
+}
+.modal-overlay.open{display:flex;}
+.modal-box{background:#fff;border-radius:10px;max-width:420px;width:100%;padding:26px;position:relative;}
+.modal-box.wide{max-width:540px;}
+.modal-box h3{margin:0 0 4px;font-size:18px;color:var(--navy-950);}
+.modal-box p.sub{font-size:12.5px;color:var(--ink-soft);margin:0 0 18px;}
+.modal-close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:18px;color:var(--ink-soft);}
+
+/* ---------- form động theo tệp — bên trong modal báo giá ---------- */
+.seg-pick{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:18px;}
+.seg-pick button{
+  border:1.5px solid var(--line);background:#fff;border-radius:7px;padding:12px 8px;
+  font-size:12px;font-weight:600;color:var(--navy-950);cursor:pointer;font-family:inherit;text-align:center;
+}
+.seg-pick button.active{border-color:var(--navy-800);background:var(--navy-100);}
+.seg-fields{display:none;}
+.seg-fields.active{display:block;}
+.modal-escape{font-size:11.5px;color:var(--ink-soft);text-align:center;margin-top:12px;}
+.modal-escape a{color:var(--deal-blue);font-weight:700;}
+.seg-optional-label{font-size:10.5px;color:#9aa7b4;font-weight:700;letter-spacing:.3px;margin:2px 0 8px;}
+
+/* ---------- lớp phủ danh mục dạng lưới — mobile "Danh mục" ---------- */
+.menu-sheet-overlay{
+  display:none;position:fixed;inset:0;background:rgba(13,31,51,.55);z-index:110;
+  align-items:flex-end;justify-content:center;
+}
+.menu-sheet-overlay.open{display:flex;}
+.menu-sheet{
+  background:#fff;border-radius:16px 16px 0 0;width:100%;max-width:520px;
+  padding:20px 20px calc(20px + env(safe-area-inset-bottom));
+  max-height:80vh;overflow-y:auto;position:relative;
+}
+.menu-sheet-handle{width:38px;height:4px;background:var(--line);border-radius:3px;margin:0 auto 14px;}
+.menu-sheet h3{margin:0 0 16px;font-size:16px;color:var(--navy-950);}
+.menu-sheet .ms-close{position:absolute;top:16px;right:18px;background:none;border:none;font-size:20px;color:var(--ink-soft);}
+.ms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.ms-tile{
+  display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;
+  border:1px solid var(--line);border-radius:12px;padding:16px 8px;background:var(--paper);
+  text-decoration:none;
+}
+.ms-tile .ms-icon{
+  width:44px;height:44px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;
+  font-size:20px;box-shadow:0 2px 6px rgba(13,31,51,.1);
+}
+.ms-tile span:last-child{font-size:11.5px;font-weight:600;color:var(--navy-950);line-height:1.3;}
+.form-field{margin-bottom:12px;}
+.form-field label{display:block;font-size:12.5px;font-weight:600;color:var(--navy-950);margin-bottom:5px;}
+.form-field input,.form-field select{
+  width:100%;padding:10px 12px;border:1.5px solid var(--line);border-radius:6px;font-size:13.5px;font-family:inherit;
+}
+.form-field input:focus,.form-field select:focus{outline:none;border-color:var(--navy-700);}
+.modal-submit{
+  width:100%;background:var(--orange);color:#fff;border:none;padding:13px;border-radius:6px;
+  font-weight:700;font-size:14.5px;margin-top:6px;
+}
+.modal-note{font-size:11px;color:#9aa7b4;margin-top:10px;text-align:center;}
+
+/* ---------- menu chính dạng dropdown — gom theo loại/thương hiệu/nhu cầu/hồ sơ ---------- */
+.nav-drop{position:relative;}
+.nav-top{padding:11px 14px;color:#dbe4ee;white-space:nowrap;border-bottom:2px solid transparent;cursor:pointer;display:inline-block;text-decoration:none;}
+.nav-drop:hover .nav-top,.nav-top.active{color:#fff;border-bottom-color:var(--orange,#d41e3d);background:rgba(255,255,255,.04);}
+.nav-panel{
+  display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid var(--line,#dde3ea);
+  box-shadow:0 10px 26px rgba(13,31,51,.16);border-radius:0 0 10px 10px;padding:14px;z-index:60;
+  min-width:230px;flex-direction:column;gap:1px;
+}
+.nav-drop:hover .nav-panel{display:flex;}
+.nav-panel a{color:var(--navy-950,#00354f)!important;padding:7px 10px;border-radius:5px;font-size:13px;white-space:nowrap;text-decoration:none;}
+.nav-panel a:hover{background:var(--navy-100,#e6eef3);}
+.nav-panel-wide{flex-direction:row;gap:26px;min-width:540px;padding:16px;}
+.np-col{display:flex;flex-direction:column;gap:1px;min-width:170px;}
+.np-title{font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft,#5c6773);font-weight:700;padding:4px 10px 6px;}
+@media(max-width:960px){
+  .nav-panel{display:none!important;}
+}
+
+</style>
+</head>
+<body>
+
+<div class="utility-bar">
+  <div class="wrap">
+    <div>Hơn 20 năm cung cấp quạt điện, quạt công nghiệp — giao hàng toàn quốc<span class="sep">|</span><a href="#">Tra cứu đơn hàng</a></div>
+    <div><a href="#">Tài liệu &amp; Hồ sơ</a><span class="sep">|</span><a href="#">Hotline 0949 761 893</a></div>
+  </div>
+</div>
+
+<header class="site">
+  <div class="header-inner">
+    <a href="index.html" class="logo" style="text-decoration:none;">WIN<span>LINE</span></a>
+    <div class="search-wrap">
+      <input class="search-box" type="text" value="quạt cây công nghiệp" placeholder="Tìm theo tên sản phẩm hoặc mã model...">
+      <button class="search-btn" aria-label="Tìm kiếm">⌕</button>
+      <div class="search-suggest" id="searchSuggest">
+        <div class="hint">Danh mục liên quan</div>
+        <div class="row"><span>Quạt cây công nghiệp</span><span class="mono" style="color:#9aa7b4">128 sản phẩm</span></div>
+        <div class="row"><span>Quạt treo tường công nghiệp</span><span class="mono" style="color:#9aa7b4">64 sản phẩm</span></div>
+        <div class="hint">Sản phẩm nổi bật</div>
+        <div class="row"><b>Quạt cây công nghiệp Komasu KM-750S</b><span class="mono">2.630.000đ</span></div>
+      </div>
+    </div>
+    <div class="header-actions">
+      <div class="item"><div class="icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.02l-2.2 2.19z"/></svg></div>Gọi ngay</div>
+      <div class="item"><div class="icon">🛒</div>Giỏ hàng</div>
+    </div>
+  </div>
+</header>
+
+<nav class="catnav">
+  <div class="catnav-inner">
+    <a href="index.html" class="nav-top ">Trang chủ</a>
+    <a href="gioi-thieu.html" class="nav-top ">Giới thiệu</a>
+
+    <div class="nav-drop">
+      <a href="san-pham.html" class="nav-top active">Sản phẩm ▾</a>
+      <div class="nav-panel nav-panel-wide">
+        <div class="np-col">
+          <div class="np-title">Quạt dân dụng</div>
+          <a href="san-pham.html">Quạt trần</a>
+          <a href="san-pham.html">Quạt cây / quạt đứng</a>
+          <a href="san-pham.html">Quạt treo tường</a>
+          <a href="san-pham.html">Quạt sàn / quạt quỳ</a>
+        </div>
+        <div class="np-col">
+          <div class="np-title">Quạt công nghiệp</div>
+          <a href="san-pham.html">Quạt cây công nghiệp</a>
+          <a href="san-pham.html">Quạt treo tường công nghiệp</a>
+          <a href="san-pham.html">Quạt sàn công nghiệp</a>
+        </div>
+        <div class="np-col">
+          <div class="np-title">Thông gió &amp; làm mát</div>
+          <a href="san-pham.html">Quạt thông gió dân dụng</a>
+          <a href="san-pham.html">Quạt thông gió công nghiệp</a>
+          <a href="san-pham.html">Quạt cắt gió</a>
+          <a href="san-pham.html">Máy làm mát / điều hoà di động</a>
+        </div>
+      </div>
+    </div>
+
+    <a href="giai-phap.html" class="nav-top ">Giải pháp</a>
+
+    <div class="nav-drop">
+      <a href="thuong-hieu.html" class="nav-top ">Thương hiệu ▾</a>
+      <div class="nav-panel">
+        <a href="thuong-hieu.html">Vinawind (Điện cơ Thống Nhất)</a>
+        <a href="thuong-hieu.html">Komasu Nhật Bản</a>
+        <a href="thuong-hieu.html">Deton</a>
+        <a href="thuong-hieu.html">Dasin</a>
+        <a href="thuong-hieu.html">Chinghai</a>
+        <a href="thuong-hieu.html">Hatari</a>
+        <a href="thuong-hieu.html">Panasonic</a>
+        <a href="thuong-hieu.html">Nedfon</a>
+      </div>
+    </div>
+
+    <a href="cong-cu-tinh-quat.html" class="nav-top ">Công cụ tính quạt</a>
+    <a href="du-an.html" class="nav-top ">Dự án</a>
+  </div>
+</nav>
+
+<!-- Breadcrumb hiển thị PHÂN CẤP (khớp đúng nhóm trong menu "Sản phẩm ▾": Quạt công nghiệp > Quạt cây công nghiệp)
+     để người dùng định vị đúng danh mục — nhưng URL thật KHÔNG phân cấp theo thư mục, chỉ có
+     đúng 1 đoạn slug ngay sau domain (winline.vn/<slug>), không lặp lại category trong đường dẫn.
+     Đây là 2 việc tách biệt: cấu trúc điều hướng (breadcrumb/menu) và cấu trúc URL (flat, tốt cho SEO/rút gọn link chia sẻ). -->
+<div class="breadcrumb">
+  <a href="#">Trang chủ</a> › <a href="san-pham.html">Quạt công nghiệp</a> › <a href="san-pham.html">Quạt cây công nghiệp</a> › Quạt cây công nghiệp Komasu KM-750S
+</div>
+
+<main class="product-main">
+  <div class="gallery-img">
+    <div class="gallery-main">
+      <div class="tag-real">📷 Ảnh chụp thực tế</div>
+      <div class="ph">
+        <div class="ph-icon">🌀</div>
+        <div class="ph-text"><b><img src="assets/images/km750s.jpg" alt="Quạt" style="max-height:140px; max-width:100%; object-fit:contain; margin:auto;"></b>Quạt cây công nghiệp<br>Komasu KM-750S</div>
+      </div>
+    </div>
+    <div class="gallery-thumbs">
+      <div class="thumb active">Ảnh 1</div>
+      <div class="thumb">Ảnh 2</div>
+      <div class="thumb">Ảnh lắp đặt thực tế</div>
+      <div class="thumb">Cận cảnh cánh quạt</div>
+      <div class="thumb" id="thumbDim">📏 Kích thước<br>chi tiết</div>
+      <div class="thumb play" id="thumbSizeVideo">Video kích thước 8s</div>
+      <div class="thumb play">Video 45s</div>
+    </div>
+    <div class="swipe-hint"><span class="arrows">↔</span> Vuốt ngang để xem thêm ảnh</div>
+    <div class="dim-photo-wrap" id="dimPhotoInGallery" style="display:none;margin-top:12px;">
+      <div class="dim-photo">
+        <div class="ph-label">Ảnh thật Komasu KM-750S<br>có kẻ vạch đo kích thước</div>
+        <div class="dim-line dim-h"></div>
+        <div class="dim-line dim-w"></div>
+        <div class="dim-label dl-h">1.150mm</div>
+        <div class="dim-label dl-w">750mm</div>
+      </div>
+      <div class="dim-photo-caption">Ảnh chụp thật, đo trực tiếp trên sản phẩm — không phải hình minh hoạ.</div>
+    </div>
+  </div>
+
+  <div class="commit-card">
+    <div class="cc-title">Chúng tôi cam kết</div>
+    <div class="commit-grid-2">
+      <div class="cc-item"><span class="ci">🚚</span>Giao đúng hạn 98–99% đơn hàng</div>
+      <div class="cc-item"><span class="ci">↺</span>Đổi trả miễn phí trong 30 ngày</div>
+      <div class="cc-item"><span class="ci">🛡</span>Bảo hành 12 tháng — hư gì đổi nấy</div>
+      <div class="cc-item"><span class="ci">🧾</span>Xuất hoá đơn VAT đầy đủ</div>
+    </div>
+  </div>
+
+<div class="tabs-section">
+  <div class="tabs-nav">
+    <button class="tab-btn active" data-tab="desc">Mô tả sản phẩm</button>
+    <button class="tab-btn" data-tab="specs">Thông số kỹ thuật</button>
+    <button class="tab-btn" data-tab="docs">Tài liệu kỹ thuật</button>
+    <button class="tab-btn" data-tab="reviews">Đánh giá (2)</button>
+  </div>
+
+  <div class="tab-panel active" id="panel-desc">
+    <p class="desc-intro">
+      <b>Quạt cây công nghiệp Komasu KM-750S</b> phù hợp cho nhà xưởng vừa và nhỏ, khu vực sản xuất, kho hàng cần lưu thông gió mạnh trên diện rộng.
+      Với sải cánh 750mm và 3 cấp tốc độ, một chiếc quạt phủ mát hiệu quả cho khu vực khoảng 30–40m² — phù hợp bố trí dọc xưởng may, xưởng cơ khí, hoặc khu vực làm việc ngoài trời có mái che.
+    </p>
+  </div>
+
+  <div class="tab-panel" id="panel-specs">
+    <table class="spec-table">
+      <tr><td>Thương hiệu</td><td>Komasu</td></tr>
+      <tr><td>Model</td><td>KM-750S</td></tr>
+      <tr><td>Công suất</td><td>250W</td></tr>
+      <tr><td>Sải cánh</td><td>750mm</td></tr>
+      <tr><td>Tốc độ quay</td><td>1.400 vòng/phút</td></tr>
+      <tr><td>Lưu lượng gió</td><td>15.200 – 18.000 m³/h</td></tr>
+      <tr><td>Số tốc độ gió</td><td>3 cấp</td></tr>
+      <tr><td>Chất liệu cánh</td><td>Nhựa cao cấp</td></tr>
+      <tr><td>Chân đế</td><td>Gang, điều chỉnh cao 1.000–1.300mm</td></tr>
+      <tr><td>Điện áp</td><td>220V / 50Hz</td></tr>
+      <tr><td>Xuất xứ</td><td>Việt Nam (linh kiện Hàn Quốc)</td></tr>
+      <tr><td>Bảo hành</td><td>12 tháng — hư gì đổi nấy</td></tr>
+    </table>
+  </div>
+
+  <div class="tab-panel" id="panel-docs">
+    <div class="note-inline">Xem trước hoặc tải về trực tiếp — không cần liên hệ Zalo để xin file, phục vụ nhu cầu trình hồ sơ nội bộ của khách kho-xưởng, công trình.</div>
+
+    <div class="doc-group">
+      <div class="doc-group-title">📐 Tài liệu riêng cho model này — KM-750S</div>
+      <div class="doc-group-sub">Đúng cho model KM-750S (sải cánh 750mm) — model khác trong dòng Komasu dùng bản vẽ riêng</div>
+      <div class="doc-list">
+        <div class="doc-card">
+          <div class="doc-preview"><span class="dp-format">JPG</span><span class="dp-icon">📐</span></div>
+          <div class="doc-body">
+            <div class="doc-name">Bản vẽ kích thước lắp đặt</div>
+            <div class="doc-size">KM-750S · Ø750mm, chân đế cao 1.000–1.300mm · 420KB</div>
+            <div class="doc-actions">
+              <a class="doc-view" href="#" target="_blank">Xem</a>
+              <a class="doc-dl" href="#" download>Tải về</a>
+            </div>
+          </div>
+        </div>
+        <div class="doc-card">
+          <div class="doc-preview"><span class="dp-format">PDF</span><span class="dp-icon">📄</span></div>
+          <div class="doc-body">
+            <div class="doc-name">CQ/CO — Chứng nhận xuất xứ</div>
+            <div class="doc-size">KM-750S · Komasu · 1.1MB</div>
+            <div class="doc-actions">
+              <a class="doc-view" href="#" target="_blank">Xem</a>
+              <a class="doc-dl" href="#" download>Tải về</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="doc-group">
+      <div class="doc-group-title">🏢 Tài liệu chung — thương hiệu &amp; công ty</div>
+      <div class="doc-group-sub">Dùng chung cho mọi model, không đổi theo từng SKU</div>
+      <div class="doc-list">
+        <div class="doc-card">
+          <div class="doc-preview"><span class="dp-format">PDF</span><span class="dp-icon">📘</span></div>
+          <div class="doc-body">
+            <div class="doc-name">Catalogue Komasu — Quạt cây công nghiệp</div>
+            <div class="doc-size">Toàn bộ dòng KM · 3.6MB</div>
+            <div class="doc-actions">
+              <a class="doc-view" href="#" target="_blank">Xem</a>
+              <a class="doc-dl" href="#" download>Tải về</a>
+            </div>
+          </div>
+        </div>
+        <div class="doc-card">
+          <div class="doc-preview"><span class="dp-format">PDF</span><span class="dp-icon">🏢</span></div>
+          <div class="doc-body">
+            <div class="doc-name">Hồ sơ năng lực Winline</div>
+            <div class="doc-size">Công ty · Giấy phép kinh doanh · 2.3MB</div>
+            <div class="doc-actions">
+              <a class="doc-view" href="#" target="_blank">Xem</a>
+              <a class="doc-dl" href="#" download>Tải về</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="panel-reviews">
+    <div class="review-summary">
+      <div class="review-score">
+        <div class="num">5.0</div>
+        <span class="stars">★★★★★</span>
+        <div class="count">2 đánh giá</div>
+      </div>
+      <div style="flex:1;color:var(--ink-soft);font-size:13px;">
+        Ảnh/video thực tế do khách hàng tự đăng. Ảnh sản phẩm chính thức của Winline hiển thị ở khung ảnh chính phía trên.
+      </div>
+    </div>
+    <div class="review-item">
+      <div class="rhead"><span class="rname">Anh Dũng — Xưởng may Đông Anh</span><span class="rdate">3 tuần trước</span></div>
+      <span class="stars" style="font-size:12px;">★★★★★</span>
+      <p style="margin:6px 0 0;font-size:13.5px;">Quạt chạy êm, gió mạnh, lắp cho xưởng 200m² 6 cái là đủ mát. Giao hàng đúng hẹn.</p>
+      <div class="review-photos"><div class="rp">Ảnh khách gửi</div><div class="rp">Ảnh khách gửi</div></div>
+    </div>
+    <div class="review-item">
+      <div class="rhead"><span class="rname">Chị Hằng — Quán ăn Cầu Giấy</span><span class="rdate">1 tháng trước</span></div>
+      <span class="stars" style="font-size:12px;">★★★★★</span>
+      <p style="margin:6px 0 0;font-size:13.5px;">Mua 2 cái cho quán, nhân viên tư vấn nhiệt tình, đóng gói chắc chắn.</p>
+    </div>
+  </div>
+</div>
+
+  <div class="pinfo">
+    <div class="brandline">
+      <span class="brand">KOMASU</span>
+      <span class="dealer-tag">Đại lý ủy quyền</span>
+      <span class="stock-badge" style="margin:0;"><span class="dot"></span>Còn hàng</span>
+    </div>
+    <h1 class="ptitle">Quạt cây công nghiệp Komasu KM-750S</h1>
+    <div class="meta-line"><b>Mã SP:</b> KM-750S <span class="sep2">·</span> <b>Loại:</b> Quạt cây công nghiệp</div>
+
+    <div class="quick-jump-row">
+      <button class="quick-jump" onclick="jumpTab('desc')">Mô tả sản phẩm ↓</button>
+      <span class="qj-sep">·</span>
+      <button class="quick-jump" onclick="jumpTab('specs')">Thông số kỹ thuật ↓</button>
+      <span class="qj-sep">·</span>
+      <button class="quick-jump" onclick="jumpTab('docs')">Tài liệu ↓</button>
+    </div>
+
+    <!-- Điểm đánh giá lấy đúng theo số review demo đang hiển thị ở tab "Đánh giá" bên dưới (2 review),
+         để không lệch với nội dung thật đang có trên trang. Khi có dữ liệu đánh giá thật cần tính
+         động (trung bình sao × tổng số review thật), không gõ tay như trước.
+         "Đã bán 214" đã bỏ — chưa có nguồn dữ liệu đơn hàng thật để gắn vào, thêm lại khi có pipeline
+         dữ liệu bán hàng thật (không suy đoán số theo mục 7 bo-nho-winline.md). -->
+    <div class="rating-row" style="margin-bottom:14px;">
+      <span class="stars">★★★★★</span>
+      <span>5.0 (2 đánh giá)</span>
+    </div>
+
+    <div class="price-block">
+      <div class="price">2.630.000<small>đ / cái</small><span class="vat-inline">Đã gồm VAT</span></div>
+      <div class="ship-note"><span class="ic">🚚</span><span>Giao Hà Nội miễn phí 12 quận · Hoả tốc có phí · Nhận giao công trình <a href="#" class="ship-more">Xem chi tiết →</a></span></div>
+    </div>
+
+    <a class="tool-link" href="cong-cu-tinh-quat.html">
+      <span class="ti">🧮</span>
+      Công cụ tính số lượng quạt phù hợp cho kho-xưởng →
+    </a>
+
+    <div class="variant-row">
+      <div class="vlabel">Sản phẩm cùng dòng Komasu</div>
+      <div class="variant-chips">
+        <div class="vchip current"><span class="vname">KM-750S</span><span class="vspec">750mm</span></div>
+        <a class="vchip" href="#"><span class="vname">KM-650S</span><span class="vspec">650mm</span></a>
+        <a class="vchip" href="#"><span class="vname">KM-500S</span><span class="vspec">500mm</span></a>
+      </div>
+    </div>
+
+    <button class="btn-quote-2tier" onclick="openModal()">Nhận báo giá công trình và báo giá sỉ →</button>
+
+    <div class="quote-caption">Công trình · Kho-xưởng · Đơn vị sử dụng · Thương mại — thường báo giá trong 1 giờ</div>
+
+    <div class="buy-now-group">
+      <div class="qty-row">
+        <span class="qlabel">Số lượng</span>
+        <div class="qty-stepper">
+          <button onclick="stepQty(-1)">−</button>
+          <input type="text" id="qtyInput" value="1">
+          <button onclick="stepQty(1)">+</button>
+        </div>
+      </div>
+      <div class="cta-row">
+        <button class="btn btn-outline-orange" style="flex:1;">MUA NGAY</button>
+      </div>
+    </div>
+
+    <div class="staff-team">
+      <div class="staff-team-label"><span class="dot" id="statusDot"></span><span id="statusText">Đội tư vấn bán hàng</span></div>
+      <div class="staff-rows">
+
+        <div class="staff-row">
+          <div class="online-dot status-dot"></div>
+          <div class="avatar-photo" style="background:linear-gradient(135deg,var(--orange),var(--orange-dark));">KH</div>
+          <div class="meta">
+            <div class="sname">Kim Huệ</div>
+            <div class="sphone">0949 761 893</div>
+          </div>
+          <div class="btn-row">
+            <a class="btn-call-sm" href="tel:0949761893"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" style="margin-right:3px;vertical-align:-1px;"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.02l-2.2 2.19z"/></svg>Gọi</a>
+            <a class="btn-zalo-sm" href="#"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" style="margin-right:3px;vertical-align:-2px;"><path d="M12 3C6.48 3 2 6.94 2 11.8c0 2.68 1.4 5.08 3.6 6.7-.12.9-.5 2.16-1.4 3.4a.5.5 0 00.55.78c1.8-.5 3.2-1.33 4.1-1.98A11.6 11.6 0 0012 20.6c5.52 0 10-3.94 10-8.8S17.52 3 12 3z"/></svg>Zalo</a>
+          </div>
+        </div>
+
+        <div class="staff-row">
+          <div class="online-dot status-dot"></div>
+          <div class="avatar-photo" style="background:linear-gradient(135deg,var(--navy-700),var(--navy-950));">NY</div>
+          <div class="meta">
+            <div class="sname">Ngọc Yến</div>
+            <div class="sphone">0981 805 488</div>
+          </div>
+          <div class="btn-row">
+            <a class="btn-call-sm" href="tel:0981805488"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" style="margin-right:3px;vertical-align:-1px;"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.02l-2.2 2.19z"/></svg>Gọi</a>
+            <a class="btn-zalo-sm" href="#"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" style="margin-right:3px;vertical-align:-2px;"><path d="M12 3C6.48 3 2 6.94 2 11.8c0 2.68 1.4 5.08 3.6 6.7-.12.9-.5 2.16-1.4 3.4a.5.5 0 00.55.78c1.8-.5 3.2-1.33 4.1-1.98A11.6 11.6 0 0012 20.6c5.52 0 10-3.94 10-8.8S17.52 3 12 3z"/></svg>Zalo</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+
+<div class="proof-band">
+  <div class="proof-inner">
+    <h2>Winline trong thực tế</h2>
+    <p class="proof-sub">Bằng chứng thật ngoài lời quảng cáo — hoạt động hàng ngày và các công trình Winline đã lắp đặt.</p>
+    <div class="proof-grid">
+      <div class="proof-card">
+        <div class="proof-card-title"><span>📸</span>Winline trong thực tế</div>
+        <div class="proof-photos">
+          <div class="proof-photo">Ảnh thực tế</div>
+          <div class="proof-photo">Ảnh thực tế</div>
+          <div class="proof-photo">Ảnh thực tế</div>
+        </div>
+        <p class="proof-caption">Ảnh giao hàng, đóng gói và đội ngũ Winline — cập nhật thường xuyên trên Zalo OA.</p>
+        <a class="proof-link" href="#">Xem thêm trên Zalo OA →</a>
+      </div>
+      <div class="proof-card">
+        <div class="proof-card-title"><span>📁</span>Công trình &amp; khách hàng tiêu biểu</div>
+        <div class="proof-photos">
+          <div class="proof-photo">Ảnh thực tế</div>
+          <div class="proof-photo">Ảnh thực tế</div>
+          <div class="proof-photo">Ảnh thực tế</div>
+        </div>
+        <p class="proof-caption">Một số công trình, kho xưởng đã lắp đặt quạt Winline — nhu cầu thực tế và cách xử lý.</p>
+        <a class="proof-link" href="du-an.html">Xem case study →</a>
+      </div>
+    </div>
+    <!-- Tagline này cần đưa vào quản trị web (CMS) để founder tự sửa khi cần — không hardcode cứng ở bản triển
+         khai thật. Ở đây chỉ đánh dấu vùng nội dung động bằng data-cms-field, không thiết kế giao diện chỉnh sửa. -->
+    <p class="proof-tagline" data-cms-field="proof_tagline">Winline cung cấp quạt điện, quạt công nghiệp và quạt thông gió cho nhà ở và công trình.</p>
+  </div>
+</div>
+
+
+<div class="related-section">
+  <h2>Sản phẩm liên quan</h2>
+  <div class="swipe-hint" style="margin:-10px 0 14px;"><span class="arrows">↔</span> Vuốt ngang để xem thêm sản phẩm</div>
+  <div class="related-grid">
+    <div class="rp-card">
+      <div class="rp-img">Ảnh sản phẩm</div>
+      <div class="rp-body">
+        <div class="rp-name">Quạt cây công nghiệp Tico TC-750</div>
+        <div class="rp-specs">Công suất 220W · Sải cánh 750mm</div>
+        <div class="rp-price">2.480.000đ</div>
+        <div class="rp-stars">★★★★★ (18)</div>
+      </div>
+    </div>
+    <div class="rp-card">
+      <div class="rp-img">Ảnh sản phẩm</div>
+      <div class="rp-body">
+        <div class="rp-name">Quạt treo tường công nghiệp Komasu KTT-650</div>
+        <div class="rp-specs">Công suất 190W · Sải cánh 650mm</div>
+        <div class="rp-price">1.890.000đ</div>
+        <div class="rp-stars">★★★★★ (22)</div>
+      </div>
+    </div>
+    <div class="rp-card">
+      <div class="rp-img">Ảnh sản phẩm</div>
+      <div class="rp-body">
+        <div class="rp-name">Quạt sàn công nghiệp Senko QS-500</div>
+        <div class="rp-specs">Công suất 165W · Sải cánh 500mm</div>
+        <div class="rp-price">1.650.000đ</div>
+        <div class="rp-stars">★★★★☆ (9)</div>
+      </div>
+    </div>
+    <div class="rp-card">
+      <div class="rp-img">Ảnh sản phẩm</div>
+      <div class="rp-body">
+        <div class="rp-name">Quạt thông gió công nghiệp Kyungjin KR-1000</div>
+        <div class="rp-specs">Lưu lượng 8.500 m³/h</div>
+        <div class="rp-price">4.150.000đ</div>
+        <div class="rp-stars">★★★★★ (11)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="float-contact">
+  <a class="fc-zalo" href="#" aria-label="Chat Zalo">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="#fff"><path d="M12 3C6.48 3 2 6.94 2 11.8c0 2.68 1.4 5.08 3.6 6.7-.12.9-.5 2.16-1.4 3.4a.5.5 0 00.55.78c1.8-.5 3.2-1.33 4.1-1.98A11.6 11.6 0 0012 20.6c5.52 0 10-3.94 10-8.8S17.52 3 12 3z"/></svg>
+  </a>
+  <a class="fc-call" href="tel:0949761893" aria-label="Gọi ngay">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="#fff"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.02l-2.2 2.19z"/></svg>
+  </a>
+</div>
+
+<div class="mobile-sticky">
+  <button class="msb-icon menu" onclick="toggleMobileMenu()">
+    <span class="msb-circle">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="#fff"><rect x="3" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5"/></svg>
+    </span>
+    <span class="msb-label">Danh mục</span>
+  </button>
+  <a class="msb-icon zalo" href="#">
+    <span class="msb-circle">
+      <svg viewBox="0 0 24 24" width="19" height="19" fill="#fff"><path d="M12 3C6.48 3 2 6.94 2 11.8c0 2.68 1.4 5.08 3.6 6.7-.12.9-.5 2.16-1.4 3.4a.5.5 0 00.55.78c1.8-.5 3.2-1.33 4.1-1.98A11.6 11.6 0 0012 20.6c5.52 0 10-3.94 10-8.8S17.52 3 12 3z"/></svg>
+    </span>
+    <span class="msb-label">Zalo</span>
+  </a>
+  <a class="msb-icon call" href="tel:0949761893">
+    <span class="msb-circle">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="#fff"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.02l-2.2 2.19z"/></svg>
+    </span>
+    <span class="msb-label">Gọi ngay</span>
+  </a>
+  <button class="msb-icon quote" onclick="openModal()">
+    <span class="msb-circle">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="#fff"><path d="M6 2h9l5 5v13a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2z" fill="none" stroke="#fff" stroke-width="1.8"/><path d="M8 12h8M8 16h5" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </span>
+    <span class="msb-label">Báo giá</span>
+  </button>
+</div>
+
+<div class="menu-sheet-overlay" id="menuSheet">
+  <div class="menu-sheet">
+    <button class="ms-close" onclick="closeMobileMenu()">✕</button>
+    <div class="menu-sheet-handle"></div>
+    <h3>Danh mục</h3>
+    <div class="ms-grid">
+      <a class="ms-tile" href="san-pham.html"><span class="ms-icon">🌀</span><span>Quạt dân dụng</span></a>
+      <a class="ms-tile" href="san-pham.html"><span class="ms-icon">🏭</span><span>Quạt công nghiệp</span></a>
+      <a class="ms-tile" href="san-pham.html"><span class="ms-icon">💨</span><span>Thông gió &amp; làm mát</span></a>
+      <a class="ms-tile" href="san-pham.html"><span class="ms-icon">🏷️</span><span>Thương hiệu</span></a>
+      <a class="ms-tile" href="#"><span class="ms-icon">🏗️</span><span>Giải pháp theo nhu cầu</span></a>
+      <a class="ms-tile" href="ho-so-nang-luc.html"><span class="ms-icon">📁</span><span>Hồ sơ &amp; Tài liệu</span></a>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="quoteModal">
+  <div class="modal-box wide">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h3>Bạn mua sản phẩm cho:</h3>
+    <p class="sub">Quạt cây công nghiệp Komasu KM-750S — chọn đúng nhu cầu để nhân viên báo giá chính xác hơn.</p>
+
+    <div class="seg-pick" id="segPick">
+      <button class="active" onclick="pickSeg('congtrinh',this)">🏗️ Công trình</button>
+      <button onclick="pickSeg('khoxuong',this)">🏭 Kho-xưởng</button>
+      <button onclick="pickSeg('donvi',this)">🏢 Đơn vị sử dụng</button>
+      <button onclick="pickSeg('thuongmai',this)">🤝 Thương mại</button>
+    </div>
+
+    <div class="seg-fields active" id="fields-congtrinh">
+      <div class="form-field"><label>Số lượng</label><input type="number" placeholder="Ví dụ: 20"></div>
+      <div class="form-field"><label>Địa điểm giao</label><input type="text" placeholder="Công trình / quận, tỉnh"></div>
+      <div class="form-field"><label>Thời gian cần hàng</label><input type="text" placeholder="Ngày dự kiến"></div>
+      <div class="form-field"><label>Số điện thoại / Zalo</label><input type="tel" placeholder="09xx xxx xxx"></div>
+      <div class="seg-optional-label">TÙY CHỌN THÊM (không bắt buộc)</div>
+      <div class="form-field"><label>Giao nhiều đợt / nhiều điểm / giờ riêng</label><input type="text" placeholder="Mô tả ngắn nếu có"></div>
+    </div>
+
+    <div class="seg-fields" id="fields-khoxuong">
+      <div class="form-field"><label>Số lượng</label><input type="number" placeholder="Ví dụ: 15"></div>
+      <div class="form-field"><label>Địa điểm giao</label><input type="text" placeholder="Tên xưởng / khu công nghiệp"></div>
+      <div class="form-field"><label>Nhu cầu sử dụng</label><input type="text" placeholder="Làm mát / thông gió khu vực nào"></div>
+      <div class="form-field"><label>Số điện thoại / Zalo</label><input type="tel" placeholder="09xx xxx xxx"></div>
+    </div>
+
+    <div class="seg-fields" id="fields-donvi">
+      <div class="form-field"><label>Số lượng</label><input type="number" placeholder="Ví dụ: 10"></div>
+      <div class="form-field"><label>Nơi sử dụng</label><input type="text" placeholder="Văn phòng / nhà hàng / trường học..."></div>
+      <div class="form-field"><label>Địa điểm giao</label><input type="text" placeholder="Địa chỉ"></div>
+      <div class="form-field"><label>Số điện thoại / Zalo</label><input type="tel" placeholder="09xx xxx xxx"></div>
+    </div>
+
+    <div class="seg-fields" id="fields-thuongmai">
+      <div class="form-field"><label>Số lượng</label><input type="number" placeholder="Ví dụ: 30"></div>
+      <div class="form-field"><label>Địa điểm giao</label><input type="text" placeholder="Kho / cửa hàng"></div>
+      <div class="form-field"><label>Số điện thoại / Zalo</label><input type="tel" placeholder="09xx xxx xxx"></div>
+      <div class="seg-optional-label">TÙY CHỌN THÊM</div>
+      <div class="form-field"><label>Hồ sơ cần cung cấp</label><input type="text" placeholder="Không bắt buộc"></div>
+    </div>
+
+    <button class="modal-submit">Gửi yêu cầu báo giá</button>
+    <p class="modal-escape">hoặc <a href="#">Chat Zalo ngay</a> / <a href="tel:0949761893">Gọi ngay</a> — không cần điền form</p>
+    <p class="modal-note">Thông tin gửi trực tiếp về Zalo bán hàng, không công khai giá sỉ trên web.</p>
+  </div>
+</div>
+
+<script>
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-'+btn.dataset.tab).classList.add('active');
+  });
+});
+document.querySelectorAll('.gallery-thumbs .thumb').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.gallery-thumbs .thumb').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById('dimPhotoInGallery').style.display = (t.id==='thumbDim') ? 'block' : 'none';
+  });
+});
+const searchBox=document.querySelector('.search-box');
+const suggest=document.getElementById('searchSuggest');
+searchBox.addEventListener('focus',()=>suggest.style.display='block');
+searchBox.addEventListener('blur',()=>setTimeout(()=>suggest.style.display='none',150));
+function jumpTab(tab){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelector('.tab-btn[data-tab="'+tab+'"]').classList.add('active');
+  document.getElementById('panel-'+tab).classList.add('active');
+  document.querySelector('.tabs-section').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function openModal(){document.getElementById('quoteModal').classList.add('open');}
+var segIds=['congtrinh','khoxuong','donvi','thuongmai'];
+function pickSeg(id,btn){
+  segIds.forEach(function(s){
+    document.getElementById('fields-'+s).classList.remove('active');
+  });
+  document.getElementById('fields-'+id).classList.add('active');
+  document.querySelectorAll('#segPick button').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+}
+function toggleMobileMenu(){
+  document.getElementById('menuSheet').classList.add('open');
+}
+function closeMobileMenu(){
+  document.getElementById('menuSheet').classList.remove('open');
+}
+function closeModal(){document.getElementById('quoteModal').classList.remove('open');}
+function stepQty(d){
+  const el=document.getElementById('qtyInput');
+  let v=parseInt(el.value)||1;
+  v=Math.max(1,v+d);
+  el.value=v;
+}
+
+// Trạng thái online dựa theo giờ làm việc THẬT (giờ máy người xem) — không phải màu vẽ chết.
+// [CẦN XÁC NHẬN] khung giờ mở cửa thực tế của Winline — đang tạm để 8:00–17:30, T2–T7.
+(function(){
+  const now = new Date();
+  const day = now.getDay(); // 0 = CN
+  const hour = now.getHours() + now.getMinutes()/60;
+  const isWorkingHours = day !== 0 && hour >= 8 && hour < 17.5;
+
+  document.querySelectorAll('.status-dot').forEach(dot=>{
+    if(!isWorkingHours) dot.classList.add('offline');
+  });
+  document.getElementById('statusText').textContent = isWorkingHours
+    ? 'Đội tư vấn bán hàng — phản hồi nhanh trong giờ làm việc'
+    : 'Đội tư vấn bán hàng — ngoài giờ làm việc, để lại lời nhắn Zalo';
+})();
+</script>
+
+</body>
+</html>
