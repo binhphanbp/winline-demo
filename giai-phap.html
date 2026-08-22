@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
+  <link rel="icon" href="assets/images/favicon.png" type="image/png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -316,11 +317,39 @@ footer{background:var(--navy-950);color:#b9c7d4;padding:34px 20px 18px;margin-to
 }
 
 </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<div class="utility-bar">
+  <div class="wrap">
+    <div>Công ty TNHH Winline Việt Nam — MST: <b>0106085370</b> (Sở KH&amp;ĐT TP Hà Nội cấp 15/01/2013)</div>
+    <div><a href="gioi-thieu.html">Hồ sơ năng lực</a><span class="sep">|</span><a href="tel:0949761893">Hotline: 0949.761.893</a></div>
+  </div>
+</div>
 
-<div class="utility-bar"><div class="wrap"><span>Hơn 35 năm hoạt động — 12 năm pháp nhân chính thức</span><span>Hotline 0949 761 893</span></div></div>
-<header class="site"><div class="header-inner"><a href="index.html" class="site-logo-wrap"><img src="assets/images/logo.png" alt="Winline.vn" class="site-logo-img"><div class="logo" style="margin:0;">WIN<span>LINE</span></div></a></div></header>
+<header class="site">
+  <div class="header-inner">
+    <a href="index.html" class="site-logo-wrap">
+      <img src="assets/images/logo.png" alt="Winline.vn" class="site-logo-img" onerror="this.style.display='none'">
+      <div class="logo">WIN<span>LINE</span></div>
+    </a>
+
+    <div class="search-wrap">
+      <input type="search" class="search-box header-search-input" placeholder="Tìm theo tên sản phẩm, mã model (KM-750S, 1380, Vinawind, Deton...)...">
+      <button class="search-btn" aria-label="Tìm kiếm"><i class="fas fa-search"></i></button>
+    </div>
+
+    <div class="header-actions">
+      <button class="header-action-btn" onclick="openCartDrawer()">
+        <i class="fas fa-shopping-cart" style="color: var(--orange);"></i>
+        <span>Giỏ hàng</span>
+        <span class="cart-badge-count" style="display:none;">0</span>
+      </button>
+      <button class="nav-toggle-btn" id="mobile-nav-toggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+    </div>
+  </div>
+</header>
 <nav class="catnav">
   <div class="catnav-inner">
     <a href="index.html" class="nav-top ">Trang chủ</a>
@@ -388,7 +417,6 @@ footer{background:var(--navy-950);color:#b9c7d4;padding:34px 20px 18px;margin-to
     <div class="type-body">
       <p style="font-size:14px;color:var(--ink);margin-bottom:12px;">Nhà xưởng, kho bãi thường có trần cao, diện tích lớn, phát sinh nhiệt từ máy móc/hàng hoá — quạt công suất nhỏ không đủ lưu lượng khí, gây tích nhiệt, ảnh hưởng người lao động và chất lượng hàng lưu kho. Chọn sai lưu lượng (theo TCVN 5687:2010) là nguyên nhân phổ biến khiến lắp quạt rồi vẫn nóng.</p>
       <p style="font-size:14px;color:var(--ink);margin:0;">Nhóm quạt công nghiệp dưới đây đáp ứng lưu lượng lớn (8.000–28.000 m³/h), vận hành liên tục nhiều giờ, chịu được môi trường bụi. Dùng <a href="cong-cu-tinh-quat.html" style="color:var(--navy-800);font-weight:700;">công cụ tính lưu lượng khí</a> theo đúng diện tích thực tế trước khi chọn model, tránh chọn thiếu hoặc thừa công suất gây lãng phí điện.</p>
-      <span class="cms-flag" style="display:block;margin-top:10px;">⚠ Đoạn mô tả trên dựa theo nguyên lý kỹ thuật chung (TCVN 5687:2010) — cần Winline duyệt lại, bổ sung số liệu thật riêng của công ty nếu có (VD tỷ lệ khách kho-xưởng gặp đúng vấn đề này) trước khi lên production.</span>
     </div>
   </div>
 </div>
@@ -411,43 +439,43 @@ footer{background:var(--navy-950);color:#b9c7d4;padding:34px 20px 18px;margin-to
           </tr>
         </thead>
         <tbody>
-          <tr onclick="location.href='product-detail.html'">
-            <td class="first-col-sticky"><div class="st-prod"><div class="st-thumb"></div><div><div class="st-name">Quạt cây công nghiệp Komasu KM-750S</div><div class="st-sku">SKU: KM-750S</div></div></div></td>
+          <tr onclick="location.href='chi-tiet-san-pham.html'">
+            <td class="first-col-sticky"><div class="st-prod"><div class="st-thumb"></div><div><div class="st-name">Quạt cây công nghiệp Komasu KM-500S</div><div class="st-sku">SKU: KM-500S</div></div></div></td>
             <td class="st-brand">Komasu</td>
-            <td class="num">250W</td>
-            <td class="num">15.200–18.000 m³/h</td>
-            <td class="num">Ø750mm</td>
+            <td class="num">160W</td>
+            <td class="num">8.200–9.500 m³/h</td>
+            <td class="num">Ø500mm</td>
             <td>220V/50Hz</td>
             <td class="num">1</td>
-            <td class="num st-price">2.890.000đ</td>
+            <td class="num st-price">1.780.000đ</td>
             <td><a class="st-cta" href="chi-tiet-san-pham.html">Xem chi tiết →</a></td>
           </tr>
-          <tr onclick="location.href='product-detail.html'">
-            <td class="first-col-sticky"><div class="st-prod"><div class="st-thumb"></div><div><div class="st-name">Quạt cây công nghiệp Vinawind VW-650S</div><div class="st-sku">SKU: VW-650S</div></div></div></td>
-            <td class="st-brand">Vinawind</td>
-            <td class="num">220W</td>
-            <td class="num">11.000–13.500 m³/h</td>
+          <tr onclick="location.href='chi-tiet-san-pham.html'">
+            <td class="first-col-sticky"><div class="st-prod"><div class="st-thumb"></div><div><div class="st-name">Quạt cây công nghiệp Komasu KM-650S</div><div class="st-sku">SKU: KM-650S</div></div></div></td>
+            <td class="st-brand">Komasu</td>
+            <td class="num">200W</td>
+            <td class="num">11.500–13.200 m³/h</td>
             <td class="num">Ø650mm</td>
             <td>220V/50Hz</td>
             <td class="num">1</td>
-            <td class="num st-price">2.150.000đ</td>
+            <td class="num st-price">2.190.000đ</td>
             <td><a class="st-cta" href="chi-tiet-san-pham.html">Xem chi tiết →</a></td>
           </tr>
-          <tr onclick="location.href='product-detail.html'">
-            <td class="first-col-sticky"><div class="st-prod"><div class="st-thumb"></div><div><div class="st-name">Quạt cây công nghiệp Tico TC-800S</div><div class="st-sku">SKU: TC-800S</div></div></div></td>
-            <td class="st-brand">Tico</td>
-            <td class="num">280W</td>
-            <td class="num">18.500–21.000 m³/h</td>
-            <td class="num">Ø800mm</td>
+          <tr onclick="location.href='chi-tiet-san-pham.html'">
+            <td class="first-col-sticky"><div class="st-prod"><div class="st-thumb"></div><div><div class="st-name">Quạt cây công nghiệp Komasu KM-750S</div><div class="st-sku">SKU: KM-750S</div></div></div></td>
+            <td class="st-brand">Komasu</td>
+            <td class="num">250W</td>
+            <td class="num">15.200–17.500 m³/h</td>
+            <td class="num">Ø750mm</td>
             <td>220V/50Hz</td>
             <td class="num">1</td>
-            <td class="num st-price">3.150.000đ</td>
+            <td class="num st-price">2.630.000đ</td>
             <td><a class="st-cta" href="chi-tiet-san-pham.html">Xem chi tiết →</a></td>
           </tr>
-          <tr onclick="location.href='product-detail.html'">
-            <td class="first-col-sticky"><div class="st-prod"><div class="st-thumb"></div><div><div class="st-name">Quạt cây công nghiệp Hatari HT-550S</div><div class="st-sku">SKU: HT-550S</div></div></div></td>
-            <td class="st-brand">Hatari</td>
-            <td class="num">185W</td>
+          <tr onclick="location.href='chi-tiet-san-pham.html'">
+            <td class="first-col-sticky"><div class="st-prod"><div class="st-thumb"></div><div><div class="st-name">Quạt cây công nghiệp Tico TC-550</div><div class="st-sku">SKU: TC-550</div></div></div></td>
+            <td class="st-brand">Tico</td>
+            <td class="num">180W</td>
             <td class="num">9.800–11.200 m³/h</td>
             <td class="num">Ø550mm</td>
             <td>220V/50Hz</td>
@@ -455,7 +483,7 @@ footer{background:var(--navy-950);color:#b9c7d4;padding:34px 20px 18px;margin-to
             <td class="num st-price">1.920.000đ</td>
             <td><a class="st-cta" href="chi-tiet-san-pham.html">Xem chi tiết →</a></td>
           </tr>
-          <tr onclick="location.href='product-detail.html'">
+          <tr onclick="location.href='chi-tiet-san-pham.html'">
             <td class="first-col-sticky"><div class="st-prod"><div class="st-thumb"></div><div><div class="st-name">Quạt cây công nghiệp Senko SK-700S</div><div class="st-sku">SKU: SK-700S</div></div></div></td>
             <td class="st-brand">Senko</td>
             <td class="num">240W</td>
@@ -466,7 +494,7 @@ footer{background:var(--navy-950);color:#b9c7d4;padding:34px 20px 18px;margin-to
             <td class="num st-price">2.480.000đ</td>
             <td><a class="st-cta" href="chi-tiet-san-pham.html">Xem chi tiết →</a></td>
           </tr>
-          <tr onclick="location.href='product-detail.html'">
+          <tr onclick="location.href='chi-tiet-san-pham.html'">
             <td class="first-col-sticky"><div class="st-prod"><div class="st-thumb"></div><div><div class="st-name">Quạt cây công nghiệp Komasu KM-1000S</div><div class="st-sku">SKU: KM-1000S</div></div></div></td>
             <td class="st-brand">Komasu</td>
             <td class="num">370W</td>
@@ -491,53 +519,72 @@ footer{background:var(--navy-950);color:#b9c7d4;padding:34px 20px 18px;margin-to
 
 <div class="table-note">Bảng có thể cuộn ngang trên màn hình nhỏ — cột "Sản phẩm" giữ cố định bên trái để dễ đối chiếu khi cuộn.</div>
 
-<footer><div class="footer-inner">© 2026 Công ty TNHH Winline Việt Nam — Số 7 BT6 Pháp Vân – Tứ Hiệp, Hà Nội — MST 0106085370</div></footer>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <h4 style="color:#fff; font-size:15px; margin-bottom:12px;">Công ty TNHH Winline Việt Nam</h4>
+      <p>Mã số thuế: <b>0106085370</b> do Sở KH&amp;ĐT TP Hà Nội cấp ngày 15/01/2013.</p>
+      <p>Showroom: Số 17 Ngõ 46 Quan Nhân, Phường Thanh Xuân, TP. Hà Nội.</p>
+      <p>Trụ sở: Số 7 BT6 KĐT Pháp Vân - Tứ Hiệp, P. Hoàng Liệt, Q. Hoàng Mai, Hà Nội.</p>
+      <p>Hotline: <b>0949.761.893</b> — Tổng đài kỹ thuật: <b>1900 099 806</b></p>
+    </div>
 
+    <div>
+      <h4>Sản Phẩm &amp; Danh Mục</h4>
+      <a href="san-pham.html">Quạt cây công nghiệp</a>
+      <a href="san-pham.html">Quạt treo tường công nghiệp</a>
+      <a href="san-pham.html">Quạt thông gió vuông 1380</a>
+      <a href="san-pham.html">Quạt ly tâm &amp; hướng trục</a>
+      <a href="san-pham.html">Máy làm mát Air Cooler</a>
+    </div>
+
+    <div>
+      <h4>Thương Hiệu Phân Phối</h4>
+      <a href="thuong-hieu.html">Komasu Nhật Bản</a>
+      <a href="thuong-hieu.html">Vinawind (Điện cơ Thống Nhất)</a>
+      <a href="thuong-hieu.html">Deton chính hãng</a>
+      <a href="thuong-hieu.html">Dasin Đài Loan</a>
+      <a href="thuong-hieu.html">Chinghai &amp; Hatari</a>
+    </div>
+
+    <div>
+      <h4>Chính Sách &amp; Hỗ Trợ</h4>
+      <a href="gioi-thieu.html">Hồ sơ năng lực Winline</a>
+      <a href="cong-cu-tinh-quat.html">Công cụ tính lưu lượng HVAC</a>
+      <a href="du-an.html">Dự án đã triển khai</a>
+      <a href="lien-he.html">Chính sách bảo hành 24 tháng</a>
+      <a href="lien-he.html">Hỗ trợ xuất hóa đơn VAT</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div>© 2013 - 2026 Winline.vn — Đại lý phân phối quạt công nghiệp và thiết bị thông gió hàng đầu Việt Nam.</div>
+    <div>Bảo lưu mọi quyền.</div>
+  </div>
+</footer>
 
 <div class="mobile-floating-bar">
   <div class="mobile-floating-inner">
     <a href="index.html" class="mobile-action-item">
-      <div class="m-icon home">🏠</div>
+      <div class="m-icon home"><i class="fas fa-home"></i></div>
       <span>Trang chủ</span>
     </a>
     <a href="cong-cu-tinh-quat.html" class="mobile-action-item">
-      <div class="m-icon calc">🧮</div>
+      <div class="m-icon calc"><i class="fas fa-calculator"></i></div>
       <span>Tính quạt</span>
     </a>
     <a href="https://zalo.me/0949761893" target="_blank" class="mobile-action-item">
-      <div class="m-icon zalo">💬</div>
+      <div class="m-icon zalo"><i class="fas fa-comment-dots"></i></div>
       <span>Zalo</span>
     </a>
     <a href="tel:0949761893" class="mobile-action-item">
-      <div class="m-icon call">📞</div>
+      <div class="m-icon call"><i class="fas fa-phone-alt"></i></div>
       <span>Gọi ngay</span>
     </a>
   </div>
 </div>
 
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  // Mobile Nav Toggle
-  const toggleBtn = document.getElementById("mobile-nav-toggle");
-  const catNav = document.querySelector(".catnav");
-  if (toggleBtn && catNav) {
-    toggleBtn.addEventListener("click", function() {
-      catNav.classList.toggle("show-mobile");
-    });
-  }
-
-  // Mobile Filter Toggle on san-pham.html
-  const filterBtn = document.getElementById("btn-toggle-filters");
-  const filtersSection = document.getElementById("filtersSection");
-  if (filterBtn && filtersSection) {
-    filterBtn.addEventListener("click", function() {
-      filtersSection.classList.toggle("show-mobile-filter");
-      filterBtn.textContent = filtersSection.classList.contains("show-mobile-filter") ? "✕ Đóng bộ lọc" : "☰ Mở bộ lọc sản phẩm";
-    });
-  }
-});
-</script>
-
+<script src="js/products-data.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>
