@@ -1,6 +1,12 @@
 /**
  * WINLINE VIETNAM - Core Application Logic
- * E-commerce Cart Drawer, Live Search, Quick View Modal, Compare Drawer, Notifications
+ * Brand Alignment: Winline Blue (#0060B6)
+ * Features:
+ * - Circular Back-to-Top combined with Dynamic Scroll Progress Bar
+ * - Auto-injected Cart Drawer & VAT Invoice Calculation
+ * - High-Res Quick View Modal
+ * - Smart Live Search Suggestions
+ * - Toast Notifications
  */
 
 // Initialize Cart & Compare from localStorage
@@ -24,10 +30,10 @@ function showToast(message, type = "success") {
   }
 
   const toast = document.createElement("div");
-  const bg = type === "success" ? "#1e8a5f" : type === "info" ? "#004e7d" : "#d41e3d";
+  const bg = type === "success" ? "#1e8a5f" : type === "info" ? "#0060B6" : "#d41e3d";
   const icon = type === "success" ? "fa-check-circle" : type === "info" ? "fa-info-circle" : "fa-exclamation-circle";
 
-  toast.style.cssText = `background:${bg}; color:#ffffff; padding:12px 18px; border-radius:8px; box-shadow:0 10px 25px rgba(0,0,0,0.2); font-size:13.5px; font-weight:500; display:flex; align-items:center; gap:10px; transition:all 0.3s ease; transform:translateY(10px); opacity:0; pointer-events:auto; max-width:420px; font-family:'Be Vietnam Pro',sans-serif;`;
+  toast.style.cssText = `background:${bg}; color:#ffffff; padding:12px 18px; border-radius:8px; box-shadow:0 10px 25px rgba(7,34,66,0.25); font-size:13.5px; font-weight:500; display:flex; align-items:center; gap:10px; transition:all 0.3s cubic-bezier(0.22, 1, 0.36, 1); transform:translateY(10px); opacity:0; pointer-events:auto; max-width:420px; font-family:'Be Vietnam Pro',sans-serif;`;
   toast.innerHTML = `
     <i class="fas ${icon}" style="font-size:16px;"></i>
     <div style="flex:1;">${message}</div>
@@ -50,9 +56,37 @@ function showToast(message, type = "success") {
   }, 4000);
 }
 
-// Auto-inject Cart Drawer & Modals if missing
+// Auto-inject UI Containers (Top Progress, Back-to-Top, Cart Drawer, Modals)
 function ensureAppContainers() {
-  // 1. Cart Drawer
+  // 1. Top Scroll Progress Bar
+  if (!document.getElementById("top-scroll-progress")) {
+    const topBar = document.createElement("div");
+    topBar.id = "top-scroll-progress";
+    topBar.className = "top-scroll-progress";
+    document.body.appendChild(topBar);
+  }
+
+  // 2. Circular Back-to-Top Button
+  if (!document.getElementById("back-to-top-btn")) {
+    const bttBtn = document.createElement("button");
+    bttBtn.id = "back-to-top-btn";
+    bttBtn.className = "back-to-top-circle";
+    bttBtn.setAttribute("aria-label", "Cuộn lên đầu trang");
+    bttBtn.title = "Lên đầu trang";
+    bttBtn.innerHTML = `
+      <svg class="progress-ring" width="46" height="46" viewBox="0 0 46 46">
+        <circle class="progress-ring__circle-bg" stroke-width="3.5" cx="23" cy="23" r="20"></circle>
+        <circle id="progress-ring-indicator" class="progress-ring__circle" stroke-width="3.5" cx="23" cy="23" r="20"></circle>
+      </svg>
+      <span class="back-to-top-icon"><i class="fas fa-arrow-up"></i></span>
+    `;
+    bttBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+    document.body.appendChild(bttBtn);
+  }
+
+  // 3. Cart Drawer
   if (!document.getElementById("cart-drawer")) {
     const drawerDiv = document.createElement("div");
     drawerDiv.id = "cart-drawer";
@@ -62,17 +96,17 @@ function ensureAppContainers() {
       <div id="cart-drawer-panel" class="drawer-panel translate-x-full">
         <div class="cart-header">
           <h3><i class="fas fa-shopping-bag" style="color:var(--orange);"></i> Giỏ Hàng (<span class="cart-badge-count">0</span>)</h3>
-          <button onclick="closeCartDrawer()" class="cart-close-btn"><i class="fas fa-times"></i></button>
+          <button onclick="closeCartDrawer()" class="cart-close-btn" aria-label="Đóng giỏ hàng"><i class="fas fa-times"></i></button>
         </div>
 
         <div class="cart-body">
           <div id="cart-empty-state" class="text-center py-10" style="color:var(--ink-soft); display:none; padding:40px 10px; text-align:center;">
-            <div style="width:60px; height:60px; border-radius:50%; background:var(--paper); display:flex; align-items:center; justify-content:center; margin:0 auto 16px; font-size:24px; color:var(--ink-soft); border:1px solid var(--line);">
+            <div style="width:64px; height:64px; border-radius:50%; background:var(--brand-blue-light); display:flex; align-items:center; justify-content:center; margin:0 auto 16px; font-size:24px; color:var(--brand-blue); border:1px solid var(--line);">
               <i class="fas fa-shopping-cart"></i>
             </div>
-            <h4 style="font-size:15px; color:var(--navy-950); margin:0 0 6px; font-weight:700;">Giỏ hàng của bạn đang trống</h4>
-            <p style="font-size:12.5px; color:var(--ink-soft); margin:0 0 20px;">Hãy tham khảo các dòng quạt công nghiệp chất lượng cao của Winline.</p>
-            <a href="san-pham.html" onclick="closeCartDrawer()" style="display:inline-block; background:var(--navy-800); color:#ffffff; padding:9px 20px; border-radius:6px; font-size:13px; font-weight:600;">Xem danh mục quạt &rarr;</a>
+            <h4 style="font-size:16px; color:var(--navy-950); margin:0 0 6px; font-weight:700;">Giỏ hàng của bạn đang trống</h4>
+            <p style="font-size:13px; color:var(--ink-soft); margin:0 0 20px;">Hãy tham khảo các dòng quạt công nghiệp chất lượng cao của Winline.</p>
+            <a href="san-pham.html" onclick="closeCartDrawer()" style="display:inline-block; background:var(--brand-blue); color:#ffffff; padding:10px 22px; border-radius:6px; font-size:13px; font-weight:700; box-shadow:0 3px 8px rgba(0,96,182,0.3);">Xem danh mục quạt &rarr;</a>
           </div>
 
           <div id="cart-filled-state">
@@ -104,7 +138,7 @@ function ensureAppContainers() {
             </div>
             <input type="text" name="customer_address" placeholder="Địa chỉ nhận hàng (Ví dụ: KCN Tiên Sơn, Bắc Ninh)..." style="padding:9px 10px; border:1px solid var(--line); border-radius:6px; font-size:12.5px; font-family:inherit;">
 
-            <button type="submit" style="width:100%; background:var(--orange); color:#ffffff; border:none; padding:12px; border-radius:6px; font-weight:700; font-size:14px; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; box-shadow:0 4px 12px rgba(212,30,61,0.25);">
+            <button type="submit" style="width:100%; background:var(--orange); color:#ffffff; border:none; padding:12px; border-radius:6px; font-weight:700; font-size:14px; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; box-shadow:0 4px 12px rgba(212,30,61,0.25); transition:background 0.2s;">
               <i class="fas fa-check-circle"></i> Đặt Hàng &amp; Nhận Báo Giá Ngay
             </button>
           </form>
@@ -114,14 +148,15 @@ function ensureAppContainers() {
     document.body.appendChild(drawerDiv);
   }
 
-  // 2. Quick View Modal
+  // 4. Quick View Modal
   if (!document.getElementById("quickview-modal")) {
     const qvModal = document.createElement("div");
     qvModal.id = "quickview-modal";
-    qvModal.className = "app-modal pointer-events-none";
+    qvModal.style.cssText = "position:fixed; inset:0; z-index:10000; display:flex; align-items:center; justify-content:center; padding:16px; transition:opacity 0.25s ease;";
+    qvModal.className = "pointer-events-none";
     qvModal.innerHTML = `
-      <div onclick="closeQuickView()" class="drawer-backdrop"></div>
-      <div class="modal-dialog">
+      <div onclick="closeQuickView()" class="drawer-backdrop" style="position:absolute; inset:0; background:rgba(7,34,66,0.65); backdrop-filter:blur(3px);"></div>
+      <div style="background:#ffffff; border-radius:12px; box-shadow:0 15px 35px rgba(0,0,0,0.25); width:100%; max-width:800px; max-height:90vh; overflow-y:auto; position:relative; z-index:2;">
         <button onclick="closeQuickView()" style="position:absolute; top:16px; right:16px; background:#ffffff; border:1px solid var(--line); width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:10; color:var(--ink-soft);">
           <i class="fas fa-times"></i>
         </button>
@@ -130,6 +165,43 @@ function ensureAppContainers() {
     `;
     document.body.appendChild(qvModal);
   }
+}
+
+// Scroll Progress Tracker & Back-to-Top Controller
+function initScrollProgress() {
+  const topBar = document.getElementById("top-scroll-progress");
+  const bttBtn = document.getElementById("back-to-top-btn");
+  const progressCircle = document.getElementById("progress-ring-indicator");
+  const totalLength = 125.6; // 2 * PI * 20
+
+  function onScroll() {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? Math.min(100, Math.max(0, (scrollTop / docHeight) * 100)) : 0;
+
+    // Update Top Reading Bar
+    if (topBar) {
+      topBar.style.width = progress + "%";
+    }
+
+    // Update Circular Ring
+    if (progressCircle) {
+      const offset = totalLength - (totalLength * progress) / 100;
+      progressCircle.style.strokeDashoffset = offset;
+    }
+
+    // Toggle Back-To-Top visibility
+    if (bttBtn) {
+      if (scrollTop > 200) {
+        bttBtn.classList.add("visible");
+      } else {
+        bttBtn.classList.remove("visible");
+      }
+    }
+  }
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
 }
 
 // Toggle VAT Display
@@ -218,7 +290,6 @@ function addToCart(productId, qty = 1) {
     prod = WINLINE_DATA.products.find(p => p.id === productId || p.code === productId);
   }
 
-  // Fallback if data object not fully matching
   if (!prod) {
     prod = {
       id: productId,
@@ -329,7 +400,7 @@ function openQuickView(productId) {
       </div>
 
       <div>
-        <div style="font-size:11.5px; font-weight:700; color:var(--orange); text-transform:uppercase; letter-spacing:0.04em; margin-bottom:4px;">${prod.brandName || 'CHÍNH HÃNG'}</div>
+        <div style="font-size:11.5px; font-weight:700; color:var(--brand-blue); text-transform:uppercase; letter-spacing:0.04em; margin-bottom:4px;">${prod.brandName || 'CHÍNH HÃNG'}</div>
         <h2 style="font-size:18px; font-weight:700; color:var(--navy-950); margin:0 0 8px; line-height:1.35;">${prod.name}</h2>
         <div style="font-size:12px; color:var(--ink-soft); margin-bottom:12px;">Mã sản phẩm: <strong class="mono" style="color:var(--navy-950);">${prod.code || 'KM-750S'}</strong></div>
 
@@ -350,7 +421,7 @@ function openQuickView(productId) {
           <button onclick="addToCart('${prod.id}'); closeQuickView();" style="flex:1; background:var(--orange); color:#ffffff; border:none; padding:11px 16px; border-radius:6px; font-weight:700; font-size:13.5px; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px;">
             <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
           </button>
-          <a href="chi-tiet-san-pham.html" style="background:var(--navy-800); color:#ffffff; padding:11px 16px; border-radius:6px; font-weight:600; font-size:13.5px; display:inline-flex; align-items:center; justify-content:center;">
+          <a href="chi-tiet-san-pham.html" style="background:var(--brand-blue); color:#ffffff; padding:11px 16px; border-radius:6px; font-weight:600; font-size:13.5px; display:inline-flex; align-items:center; justify-content:center;">
             Xem chi tiết &rarr;
           </a>
         </div>
@@ -402,7 +473,7 @@ function handleConsultSubmit(e) {
   form.reset();
 }
 
-// Live Search Gợi Ý
+// Live Search Suggestions
 function initLiveSearch() {
   const searchInputs = document.querySelectorAll(".header-search-input, .search-box");
   searchInputs.forEach(input => {
@@ -413,7 +484,7 @@ function initLiveSearch() {
     if (!dropdown) {
       dropdown = document.createElement("div");
       dropdown.className = "search-suggest-dropdown";
-      dropdown.style.cssText = "position:absolute; top:calc(100% + 4px); left:0; right:0; background:#ffffff; border:1px solid var(--line); border-radius:6px; box-shadow:0 10px 25px rgba(0,0,0,0.12); z-index:9999; display:none; max-height:360px; overflow-y:auto;";
+      dropdown.style.cssText = "position:absolute; top:calc(100% + 4px); left:0; right:0; background:#ffffff; border:1px solid var(--line); border-radius:6px; box-shadow:0 10px 25px rgba(7,34,66,0.14); z-index:9999; display:none; max-height:360px; overflow-y:auto;";
       parent.style.position = "relative";
       parent.appendChild(dropdown);
     }
@@ -439,12 +510,12 @@ function initLiveSearch() {
         dropdown.innerHTML = `<div style="padding:14px; text-align:center; font-size:12.5px; color:var(--ink-soft);">Không tìm thấy sản phẩm cho "<strong>${q}</strong>"</div>`;
       } else {
         dropdown.innerHTML = `
-          <div style="padding:8px 12px; font-size:11px; font-weight:700; color:var(--ink-soft); background:var(--paper); border-bottom:1px solid var(--line); text-transform:uppercase;">
+          <div style="padding:8px 12px; font-size:11px; font-weight:700; color:var(--brand-blue); background:var(--brand-blue-subtle); border-bottom:1px solid var(--line); text-transform:uppercase;">
             Gợi ý ${matches.length} sản phẩm phù hợp:
           </div>
           ${matches.slice(0, 5).map(p => `
-            <a href="chi-tiet-san-pham.html" style="display:flex; align-items:center; gap:10px; padding:10px 12px; border-bottom:1px solid var(--line); text-decoration:none; transition:background 0.15s;" onmouseover="this.style.background='var(--paper)'" onmouseout="this.style.background='#fff'">
-              <img src="${p.image}" onerror="this.src='assets/images/km750s.jpg'" style="width:40px; height:40px; object-fit:contain; border:1px solid var(--line); border-radius:4px; padding:2px; flex-shrink:0;">
+            <a href="chi-tiet-san-pham.html" style="display:flex; align-items:center; gap:10px; padding:10px 12px; border-bottom:1px solid var(--line); text-decoration:none; transition:background 0.15s;" onmouseover="this.style.background='var(--brand-blue-light)'" onmouseout="this.style.background='#fff'">
+              <img src="${p.image}" onerror="this.src='assets/images/km750s.jpg'" style="width:42px; height:42px; object-fit:contain; border:1px solid var(--line); border-radius:4px; padding:2px; flex-shrink:0; background:#fff;">
               <div style="flex:1; min-width:0;">
                 <div style="font-size:13px; font-weight:600; color:var(--navy-950); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${p.name}</div>
                 <div style="font-size:11px; color:var(--ink-soft);">${p.powerText ? p.powerText + ' | ' : ''}Lưu lượng: ${p.airflowText || 'Tiêu chuẩn'}</div>
@@ -452,7 +523,7 @@ function initLiveSearch() {
               </div>
             </a>
           `).join("")}
-          <a href="san-pham.html" style="display:block; padding:9px; text-align:center; font-size:12px; font-weight:700; color:var(--navy-800); background:var(--paper);">
+          <a href="san-pham.html" style="display:block; padding:9px; text-align:center; font-size:12px; font-weight:700; color:var(--brand-blue); background:var(--brand-blue-subtle);">
             Xem toàn bộ sản phẩm &rarr;
           </a>
         `;
@@ -482,6 +553,7 @@ function initMobileToggle() {
 // Initialize on DOM Ready
 document.addEventListener("DOMContentLoaded", () => {
   ensureAppContainers();
+  initScrollProgress();
   updateCartUI();
   initLiveSearch();
   initMobileToggle();
