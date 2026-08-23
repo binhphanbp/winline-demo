@@ -203,7 +203,7 @@ function ensureAppContainers() {
             <i class="fas fa-chevron-right" style="font-size:11px; opacity:0.4;"></i>
           </a>
           <a href="cong-cu-tinh-quat.html" class="mobile-drawer-link" onclick="closeMobileDrawer()">
-            <span><i class="fas fa-calculator icon-lead" style="color:#f59e0b;"></i> Công cụ tính quạt chuẩn TCVN</span>
+            <span><i class="fas fa-calculator icon-lead" style="color:#f59e0b;"></i> Công cụ tính quạt</span>
             <span style="background:#fef3c7; color:#b45309; font-size:10px; font-weight:700; padding:2px 6px; border-radius:4px;">HOT</span>
           </a>
           <a href="giai-phap.html" class="mobile-drawer-link" onclick="closeMobileDrawer()">
