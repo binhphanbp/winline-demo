@@ -66,25 +66,19 @@ function ensureAppContainers() {
     document.body.appendChild(topBar);
   }
 
-  // 2. Circular Back-to-Top Button (Pure Inline SVG - Zero Font Dependency)
+  // 2. Standard Back-to-Top Button
   if (!document.getElementById("back-to-top-btn")) {
     const bttBtn = document.createElement("button");
     bttBtn.id = "back-to-top-btn";
-    bttBtn.className = "back-to-top-circle";
+    bttBtn.className = "back-to-top-btn";
     bttBtn.setAttribute("aria-label", "Cuộn lên đầu trang");
     bttBtn.setAttribute("type", "button");
     bttBtn.title = "Lên đầu trang";
     bttBtn.innerHTML = `
-      <svg class="progress-ring" width="48" height="48" viewBox="0 0 48 48" aria-hidden="true">
-        <circle class="progress-ring__circle-bg" stroke-width="3.2" cx="24" cy="24" r="20"></circle>
-        <circle id="progress-ring-indicator" class="progress-ring__circle" stroke-width="3.2" cx="24" cy="24" r="20"></circle>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="12" y1="19" x2="12" y2="5"></line>
+        <polyline points="5 12 12 5 19 12"></polyline>
       </svg>
-      <span class="back-to-top-icon" aria-hidden="true">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="12" y1="19" x2="12" y2="5"></line>
-          <polyline points="5 12 12 5 19 12"></polyline>
-        </svg>
-      </span>
     `;
     bttBtn.addEventListener("click", (e) => {
       e.preventDefault();
@@ -180,7 +174,6 @@ function initScrollProgress() {
   function updateProgress() {
     const topBar = document.getElementById("top-scroll-progress");
     const bttBtn = document.getElementById("back-to-top-btn");
-    const progressCircle = document.getElementById("progress-ring-indicator");
 
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
     const scrollHeight = Math.max(
@@ -200,15 +193,7 @@ function initScrollProgress() {
       topBar.style.width = progress + "%";
     }
 
-    // Update Circular Ring based on screen size
-    if (progressCircle) {
-      const isMobile = window.innerWidth <= 768;
-      const totalLength = isMobile ? 113.1 : 125.66;
-      const offset = totalLength - (totalLength * progress) / 100;
-      progressCircle.style.strokeDashoffset = Math.max(0, offset);
-    }
-
-    // Toggle Back-To-Top visibility
+    // Toggle Back-To-Top button visibility
     if (bttBtn) {
       if (scrollTop > 220) {
         bttBtn.classList.add("visible");

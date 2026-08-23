@@ -114,94 +114,61 @@ button {
 }
 
 /* ==========================================================================
-   CIRCULAR BACK-TO-TOP BUTTON (STATE-OF-THE-ART UX/UI)
+   STANDARD BACK-TO-TOP BUTTON
    ========================================================================== */
-.back-to-top-circle {
+.back-to-top-btn {
   position: fixed;
   bottom: 28px;
   right: 28px;
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 4px 18px rgba(7, 34, 66, 0.16), 0 1px 4px rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(0, 96, 182, 0.12);
+  background: var(--brand-blue);
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(0, 96, 182, 0.35), 0 2px 6px rgba(0, 0, 0, 0.08);
+  border: 2px solid #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   z-index: 985;
   opacity: 0;
-  transform: translateY(20px) scale(0.85);
+  transform: translateY(16px) scale(0.9);
   pointer-events: none;
-  transition: opacity 0.28s var(--ease-spring), transform 0.28s var(--ease-spring), box-shadow 0.25s ease, background 0.2s ease;
+  transition: all 0.25s var(--ease-spring);
   outline: none;
   padding: 0;
 }
 
-.back-to-top-circle.visible {
+.back-to-top-btn.visible {
   opacity: 1;
   transform: translateY(0) scale(1);
   pointer-events: auto;
 }
 
-.back-to-top-circle:hover {
-  transform: translateY(-4px) scale(1.08);
-  box-shadow: 0 8px 26px rgba(0, 96, 182, 0.32), 0 2px 8px rgba(0, 0, 0, 0.08);
-  background: #ffffff;
+.back-to-top-btn:hover {
+  background: var(--orange);
+  transform: translateY(-3px) scale(1.08);
+  box-shadow: 0 8px 24px rgba(212, 30, 61, 0.4), 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.back-to-top-circle:active {
-  transform: translateY(-1px) scale(0.95);
-  box-shadow: 0 3px 12px rgba(0, 96, 182, 0.25);
+.back-to-top-btn:active {
+  transform: translateY(0) scale(0.92);
 }
 
-.back-to-top-circle svg.progress-ring {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 48px;
-  height: 48px;
-  transform: rotate(-90deg);
-  pointer-events: none;
-}
-
-.progress-ring__circle-bg {
-  stroke: rgba(219, 228, 238, 0.8);
-  stroke-width: 3.2;
-  fill: transparent;
-}
-
-.progress-ring__circle {
-  stroke: var(--brand-blue);
-  stroke-width: 3.2;
-  stroke-linecap: round;
-  fill: transparent;
-  stroke-dasharray: 125.66; /* 2 * PI * 20 */
-  stroke-dashoffset: 125.66;
-  transition: stroke-dashoffset 0.08s linear;
-}
-
-.back-to-top-icon {
+.back-to-top-btn svg {
   width: 20px;
   height: 20px;
-  color: var(--brand-blue);
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.22s var(--ease-spring), color 0.2s ease;
+  stroke: #ffffff;
+  transition: transform 0.2s ease;
 }
 
-.back-to-top-circle:hover .back-to-top-icon {
-  transform: translateY(-2.5px);
-  color: var(--orange);
+.back-to-top-btn:hover svg {
+  transform: translateY(-2px);
 }
 
 /* Tooltip on Hover */
-.back-to-top-circle::after {
+.back-to-top-btn::after {
   content: "Lên đầu trang";
   position: absolute;
   bottom: calc(100% + 10px);
@@ -220,7 +187,7 @@ button {
   box-shadow: 0 4px 12px rgba(7, 34, 66, 0.2);
 }
 
-.back-to-top-circle::before {
+.back-to-top-btn::before {
   content: "";
   position: absolute;
   bottom: calc(100% + 4px);
@@ -234,34 +201,26 @@ button {
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.back-to-top-circle:hover::after,
-.back-to-top-circle:hover::before {
+.back-to-top-btn:hover::after,
+.back-to-top-btn:hover::before {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
 }
 
 @media (max-width: 768px) {
-  .back-to-top-circle {
+  .back-to-top-btn {
     bottom: 74px;
     right: 16px;
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
   }
-  .back-to-top-circle svg.progress-ring {
-    width: 44px;
-    height: 44px;
+  .back-to-top-btn svg {
+    width: 18px;
+    height: 18px;
   }
-  .progress-ring__circle-bg,
-  .progress-ring__circle {
-    cx: 22;
-    cy: 22;
-    r: 18;
-    stroke-dasharray: 113.1;
-    stroke-dashoffset: 113.1;
-  }
-  .back-to-top-circle::after,
-  .back-to-top-circle::before {
-    display: none; /* Hide hover tooltip on mobile touch */
+  .back-to-top-btn::after,
+  .back-to-top-btn::before {
+    display: none;
   }
 }
 
