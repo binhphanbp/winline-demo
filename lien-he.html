@@ -419,35 +419,34 @@ footer.site {
 
   <!-- Site Header -->
   <header class="site">
-    <div class="header-inner">
-      <a href="index.html" class="logo">
-        Winline<span>.vn</span>
-      </a>
-
-      <button class="nav-toggle-btn" id="mobile-nav-toggle" aria-label="Mở menu">
+  <div class="header-inner">
+    <div class="header-mobile-top-row">
+      <button onclick="toggleMobileDrawer()" class="mobile-menu-btn" aria-label="Mở danh mục menu">
         <i class="fas fa-bars"></i>
       </button>
-
-      <div class="search-wrap">
-        <input type="text" class="search-box header-search-input" placeholder="Tìm quạt công nghiệp, quạt ly tâm, quạt thông gió...">
-        <button class="search-btn" aria-label="Tìm kiếm"><i class="fas fa-search"></i></button>
-      </div>
-
+      <a href="index.html" class="site-logo-wrap" aria-label="Trang chủ Winline.vn">
+        <img src="assets/images/logo.png" alt="Winline Việt Nam" class="site-logo-img">
+      </a>
       <div class="header-actions">
-        <a href="tel:0949761893" class="item">
-          <div class="icon"><i class="fas fa-phone"></i></div>
-          <span>0949.761.893</span>
+        <a href="tel:0949761893" class="item" aria-label="Gọi hotline">
+          <div class="icon"><i class="fas fa-phone-volume"></i></div>
+          <span class="desktop-only-label">Gọi ngay</span>
         </a>
-        <div onclick="openCartDrawer()" class="item">
+        <div onclick="openCartDrawer()" class="item" style="cursor:pointer;" aria-label="Giỏ hàng">
           <div class="icon" style="position:relative;">
             <i class="fas fa-shopping-cart"></i>
-            <span class="cart-badge-count" style="position:absolute; top:-6px; right:-8px; background:var(--orange); color:#fff; font-size:10px; font-weight:700; width:17px; height:17px; border-radius:50%; display:flex; align-items:center; justify-content:center;">0</span>
+            <span class="cart-badge-count" style="position:absolute; top:-6px; right:-8px; background:var(--orange); color:#fff; font-size:10px; font-weight:700; width:17px; height:17px; border-radius:50%; display:none; align-items:center; justify-content:center;">0</span>
           </div>
-          <span>Giỏ hàng</span>
+          <span class="desktop-only-label">Giỏ hàng</span>
         </div>
       </div>
     </div>
-  </header>
+    <div class="search-wrap">
+      <input class="search-box header-search-input" type="text" placeholder="Tìm quạt công nghiệp, quạt ly tâm, quạt thông gió...">
+      <button class="search-btn" aria-label="Tìm kiếm"><i class="fas fa-search"></i></button>
+    </div>
+  </div>
+</header>
 
   <!-- Category Nav Bar (7 Menu Items) -->
   <nav class="catnav">

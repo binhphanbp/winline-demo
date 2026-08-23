@@ -165,6 +165,114 @@ function ensureAppContainers() {
     `;
     document.body.appendChild(qvModal);
   }
+
+  // 5. Off-Canvas Mobile Drawer System
+  if (!document.getElementById("mobile-drawer-overlay")) {
+    const drawerOverlay = document.createElement("div");
+    drawerOverlay.id = "mobile-drawer-overlay";
+    drawerOverlay.className = "mobile-drawer-backdrop";
+    drawerOverlay.innerHTML = `
+      <div class="mobile-drawer-panel">
+        <div class="mobile-drawer-head">
+          <a href="index.html" class="site-logo-wrap" onclick="closeMobileDrawer()">
+            <img src="assets/images/logo.png" alt="Winline Việt Nam" class="site-logo-img">
+          </a>
+          <button onclick="closeMobileDrawer()" class="mobile-drawer-close" aria-label="Đóng menu">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <div class="mobile-drawer-hotline-box">
+          <div>
+            <div class="label">Hotline tư vấn 24/7</div>
+            <a href="tel:0949761893" class="phone">0949.761.893</a>
+          </div>
+          <a href="tel:0949761893" class="call-btn">
+            <i class="fas fa-phone-alt"></i> Gọi
+          </a>
+        </div>
+
+        <div class="mobile-drawer-nav">
+          <div class="mobile-nav-group-title">Danh mục chính</div>
+          <a href="index.html" class="mobile-drawer-link" onclick="closeMobileDrawer()">
+            <span><i class="fas fa-home icon-lead"></i> Trang chủ</span>
+            <i class="fas fa-chevron-right" style="font-size:11px; opacity:0.4;"></i>
+          </a>
+          <a href="san-pham.html" class="mobile-drawer-link" onclick="closeMobileDrawer()">
+            <span><i class="fas fa-fan icon-lead"></i> Tất cả sản phẩm quạt</span>
+            <i class="fas fa-chevron-right" style="font-size:11px; opacity:0.4;"></i>
+          </a>
+          <a href="cong-cu-tinh-quat.html" class="mobile-drawer-link" onclick="closeMobileDrawer()">
+            <span><i class="fas fa-calculator icon-lead" style="color:#f59e0b;"></i> Công cụ tính quạt chuẩn TCVN</span>
+            <span style="background:#fef3c7; color:#b45309; font-size:10px; font-weight:700; padding:2px 6px; border-radius:4px;">HOT</span>
+          </a>
+          <a href="giai-phap.html" class="mobile-drawer-link" onclick="closeMobileDrawer()">
+            <span><i class="fas fa-industry icon-lead"></i> Giải pháp nhà xưởng &amp; B2B</span>
+            <i class="fas fa-chevron-right" style="font-size:11px; opacity:0.4;"></i>
+          </a>
+          <a href="thuong-hieu.html" class="mobile-drawer-link" onclick="closeMobileDrawer()">
+            <span><i class="fas fa-tags icon-lead"></i> Thương hiệu chính hãng</span>
+            <i class="fas fa-chevron-right" style="font-size:11px; opacity:0.4;"></i>
+          </a>
+
+          <div class="mobile-nav-group-title">Thông tin &amp; Dự án</div>
+          <a href="du-an.html" class="mobile-drawer-link" onclick="closeMobileDrawer()">
+            <span><i class="fas fa-building icon-lead"></i> Dự án &amp; Đơn hàng tiêu biểu</span>
+            <i class="fas fa-chevron-right" style="font-size:11px; opacity:0.4;"></i>
+          </a>
+          <a href="gioi-thieu.html" class="mobile-drawer-link" onclick="closeMobileDrawer()">
+            <span><i class="fas fa-file-shield icon-lead"></i> Hồ sơ năng lực &amp; CQ/CO</span>
+            <i class="fas fa-chevron-right" style="font-size:11px; opacity:0.4;"></i>
+          </a>
+          <a href="lien-he.html" class="mobile-drawer-link" onclick="closeMobileDrawer()">
+            <span><i class="fas fa-map-marker-alt icon-lead"></i> Địa chỉ showroom &amp; Liên hệ</span>
+            <i class="fas fa-chevron-right" style="font-size:11px; opacity:0.4;"></i>
+          </a>
+
+          <div style="margin-top:20px; padding:14px; background:var(--paper); border-radius:8px; border:1px solid var(--line);">
+            <div style="font-size:12px; font-weight:700; color:var(--navy-950); margin-bottom:6px;">Winline Việt Nam</div>
+            <div style="font-size:11px; color:var(--ink-soft); line-height:1.5;">Số 7 BT6, Pháp Vân – Tứ Hiệp, Hà Nội.<br>Đầy đủ hoá đơn VAT &amp; chứng chỉ xuất xưởng.</div>
+          </div>
+        </div>
+      </div>
+    `;
+    drawerOverlay.addEventListener("click", (e) => {
+      if (e.target === drawerOverlay) closeMobileDrawer();
+    });
+    document.body.appendChild(drawerOverlay);
+  }
+}
+
+// Mobile Drawer Controls
+function openMobileDrawer() {
+  ensureAppContainers();
+  const drawer = document.getElementById("mobile-drawer-overlay");
+  if (drawer) {
+    drawer.style.display = "block";
+    drawer.offsetHeight; // reflow
+    drawer.classList.add("active");
+    document.body.style.overflow = "hidden";
+  }
+}
+
+function closeMobileDrawer() {
+  const drawer = document.getElementById("mobile-drawer-overlay");
+  if (drawer) {
+    drawer.classList.remove("active");
+    setTimeout(() => {
+      drawer.style.display = "none";
+      document.body.style.overflow = "";
+    }, 250);
+  }
+}
+
+function toggleMobileDrawer() {
+  const drawer = document.getElementById("mobile-drawer-overlay");
+  if (drawer && drawer.classList.contains("active")) {
+    closeMobileDrawer();
+  } else {
+    openMobileDrawer();
+  }
 }
 
 // 60fps Smooth Scroll Progress Tracker & Back-to-Top Controller

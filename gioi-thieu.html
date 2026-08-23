@@ -491,6 +491,7 @@ footer{background:var(--navy-950);color:#b9c7d4;padding:44px 20px 20px;margin-to
 
 </style>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
@@ -503,20 +504,31 @@ footer{background:var(--navy-950);color:#b9c7d4;padding:44px 20px 20px;margin-to
 
 <header class="site">
   <div class="header-inner">
-    <a href="index.html" class="site-logo-wrap" aria-label="Trang chủ Winline.vn"><img src="assets/images/logo.png" alt="Winline Việt Nam" class="site-logo-img" style="height:44px; width:auto; object-fit:contain; display:block;"></a>
-    <div class="search-wrap">
-      <input class="search-box" type="text" placeholder="Tìm theo tên sản phẩm hoặc mã model...">
-      <button class="search-btn" aria-label="Tìm kiếm">⌕</button>
-    </div>
-    <button id="mobile-nav-toggle" class="nav-toggle-btn" aria-label="Mở menu">☰</button>
+    <div class="header-mobile-top-row">
+      <button onclick="toggleMobileDrawer()" class="mobile-menu-btn" aria-label="Mở danh mục menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <a href="index.html" class="site-logo-wrap" aria-label="Trang chủ Winline.vn">
+        <img src="assets/images/logo.png" alt="Winline Việt Nam" class="site-logo-img">
+      </a>
       <div class="header-actions">
-        <a href="tel:0949761893" class="item" style="text-decoration:none; color:inherit;">
-          <div class="icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.02l-2.2 2.19z"/></svg></div>Gọi ngay
+        <a href="tel:0949761893" class="item" aria-label="Gọi hotline">
+          <div class="icon"><i class="fas fa-phone-volume"></i></div>
+          <span class="desktop-only-label">Gọi ngay</span>
         </a>
-        <div onclick="openCartDrawer()" class="item" style="cursor:pointer;">
-          <div class="icon" style="position:relative;">🛒<span class="cart-badge-count" style="position:absolute; top:-6px; right:-8px; background:var(--orange); color:#fff; font-size:10px; font-weight:700; width:16px; height:16px; border-radius:50%; display:none; align-items:center; justify-content:center;">0</span></div>Giỏ hàng
+        <div onclick="openCartDrawer()" class="item" style="cursor:pointer;" aria-label="Giỏ hàng">
+          <div class="icon" style="position:relative;">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-badge-count" style="position:absolute; top:-6px; right:-8px; background:var(--orange); color:#fff; font-size:10px; font-weight:700; width:17px; height:17px; border-radius:50%; display:none; align-items:center; justify-content:center;">0</span>
+          </div>
+          <span class="desktop-only-label">Giỏ hàng</span>
         </div>
       </div>
+    </div>
+    <div class="search-wrap">
+      <input class="search-box header-search-input" type="text" placeholder="Tìm quạt công nghiệp, quạt ly tâm, quạt thông gió...">
+      <button class="search-btn" aria-label="Tìm kiếm"><i class="fas fa-search"></i></button>
+    </div>
   </div>
 </header>
 
