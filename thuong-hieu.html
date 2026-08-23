@@ -6,7 +6,7 @@
 
 <!--
   ===========================================================================
-  brand.html — TEMPLATE DÙNG CHUNG CHO 14 TRANG THƯƠNG HIỆU
+  thuong-hieu.html — TEMPLATE DÙNG CHUNG CHO 14 TRANG THƯƠNG HIỆU
   ===========================================================================
   Quyết định (16/08/2026, sau phân tích Sapo/Haravan): KHÔNG làm 14 trang
   riêng biệt có bài viết/case study. Dùng lại đúng khung category.html
@@ -37,7 +37,7 @@
   đồng bộ toàn site.
 
   GHI CHÚ MÀU: file này đã cập nhật theo đúng hệ màu mới nhất đang dùng ở
-  product-detail.html (--navy-950:#00354f, --orange:#d41e3d) — category.html
+  chi-tiet-san-pham.html (--navy-950:#00354f, --orange:#d41e3d) — category.html
   và homepage.html hiện TẠI VẪN dùng bảng màu cũ (#0d1f33 / #e2600f), nên khi
   đồng bộ lại toàn site, 2 file đó cũng cần cập nhật theo hệ màu này, không
   phải riêng file này lệch chuẩn.
@@ -52,7 +52,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap');
 
 :root{
-  /* Đồng bộ đúng hệ màu mới nhất từ product-detail.html (v11) — 1 hue xanh
+  /* Đồng bộ đúng hệ màu mới nhất từ chi-tiet-san-pham.html (v11) — 1 hue xanh
      #004e7d, 1 mã đỏ #d41e3d duy nhất, không dùng lại bảng màu cũ của
      category.html/homepage.html. */
   --navy-950:#00354f;
@@ -407,9 +407,13 @@ footer{background:var(--navy-950);color:#b9c7d4;padding:34px 20px 18px;margin-to
     </div>
     <button id="mobile-nav-toggle" class="nav-toggle-btn" aria-label="Mở menu">☰</button>
       <div class="header-actions">
-      <div class="item"><div class="icon">☎</div>Gọi ngay</div>
-      <div class="item"><div class="icon">🛒</div>Giỏ hàng</div>
-    </div>
+        <a href="tel:0949761893" class="item" style="text-decoration:none; color:inherit;">
+          <div class="icon">☎</div>Gọi ngay
+        </a>
+        <div onclick="openCartDrawer()" class="item" style="cursor:pointer;">
+          <div class="icon" style="position:relative;">🛒<span class="cart-badge-count" style="position:absolute; top:-6px; right:-8px; background:var(--orange); color:#fff; font-size:10px; font-weight:700; width:16px; height:16px; border-radius:50%; display:none; align-items:center; justify-content:center;">0</span></div>Giỏ hàng
+        </div>
+      </div>
   </div>
 </header>
 
@@ -468,7 +472,7 @@ footer{background:var(--navy-950);color:#b9c7d4;padding:34px 20px 18px;margin-to
 <!-- [BRAND: breadcrumb] — phân cấp hiển thị: Trang chủ › Thương hiệu › Tên hãng.
      URL thật giữ nguyên flat, ví dụ winline.vn/vinawind (không đổi sang path phân cấp). -->
 <div class="breadcrumb">
-  <a href="index.html">Trang chủ</a> › <a href="brand.html">Thương hiệu</a> › Vinawind
+  <a href="index.html">Trang chủ</a> › <a href="thuong-hieu.html">Thương hiệu</a> › Vinawind
 </div>
 
 <div class="page-head">
@@ -675,9 +679,9 @@ footer{background:var(--navy-950);color:#b9c7d4;padding:34px 20px 18px;margin-to
       <a class="ms-tile" href="san-pham.html"><span class="ms-icon">🌀</span><span>Quạt dân dụng</span></a>
       <a class="ms-tile" href="san-pham.html"><span class="ms-icon">🏭</span><span>Quạt công nghiệp</span></a>
       <a class="ms-tile" href="san-pham.html"><span class="ms-icon">💨</span><span>Thông gió &amp; làm mát</span></a>
-      <a class="ms-tile" href="brand.html"><span class="ms-icon">🏷️</span><span>Thương hiệu</span></a>
+      <a class="ms-tile" href="thuong-hieu.html"><span class="ms-icon">🏷️</span><span>Thương hiệu</span></a>
       <a class="ms-tile" href="#"><span class="ms-icon">🏗️</span><span>Giải pháp theo nhu cầu</span></a>
-      <a class="ms-tile" href="ho-so-nang-luc.html"><span class="ms-icon">📁</span><span>Hồ sơ &amp; Tài liệu</span></a>
+      <a class="ms-tile" href="gioi-thieu.html"><span class="ms-icon">📁</span><span>Hồ sơ &amp; Tài liệu</span></a>
     </div>
   </div>
 </div>
@@ -739,5 +743,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
+<script src="js/products-data.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>

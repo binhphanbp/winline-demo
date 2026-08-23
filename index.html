@@ -8,9 +8,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap');
 
 :root{
-  /* Đồng bộ đúng hệ màu mới nhất (v11, từ product-detail.html) — 1 hue xanh
+  /* Đồng bộ đúng hệ màu mới nhất (v11, từ chi-tiet-san-pham.html) — 1 hue xanh
      #004e7d, 1 mã đỏ #d41e3d duy nhất. Trước đây file này còn dùng bảng màu
-     cũ (#0d1f33/#e2600f) trong khi product-detail.html đã đổi — nay gộp lại. */
+     cũ (#0d1f33/#e2600f) trong khi chi-tiet-san-pham.html đã đổi — nay gộp lại. */
   --navy-950:#00354f; --navy-800:#004e7d; --navy-700:#1f6690; --navy-100:#e6eef3;
   --paper:#f7f8fa; --white:#ffffff; --ink:#1a2230; --ink-soft:#5c6773; --line:#dde3ea;
   --orange:#d41e3d; --orange-dark:#a71830; --orange-100:#f4e6e9; --green:#1e8a5f;
@@ -443,9 +443,13 @@ footer{background:var(--navy-950);color:#b9c7d4;padding:44px 20px 20px;margin-to
     </div>
     <button id="mobile-nav-toggle" class="nav-toggle-btn" aria-label="Mở menu">☰</button>
       <div class="header-actions">
-      <div class="item"><div class="icon">☎</div>Gọi ngay</div>
-      <div class="item"><div class="icon">🛒</div>Giỏ hàng</div>
-    </div>
+        <a href="tel:0949761893" class="item" style="text-decoration:none; color:inherit;">
+          <div class="icon">☎</div>Gọi ngay
+        </a>
+        <div onclick="openCartDrawer()" class="item" style="cursor:pointer;">
+          <div class="icon" style="position:relative;">🛒<span class="cart-badge-count" style="position:absolute; top:-6px; right:-8px; background:var(--orange); color:#fff; font-size:10px; font-weight:700; width:16px; height:16px; border-radius:50%; display:none; align-items:center; justify-content:center;">0</span></div>Giỏ hàng
+        </div>
+      </div>
   </div>
 </header>
 
@@ -694,7 +698,7 @@ footer{background:var(--navy-950);color:#b9c7d4;padding:44px 20px 20px;margin-to
     <div>
       <h4>Về Winline</h4>
       <a href="#">Giới thiệu công ty</a>
-      <a href="ho-so-nang-luc.html">Hồ sơ năng lực</a>
+      <a href="gioi-thieu.html">Hồ sơ năng lực</a>
       <a href="du-an.html">Đơn hàng tiêu biểu</a>
       <a href="#">Tài liệu &amp; Hồ sơ</a>
     </div>
@@ -765,7 +769,7 @@ footer{background:var(--navy-950);color:#b9c7d4;padding:44px 20px 20px;margin-to
       <a class="ms-tile" href="san-pham.html"><span class="ms-icon">💨</span><span>Thông gió &amp; làm mát</span></a>
       <a class="ms-tile" href="san-pham.html"><span class="ms-icon">🏷️</span><span>Thương hiệu</span></a>
       <a class="ms-tile" href="#"><span class="ms-icon">🏗️</span><span>Giải pháp theo nhu cầu</span></a>
-      <a class="ms-tile" href="ho-so-nang-luc.html"><span class="ms-icon">📁</span><span>Hồ sơ &amp; Tài liệu</span></a>
+      <a class="ms-tile" href="gioi-thieu.html"><span class="ms-icon">📁</span><span>Hồ sơ &amp; Tài liệu</span></a>
     </div>
   </div>
 </div>
@@ -825,5 +829,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
+<script src="js/products-data.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>

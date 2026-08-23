@@ -6,7 +6,7 @@
 
 <!--
   ===========================================================================
-  nganh-kho-xuong.html — TRANG "GIẢI PHÁP THEO NGÀNH" (menu riêng, KHÔNG
+  giai-phap.html — TRANG "GIẢI PHÁP THEO NGÀNH" (menu riêng, KHÔNG
   phải nút chuyển view từ category.html)
   ===========================================================================
   Quyết định (đảo lại 1 phần quyết định trước — đã trao đổi lại với founder):
@@ -318,9 +318,30 @@ footer{background:var(--navy-950);color:#b9c7d4;padding:34px 20px 18px;margin-to
 </style>
 </head>
 <body>
-
-<div class="utility-bar"><div class="wrap"><span>Hơn 35 năm hoạt động — 12 năm pháp nhân chính thức</span><span>Hotline 0949 761 893</span></div></div>
-<header class="site"><div class="header-inner"><a href="index.html" class="site-logo-wrap"><img src="assets/images/logo.png" alt="Winline.vn" class="site-logo-img"><div class="logo" style="margin:0;">WIN<span>LINE</span></div></a></div></header>
+<div class="utility-bar">
+  <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; font-size:12.5px; padding:7px 20px;">
+    <span><i class="fas fa-certificate" style="color:var(--orange);"></i> Hơn 35 năm hoạt động &mdash; 12 năm pháp nhân chính thức</span>
+    <span><a href="tel:0949761893" style="color:inherit; text-decoration:none;"><i class="fas fa-phone-alt"></i> Hotline 24/7: <strong class="mono">0949.761.893</strong></a></span>
+  </div>
+</div>
+<header class="site">
+  <div class="header-inner" style="max-width:1240px; margin:0 auto; padding:14px 20px; display:flex; align-items:center; gap:24px;">
+    <a href="index.html" class="site-logo-wrap"><img src="assets/images/logo.png" alt="Winline.vn" class="site-logo-img"><div class="logo" style="margin:0;">WIN<span>LINE</span></div></a>
+    <button id="mobile-nav-toggle" class="nav-toggle-btn" aria-label="Mở menu">☰</button>
+    <div class="search-wrap" style="flex:1; position:relative; max-width:640px;">
+      <input class="search-box header-search-input" type="text" placeholder="Tìm quạt công nghiệp, quạt ly tâm, quạt thông gió...">
+      <button class="search-btn" aria-label="Tìm kiếm">⌕</button>
+    </div>
+    <div class="header-actions" style="display:flex; align-items:center; gap:18px; flex-shrink:0;">
+      <a href="tel:0949761893" class="item" style="text-decoration:none; color:inherit; display:flex; flex-direction:column; align-items:center; font-size:11px; color:var(--ink-soft); gap:3px;">
+        <div class="icon">☎</div>Gọi ngay
+      </a>
+      <div onclick="openCartDrawer()" class="item" style="cursor:pointer; display:flex; flex-direction:column; align-items:center; font-size:11px; color:var(--ink-soft); gap:3px;">
+        <div class="icon" style="position:relative;">🛒<span class="cart-badge-count" style="position:absolute; top:-6px; right:-8px; background:var(--orange); color:#fff; font-size:10px; font-weight:700; width:16px; height:16px; border-radius:50%; display:none; align-items:center; justify-content:center;">0</span></div>Giỏ hàng
+      </div>
+    </div>
+  </div>
+</header>
 <nav class="catnav">
   <div class="catnav-inner">
     <a href="index.html" class="nav-top ">Trang chủ</a>
@@ -373,7 +394,7 @@ footer{background:var(--navy-950);color:#b9c7d4;padding:34px 20px 18px;margin-to
   </div>
 </nav>
 
-<div class="breadcrumb"><a href="index.html">Trang chủ</a> › <a href="nganh-kho-xuong.html">Giải pháp theo ngành</a> › Nhà xưởng — Kho bãi</div>
+<div class="breadcrumb"><a href="index.html">Trang chủ</a> › <a href="giai-phap.html">Giải pháp theo ngành</a> › Nhà xưởng — Kho bãi</div>
 
 <div class="page-head">
   <div>
@@ -411,7 +432,7 @@ footer{background:var(--navy-950);color:#b9c7d4;padding:34px 20px 18px;margin-to
           </tr>
         </thead>
         <tbody>
-          <tr onclick="location.href='product-detail.html'">
+          <tr onclick="location.href='chi-tiet-san-pham.html'">
             <td class="first-col-sticky"><div class="st-prod"><div class="st-thumb"></div><div><div class="st-name">Quạt cây công nghiệp Komasu KM-750S</div><div class="st-sku">SKU: KM-750S</div></div></div></td>
             <td class="st-brand">Komasu</td>
             <td class="num">250W</td>
@@ -422,7 +443,7 @@ footer{background:var(--navy-950);color:#b9c7d4;padding:34px 20px 18px;margin-to
             <td class="num st-price">2.890.000đ</td>
             <td><a class="st-cta" href="chi-tiet-san-pham.html">Xem chi tiết →</a></td>
           </tr>
-          <tr onclick="location.href='product-detail.html'">
+          <tr onclick="location.href='chi-tiet-san-pham.html'">
             <td class="first-col-sticky"><div class="st-prod"><div class="st-thumb"></div><div><div class="st-name">Quạt cây công nghiệp Vinawind VW-650S</div><div class="st-sku">SKU: VW-650S</div></div></div></td>
             <td class="st-brand">Vinawind</td>
             <td class="num">220W</td>
@@ -433,7 +454,7 @@ footer{background:var(--navy-950);color:#b9c7d4;padding:34px 20px 18px;margin-to
             <td class="num st-price">2.150.000đ</td>
             <td><a class="st-cta" href="chi-tiet-san-pham.html">Xem chi tiết →</a></td>
           </tr>
-          <tr onclick="location.href='product-detail.html'">
+          <tr onclick="location.href='chi-tiet-san-pham.html'">
             <td class="first-col-sticky"><div class="st-prod"><div class="st-thumb"></div><div><div class="st-name">Quạt cây công nghiệp Tico TC-800S</div><div class="st-sku">SKU: TC-800S</div></div></div></td>
             <td class="st-brand">Tico</td>
             <td class="num">280W</td>
@@ -444,7 +465,7 @@ footer{background:var(--navy-950);color:#b9c7d4;padding:34px 20px 18px;margin-to
             <td class="num st-price">3.150.000đ</td>
             <td><a class="st-cta" href="chi-tiet-san-pham.html">Xem chi tiết →</a></td>
           </tr>
-          <tr onclick="location.href='product-detail.html'">
+          <tr onclick="location.href='chi-tiet-san-pham.html'">
             <td class="first-col-sticky"><div class="st-prod"><div class="st-thumb"></div><div><div class="st-name">Quạt cây công nghiệp Hatari HT-550S</div><div class="st-sku">SKU: HT-550S</div></div></div></td>
             <td class="st-brand">Hatari</td>
             <td class="num">185W</td>
@@ -455,7 +476,7 @@ footer{background:var(--navy-950);color:#b9c7d4;padding:34px 20px 18px;margin-to
             <td class="num st-price">1.920.000đ</td>
             <td><a class="st-cta" href="chi-tiet-san-pham.html">Xem chi tiết →</a></td>
           </tr>
-          <tr onclick="location.href='product-detail.html'">
+          <tr onclick="location.href='chi-tiet-san-pham.html'">
             <td class="first-col-sticky"><div class="st-prod"><div class="st-thumb"></div><div><div class="st-name">Quạt cây công nghiệp Senko SK-700S</div><div class="st-sku">SKU: SK-700S</div></div></div></td>
             <td class="st-brand">Senko</td>
             <td class="num">240W</td>
@@ -466,7 +487,7 @@ footer{background:var(--navy-950);color:#b9c7d4;padding:34px 20px 18px;margin-to
             <td class="num st-price">2.480.000đ</td>
             <td><a class="st-cta" href="chi-tiet-san-pham.html">Xem chi tiết →</a></td>
           </tr>
-          <tr onclick="location.href='product-detail.html'">
+          <tr onclick="location.href='chi-tiet-san-pham.html'">
             <td class="first-col-sticky"><div class="st-prod"><div class="st-thumb"></div><div><div class="st-name">Quạt cây công nghiệp Komasu KM-1000S</div><div class="st-sku">SKU: KM-1000S</div></div></div></td>
             <td class="st-brand">Komasu</td>
             <td class="num">370W</td>
@@ -539,5 +560,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
+<script src="js/products-data.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>

@@ -1,212 +1,701 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Liên Hệ & Bản Đồ Showroom Winline | Winline.vn</title>
-  <meta name="description" content="Liên hệ Công ty TNHH Winline Việt Nam - Showroom: Số 17 Ngõ 46 Quan Nhân, Thanh Xuân, Hà Nội. Hotline: 0949.761.893">
-  
-  <link rel="icon" href="https://bizweb.dktcdn.net/100/391/557/themes/903209/assets/favicon.png?1786933451521" type="image/x-icon">
-  
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['"Be Vietnam Pro"', '"Inter"', 'sans-serif'],
-            heading: ['"Be Vietnam Pro"', 'sans-serif']
-          },
-          colors: {
-            brandNavy: '#0b1f3a',
-            brandNavyDark: '#071529',
-            brandRed: '#e51a24',
-            brandRedHover: '#c4121b',
-            brandTeal: '#26a69a',
-            brandTealHover: '#00897b'
-          }
-        }
-      }
-    }
-  </script>
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liên Hệ & Văn Phòng Giao Dịch Winline | Winline.vn</title>
+<meta name="description" content="Liên hệ Công ty TNHH Winline Việt Nam - Phân phối quạt công nghiệp và thiết bị thông gió chính hãng. Showroom: Số 17 Ngõ 46 Quan Nhân, Thanh Xuân, Hà Nội. Hotline: 0949.761.893.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+:root {
+  --navy-950: #00354f;
+  --navy-800: #004e7d;
+  --navy-700: #1f6690;
+  --navy-100: #e6eef3;
+  --paper: #f7f8fa;
+  --white: #ffffff;
+  --ink: #1a2230;
+  --ink-soft: #5c6773;
+  --line: #dde3ea;
+  --orange: #d41e3d;
+  --orange-dark: #a71830;
+  --orange-100: #f4e6e9;
+  --green: #1e8a5f;
+  --radius: 6px;
+  --shadow: 0 2px 10px rgba(13, 31, 51, 0.08);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; overflow-x: hidden; max-width: 100%; }
+body {
+  font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  font-size: 15px;
+  line-height: 1.5;
+}
+.mono { font-family: 'IBM Plex Mono', monospace; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font-family: inherit; cursor: pointer; }
+
+/* ---------- utility bar ---------- */
+.utility-bar {
+  background: var(--navy-950);
+  color: #c9d6e3;
+  font-size: 12.5px;
+}
+.utility-bar .wrap {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 7px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.utility-bar a { color: #c9d6e3; opacity: 0.9; }
+.utility-bar a:hover { opacity: 1; text-decoration: underline; }
+.utility-bar .sep { opacity: 0.4; margin: 0 10px; }
+
+/* ---------- header ---------- */
+header.site {
+  background: var(--white);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+.header-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.logo {
+  font-weight: 800;
+  font-size: 24px;
+  letter-spacing: 0.5px;
+  color: var(--navy-950);
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  flex-shrink: 0;
+}
+.logo span { color: var(--orange); }
+.search-wrap {
+  flex: 1;
+  position: relative;
+  max-width: 640px;
+}
+.search-box {
+  width: 100%;
+  padding: 11px 46px 11px 16px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  font-size: 14.5px;
+  background: var(--paper);
+  font-family: inherit;
+}
+.search-box:focus {
+  outline: none;
+  border-color: var(--navy-700);
+  background: var(--white);
+}
+.search-btn {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--navy-950);
+  border: none;
+  color: #fff;
+  width: 34px;
+  height: 34px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-shrink: 0;
+}
+.header-actions .item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 11px;
+  color: var(--ink-soft);
+  gap: 3px;
+  cursor: pointer;
+}
+.header-actions .icon {
+  width: 22px;
+  height: 22px;
+  color: var(--navy-800);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+/* ---------- nav ---------- */
+nav.catnav { background: var(--navy-950); }
+.catnav-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  gap: 2px;
+  font-size: 13.5px;
+  font-weight: 500;
+  overflow-x: auto;
+}
+.catnav-inner a {
+  padding: 11px 14px;
+  color: #dbe4ee;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+}
+.catnav-inner a:hover {
+  color: #fff;
+  border-bottom-color: var(--orange);
+  background: rgba(255, 255, 255, 0.04);
+}
+.catnav-inner a.active {
+  color: #fff;
+  border-bottom-color: var(--orange);
+}
+
+/* ---------- breadcrumb ---------- */
+.breadcrumb {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 14px 20px 0;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+}
+.breadcrumb a:hover {
+  color: var(--navy-800);
+  text-decoration: underline;
+}
+
+/* ---------- contact main layout ---------- */
+.contact-wrap {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 24px 20px 60px;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 460px 1fr;
+  gap: 26px;
+  align-items: start;
+}
+@media (max-width: 960px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 26px 28px;
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+}
+.contact-card h1, .contact-card h2 {
+  font-size: 19px;
+  color: var(--navy-950);
+  margin: 0 0 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+  font-weight: 700;
+}
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 16px;
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+.contact-item:last-child { margin-bottom: 0; }
+.contact-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: var(--navy-100);
+  color: var(--navy-800);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.contact-icon.red { background: var(--orange-100); color: var(--orange); }
+.contact-icon.green { background: #e6f4ee; color: var(--green); }
+.contact-info strong {
+  display: block;
+  color: var(--navy-950);
+  font-size: 13.5px;
+  margin-bottom: 2px;
+}
+.contact-info p {
+  margin: 0;
+  color: var(--ink-soft);
+}
+.contact-info .hotline-num {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--orange);
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* Contact Form */
+.form-group {
+  margin-bottom: 14px;
+}
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy-950);
+  margin-bottom: 6px;
+}
+.form-input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--line);
+  border-radius: 6px;
+  font-size: 13.5px;
+  font-family: inherit;
+  background: var(--paper);
+  color: var(--ink);
+  transition: border-color 0.2s;
+}
+.form-input:focus {
+  outline: none;
+  border-color: var(--navy-800);
+  background: #ffffff;
+}
+.btn-submit {
+  width: 100%;
+  background: var(--orange);
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 13px 20px;
+  font-size: 14.5px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.2s;
+}
+.btn-submit:hover {
+  background: var(--orange-dark);
+}
+
+/* Map Card */
+.map-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  height: 680px;
+  display: flex;
+  flex-direction: column;
+}
+@media (max-width: 960px) {
+  .map-card { height: 460px; }
+}
+.map-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy-950);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.map-frame-wrap {
+  flex: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+.map-frame-wrap iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ---------- site footer ---------- */
+footer.site {
+  background: var(--navy-950);
+  color: #b9c7d4;
+  padding: 40px 20px 20px;
+  margin-top: auto;
+}
+.footer-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 30px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+@media (max-width: 860px) {
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+.footer-col h4 {
+  color: #ffffff;
+  font-size: 15px;
+  margin: 0 0 14px;
+  font-weight: 700;
+}
+.footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.footer-col ul li {
+  margin-bottom: 8px;
+}
+.footer-col ul li a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+.footer-bottom {
+  max-width: 1240px;
+  margin: 30px auto 0;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  font-size: 12px;
+  color: #8fa2b5;
+}
+</style>
 </head>
-<body class="bg-[#f8fafc] text-slate-800 flex flex-col min-h-screen">
+<body>
 
-  <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-xs">
-    <div class="bg-brandNavyDark text-slate-300 text-xs py-1.5 px-4 hidden md:block border-b border-slate-800">
-      <div class="custom-container flex justify-between items-center">
-        <span><i class="fas fa-certificate text-brandRed mr-1.5"></i> Công ty TNHH Winline Việt Nam - MST: <strong>0106085370</strong></span>
-        <span><i class="fas fa-map-marker-alt text-brandRed mr-1"></i> Số 17 Ngõ 46 Quan Nhân, P. Thanh Xuân, Hà Nội</span>
+  <!-- Top Utility Bar -->
+  <div class="utility-bar">
+    <div class="wrap">
+      <div>
+        <span><i class="fas fa-certificate" style="color:var(--orange);"></i> Công ty TNHH Winline Việt Nam — MST: <strong class="mono">0106085370</strong></span>
+        <span class="sep">|</span>
+        <span><i class="fas fa-map-marker-alt" style="color:var(--orange);"></i> Số 17 Ngõ 46 Quan Nhân, Thanh Xuân, Hà Nội</span>
       </div>
-    </div>
-
-    <div class="custom-container py-3 flex items-center justify-between gap-4">
-      <a href="index.html" class="flex items-center gap-2 flex-shrink-0">
-        <div class="flex flex-col">
-          <div class="text-2xl md:text-3xl font-black text-brandRed font-heading flex items-center">
-            Winline<span class="text-brandNavy text-base align-super ml-0.5">®</span>
-          </div>
-          <span class="text-[9px] uppercase tracking-widest font-bold text-brandNavy -mt-1">
-            Chất lượng tạo niềm tin
-          </span>
-        </div>
-      </a>
-
-      <div class="search-container relative flex-1 max-w-xl mx-2 hidden sm:block">
-        <div class="flex">
-          <input type="text" class="header-search-input w-full bg-slate-50 border border-slate-300 rounded-l-md px-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-brandRed" placeholder="Tìm kiếm...">
-          <button class="bg-brandRed text-white px-5 rounded-r-md"><i class="fas fa-search"></i></button>
-        </div>
+      <div>
+        <a href="tel:0949761893"><i class="fas fa-phone-alt"></i> Hotline: <strong class="mono">0949.761.893</strong></a>
+        <span class="sep">|</span>
+        <a href="https://zalo.me/0949761893" target="_blank"><i class="fas fa-comment-dots"></i> Zalo Kỹ Thuật</a>
       </div>
-
-      <div class="flex items-center gap-4 text-xs">
-        <button onclick="openCartDrawer()" class="relative flex items-center gap-2 bg-slate-50 border border-slate-200 px-3.5 py-2 rounded-lg">
-          <i class="fas fa-shopping-cart text-lg text-brandRed"></i>
-          <span class="cart-badge-count absolute -top-2 -right-2 bg-brandRed text-white text-[10px] font-black rounded-full w-5 h-5 flex items-center justify-center border-2 border-white">0</span>
-          <span class="font-bold hidden sm:inline text-xs">Giỏ hàng</span>
-        </button>
-      </div>
-    </div>
-
-    <nav class="main-navbar">
-      <div class="custom-container">
-        <ul class="flex items-center overflow-x-auto no-scrollbar">
-          <li><a href="index.html" class="nav-link-item whitespace-nowrap">Trang chủ</a></li>
-          <li><a href="gioi-thieu.html" class="nav-link-item whitespace-nowrap">Giới thiệu</a></li>
-          <li><a href="san-pham.html" class="nav-link-item whitespace-nowrap">Sản phẩm</a></li>
-          <li><a href="giai-phap.html" class="nav-link-item whitespace-nowrap">Giải pháp</a></li>
-          <li><a href="thuong-hieu.html" class="nav-link-item whitespace-nowrap">Thương hiệu</a></li>
-          <li><a href="cong-cu-tinh-quat.html" class="nav-link-item whitespace-nowrap text-amber-300 font-bold"><i class="fas fa-calculator mr-1"></i> Công cụ tính quạt</a></li>
-          <li><a href="du-an.html" class="nav-link-item whitespace-nowrap">Dự án</a></li>
-          <li class="ml-auto hidden xl:block"><a href="lien-he.html" class="nav-link-item active text-xs text-white">Liên hệ & Báo giá</a></li>
-        </ul>
-      </div>
-    </nav>
-  </header>
-
-  <div class="bg-white border-b border-slate-200 py-3 text-xs text-slate-500">
-    <div class="custom-container flex items-center gap-2">
-      <a href="index.html" class="hover:text-brandRed">Trang chủ</a>
-      <i class="fas fa-chevron-right text-[10px]"></i>
-      <span class="text-slate-900 font-bold">Liên hệ & Văn phòng giao dịch</span>
     </div>
   </div>
 
-  <main class="custom-container py-10 flex-1 w-full space-y-8">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-      
-      <!-- Contact Info Details -->
-      <div class="lg:col-span-5 space-y-6">
-        <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-4">
-          <h1 class="text-xl font-bold text-slate-900 font-heading border-b border-slate-100 pb-3">
-            Thông Tin Liên Hệ Winline Việt Nam
-          </h1>
-          
-          <div class="space-y-3 text-xs text-slate-600">
-            <div class="flex items-start gap-3">
-              <div class="w-8 h-8 rounded-full bg-red-50 text-brandRed flex items-center justify-center flex-shrink-0 text-sm mt-0.5"><i class="fas fa-map-marker-alt"></i></div>
-              <div>
-                <strong class="text-slate-800">Showroom & Văn Phòng Giao Dịch:</strong>
-                <p class="text-slate-500 mt-0.5">Số 17, Ngõ 46 Quan Nhân, Phường Thanh Xuân, TP. Hà Nội</p>
-              </div>
-            </div>
+  <!-- Site Header -->
+  <header class="site">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        Winline<span>.vn</span>
+      </a>
 
-            <div class="flex items-start gap-3">
-              <div class="w-8 h-8 rounded-full bg-blue-50 text-brandNavy flex items-center justify-center flex-shrink-0 text-sm mt-0.5"><i class="fas fa-building"></i></div>
-              <div>
-                <strong class="text-slate-800">Trụ Sở Đăng Ký Doanh Nghiệp:</strong>
-                <p class="text-slate-500 mt-0.5">Số 7 BT6, KĐT Pháp Vân - Tứ Hiệp, Phường Hoàng Liệt, Quận Hoàng Mai, Hà Nội</p>
-              </div>
-            </div>
+      <button class="nav-toggle-btn" id="mobile-nav-toggle" aria-label="Mở menu">
+        <i class="fas fa-bars"></i>
+      </button>
 
-            <div class="flex items-start gap-3">
-              <div class="w-8 h-8 rounded-full bg-teal-50 text-brandTeal flex items-center justify-center flex-shrink-0 text-sm mt-0.5"><i class="fas fa-phone-alt"></i></div>
-              <div>
-                <strong class="text-slate-800">Hotline Bán Hàng & Dự Án:</strong>
-                <p class="text-brandRed font-bold text-sm mt-0.5">0949.761.893 (Hỗ trợ Zalo 24/7)</p>
-              </div>
-            </div>
+      <div class="search-wrap">
+        <input type="text" class="search-box header-search-input" placeholder="Tìm quạt công nghiệp, quạt ly tâm, quạt thông gió...">
+        <button class="search-btn" aria-label="Tìm kiếm"><i class="fas fa-search"></i></button>
+      </div>
 
-            <div class="flex items-start gap-3">
-              <div class="w-8 h-8 rounded-full bg-amber-50 text-amber-500 flex items-center justify-center flex-shrink-0 text-sm mt-0.5"><i class="fas fa-headset"></i></div>
-              <div>
-                <strong class="text-slate-800">Hỗ Trợ Kỹ Thuật:</strong>
-                <p class="text-slate-800 font-bold mt-0.5">1900 099 806 - Bảo hành: 0963 230 665</p>
-              </div>
-            </div>
+      <div class="header-actions">
+        <a href="tel:0949761893" class="item">
+          <div class="icon"><i class="fas fa-phone"></i></div>
+          <span>0949.761.893</span>
+        </a>
+        <div onclick="openCartDrawer()" class="item">
+          <div class="icon" style="position:relative;">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-badge-count" style="position:absolute; top:-6px; right:-8px; background:var(--orange); color:#fff; font-size:10px; font-weight:700; width:17px; height:17px; border-radius:50%; display:flex; align-items:center; justify-content:center;">0</span>
+          </div>
+          <span>Giỏ hàng</span>
+        </div>
+      </div>
+    </div>
+  </header>
 
-            <div class="flex items-start gap-3">
-              <div class="w-8 h-8 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center flex-shrink-0 text-sm mt-0.5"><i class="fas fa-envelope"></i></div>
-              <div>
-                <strong class="text-slate-800">Email:</strong>
-                <p class="text-slate-500 mt-0.5">Winlinevietnam@gmail.com</p>
-              </div>
-            </div>
+  <!-- Category Nav Bar (7 Menu Items) -->
+  <nav class="catnav">
+    <div class="catnav-inner">
+      <a href="index.html" class="nav-top">Trang chủ</a>
+      <a href="gioi-thieu.html" class="nav-top">Giới thiệu</a>
 
-            <div class="flex items-start gap-3">
-              <div class="w-8 h-8 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center flex-shrink-0 text-sm mt-0.5"><i class="fas fa-clock"></i></div>
-              <div>
-                <strong class="text-slate-800">Thời Gian Làm Việc:</strong>
-                <p class="text-slate-500 mt-0.5">Thứ 2 - Thứ 7 (8h00 - 17h30)</p>
-              </div>
+      <div class="nav-drop">
+        <a href="san-pham.html" class="nav-top">Sản phẩm ▾</a>
+        <div class="nav-panel nav-panel-wide">
+          <div class="np-col">
+            <div class="np-title">Quạt dân dụng</div>
+            <a href="san-pham.html">Quạt trần</a>
+            <a href="san-pham.html">Quạt cây / quạt đứng</a>
+            <a href="san-pham.html">Quạt treo tường</a>
+            <a href="san-pham.html">Quạt sàn / quạt quỳ</a>
+          </div>
+          <div class="np-col">
+            <div class="np-title">Quạt công nghiệp</div>
+            <a href="san-pham.html">Quạt cây công nghiệp</a>
+            <a href="san-pham.html">Quạt treo tường công nghiệp</a>
+            <a href="san-pham.html">Quạt sàn công nghiệp</a>
+          </div>
+          <div class="np-col">
+            <div class="np-title">Thông gió &amp; làm mát</div>
+            <a href="san-pham.html">Quạt thông gió dân dụng</a>
+            <a href="san-pham.html">Quạt thông gió công nghiệp</a>
+            <a href="san-pham.html">Quạt cắt gió</a>
+            <a href="san-pham.html">Máy làm mát / điều hoà di động</a>
+          </div>
+        </div>
+      </div>
+
+      <a href="giai-phap.html" class="nav-top">Giải pháp</a>
+
+      <div class="nav-drop">
+        <a href="thuong-hieu.html" class="nav-top">Thương hiệu ▾</a>
+        <div class="nav-panel">
+          <a href="thuong-hieu.html">Vinawind (Điện cơ Thống Nhất)</a>
+          <a href="thuong-hieu.html">Komasu Nhật Bản</a>
+          <a href="thuong-hieu.html">Deton</a>
+          <a href="thuong-hieu.html">Dasin</a>
+          <a href="thuong-hieu.html">Chinghai</a>
+          <a href="thuong-hieu.html">Hatari</a>
+          <a href="thuong-hieu.html">Panasonic</a>
+          <a href="thuong-hieu.html">Nedfon</a>
+        </div>
+      </div>
+
+      <a href="cong-cu-tinh-quat.html" class="nav-top">Công cụ tính quạt</a>
+      <a href="du-an.html" class="nav-top">Dự án</a>
+      <a href="lien-he.html" class="nav-top active">Liên hệ &amp; Báo giá</a>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <a href="index.html">Trang chủ</a> &rsaquo; <span>Liên hệ &amp; Văn phòng giao dịch</span>
+  </div>
+
+  <!-- Main Content Layout -->
+  <main class="contact-wrap">
+    <div class="contact-grid">
+
+      <!-- Left Column: Company Info & Consultation Form -->
+      <div>
+        
+        <!-- Info Card -->
+        <div class="contact-card">
+          <h1>Thông Tin Liên Hệ Winline Việt Nam</h1>
+
+          <div class="contact-item">
+            <div class="contact-icon red"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="contact-info">
+              <strong>Showroom &amp; Văn Phòng Giao Dịch:</strong>
+              <p>Số 17, Ngõ 46 Quan Nhân, Phường Thanh Xuân, TP. Hà Nội</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-building"></i></div>
+            <div class="contact-info">
+              <strong>Trụ Sở Đăng Ký Doanh Nghiệp:</strong>
+              <p>Số 7 BT6, Khu đô thị Pháp Vân - Tứ Hiệp, Phường Hoàng Liệt, Quận Hoàng Mai, TP. Hà Nội</p>
+              <p style="font-size:12px; margin-top:3px; color:var(--ink-soft);">MST: <span class="mono" style="font-weight:600; color:var(--navy-950);">0106085370</span> (Cấp ngày 15/01/2013 bởi Sở KH&amp;ĐT TP Hà Nội)</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon red"><i class="fas fa-phone-alt"></i></div>
+            <div class="contact-info">
+              <strong>Hotline Bán Hàng &amp; Dự Án:</strong>
+              <p class="hotline-num">0949.761.893</p>
+              <p style="font-size:12px; color:var(--green); font-weight:600;"><i class="fas fa-check-circle"></i> Hỗ trợ tư vấn Zalo &amp; Báo giá 24/7</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-headset"></i></div>
+            <div class="contact-info">
+              <strong>Tổng Đài &amp; Hỗ Trợ Kỹ Thuật:</strong>
+              <p style="font-weight:600; color:var(--navy-950);">1900 099 806 &mdash; Bảo hành: 0963.230.665</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <div class="contact-info">
+              <strong>Email Tiếp Nhận Hồ Sơ / Báo Giá:</strong>
+              <p class="mono" style="color:var(--navy-800); font-weight:600;">Winlinevietnam@gmail.com</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon green"><i class="fas fa-clock"></i></div>
+            <div class="contact-info">
+              <strong>Thời Gian Làm Việc:</strong>
+              <p>Thứ 2 &ndash; Thứ 7: 8h00 &ndash; 17h30 (Chủ nhật hỗ trợ qua Hotline/Zalo)</p>
             </div>
           </div>
         </div>
 
-        <!-- Consultation Form -->
-        <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs">
-          <h2 class="text-base font-bold text-slate-900 font-heading mb-3">Gửi Thắc Mắc & Yêu Cầu Báo Giá</h2>
-          <form onsubmit="handleConsultSubmit(event)" class="space-y-3 text-xs">
-            <input type="text" name="name" placeholder="Họ và tên của bạn *" class="w-full border border-slate-300 rounded-lg p-2.5" required>
-            <input type="tel" name="phone" placeholder="Số điện thoại liên hệ *" class="w-full border border-slate-300 rounded-lg p-2.5" required>
-            <input type="email" name="email" placeholder="Email nhận báo giá..." class="w-full border border-slate-300 rounded-lg p-2.5">
-            <textarea name="note" rows="3" placeholder="Nội dung cần tư vấn hoặc danh mục quạt cần mua sắm..." class="w-full border border-slate-300 rounded-lg p-2.5"></textarea>
-            <button type="submit" class="w-full bg-brandRed hover:bg-brandRedHover text-white font-bold py-3 rounded-lg text-sm transition">
-              Gửi Liên Hệ Ngay
+        <!-- Quote / Consultation Form -->
+        <div class="contact-card">
+          <h2>Gửi Thắc Mắc &amp; Yêu Cầu Báo Giá Dự Án</h2>
+          <form onsubmit="handleConsultSubmit(event)">
+            <div class="form-group">
+              <label>Họ và tên của bạn <span style="color:var(--orange);">*</span></label>
+              <input type="text" name="name" class="form-input" placeholder="Ví dụ: Nguyễn Văn A" required>
+            </div>
+
+            <div class="form-group">
+              <label>Số điện thoại liên hệ <span style="color:var(--orange);">*</span></label>
+              <input type="tel" name="phone" class="form-input" placeholder="Ví dụ: 0912.345.678" required>
+            </div>
+
+            <div class="form-group">
+              <label>Email nhận bảng báo giá</label>
+              <input type="email" name="email" class="form-input" placeholder="email@congty.com">
+            </div>
+
+            <div class="form-group">
+              <label>Tên đơn vị / Dự án / Công ty (nếu có)</label>
+              <input type="text" name="company" class="form-input" placeholder="Tên xưởng may, kho hàng hoặc công ty...">
+            </div>
+
+            <div class="form-group">
+              <label>Nội dung cần tư vấn hoặc danh mục quạt cần báo giá</label>
+              <textarea name="note" rows="4" class="form-input" placeholder="Ví dụ: Cần báo giá 10 quạt vuông 1380, 5 máy làm mát 18000 cho xưởng 1200m2 tại Bắc Ninh..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">
+              <i class="fas fa-paper-plane"></i> Gửi Yêu Cầu Báo Giá Ngay
             </button>
           </form>
         </div>
+
       </div>
 
-      <!-- Google Maps Embed -->
-      <div class="lg:col-span-7 bg-white rounded-2xl border border-slate-200 p-4 shadow-xs overflow-hidden h-[600px] flex flex-col">
-        <div class="text-xs font-bold text-slate-800 mb-2 px-2 flex items-center gap-2">
-          <i class="fas fa-map-marked-alt text-brandRed"></i> Bản Đồ Chỉ Đường Đến Showroom Winline
-        </div>
-        <div class="flex-1 rounded-xl overflow-hidden border border-slate-200">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.636906297371!2d105.80775317587002!3d21.00718718851724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ac9e05f63901%3A0xe13fa178e2dc40d6!2zMTcgTmcuIDQ2IFF1YW4gTmjDom4sIE5ow6JuIENow61uaCwgVGhhbmggWHXDom4sIEjDoCBO4buZaQ!5e0!3m2!1svi!2svn!4v1700000000000!5m2!1svi!2svn" 
-            width="100%" 
-            height="100%" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
+      <!-- Right Column: Interactive Google Map -->
+      <div>
+        <div class="map-card">
+          <div class="map-title">
+            <i class="fas fa-map-marked-alt" style="color:var(--orange);"></i>
+            <span>Bản Đồ Chỉ Đường Đến Showroom Winline Hà Nội</span>
+          </div>
+          <div class="map-frame-wrap">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.636906297371!2d105.80775317587002!3d21.00718718851724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ac9e05f63901%3A0xe13fa178e2dc40d6!2zMTcgTmcuIDQ2IFF1YW4gTmjDom4sIE5ow6JuIENow61uaCwgVGhhbmggWHXDom4sIEjDoCBO4buZaQ!5e0!3m2!1svi!2svn!4v1700000000000!5m2!1svi!2svn" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
         </div>
       </div>
 
     </div>
   </main>
 
-  <footer class="bg-slate-900 text-slate-300 text-xs mt-auto border-t-4 border-brandRed">
-    <div class="custom-container py-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-      <div><strong>Công ty TNHH Winline Việt Nam</strong> - MST: 0106085370 - Hotline: <strong>0949.761.893</strong></div>
-      <div class="text-slate-500">© 2013 - 2026 Winline.vn. Liên hệ trực tiếp.</div>
+  <!-- Site Footer -->
+  <footer class="site">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>CÔNG TY TNHH WINLINE VIỆT NAM</h4>
+        <p style="margin:0 0 10px;">Chất lượng tạo niềm tin &mdash; Nhà phân phối quạt điện, quạt công nghiệp và giải pháp thông gió làm mát hàng đầu Việt Nam.</p>
+        <p style="margin:0 0 6px;"><i class="fas fa-id-card" style="color:var(--orange); width:18px;"></i> MST: <strong class="mono">0106085370</strong> (15/01/2013)</p>
+        <p style="margin:0 0 6px;"><i class="fas fa-store" style="color:var(--orange); width:18px;"></i> Showroom: Số 17 Ngõ 46 Quan Nhân, Thanh Xuân, Hà Nội</p>
+        <p style="margin:0;"><i class="fas fa-phone" style="color:var(--orange); width:18px;"></i> Hotline: <strong>0949.761.893</strong> &mdash; 1900 099 806</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>VỀ WINLINE</h4>
+        <ul>
+          <li><a href="gioi-thieu.html">Giới thiệu công ty</a></li>
+          <li><a href="du-an.html">Dự án đã triển khai</a></li>
+          <li><a href="thuong-hieu.html">Thương hiệu đối tác</a></li>
+          <li><a href="cong-cu-tinh-quat.html">Công cụ tính chọn quạt</a></li>
+          <li><a href="lien-he.html">Liên hệ &amp; Bản đồ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>DANH MỤC SẢN PHẨM</h4>
+        <ul>
+          <li><a href="san-pham.html">Quạt cây công nghiệp</a></li>
+          <li><a href="san-pham.html">Quạt treo tường công nghiệp</a></li>
+          <li><a href="san-pham.html">Quạt thông gió vuông</a></li>
+          <li><a href="san-pham.html">Quạt ly tâm &amp; hướng trục</a></li>
+          <li><a href="san-pham.html">Máy làm mát Air Cooler</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>HỖ TRỢ KHÁCH HÀNG</h4>
+        <ul>
+          <li><i class="fas fa-check-circle" style="color:var(--green); margin-right:6px;"></i> Cam kết 100% hàng chính hãng</li>
+          <li><i class="fas fa-truck" style="color:var(--navy-700); margin-right:6px;"></i> Giao hàng tận nơi toàn quốc</li>
+          <li><i class="fas fa-file-invoice" style="color:var(--orange); margin-right:6px;"></i> Xuất đầy đủ hóa đơn VAT &amp; CO/CQ</li>
+          <li><i class="fas fa-tools" style="color:var(--navy-800); margin-right:6px;"></i> Bảo hành chính hãng 12 &ndash; 24 tháng</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2013 &ndash; 2026 Công ty TNHH Winline Việt Nam. Tất cả quyền được bảo lưu. Thiết kế phục vụ sản xuất &amp; thương mại cơ điện.
     </div>
   </footer>
 
-  <div id="cart-drawer" class="fixed inset-0 z-50 pointer-events-none opacity-0 transition-opacity">
-    <div onclick="closeCartDrawer()" class="drawer-backdrop absolute inset-0"></div>
-    <div id="cart-drawer-panel" class="drawer-panel absolute top-0 right-0 bottom-0 w-full max-w-md bg-white shadow-2xl flex flex-col transform translate-x-full transition-transform">
-      <div class="p-4 bg-brandNavy text-white flex items-center justify-between">
-        <h3 class="font-bold text-sm font-heading">Giỏ Hàng (<span class="cart-badge-count">0</span>)</h3>
-        <button onclick="closeCartDrawer()"><i class="fas fa-times"></i></button>
-      </div>
-      <div class="flex-1 overflow-y-auto p-4"><div id="cart-drawer-items"></div></div>
+  <!-- Mobile Floating Action Bar -->
+  <div class="mobile-floating-bar">
+    <div class="mobile-floating-inner">
+      <a href="index.html" class="mobile-action-item">
+        <div class="m-icon home"><i class="fas fa-home"></i></div>
+        <span>Trang chủ</span>
+      </a>
+      <a href="cong-cu-tinh-quat.html" class="mobile-action-item">
+        <div class="m-icon calc"><i class="fas fa-calculator"></i></div>
+        <span>Tính quạt</span>
+      </a>
+      <a href="https://zalo.me/0949761893" target="_blank" class="mobile-action-item">
+        <div class="m-icon zalo"><i class="fas fa-comment-dots"></i></div>
+        <span>Zalo</span>
+      </a>
+      <a href="tel:0949761893" class="mobile-action-item">
+        <div class="m-icon call"><i class="fas fa-phone-alt"></i></div>
+        <span>Gọi ngay</span>
+      </a>
     </div>
   </div>
 

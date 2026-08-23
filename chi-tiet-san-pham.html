@@ -1001,9 +1001,13 @@ footer{background:var(--navy-950);color:#b9c7d4;padding:44px 20px 20px;margin-to
     </div>
     <button id="mobile-nav-toggle" class="nav-toggle-btn" aria-label="Mở menu">☰</button>
       <div class="header-actions">
-      <div class="item"><div class="icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.02l-2.2 2.19z"/></svg></div>Gọi ngay</div>
-      <div class="item"><div class="icon">🛒</div>Giỏ hàng</div>
-    </div>
+        <a href="tel:0949761893" class="item" style="text-decoration:none; color:inherit;">
+          <div class="icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.02l-2.2 2.19z"/></svg></div>Gọi ngay
+        </a>
+        <div onclick="openCartDrawer()" class="item" style="cursor:pointer;">
+          <div class="icon" style="position:relative;">🛒<span class="cart-badge-count" style="position:absolute; top:-6px; right:-8px; background:var(--orange); color:#fff; font-size:10px; font-weight:700; width:16px; height:16px; border-radius:50%; display:none; align-items:center; justify-content:center;">0</span></div>Giỏ hàng
+        </div>
+      </div>
   </div>
 </header>
 
@@ -1287,7 +1291,7 @@ footer{background:var(--navy-950);color:#b9c7d4;padding:44px 20px 20px;margin-to
         </div>
       </div>
       <div class="cta-row">
-        <button class="btn btn-outline-orange" style="flex:1;">MUA NGAY</button>
+        <button class="btn btn-outline-orange" style="flex:1;" onclick="addToCart('p1', parseInt(document.getElementById('qtyInput')?.value || 1))">MUA NGAY</button>
       </div>
     </div>
 
@@ -1450,7 +1454,7 @@ footer{background:var(--navy-950);color:#b9c7d4;padding:44px 20px 20px;margin-to
       <a class="ms-tile" href="san-pham.html"><span class="ms-icon">💨</span><span>Thông gió &amp; làm mát</span></a>
       <a class="ms-tile" href="san-pham.html"><span class="ms-icon">🏷️</span><span>Thương hiệu</span></a>
       <a class="ms-tile" href="#"><span class="ms-icon">🏗️</span><span>Giải pháp theo nhu cầu</span></a>
-      <a class="ms-tile" href="ho-so-nang-luc.html"><span class="ms-icon">📁</span><span>Hồ sơ &amp; Tài liệu</span></a>
+      <a class="ms-tile" href="gioi-thieu.html"><span class="ms-icon">📁</span><span>Hồ sơ &amp; Tài liệu</span></a>
     </div>
   </div>
 </div>
@@ -1586,7 +1590,7 @@ function stepQty(d){
     <div>
       <h4>Về Winline</h4>
       <a href="gioi-thieu.html">Giới thiệu công ty</a>
-      <a href="ho-so-nang-luc.html">Hồ sơ năng lực</a>
+      <a href="gioi-thieu.html">Hồ sơ năng lực</a>
       <a href="du-an.html">Đơn hàng tiêu biểu</a>
       <a href="#">Tài liệu &amp; Hồ sơ</a>
     </div>
@@ -1656,5 +1660,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
+<script src="js/products-data.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>

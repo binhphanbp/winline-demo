@@ -1,15 +1,15 @@
 /**
- * Winline Vietnam - Core Application Logic
- * Cart, Search, Modals, Comparison, Notification Toasts
+ * WINLINE VIETNAM - Core Application Logic
+ * E-commerce Cart Drawer, Live Search, Quick View Modal, Compare Drawer, Notifications
  */
 
-// Initialize Cart from localStorage
+// Initialize Cart & Compare from localStorage
 let cart = JSON.parse(localStorage.getItem("winline_cart")) || [];
 let compareList = JSON.parse(localStorage.getItem("winline_compare")) || [];
 
-// Helper currency formatter
+// Currency formatter
 function formatVND(amount) {
-  if (isNaN(amount)) return "0₫";
+  if (isNaN(amount) || amount === null) return "0₫";
   return new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(amount);
 }
 
@@ -19,19 +19,19 @@ function showToast(message, type = "success") {
   if (!container) {
     container = document.createElement("div");
     container.id = "toast-container";
-    container.className = "fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none";
+    container.style.cssText = "position:fixed; bottom:24px; right:24px; z-index:99999; display:flex; flex-direction:column; gap:8px; pointer-events:none;";
     document.body.appendChild(container);
   }
 
   const toast = document.createElement("div");
-  const bgClass = type === "success" ? "bg-emerald-600" : type === "info" ? "bg-blue-600" : "bg-red-600";
+  const bg = type === "success" ? "#1e8a5f" : type === "info" ? "#004e7d" : "#d41e3d";
   const icon = type === "success" ? "fa-check-circle" : type === "info" ? "fa-info-circle" : "fa-exclamation-circle";
 
-  toast.className = `${bgClass} text-white px-4 py-3 rounded-lg shadow-xl text-sm font-medium flex items-center gap-3 transition-all duration-300 transform translate-y-2 opacity-0 pointer-events-auto max-w-md`;
+  toast.style.cssText = `background:${bg}; color:#ffffff; padding:12px 18px; border-radius:8px; box-shadow:0 10px 25px rgba(0,0,0,0.2); font-size:13.5px; font-weight:500; display:flex; align-items:center; gap:10px; transition:all 0.3s ease; transform:translateY(10px); opacity:0; pointer-events:auto; max-width:420px; font-family:'Be Vietnam Pro',sans-serif;`;
   toast.innerHTML = `
-    <i class="fas ${icon} text-base"></i>
-    <div class="flex-1">${message}</div>
-    <button onclick="this.parentElement.remove()" class="text-white/80 hover:text-white ml-2 text-xs">
+    <i class="fas ${icon}" style="font-size:16px;"></i>
+    <div style="flex:1;">${message}</div>
+    <button onclick="this.parentElement.remove()" style="background:none; border:none; color:#ffffff; opacity:0.8; cursor:pointer; font-size:13px; padding:2px 4px;">
       <i class="fas fa-times"></i>
     </button>
   `;
@@ -39,80 +39,198 @@ function showToast(message, type = "success") {
   container.appendChild(toast);
 
   setTimeout(() => {
-    toast.classList.remove("translate-y-2", "opacity-0");
+    toast.style.transform = "translateY(0)";
+    toast.style.opacity = "1";
   }, 10);
 
   setTimeout(() => {
-    toast.classList.add("translate-y-2", "opacity-0");
+    toast.style.transform = "translateY(10px)";
+    toast.style.opacity = "0";
     setTimeout(() => toast.remove(), 300);
   }, 4000);
 }
 
-// Update Cart Badge & Drawer Content
+// Auto-inject Cart Drawer & Modals if missing
+function ensureAppContainers() {
+  // 1. Cart Drawer
+  if (!document.getElementById("cart-drawer")) {
+    const drawerDiv = document.createElement("div");
+    drawerDiv.id = "cart-drawer";
+    drawerDiv.className = "pointer-events-none";
+    drawerDiv.innerHTML = `
+      <div onclick="closeCartDrawer()" class="drawer-backdrop"></div>
+      <div id="cart-drawer-panel" class="drawer-panel translate-x-full">
+        <div class="cart-header">
+          <h3><i class="fas fa-shopping-bag" style="color:var(--orange);"></i> Giỏ Hàng (<span class="cart-badge-count">0</span>)</h3>
+          <button onclick="closeCartDrawer()" class="cart-close-btn"><i class="fas fa-times"></i></button>
+        </div>
+
+        <div class="cart-body">
+          <div id="cart-empty-state" class="text-center py-10" style="color:var(--ink-soft); display:none; padding:40px 10px; text-align:center;">
+            <div style="width:60px; height:60px; border-radius:50%; background:var(--paper); display:flex; align-items:center; justify-content:center; margin:0 auto 16px; font-size:24px; color:var(--ink-soft); border:1px solid var(--line);">
+              <i class="fas fa-shopping-cart"></i>
+            </div>
+            <h4 style="font-size:15px; color:var(--navy-950); margin:0 0 6px; font-weight:700;">Giỏ hàng của bạn đang trống</h4>
+            <p style="font-size:12.5px; color:var(--ink-soft); margin:0 0 20px;">Hãy tham khảo các dòng quạt công nghiệp chất lượng cao của Winline.</p>
+            <a href="san-pham.html" onclick="closeCartDrawer()" style="display:inline-block; background:var(--navy-800); color:#ffffff; padding:9px 20px; border-radius:6px; font-size:13px; font-weight:600;">Xem danh mục quạt &rarr;</a>
+          </div>
+
+          <div id="cart-filled-state">
+            <div id="cart-drawer-items"></div>
+          </div>
+        </div>
+
+        <div id="cart-footer-controls" class="cart-footer">
+          <div class="cart-summary-row">
+            <span style="color:var(--ink-soft); font-weight:600;">Tạm tính:</span>
+            <span id="cart-drawer-total" class="cart-summary-total">0₫</span>
+          </div>
+
+          <div style="background:var(--paper); padding:10px 12px; border-radius:6px; margin-bottom:12px; border:1px solid var(--line); font-size:12px;">
+            <label style="display:flex; align-items:center; gap:8px; cursor:pointer; font-weight:600; color:var(--navy-950);">
+              <input type="checkbox" id="vat-request-checkbox" onchange="toggleVAT(this.checked)" style="width:15px; height:15px; accent-color:var(--orange);">
+              <span>Yêu cầu xuất Hóa Đơn GTGT (VAT 10%)</span>
+            </label>
+            <div id="vat-company-info" style="display:none; margin-top:8px;">
+              <input type="text" id="vat-tax-id" placeholder="Mã số thuế doanh nghiệp..." style="width:100%; padding:6px 10px; font-size:11.5px; border:1px solid var(--line); border-radius:4px; margin-bottom:4px; font-family:'IBM Plex Mono',monospace;">
+              <input type="text" id="vat-company-name" placeholder="Tên công ty / đơn vị..." style="width:100%; padding:6px 10px; font-size:11.5px; border:1px solid var(--line); border-radius:4px;">
+            </div>
+          </div>
+
+          <form onsubmit="handleCheckout(event)" style="display:flex; flex-direction:column; gap:8px;">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+              <input type="text" name="customer_name" placeholder="Họ tên người nhận *" required style="padding:9px 10px; border:1px solid var(--line); border-radius:6px; font-size:12.5px; font-family:inherit;">
+              <input type="tel" name="customer_phone" placeholder="Số điện thoại *" required style="padding:9px 10px; border:1px solid var(--line); border-radius:6px; font-size:12.5px; font-family:inherit;">
+            </div>
+            <input type="text" name="customer_address" placeholder="Địa chỉ nhận hàng (Ví dụ: KCN Tiên Sơn, Bắc Ninh)..." style="padding:9px 10px; border:1px solid var(--line); border-radius:6px; font-size:12.5px; font-family:inherit;">
+
+            <button type="submit" style="width:100%; background:var(--orange); color:#ffffff; border:none; padding:12px; border-radius:6px; font-weight:700; font-size:14px; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; box-shadow:0 4px 12px rgba(212,30,61,0.25);">
+              <i class="fas fa-check-circle"></i> Đặt Hàng &amp; Nhận Báo Giá Ngay
+            </button>
+          </form>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(drawerDiv);
+  }
+
+  // 2. Quick View Modal
+  if (!document.getElementById("quickview-modal")) {
+    const qvModal = document.createElement("div");
+    qvModal.id = "quickview-modal";
+    qvModal.className = "app-modal pointer-events-none";
+    qvModal.innerHTML = `
+      <div onclick="closeQuickView()" class="drawer-backdrop"></div>
+      <div class="modal-dialog">
+        <button onclick="closeQuickView()" style="position:absolute; top:16px; right:16px; background:#ffffff; border:1px solid var(--line); width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:10; color:var(--ink-soft);">
+          <i class="fas fa-times"></i>
+        </button>
+        <div id="quickview-modal-content"></div>
+      </div>
+    `;
+    document.body.appendChild(qvModal);
+  }
+}
+
+// Toggle VAT Display
+function toggleVAT(checked) {
+  const compInfo = document.getElementById("vat-company-info");
+  if (compInfo) {
+    compInfo.style.display = checked ? "block" : "none";
+  }
+  updateCartUI();
+}
+
+// Update Cart Badge & Content
 function updateCartUI() {
-  const badgeEls = document.querySelectorAll(".cart-badge-count");
   const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
-  badgeEls.forEach(el => {
+
+  // Update all badges
+  document.querySelectorAll(".cart-badge-count").forEach(el => {
     el.textContent = totalCount;
-    el.classList.toggle("hidden", totalCount === 0);
+    el.style.display = totalCount > 0 ? "flex" : "none";
   });
 
   const cartItemsContainer = document.getElementById("cart-drawer-items");
-  const cartSubtotalEl = document.getElementById("cart-drawer-subtotal");
   const cartTotalEl = document.getElementById("cart-drawer-total");
-  const cartEmptyState = document.getElementById("cart-empty-state");
-  const cartFilledState = document.getElementById("cart-filled-state");
+  const emptyState = document.getElementById("cart-empty-state");
+  const filledState = document.getElementById("cart-filled-state");
+  const footerControls = document.getElementById("cart-footer-controls");
 
   if (!cartItemsContainer) return;
 
   if (cart.length === 0) {
-    if (cartEmptyState) cartEmptyState.classList.remove("hidden");
-    if (cartFilledState) cartFilledState.classList.add("hidden");
+    if (emptyState) emptyState.style.display = "block";
+    if (filledState) filledState.style.display = "none";
+    if (footerControls) footerControls.style.display = "none";
     cartItemsContainer.innerHTML = "";
+    localStorage.setItem("winline_cart", JSON.stringify(cart));
     return;
   }
 
-  if (cartEmptyState) cartEmptyState.classList.add("hidden");
-  if (cartFilledState) cartFilledState.classList.remove("hidden");
+  if (emptyState) emptyState.style.display = "none";
+  if (filledState) filledState.style.display = "block";
+  if (footerControls) footerControls.style.display = "block";
 
   let subtotal = 0;
   cartItemsContainer.innerHTML = cart.map((item, idx) => {
     const itemTotal = item.price * item.qty;
     subtotal += itemTotal;
     return `
-      <div class="flex items-center gap-3 py-3 border-b border-slate-100">
-        <img src="${item.image}" alt="${item.name}" onerror="this.src='assets/images/km750s.jpg'" class="w-16 h-16 object-contain rounded border border-slate-100 p-1 flex-shrink-0">
-        <div class="flex-1 min-w-0">
-          <h4 class="text-sm font-semibold text-slate-800 truncate">${item.name}</h4>
-          <div class="text-xs text-slate-500 mt-0.5">Model: ${item.code || 'Chính hãng'} | ${item.powerText || ''}</div>
-          <div class="text-sm font-bold text-red-600 mt-1">${formatVND(item.price)}</div>
+      <div class="cart-item-row">
+        <img src="${item.image}" alt="${item.name}" onerror="this.src='assets/images/km750s.jpg'" class="cart-item-img">
+        <div class="cart-item-info">
+          <div class="cart-item-title">${item.name}</div>
+          <div class="cart-item-sku">Model: <strong class="mono" style="color:var(--navy-950);">${item.code || 'Winline'}</strong> ${item.powerText ? '| ' + item.powerText : ''}</div>
+          <div class="cart-item-price">${formatVND(item.price)}</div>
         </div>
-        <div class="flex flex-col items-end gap-2">
-          <button onclick="removeFromCart(${idx})" class="text-slate-400 hover:text-red-600 text-xs transition">
+        <div style="display:flex; flex-direction:column; align-items:flex-end; gap:6px;">
+          <button onclick="removeFromCart(${idx})" style="background:none; border:none; color:var(--ink-soft); cursor:pointer; font-size:12px;" title="Xóa">
             <i class="fas fa-trash-alt"></i>
           </button>
-          <div class="flex items-center border border-slate-200 rounded">
-            <button onclick="changeCartQty(${idx}, -1)" class="w-6 h-6 flex items-center justify-center text-slate-600 hover:bg-slate-100 text-xs">-</button>
-            <span class="w-7 text-center text-xs font-semibold">${item.qty}</span>
-            <button onclick="changeCartQty(${idx}, 1)" class="w-6 h-6 flex items-center justify-center text-slate-600 hover:bg-slate-100 text-xs">+</button>
+          <div class="qty-control">
+            <button onclick="changeCartQty(${idx}, -1)" class="qty-btn">-</button>
+            <span class="qty-val">${item.qty}</span>
+            <button onclick="changeCartQty(${idx}, 1)" class="qty-btn">+</button>
           </div>
         </div>
       </div>
     `;
   }).join("");
 
-  if (cartSubtotalEl) cartSubtotalEl.textContent = formatVND(subtotal);
-  if (cartTotalEl) cartTotalEl.textContent = formatVND(subtotal);
+  const vatCheckbox = document.getElementById("vat-request-checkbox");
+  const finalTotal = vatCheckbox && vatCheckbox.checked ? subtotal * 1.1 : subtotal;
+
+  if (cartTotalEl) {
+    cartTotalEl.textContent = formatVND(finalTotal);
+    if (vatCheckbox && vatCheckbox.checked) {
+      cartTotalEl.innerHTML = `${formatVND(finalTotal)} <small style="font-size:11px; font-weight:normal; color:var(--ink-soft);">(đã gồm 10% VAT)</small>`;
+    }
+  }
 
   localStorage.setItem("winline_cart", JSON.stringify(cart));
 }
 
-// Add To Cart Function
+// Add Product to Cart
 function addToCart(productId, qty = 1) {
-  const prod = WINLINE_DATA.products.find(p => p.id === productId);
-  if (!prod) return;
+  let prod = null;
+  if (typeof WINLINE_DATA !== "undefined" && WINLINE_DATA.products) {
+    prod = WINLINE_DATA.products.find(p => p.id === productId || p.code === productId);
+  }
 
-  const existingIdx = cart.findIndex(item => item.id === productId);
+  // Fallback if data object not fully matching
+  if (!prod) {
+    prod = {
+      id: productId,
+      code: productId,
+      name: "Quạt công nghiệp Winline " + productId,
+      price: 2500000,
+      image: "assets/images/km750s.jpg",
+      powerText: "Chính hãng"
+    };
+  }
+
+  const existingIdx = cart.findIndex(item => item.id === prod.id || item.code === prod.code);
   if (existingIdx > -1) {
     cart[existingIdx].qty += qty;
   } else {
@@ -120,9 +238,9 @@ function addToCart(productId, qty = 1) {
       id: prod.id,
       code: prod.code,
       name: prod.name,
-      price: prod.price,
-      image: prod.image,
-      powerText: prod.powerText,
+      price: prod.price || 2000000,
+      image: prod.image || "assets/images/km750s.jpg",
+      powerText: prod.powerText || "",
       qty: qty
     });
   }
@@ -143,24 +261,20 @@ function changeCartQty(index, delta) {
 
 function removeFromCart(index) {
   if (!cart[index]) return;
-  const removedName = cart[index].name;
+  const name = cart[index].name;
   cart.splice(index, 1);
   updateCartUI();
-  showToast(`Đã xóa <strong>${removedName}</strong> khỏi giỏ hàng`, "info");
+  showToast(`Đã xóa <strong>${name}</strong> khỏi giỏ hàng`, "info");
 }
 
-function clearCart() {
-  cart = [];
-  updateCartUI();
-  showToast("Đã xóa toàn bộ giỏ hàng", "info");
-}
-
-// Open/Close Cart Drawer
 function openCartDrawer() {
+  ensureAppContainers();
+  updateCartUI();
   const drawer = document.getElementById("cart-drawer");
   const panel = document.getElementById("cart-drawer-panel");
   if (drawer && panel) {
-    drawer.classList.remove("pointer-events-none", "opacity-0");
+    drawer.classList.remove("pointer-events-none");
+    drawer.style.opacity = "1";
     panel.classList.remove("translate-x-full");
     document.body.style.overflow = "hidden";
   }
@@ -170,312 +284,97 @@ function closeCartDrawer() {
   const drawer = document.getElementById("cart-drawer");
   const panel = document.getElementById("cart-drawer-panel");
   if (drawer && panel) {
-    drawer.classList.add("pointer-events-none", "opacity-0");
+    drawer.style.opacity = "0";
     panel.classList.add("translate-x-full");
-    document.body.style.overflow = "";
+    setTimeout(() => {
+      drawer.classList.add("pointer-events-none");
+      document.body.style.overflow = "";
+    }, 250);
   }
 }
 
-// Quick View Modal (ENLARGED HIGH-RES DISPLAY)
+// Quick View Modal Display
 function openQuickView(productId) {
-  const prod = WINLINE_DATA.products.find(p => p.id === productId);
-  if (!prod) return;
+  ensureAppContainers();
+  let prod = null;
+  if (typeof WINLINE_DATA !== "undefined" && WINLINE_DATA.products) {
+    prod = WINLINE_DATA.products.find(p => p.id === productId || p.code === productId);
+  }
+
+  if (!prod) {
+    prod = {
+      id: productId,
+      code: productId,
+      name: "Quạt công nghiệp cao cấp Winline",
+      brandName: "Komasu",
+      price: 2550000,
+      powerText: "250W",
+      airflowText: "15.200 m³/h",
+      bladeText: "750mm",
+      voltage: "220V / 50Hz",
+      warranty: "12 tháng",
+      image: "assets/images/km750s.jpg",
+      description: "Dòng quạt công nghiệp động cơ 100% dây đồng nguyên chất, vận hành bền bỉ 24/7 trong môi trường nhà xưởng, nhà hàng và kho lưu trữ."
+    };
+  }
 
   const modal = document.getElementById("quickview-modal");
   const content = document.getElementById("quickview-modal-content");
   if (!modal || !content) return;
 
   content.innerHTML = `
-    <div class="p-6 md:p-8 grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
-      <!-- Left: Large High-Res Image Area -->
-      <div class="md:col-span-6 flex flex-col items-center">
-        <div class="w-full h-80 md:h-96 bg-white border border-slate-200 rounded-2xl p-6 flex items-center justify-center shadow-xs">
-          <img id="qv-main-img" src="${prod.image}" alt="${prod.name}" class="max-h-full max-w-full object-contain transition duration-300" onerror="this.src='assets/images/km750s.jpg'">
-        </div>
-        <div class="flex gap-3 mt-4 overflow-x-auto w-full py-1 justify-center">
-          ${prod.gallery.map(img => `
-            <img src="${img}" onclick="document.getElementById('qv-main-img').src='${img}'" class="w-16 h-16 object-contain border-2 border-slate-200 hover:border-red-600 rounded-xl p-1.5 cursor-pointer transition bg-white shadow-2xs">
-          `).join("")}
-        </div>
+    <div style="padding:28px; display:grid; grid-template-columns:1fr 1.2fr; gap:26px; align-items:start;">
+      <div style="background:var(--paper); border:1px solid var(--line); border-radius:8px; padding:20px; display:flex; align-items:center; justify-content:center; aspect-ratio:1/1;">
+        <img src="${prod.image}" alt="${prod.name}" style="max-height:100%; max-width:100%; object-fit:contain;" onerror="this.src='assets/images/km750s.jpg'">
       </div>
 
-      <!-- Right: Detailed Specs & Actions -->
-      <div class="md:col-span-6 space-y-4">
-        <div>
-          <div class="flex items-center gap-2 mb-2">
-            <span class="bg-red-50 text-red-600 text-xs font-bold px-2.5 py-1 rounded uppercase tracking-wider">${prod.brandName}</span>
-            <span class="text-xs text-slate-400">Mã SP: <strong class="text-slate-800 font-bold">${prod.code}</strong></span>
-          </div>
-          <h2 class="text-xl md:text-2xl font-bold text-slate-900 font-heading leading-snug">${prod.name}</h2>
-        </div>
-        
-        <div class="flex items-center gap-2">
-          <div class="flex text-amber-400 text-sm">
-            ${Array(5).fill(0).map((_, i) => `<i class="fas fa-star ${i < Math.floor(prod.rating) ? '' : 'text-slate-200'}"></i>`).join("")}
-          </div>
-          <span class="text-xs text-slate-500 font-medium">(${prod.reviewsCount} đánh giá)</span>
-          <span class="text-xs text-emerald-600 font-bold ml-2 bg-emerald-50 px-2 py-0.5 rounded"><i class="fas fa-check-circle mr-1"></i> Còn hàng (Giao 2h)</span>
+      <div>
+        <div style="font-size:11.5px; font-weight:700; color:var(--orange); text-transform:uppercase; letter-spacing:0.04em; margin-bottom:4px;">${prod.brandName || 'CHÍNH HÃNG'}</div>
+        <h2 style="font-size:18px; font-weight:700; color:var(--navy-950); margin:0 0 8px; line-height:1.35;">${prod.name}</h2>
+        <div style="font-size:12px; color:var(--ink-soft); margin-bottom:12px;">Mã sản phẩm: <strong class="mono" style="color:var(--navy-950);">${prod.code || 'KM-750S'}</strong></div>
+
+        <div style="font-size:22px; font-weight:800; color:var(--orange); font-family:'IBM Plex Mono',monospace; margin-bottom:14px;">
+          ${formatVND(prod.price)}
         </div>
 
-        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 flex items-baseline gap-3">
-          <span class="text-2xl md:text-3xl font-black text-red-600 font-heading">${formatVND(prod.price)}</span>
-          ${prod.oldPrice ? `<span class="text-sm text-slate-400 line-through">${formatVND(prod.oldPrice)}</span>` : ''}
-          ${prod.discount ? `<span class="badge-discount">-${prod.discount}%</span>` : ''}
+        <div style="background:var(--paper); border:1px solid var(--line); border-radius:6px; padding:12px; font-size:12.5px; margin-bottom:16px;">
+          <div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span style="color:var(--ink-soft);">Công suất:</span><strong class="mono">${prod.powerText || '250W'}</strong></div>
+          <div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span style="color:var(--ink-soft);">Lưu lượng gió:</span><strong class="mono" style="color:var(--green);">${prod.airflowText || '15.200 m³/h'}</strong></div>
+          <div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span style="color:var(--ink-soft);">Sải cánh:</span><strong class="mono">${prod.bladeText || '750 mm'}</strong></div>
+          <div style="display:flex; justify-content:space-between;"><span style="color:var(--ink-soft);">Bảo hành:</span><strong style="color:var(--orange);">${prod.warranty || '12 tháng chính hãng'}</strong></div>
         </div>
 
-        <div class="space-y-2 text-xs text-slate-600 border-y border-slate-100 py-3.5">
-          <div class="flex justify-between"><span class="text-slate-400">Công suất tiêu thụ:</span><strong class="text-slate-800 font-bold">${prod.powerText}</strong></div>
-          <div class="flex justify-between"><span class="text-slate-400">Lưu lượng gió thực tế:</span><strong class="text-emerald-700 font-bold">${prod.airflowText}</strong></div>
-          <div class="flex justify-between"><span class="text-slate-400">Đường kính sải cánh:</span><strong class="text-slate-800 font-bold">${prod.bladeText}</strong></div>
-          <div class="flex justify-between"><span class="text-slate-400">Nguồn điện sử dụng:</span><strong class="text-slate-800 font-bold">${prod.voltage}</strong></div>
-          <div class="flex justify-between"><span class="text-slate-400">Thời gian bảo hành:</span><strong class="text-amber-600 font-bold">${prod.warranty} chính hãng</strong></div>
-        </div>
+        <p style="font-size:13px; color:var(--ink-soft); line-height:1.6; margin:0 0 18px;">${prod.description || ''}</p>
 
-        <p class="text-xs text-slate-500 leading-relaxed line-clamp-3">${prod.description}</p>
-
-        <div class="flex items-center gap-3 pt-2">
-          <div class="flex items-center border border-slate-300 rounded-xl bg-slate-50">
-            <button onclick="let el=document.getElementById('qv-qty'); el.value=Math.max(1, parseInt(el.value)-1)" class="px-3.5 py-2.5 text-slate-600 hover:bg-slate-200 rounded-l-xl text-sm font-bold">-</button>
-            <input id="qv-qty" type="number" value="1" min="1" class="w-12 text-center text-sm font-bold bg-transparent border-none focus:outline-none">
-            <button onclick="let el=document.getElementById('qv-qty'); el.value=parseInt(el.value)+1" class="px-3.5 py-2.5 text-slate-600 hover:bg-slate-200 rounded-r-xl text-sm font-bold">+</button>
-          </div>
-          <button onclick="addToCart('${prod.id}', parseInt(document.getElementById('qv-qty').value)); closeQuickView()" class="flex-1 bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-5 rounded-xl text-sm transition flex items-center justify-center gap-2 shadow-lg hover:shadow-red-600/30">
-            <i class="fas fa-cart-plus text-base"></i> Thêm vào giỏ hàng
+        <div style="display:flex; gap:10px;">
+          <button onclick="addToCart('${prod.id}'); closeQuickView();" style="flex:1; background:var(--orange); color:#ffffff; border:none; padding:11px 16px; border-radius:6px; font-weight:700; font-size:13.5px; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px;">
+            <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
           </button>
-        </div>
-
-        <div class="mt-4 flex items-center justify-between text-[11px] text-slate-400 pt-3 border-t border-slate-100">
-          <span><i class="fas fa-truck text-red-500 mr-1"></i> Giao toàn quốc</span>
-          <span><i class="fas fa-shield-alt text-blue-500 mr-1"></i> 100% chính hãng</span>
-          <span><i class="fas fa-phone-alt text-emerald-500 mr-1"></i> 0949.761.893</span>
+          <a href="chi-tiet-san-pham.html" style="background:var(--navy-800); color:#ffffff; padding:11px 16px; border-radius:6px; font-weight:600; font-size:13.5px; display:inline-flex; align-items:center; justify-content:center;">
+            Xem chi tiết &rarr;
+          </a>
         </div>
       </div>
     </div>
   `;
 
-  modal.classList.remove("pointer-events-none", "opacity-0");
+  modal.classList.remove("pointer-events-none");
+  modal.style.opacity = "1";
   document.body.style.overflow = "hidden";
 }
 
 function closeQuickView() {
   const modal = document.getElementById("quickview-modal");
   if (modal) {
-    modal.classList.add("pointer-events-none", "opacity-0");
-    document.body.style.overflow = "";
+    modal.style.opacity = "0";
+    setTimeout(() => {
+      modal.classList.add("pointer-events-none");
+      document.body.style.overflow = "";
+    }, 250);
   }
 }
 
-// Compare Drawer Management
-function toggleCompare(productId) {
-  const idx = compareList.indexOf(productId);
-  if (idx > -1) {
-    compareList.splice(idx, 1);
-    showToast("Đã bỏ sản phẩm khỏi danh sách so sánh", "info");
-  } else {
-    if (compareList.length >= 3) {
-      showToast("Chỉ có thể so sánh tối đa 3 sản phẩm cùng lúc!", "warning");
-      return;
-    }
-    compareList.push(productId);
-    showToast("Đã thêm vào danh sách so sánh thông số", "success");
-  }
-  localStorage.setItem("winline_compare", JSON.stringify(compareList));
-  updateCompareUI();
-}
-
-function updateCompareUI() {
-  const drawer = document.getElementById("compare-drawer");
-  const countEl = document.getElementById("compare-count");
-  const itemsContainer = document.getElementById("compare-items-list");
-  
-  if (!drawer) return;
-
-  if (countEl) countEl.textContent = compareList.length;
-
-  if (compareList.length > 0) {
-    drawer.classList.remove("translate-y-full");
-  } else {
-    drawer.classList.add("translate-y-full");
-    return;
-  }
-
-  if (itemsContainer) {
-    itemsContainer.innerHTML = compareList.map(pid => {
-      const p = WINLINE_DATA.products.find(x => x.id === pid);
-      if (!p) return "";
-      return `
-        <div class="flex items-center gap-2 bg-slate-800 text-white px-3 py-1.5 rounded-lg text-xs">
-          <img src="${p.image}" onerror="this.src='assets/images/km750s.jpg'" class="w-8 h-8 object-contain bg-white rounded p-0.5">
-          <span class="truncate max-w-[120px]">${p.name}</span>
-          <button onclick="toggleCompare('${p.id}')" class="text-slate-400 hover:text-white ml-1">×</button>
-        </div>
-      `;
-    }).join("");
-  }
-}
-
-function openCompareModal() {
-  if (compareList.length < 2) {
-    showToast("Vui lòng chọn ít nhất 2 sản phẩm để so sánh", "warning");
-    return;
-  }
-
-  const modal = document.getElementById("compare-modal");
-  const content = document.getElementById("compare-modal-content");
-  if (!modal || !content) return;
-
-  const prods = compareList.map(pid => WINLINE_DATA.products.find(p => p.id === pid)).filter(Boolean);
-
-  content.innerHTML = `
-    <div class="p-6 md:p-8">
-      <div class="flex justify-between items-center pb-4 border-b border-slate-200">
-        <h3 class="text-xl font-bold text-slate-800 font-heading">So Sánh Chi Tiết Thông Số Kỹ Thuật</h3>
-        <button onclick="closeCompareModal()" class="text-slate-400 hover:text-slate-600"><i class="fas fa-times text-lg"></i></button>
-      </div>
-
-      <div class="overflow-x-auto mt-4">
-        <table class="w-full text-left text-xs border-collapse">
-          <thead>
-            <tr class="border-b border-slate-200">
-              <th class="p-3.5 bg-slate-50 w-44 font-semibold text-slate-700">Thông Số</th>
-              ${prods.map(p => `
-                <th class="p-3.5 text-center w-60">
-                  <img src="${p.image}" onerror="this.src='assets/images/km750s.jpg'" class="w-28 h-28 object-contain mx-auto mb-2 bg-white rounded p-1">
-                  <div class="font-bold text-slate-900 line-clamp-2">${p.name}</div>
-                  <div class="text-red-600 font-bold text-sm my-1">${formatVND(p.price)}</div>
-                  <button onclick="addToCart('${p.id}'); closeCompareModal();" class="bg-red-600 text-white px-3.5 py-1.5 rounded-lg text-xs font-bold hover:bg-red-700 transition">
-                    Chọn mua
-                  </button>
-                </th>
-              `).join("")}
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-slate-100">
-            <tr><td class="p-3.5 font-medium bg-slate-50">Hãng sản xuất</td>${prods.map(p => `<td class="p-3.5 text-center font-bold text-slate-800">${p.brandName}</td>`).join("")}</tr>
-            <tr><td class="p-3.5 font-medium bg-slate-50">Mã sản phẩm</td>${prods.map(p => `<td class="p-3.5 text-center font-semibold text-slate-600">${p.code}</td>`).join("")}</tr>
-            <tr><td class="p-3.5 font-medium bg-slate-50">Công suất tiêu thụ</td>${prods.map(p => `<td class="p-3.5 text-center font-bold text-blue-600">${p.powerText}</td>`).join("")}</tr>
-            <tr><td class="p-3.5 font-medium bg-slate-50">Lưu lượng gió</td>${prods.map(p => `<td class="p-3.5 text-center font-bold text-emerald-600">${p.airflowText}</td>`).join("")}</tr>
-            <tr><td class="p-3.5 font-medium bg-slate-50">Đường kính cánh</td>${prods.map(p => `<td class="p-3.5 text-center font-semibold text-slate-700">${p.bladeText}</td>`).join("")}</tr>
-            <tr><td class="p-3.5 font-medium bg-slate-50">Điện áp sử dụng</td>${prods.map(p => `<td class="p-3.5 text-center">${p.voltage}</td>`).join("")}</tr>
-            <tr><td class="p-3.5 font-medium bg-slate-50">Thời gian bảo hành</td>${prods.map(p => `<td class="p-3.5 text-center font-bold text-amber-600">${p.warranty}</td>`).join("")}</tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  `;
-
-  modal.classList.remove("pointer-events-none", "opacity-0");
-  document.body.style.overflow = "hidden";
-}
-
-function closeCompareModal() {
-  const modal = document.getElementById("compare-modal");
-  if (modal) {
-    modal.classList.add("pointer-events-none", "opacity-0");
-    document.body.style.overflow = "";
-  }
-}
-
-// Live Search In Header
-function initLiveSearch() {
-  const searchInputs = document.querySelectorAll(".header-search-input");
-  searchInputs.forEach(input => {
-    const parent = input.closest(".search-container");
-    if (!parent) return;
-
-    let dropdown = parent.querySelector(".search-dropdown-results");
-    if (!dropdown) {
-      dropdown = document.createElement("div");
-      dropdown.className = "search-dropdown-results absolute top-full left-0 right-0 mt-1 bg-white border border-slate-200 rounded-xl shadow-2xl z-50 max-h-80 overflow-y-auto hidden";
-      parent.appendChild(dropdown);
-    }
-
-    input.addEventListener("input", (e) => {
-      const q = e.target.value.trim().toLowerCase();
-      if (q.length < 2) {
-        dropdown.classList.add("hidden");
-        dropdown.innerHTML = "";
-        return;
-      }
-
-      const matches = WINLINE_DATA.products.filter(p => 
-        p.name.toLowerCase().includes(q) || 
-        p.code.toLowerCase().includes(q) ||
-        p.brandName.toLowerCase().includes(q)
-      );
-
-      if (matches.length === 0) {
-        dropdown.innerHTML = `
-          <div class="p-4 text-center text-xs text-slate-400">
-            Không tìm thấy sản phẩm với từ khóa "<strong>${q}</strong>"
-          </div>
-        `;
-      } else {
-        dropdown.innerHTML = `
-          <div class="p-2.5 text-xs font-bold text-slate-400 bg-slate-50 uppercase tracking-wider border-b border-slate-100">Tìm thấy ${matches.length} sản phẩm</div>
-          ${matches.slice(0, 5).map(p => `
-            <a href="san-pham.html?search=${encodeURIComponent(p.name)}" class="flex items-center gap-3 p-3 hover:bg-slate-50 border-b border-slate-100 transition">
-              <img src="${p.image}" onerror="this.src='assets/images/km750s.jpg'" class="w-12 h-12 object-contain rounded-lg border border-slate-100 p-1 flex-shrink-0 bg-white">
-              <div class="flex-1 min-w-0">
-                <div class="text-xs font-bold text-slate-800 truncate">${p.name}</div>
-                <div class="text-[11px] text-slate-400">${p.powerText} | ${p.airflowText}</div>
-                <div class="text-xs font-bold text-red-600 mt-0.5">${formatVND(p.price)}</div>
-              </div>
-            </a>
-          `).join("")}
-          <a href="san-pham.html?search=${encodeURIComponent(q)}" class="block p-2.5 text-center text-xs font-bold text-blue-600 bg-slate-50 hover:bg-blue-50 transition">
-            Xem tất cả ${matches.length} kết quả →
-          </a>
-        `;
-      }
-      dropdown.classList.remove("hidden");
-    });
-
-    document.addEventListener("click", (e) => {
-      if (!parent.contains(e.target)) {
-        dropdown.classList.add("hidden");
-      }
-    });
-  });
-}
-
-// Request Consultation / Quote Modal
-function openConsultModal(defaultSubject = "Tư vấn chọn mua quạt công nghiệp") {
-  const modal = document.getElementById("consult-modal");
-  const subjectInput = document.getElementById("consult-subject");
-  if (subjectInput) subjectInput.value = defaultSubject;
-  if (modal) {
-    modal.classList.remove("pointer-events-none", "opacity-0");
-    document.body.style.overflow = "hidden";
-  }
-}
-
-function closeConsultModal() {
-  const modal = document.getElementById("consult-modal");
-  if (modal) {
-    modal.classList.add("pointer-events-none", "opacity-0");
-    document.body.style.overflow = "";
-  }
-}
-
-function handleConsultSubmit(e) {
-  e.preventDefault();
-  const form = e.target;
-  const name = form.name?.value || "Quý khách";
-  const phone = form.phone?.value || "";
-  
-  showToast(`Cảm ơn <strong>${name}</strong> (${phone})! Kỹ sư Winline sẽ liên hệ tư vấn trong 15 phút.`, "success");
-  closeConsultModal();
-  form.reset();
-}
-
-function downloadCatalogue(brand = "Winline") {
-  showToast(`Đang tải file Catalogue & Bảng giá ${brand} 2026...`, "info");
-  setTimeout(() => {
-    showToast(`Đã tải thành công Catalogue ${brand} (PDF - 18.5 MB)`, "success");
-  }, 1200);
-}
-
+// Checkout Submission
 function handleCheckout(e) {
   e.preventDefault();
   if (cart.length === 0) {
@@ -485,30 +384,105 @@ function handleCheckout(e) {
   const form = e.target;
   const name = form.customer_name?.value || "Quý khách";
   const phone = form.customer_phone?.value || "";
-  
-  showToast(`Đặt hàng thành công! Đơn hàng của <strong>${name}</strong> (${phone}) đang được xử lý giao hàng.`, "success");
+
+  showToast(`Đặt hàng thành công! Đơn hàng của <strong>${name}</strong> (${phone}) đã được chuyển đến bộ phận dự án Winline.`, "success");
   cart = [];
   updateCartUI();
   closeCartDrawer();
   form.reset();
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  updateCartUI();
-  updateCompareUI();
-  initLiveSearch();
+function handleConsultSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const name = form.name?.value || "Quý khách";
+  const phone = form.phone?.value || "";
 
-  const backToTopBtn = document.getElementById("btn-back-to-top");
-  if (backToTopBtn) {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 400) {
-        backToTopBtn.classList.remove("opacity-0", "pointer-events-none");
+  showToast(`Cảm ơn <strong>${name}</strong> (${phone})! Kỹ sư Winline sẽ liên hệ tư vấn trong 15 phút.`, "success");
+  form.reset();
+}
+
+// Live Search Gợi Ý
+function initLiveSearch() {
+  const searchInputs = document.querySelectorAll(".header-search-input, .search-box");
+  searchInputs.forEach(input => {
+    const parent = input.parentElement;
+    if (!parent) return;
+
+    let dropdown = parent.querySelector(".search-suggest-dropdown");
+    if (!dropdown) {
+      dropdown = document.createElement("div");
+      dropdown.className = "search-suggest-dropdown";
+      dropdown.style.cssText = "position:absolute; top:calc(100% + 4px); left:0; right:0; background:#ffffff; border:1px solid var(--line); border-radius:6px; box-shadow:0 10px 25px rgba(0,0,0,0.12); z-index:9999; display:none; max-height:360px; overflow-y:auto;";
+      parent.style.position = "relative";
+      parent.appendChild(dropdown);
+    }
+
+    input.addEventListener("input", (e) => {
+      const q = e.target.value.trim().toLowerCase();
+      if (q.length < 2) {
+        dropdown.style.display = "none";
+        dropdown.innerHTML = "";
+        return;
+      }
+
+      let matches = [];
+      if (typeof WINLINE_DATA !== "undefined" && WINLINE_DATA.products) {
+        matches = WINLINE_DATA.products.filter(p =>
+          p.name.toLowerCase().includes(q) ||
+          (p.code && p.code.toLowerCase().includes(q)) ||
+          (p.brandName && p.brandName.toLowerCase().includes(q))
+        );
+      }
+
+      if (matches.length === 0) {
+        dropdown.innerHTML = `<div style="padding:14px; text-align:center; font-size:12.5px; color:var(--ink-soft);">Không tìm thấy sản phẩm cho "<strong>${q}</strong>"</div>`;
       } else {
-        backToTopBtn.classList.add("opacity-0", "pointer-events-none");
+        dropdown.innerHTML = `
+          <div style="padding:8px 12px; font-size:11px; font-weight:700; color:var(--ink-soft); background:var(--paper); border-bottom:1px solid var(--line); text-transform:uppercase;">
+            Gợi ý ${matches.length} sản phẩm phù hợp:
+          </div>
+          ${matches.slice(0, 5).map(p => `
+            <a href="chi-tiet-san-pham.html" style="display:flex; align-items:center; gap:10px; padding:10px 12px; border-bottom:1px solid var(--line); text-decoration:none; transition:background 0.15s;" onmouseover="this.style.background='var(--paper)'" onmouseout="this.style.background='#fff'">
+              <img src="${p.image}" onerror="this.src='assets/images/km750s.jpg'" style="width:40px; height:40px; object-fit:contain; border:1px solid var(--line); border-radius:4px; padding:2px; flex-shrink:0;">
+              <div style="flex:1; min-width:0;">
+                <div style="font-size:13px; font-weight:600; color:var(--navy-950); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${p.name}</div>
+                <div style="font-size:11px; color:var(--ink-soft);">${p.powerText ? p.powerText + ' | ' : ''}Lưu lượng: ${p.airflowText || 'Tiêu chuẩn'}</div>
+                <div style="font-size:12.5px; font-weight:700; color:var(--orange); font-family:'IBM Plex Mono',monospace;">${formatVND(p.price)}</div>
+              </div>
+            </a>
+          `).join("")}
+          <a href="san-pham.html" style="display:block; padding:9px; text-align:center; font-size:12px; font-weight:700; color:var(--navy-800); background:var(--paper);">
+            Xem toàn bộ sản phẩm &rarr;
+          </a>
+        `;
+      }
+      dropdown.style.display = "block";
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!parent.contains(e.target)) {
+        dropdown.style.display = "none";
       }
     });
-    backToTopBtn.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+// Mobile Nav Toggle
+function initMobileToggle() {
+  const toggleBtn = document.getElementById("mobile-nav-toggle");
+  const catNav = document.querySelector(".catnav");
+  if (toggleBtn && catNav) {
+    toggleBtn.addEventListener("click", () => {
+      catNav.classList.toggle("show-mobile");
     });
   }
+}
+
+// Initialize on DOM Ready
+document.addEventListener("DOMContentLoaded", () => {
+  ensureAppContainers();
+  updateCartUI();
+  initLiveSearch();
+  initMobileToggle();
 });
