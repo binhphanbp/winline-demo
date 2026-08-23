@@ -66,21 +66,28 @@ function ensureAppContainers() {
     document.body.appendChild(topBar);
   }
 
-  // 2. Circular Back-to-Top Button
+  // 2. Circular Back-to-Top Button (Pure Inline SVG - Zero Font Dependency)
   if (!document.getElementById("back-to-top-btn")) {
     const bttBtn = document.createElement("button");
     bttBtn.id = "back-to-top-btn";
     bttBtn.className = "back-to-top-circle";
     bttBtn.setAttribute("aria-label", "Cuộn lên đầu trang");
+    bttBtn.setAttribute("type", "button");
     bttBtn.title = "Lên đầu trang";
     bttBtn.innerHTML = `
-      <svg class="progress-ring" width="46" height="46" viewBox="0 0 46 46">
-        <circle class="progress-ring__circle-bg" stroke-width="3.5" cx="23" cy="23" r="20"></circle>
-        <circle id="progress-ring-indicator" class="progress-ring__circle" stroke-width="3.5" cx="23" cy="23" r="20"></circle>
+      <svg class="progress-ring" width="48" height="48" viewBox="0 0 48 48" aria-hidden="true">
+        <circle class="progress-ring__circle-bg" stroke-width="3.2" cx="24" cy="24" r="20"></circle>
+        <circle id="progress-ring-indicator" class="progress-ring__circle" stroke-width="3.2" cx="24" cy="24" r="20"></circle>
       </svg>
-      <span class="back-to-top-icon"><i class="fas fa-arrow-up"></i></span>
+      <span class="back-to-top-icon" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="19" x2="12" y2="5"></line>
+          <polyline points="5 12 12 5 19 12"></polyline>
+        </svg>
+      </span>
     `;
-    bttBtn.addEventListener("click", () => {
+    bttBtn.addEventListener("click", (e) => {
+      e.preventDefault();
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
     document.body.appendChild(bttBtn);
@@ -167,16 +174,26 @@ function ensureAppContainers() {
   }
 }
 
-// Scroll Progress Tracker & Back-to-Top Controller
+// 60fps Smooth Scroll Progress Tracker & Back-to-Top Controller
 function initScrollProgress() {
-  const topBar = document.getElementById("top-scroll-progress");
-  const bttBtn = document.getElementById("back-to-top-btn");
-  const progressCircle = document.getElementById("progress-ring-indicator");
-  const totalLength = 125.6; // 2 * PI * 20
+  let isTicking = false;
 
-  function onScroll() {
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  function updateProgress() {
+    const topBar = document.getElementById("top-scroll-progress");
+    const bttBtn = document.getElementById("back-to-top-btn");
+    const progressCircle = document.getElementById("progress-ring-indicator");
+
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    const scrollHeight = Math.max(
+      document.body.scrollHeight,
+      document.documentElement.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.offsetHeight,
+      document.body.clientHeight,
+      document.documentElement.clientHeight
+    );
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+    const docHeight = scrollHeight - windowHeight;
     const progress = docHeight > 0 ? Math.min(100, Math.max(0, (scrollTop / docHeight) * 100)) : 0;
 
     // Update Top Reading Bar
@@ -184,24 +201,36 @@ function initScrollProgress() {
       topBar.style.width = progress + "%";
     }
 
-    // Update Circular Ring
+    // Update Circular Ring based on screen size
     if (progressCircle) {
+      const isMobile = window.innerWidth <= 768;
+      const totalLength = isMobile ? 113.1 : 125.66;
       const offset = totalLength - (totalLength * progress) / 100;
-      progressCircle.style.strokeDashoffset = offset;
+      progressCircle.style.strokeDashoffset = Math.max(0, offset);
     }
 
     // Toggle Back-To-Top visibility
     if (bttBtn) {
-      if (scrollTop > 200) {
+      if (scrollTop > 220) {
         bttBtn.classList.add("visible");
       } else {
         bttBtn.classList.remove("visible");
       }
     }
+
+    isTicking = false;
+  }
+
+  function onScroll() {
+    if (!isTicking) {
+      window.requestAnimationFrame(updateProgress);
+      isTicking = true;
+    }
   }
 
   window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
+  window.addEventListener("resize", onScroll, { passive: true });
+  updateProgress();
 }
 
 // Toggle VAT Display

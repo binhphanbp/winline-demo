@@ -105,36 +105,40 @@ button {
   position: fixed;
   top: 0;
   left: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--brand-blue) 0%, var(--orange) 100%);
+  height: 3.5px;
+  background: linear-gradient(90deg, var(--brand-blue) 0%, #0099ff 65%, var(--orange) 100%);
   width: 0%;
-  z-index: 99999;
-  transition: width 0.08s linear;
-  box-shadow: 0 0 8px rgba(0, 96, 182, 0.5);
+  z-index: 999999;
+  transition: width 0.05s linear;
+  box-shadow: 0 1px 8px rgba(0, 96, 182, 0.45);
 }
 
 /* ==========================================================================
-   CIRCULAR BACK-TO-TOP BUTTON
+   CIRCULAR BACK-TO-TOP BUTTON (STATE-OF-THE-ART UX/UI)
    ========================================================================== */
 .back-to-top-circle {
   position: fixed;
-  bottom: 85px;
-  right: 24px;
-  width: 46px;
-  height: 46px;
+  bottom: 28px;
+  right: 28px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  background: #ffffff;
-  box-shadow: 0 4px 16px rgba(7, 34, 66, 0.18);
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 18px rgba(7, 34, 66, 0.16), 0 1px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 96, 182, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 980;
-  border: none;
+  z-index: 985;
   opacity: 0;
-  transform: translateY(16px) scale(0.9);
+  transform: translateY(20px) scale(0.85);
   pointer-events: none;
-  transition: opacity 0.25s var(--ease-spring), transform 0.25s var(--ease-spring), box-shadow 0.2s ease;
+  transition: opacity 0.28s var(--ease-spring), transform 0.28s var(--ease-spring), box-shadow 0.25s ease, background 0.2s ease;
+  outline: none;
+  padding: 0;
 }
 
 .back-to-top-circle.visible {
@@ -144,60 +148,120 @@ button {
 }
 
 .back-to-top-circle:hover {
-  transform: translateY(-3px) scale(1.06);
-  box-shadow: 0 8px 24px rgba(0, 96, 182, 0.3);
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 8px 26px rgba(0, 96, 182, 0.32), 0 2px 8px rgba(0, 0, 0, 0.08);
+  background: #ffffff;
+}
+
+.back-to-top-circle:active {
+  transform: translateY(-1px) scale(0.95);
+  box-shadow: 0 3px 12px rgba(0, 96, 182, 0.25);
 }
 
 .back-to-top-circle svg.progress-ring {
   position: absolute;
   top: 0;
   left: 0;
-  width: 46px;
-  height: 46px;
+  width: 48px;
+  height: 48px;
   transform: rotate(-90deg);
+  pointer-events: none;
 }
 
 .progress-ring__circle-bg {
-  stroke: var(--line);
-  stroke-width: 3.5;
+  stroke: rgba(219, 228, 238, 0.8);
+  stroke-width: 3.2;
   fill: transparent;
 }
 
 .progress-ring__circle {
   stroke: var(--brand-blue);
-  stroke-width: 3.5;
+  stroke-width: 3.2;
   stroke-linecap: round;
   fill: transparent;
-  stroke-dasharray: 125.6; /* 2 * PI * 20 */
-  stroke-dashoffset: 125.6;
-  transition: stroke-dashoffset 0.1s linear;
+  stroke-dasharray: 125.66; /* 2 * PI * 20 */
+  stroke-dashoffset: 125.66;
+  transition: stroke-dashoffset 0.08s linear;
 }
 
 .back-to-top-icon {
-  font-size: 15px;
+  width: 20px;
+  height: 20px;
   color: var(--brand-blue);
   z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.2s ease;
+  transition: transform 0.22s var(--ease-spring), color 0.2s ease;
 }
 
 .back-to-top-circle:hover .back-to-top-icon {
-  transform: translateY(-2px);
+  transform: translateY(-2.5px);
   color: var(--orange);
+}
+
+/* Tooltip on Hover */
+.back-to-top-circle::after {
+  content: "Lên đầu trang";
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  background: var(--navy-950);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 9px;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(7, 34, 66, 0.2);
+}
+
+.back-to-top-circle::before {
+  content: "";
+  position: absolute;
+  bottom: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  border-width: 5px 5px 0 5px;
+  border-style: solid;
+  border-color: var(--navy-950) transparent transparent transparent;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.back-to-top-circle:hover::after,
+.back-to-top-circle:hover::before {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 @media (max-width: 768px) {
   .back-to-top-circle {
-    bottom: 72px;
+    bottom: 74px;
     right: 16px;
-    width: 42px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
   }
   .back-to-top-circle svg.progress-ring {
-    width: 42px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
+  }
+  .progress-ring__circle-bg,
+  .progress-ring__circle {
+    cx: 22;
+    cy: 22;
+    r: 18;
+    stroke-dasharray: 113.1;
+    stroke-dashoffset: 113.1;
+  }
+  .back-to-top-circle::after,
+  .back-to-top-circle::before {
+    display: none; /* Hide hover tooltip on mobile touch */
   }
 }
 
