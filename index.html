@@ -1,925 +1,925 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Winline.vn — Quạt điện, quạt công nghiệp chính hãng</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap');
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Winline.vn — Quạt điện, quạt công nghiệp chính hãng</title>
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap');
 
-:root {
-  --brand-blue: #0060B6;
-  --brand-blue-hover: #004d94;
-  --brand-blue-light: #eef6fd;
-  --brand-blue-subtle: #f4f8fe;
-  --navy-950: #072242;
-  --navy-900: #0c2b50;
-  --navy-800: #0060B6;
-  --navy-700: #1a73e8;
-  --navy-100: #eaf3fc;
-  --paper: #f8fafc;
-  --white: #ffffff;
-  --ink: #1a2230;
-  --ink-soft: #5c6773;
-  --line: #dbe4ee;
-  --orange: #d41e3d;
-  --orange-dark: #b31631;
-  --orange-100: #fdebee;
-  --green: #1e8a5f;
-  --green-bg: #e6f4ee;
-  --radius: 8px;
-  --radius-lg: 12px;
-  --shadow: 0 4px 16px rgba(7, 34, 66, 0.08);
-  --shadow-lg: 0 12px 32px rgba(7, 34, 66, 0.12);
-}
+  :root {
+    --brand-blue: #0060B6;
+    --brand-blue-hover: #004d94;
+    --brand-blue-light: #eef6fd;
+    --brand-blue-subtle: #f4f8fe;
+    --navy-950: #072242;
+    --navy-900: #0c2b50;
+    --navy-800: #0060B6;
+    --navy-700: #1a73e8;
+    --navy-100: #eaf3fc;
+    --paper: #f8fafc;
+    --white: #ffffff;
+    --ink: #1a2230;
+    --ink-soft: #5c6773;
+    --line: #dbe4ee;
+    --orange: #d41e3d;
+    --orange-dark: #b31631;
+    --orange-100: #fdebee;
+    --green: #1e8a5f;
+    --green-bg: #e6f4ee;
+    --radius: 8px;
+    --radius-lg: 12px;
+    --shadow: 0 4px 16px rgba(7, 34, 66, 0.08);
+    --shadow-lg: 0 12px 32px rgba(7, 34, 66, 0.12);
+  }
 
-* { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
-body {
-  font-family: 'Be Vietnam Pro', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  color: var(--ink);
-  background: var(--paper);
-  font-size: 15px;
-  line-height: 1.55;
-  -webkit-font-smoothing: antialiased;
-}
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Be Vietnam Pro', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
 
-.mono { font-family: 'IBM Plex Mono', monospace; }
-a { color: inherit; text-decoration: none; transition: color 0.15s ease, opacity 0.15s ease; }
-img { max-width: 100%; display: block; }
-button { font-family: inherit; cursor: pointer; touch-action: manipulation; }
+  .mono { font-family: 'IBM Plex Mono', monospace; }
+  a { color: inherit; text-decoration: none; transition: color 0.15s ease, opacity 0.15s ease; }
+  img { max-width: 100%; display: block; }
+  button { font-family: inherit; cursor: pointer; touch-action: manipulation; }
 
-/* ---------- Utility Bar ---------- */
-.utility-bar {
-  background: var(--navy-950);
-  color: #c9d6e3;
-  font-size: 12.5px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-.utility-bar .wrap {
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: 7px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-.utility-bar a { color: #c9d6e3; }
-.utility-bar a:hover { color: #ffffff; text-decoration: underline; }
-.utility-bar .sep { opacity: 0.35; margin: 0 10px; }
+  /* ---------- Utility Bar ---------- */
+  .utility-bar {
+    background: var(--navy-950);
+    color: #c9d6e3;
+    font-size: 12.5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .utility-bar .wrap {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 7px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .utility-bar a { color: #c9d6e3; }
+  .utility-bar a:hover { color: #ffffff; text-decoration: underline; }
+  .utility-bar .sep { opacity: 0.35; margin: 0 10px; }
 
-/* ---------- Main Header ---------- */
-header.site {
-  background: var(--white);
-  border-bottom: 1px solid var(--line);
-  position: sticky;
-  top: 0;
-  z-index: 90;
-  box-shadow: 0 2px 10px rgba(7, 34, 66, 0.04);
-}
-.header-inner {
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: 12px 20px;
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-.site-logo-wrap {
-  display: inline-flex;
-  align-items: center;
-  flex-shrink: 0;
-}
-.site-logo-img {
-  height: 44px;
-  width: auto;
-  object-fit: contain;
-  display: block;
-}
-.search-wrap {
-  flex: 1;
-  position: relative;
-  max-width: 640px;
-}
-.search-box {
-  width: 100%;
-  padding: 10px 48px 10px 16px;
-  border: 1.5px solid var(--line);
-  border-radius: var(--radius);
-  font-size: 14px;
-  background: var(--paper);
-  font-family: inherit;
-  transition: all 0.2s ease;
-}
-.search-box:focus {
-  outline: none;
-  border-color: var(--brand-blue);
-  background: var(--white);
-  box-shadow: 0 0 0 3px rgba(0, 96, 182, 0.12);
-}
-.search-btn {
-  position: absolute;
-  right: 6px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: var(--brand-blue);
-  border: none;
-  color: #ffffff;
-  width: 34px;
-  height: 34px;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  transition: background 0.15s ease;
-}
-.search-btn:hover {
-  background: var(--brand-blue-hover);
-}
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  flex-shrink: 0;
-}
-.header-actions .item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 11px;
-  color: var(--ink-soft);
-  gap: 3px;
-  font-weight: 500;
-  transition: color 0.15s ease;
-}
-.header-actions .item:hover {
-  color: var(--brand-blue);
-}
-.header-actions .icon {
-  font-size: 18px;
-  color: var(--brand-blue);
-}
+  /* ---------- Main Header ---------- */
+  header.site {
+    background: var(--white);
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 90;
+    box-shadow: 0 2px 10px rgba(7, 34, 66, 0.04);
+  }
+  .header-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .site-logo-wrap {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .site-logo-img {
+    height: 44px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+  }
+  .search-wrap {
+    flex: 1;
+    position: relative;
+    max-width: 640px;
+  }
+  .search-box {
+    width: 100%;
+    padding: 10px 48px 10px 16px;
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius);
+    font-size: 14px;
+    background: var(--paper);
+    font-family: inherit;
+    transition: all 0.2s ease;
+  }
+  .search-box:focus {
+    outline: none;
+    border-color: var(--brand-blue);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(0, 96, 182, 0.12);
+  }
+  .search-btn {
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--brand-blue);
+    border: none;
+    color: #ffffff;
+    width: 34px;
+    height: 34px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: background 0.15s ease;
+  }
+  .search-btn:hover {
+    background: var(--brand-blue-hover);
+  }
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-shrink: 0;
+  }
+  .header-actions .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 11px;
+    color: var(--ink-soft);
+    gap: 3px;
+    font-weight: 500;
+    transition: color 0.15s ease;
+  }
+  .header-actions .item:hover {
+    color: var(--brand-blue);
+  }
+  .header-actions .icon {
+    font-size: 18px;
+    color: var(--brand-blue);
+  }
 
-/* ---------- Category Navigation ---------- */
-nav.catnav {
-  background: var(--navy-950);
-  border-bottom: 2px solid var(--brand-blue);
-}
-.catnav-inner {
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: 0 20px;
-  display: flex;
-  gap: 4px;
-  font-size: 13.5px;
-  font-weight: 600;
-  overflow-x: auto;
-}
-.catnav-inner a.nav-top {
-  padding: 12px 16px;
-  color: #dbe4ee;
-  white-space: nowrap;
-  border-bottom: 3px solid transparent;
-  transition: all 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-}
-.catnav-inner a.nav-top:hover {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.06);
-  border-bottom-color: var(--brand-blue);
-}
-.catnav-inner a.nav-top.active {
-  color: #ffffff;
-  border-bottom-color: var(--orange);
-  background: rgba(255, 255, 255, 0.08);
-}
+  /* ---------- Category Navigation ---------- */
+  nav.catnav {
+    background: var(--navy-950);
+    border-bottom: 2px solid var(--brand-blue);
+  }
+  .catnav-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    gap: 4px;
+    font-size: 13.5px;
+    font-weight: 600;
+    overflow-x: auto;
+  }
+  .catnav-inner a.nav-top {
+    padding: 12px 16px;
+    color: #dbe4ee;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+  }
+  .catnav-inner a.nav-top:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.06);
+    border-bottom-color: var(--brand-blue);
+  }
+  .catnav-inner a.nav-top.active {
+    color: #ffffff;
+    border-bottom-color: var(--orange);
+    background: rgba(255, 255, 255, 0.08);
+  }
 
-/* Dropdown */
-.nav-drop { position: relative; display: inline-flex; }
-.nav-panel {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: #ffffff;
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-lg);
-  border-radius: var(--radius);
-  padding: 12px 0;
-  min-width: 240px;
-  display: none;
-  z-index: 100;
-}
-.nav-panel.nav-panel-wide {
-  width: 720px;
-  display: none;
-  grid-template-columns: repeat(3, 1fr);
-  padding: 20px;
-  gap: 20px;
-}
-.nav-drop:hover .nav-panel { display: block; }
-.nav-drop:hover .nav-panel-wide { display: grid; }
-.nav-panel a {
-  display: block;
-  padding: 8px 16px;
-  font-size: 13px;
-  color: var(--ink);
-  font-weight: 500;
-}
-.nav-panel a:hover {
-  background: var(--brand-blue-light);
-  color: var(--brand-blue);
-}
-.np-col .np-title {
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--brand-blue);
-  letter-spacing: 0.04em;
-  margin-bottom: 8px;
-  padding-bottom: 4px;
-  border-bottom: 1px solid var(--line);
-}
+  /* Dropdown */
+  .nav-drop { position: relative; display: inline-flex; }
+  .nav-panel {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #ffffff;
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-lg);
+    border-radius: var(--radius);
+    padding: 12px 0;
+    min-width: 240px;
+    display: none;
+    z-index: 100;
+  }
+  .nav-panel.nav-panel-wide {
+    width: 720px;
+    display: none;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 20px;
+    gap: 20px;
+  }
+  .nav-drop:hover .nav-panel { display: block; }
+  .nav-drop:hover .nav-panel-wide { display: grid; }
+  .nav-panel a {
+    display: block;
+    padding: 8px 16px;
+    font-size: 13px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .nav-panel a:hover {
+    background: var(--brand-blue-light);
+    color: var(--brand-blue);
+  }
+  .np-col .np-title {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--brand-blue);
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--line);
+  }
 
-/* ---------- BREATHTAKING MODERN HERO SECTION (LIGHT & CRISP) ---------- */
-.hero {
-  background: radial-gradient(100% 120% at 50% 0%, #edf5fd 0%, #ffffff 80%);
-  border-bottom: 1px solid var(--line);
-  padding: 44px 0 0;
-  position: relative;
-  overflow: hidden;
-}
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(rgba(0, 96, 182, 0.08) 1px, transparent 1px);
-  background-size: 24px 24px;
-  pointer-events: none;
-  opacity: 0.6;
-}
-.hero-inner {
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: 0 20px 40px;
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 40px;
-  align-items: center;
-  position: relative;
-  z-index: 2;
-}
-@media (max-width: 920px) {
-  .hero-inner { grid-template-columns: 1fr; gap: 32px; padding-bottom: 30px; }
-}
+  /* ---------- MODERN HERO SECTION (LIGHT & CRISP) ---------- */
+  .hero {
+    background: radial-gradient(100% 120% at 50% 0%, #edf5fd 0%, #ffffff 80%);
+    border-bottom: 1px solid var(--line);
+    padding: 44px 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(0, 96, 182, 0.08) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+    opacity: 0.6;
+  }
+  .hero-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 20px 40px;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 40px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  @media (max-width: 920px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 32px; padding-bottom: 30px; }
+  }
 
-.hero-text {
-  color: var(--navy-950);
-}
-.hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--white);
-  color: var(--brand-blue);
-  font-size: 12px;
-  font-weight: 700;
-  padding: 6px 14px;
-  border-radius: 9999px;
-  margin-bottom: 18px;
-  border: 1px solid rgba(0, 96, 182, 0.2);
-  box-shadow: 0 2px 8px rgba(0, 96, 182, 0.08);
-}
-.hero-eyebrow .dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--brand-blue);
-  display: inline-block;
-  box-shadow: 0 0 0 3px rgba(0, 96, 182, 0.2);
-}
-.hero-text h1 {
-  font-size: 34px;
-  line-height: 1.28;
-  margin: 0 0 16px;
-  font-weight: 800;
-  color: var(--navy-950);
-  letter-spacing: -0.02em;
-}
-.hero-text h1 .text-brand {
-  color: var(--brand-blue);
-  position: relative;
-}
-.hero-desc {
-  font-size: 15px;
-  color: var(--ink-soft);
-  line-height: 1.7;
-  max-width: 540px;
-  margin: 0 0 26px;
-}
+  .hero-text {
+    color: var(--navy-950);
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--white);
+    color: var(--brand-blue);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    margin-bottom: 18px;
+    border: 1px solid rgba(0, 96, 182, 0.2);
+    box-shadow: 0 2px 8px rgba(0, 96, 182, 0.08);
+  }
+  .hero-eyebrow .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--brand-blue);
+    display: inline-block;
+    box-shadow: 0 0 0 3px rgba(0, 96, 182, 0.2);
+  }
+  .hero-text h1 {
+    font-size: 34px;
+    line-height: 1.28;
+    margin: 0 0 16px;
+    font-weight: 800;
+    color: var(--navy-950);
+    letter-spacing: -0.02em;
+  }
+  .hero-text h1 .text-brand {
+    color: var(--brand-blue);
+    position: relative;
+  }
+  .hero-desc {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    max-width: 540px;
+    margin: 0 0 26px;
+  }
 
-.hero-cta {
-  display: flex;
-  gap: 14px;
-  margin-bottom: 24px;
-  flex-wrap: wrap;
-}
-.btn {
-  padding: 12px 22px;
-  border-radius: var(--radius);
-  font-weight: 700;
-  font-size: 14.5px;
-  border: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  transition: all 0.22s var(--ease-spring);
-  text-decoration: none;
-}
-.btn-primary {
-  background: var(--orange);
-  color: #ffffff;
-  box-shadow: 0 4px 14px rgba(212, 30, 61, 0.3);
-}
-.btn-primary:hover {
-  background: var(--orange-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(212, 30, 61, 0.4);
-}
-.btn-zalo {
-  background: #ffffff;
-  color: #0068ff;
-  border: 1.5px solid #0068ff;
-  box-shadow: 0 2px 8px rgba(0, 104, 255, 0.1);
-}
-.btn-zalo:hover {
-  background: #0068ff;
-  color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0, 104, 255, 0.25);
-}
+  .hero-cta {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    padding: 12px 22px;
+    border-radius: var(--radius);
+    font-weight: 700;
+    font-size: 14.5px;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+    text-decoration: none;
+  }
+  .btn-primary {
+    background: var(--orange);
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(212, 30, 61, 0.3);
+  }
+  .btn-primary:hover {
+    background: var(--orange-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 30, 61, 0.4);
+  }
+  .btn-zalo {
+    background: #ffffff;
+    color: #0068ff;
+    border: 1.5px solid #0068ff;
+    box-shadow: 0 2px 8px rgba(0, 104, 255, 0.1);
+  }
+  .btn-zalo:hover {
+    background: #0068ff;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 104, 255, 0.25);
+  }
 
-.hero-fast-tags {
-  display: flex;
-  gap: 16px;
-  font-size: 12.5px;
-  color: var(--ink-soft);
-  font-weight: 600;
-  flex-wrap: wrap;
-}
-.hero-fast-tags span {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-.hero-fast-tags i {
-  color: var(--green);
-}
+  .hero-fast-tags {
+    display: flex;
+    gap: 16px;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    font-weight: 600;
+    flex-wrap: wrap;
+  }
+  .hero-fast-tags span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .hero-fast-tags i {
+    color: var(--green);
+  }
 
-/* Hero Showcase Card */
-.hero-showcase {
-  display: flex;
-  justify-content: center;
-  position: relative;
-}
-.showcase-card {
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 24px;
-  box-shadow: var(--shadow-lg);
-  position: relative;
-  width: 100%;
-  max-width: 440px;
-  text-align: center;
-}
-.showcase-badge {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  background: var(--orange);
-  color: #ffffff;
-  font-size: 11px;
-  font-weight: 700;
-  padding: 4px 10px;
-  border-radius: 9999px;
-  box-shadow: 0 2px 6px rgba(212, 30, 61, 0.3);
-}
-.showcase-img {
-  height: 220px;
-  width: auto;
-  object-fit: contain;
-  margin: 10px auto 16px;
-  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.08));
-  transition: transform 0.3s ease;
-}
-.showcase-card:hover .showcase-img {
-  transform: scale(1.04);
-}
-.showcase-brand {
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--brand-blue);
-  letter-spacing: 0.05em;
-}
-.showcase-title {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--navy-950);
-  margin: 4px 0 6px;
-}
-.showcase-specs {
-  font-size: 12px;
-  color: var(--ink-soft);
-  margin-bottom: 12px;
-}
-.showcase-price-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 12px;
-  border-top: 1px solid var(--line);
-}
-.showcase-price {
-  font-size: 20px;
-  font-weight: 800;
-  color: var(--orange);
-  font-family: 'IBM Plex Mono', monospace;
-}
-.showcase-stock {
-  font-size: 11.5px;
-  color: var(--green);
-  font-weight: 700;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-}
-.pulse-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--green);
-  box-shadow: 0 0 0 2px rgba(30, 138, 95, 0.25);
-}
+  /* Hero Showcase Card */
+  .hero-showcase {
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+  .showcase-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+    text-align: center;
+  }
+  .showcase-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: var(--orange);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 9999px;
+    box-shadow: 0 2px 6px rgba(212, 30, 61, 0.3);
+  }
+  .showcase-img {
+    height: 220px;
+    width: auto;
+    object-fit: contain;
+    margin: 10px auto 16px;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.08));
+    transition: transform 0.3s ease;
+  }
+  .showcase-card:hover .showcase-img {
+    transform: scale(1.04);
+  }
+  .showcase-brand {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--brand-blue);
+    letter-spacing: 0.05em;
+  }
+  .showcase-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy-950);
+    margin: 4px 0 6px;
+  }
+  .showcase-specs {
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+  }
+  .showcase-price-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+  }
+  .showcase-price {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--orange);
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .showcase-stock {
+    font-size: 11.5px;
+    color: var(--green);
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .pulse-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 0 2px rgba(30, 138, 95, 0.25);
+  }
 
-/* Floating chips */
-.float-chip {
-  position: absolute;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
-  border: 1px solid var(--line);
-  box-shadow: 0 8px 24px rgba(7, 34, 66, 0.12);
-  border-radius: 10px;
-  padding: 8px 12px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  text-align: left;
-  z-index: 3;
-}
-.chip-top-left {
-  top: -12px;
-  left: -20px;
-}
-.chip-bottom-right {
-  bottom: -14px;
-  right: -16px;
-}
-.chip-icon {
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
-  background: var(--brand-blue-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-}
-.float-chip strong {
-  display: block;
-  font-size: 12px;
-  color: var(--navy-950);
-}
-.float-chip small {
-  font-size: 10.5px;
-  color: var(--ink-soft);
-}
+  /* Floating chips */
+  .float-chip {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--line);
+    box-shadow: 0 8px 24px rgba(7, 34, 66, 0.12);
+    border-radius: 10px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-align: left;
+    z-index: 3;
+  }
+  .chip-top-left {
+    top: -12px;
+    left: -20px;
+  }
+  .chip-bottom-right {
+    bottom: -14px;
+    right: -16px;
+  }
+  .chip-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: var(--brand-blue-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+  }
+  .float-chip strong {
+    display: block;
+    font-size: 12px;
+    color: var(--navy-950);
+  }
+  .float-chip small {
+    font-size: 10.5px;
+    color: var(--ink-soft);
+  }
 
-@media (max-width: 640px) {
-  .float-chip { display: none; }
-}
+  @media (max-width: 640px) {
+    .float-chip { display: none; }
+  }
 
-/* ---------- TRUST STRIP ---------- */
-.trust-strip {
-  background: var(--white);
-  border-top: 1px solid var(--line);
-  position: relative;
-  z-index: 2;
-}
-.trust-strip-inner {
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: 22px 20px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-}
-@media (max-width: 760px) {
-  .trust-strip-inner { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-}
-.trust-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.ti-icon-box {
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
-  background: var(--brand-blue-light);
-  color: var(--brand-blue);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 17px;
-  flex-shrink: 0;
-}
-.trust-item .ti-num {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--navy-950);
-  display: block;
-  line-height: 1.2;
-}
-.trust-item .ti-label {
-  font-size: 11.5px;
-  color: var(--ink-soft);
-  line-height: 1.35;
-}
+  /* ---------- TRUST STRIP ---------- */
+  .trust-strip {
+    background: var(--white);
+    border-top: 1px solid var(--line);
+    position: relative;
+    z-index: 2;
+  }
+  .trust-strip-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 22px 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 760px) {
+    .trust-strip-inner { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  }
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .ti-icon-box {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: var(--brand-blue-light);
+    color: var(--brand-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    flex-shrink: 0;
+  }
+  .trust-item .ti-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--navy-950);
+    display: block;
+    line-height: 1.2;
+  }
+  .trust-item .ti-label {
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    line-height: 1.35;
+  }
 
-/* ---------- SECTIONS & GRIDS ---------- */
-section {
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: 48px 20px;
-}
-.sec-head {
-  margin-bottom: 24px;
-}
-.sec-head h2 {
-  font-size: 22px;
-  color: var(--navy-950);
-  margin: 0 0 6px;
-  font-weight: 800;
-  letter-spacing: -0.01em;
-}
-.sec-head p {
-  font-size: 13.5px;
-  color: var(--ink-soft);
-  margin: 0;
-}
+  /* ---------- SECTIONS & GRIDS ---------- */
+  section {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 48px 20px;
+  }
+  .sec-head {
+    margin-bottom: 24px;
+  }
+  .sec-head h2 {
+    font-size: 22px;
+    color: var(--navy-950);
+    margin: 0 0 6px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+  .sec-head p {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    margin: 0;
+  }
 
-/* Need Cards */
-.need-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-@media (max-width: 760px) { .need-grid { grid-template-columns: 1fr; } }
-.need-card {
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  background: var(--white);
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  transition: all 0.25s var(--ease-spring);
-  box-shadow: var(--shadow-sm);
-}
-.need-card:hover {
-  border-color: var(--brand-blue);
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-}
-.need-card .n-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 10px;
-  background: var(--brand-blue-light);
-  color: var(--brand-blue);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-}
-.need-card h3 {
-  font-size: 17px;
-  margin: 4px 0 0;
-  color: var(--navy-950);
-  font-weight: 700;
-}
-.need-card p {
-  font-size: 13px;
-  color: var(--ink-soft);
-  margin: 0;
-  line-height: 1.6;
-  flex: 1;
-}
-.need-card .n-link {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--brand-blue);
-  margin-top: 8px;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-.need-card:hover .n-link {
-  color: var(--orange);
-}
+  /* Need Cards */
+  .need-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 760px) { .need-grid { grid-template-columns: 1fr; } }
+  .need-card {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--white);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: var(--shadow-sm);
+  }
+  .need-card:hover {
+    border-color: var(--brand-blue);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  .need-card .n-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background: var(--brand-blue-light);
+    color: var(--brand-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+  }
+  .need-card h3 {
+    font-size: 17px;
+    margin: 4px 0 0;
+    color: var(--navy-950);
+    font-weight: 700;
+  }
+  .need-card p {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin: 0;
+    line-height: 1.6;
+    flex: 1;
+  }
+  .need-card .n-link {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--brand-blue);
+    margin-top: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .need-card:hover .n-link {
+    color: var(--orange);
+  }
 
-/* Category Grid */
-.cat-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 14px;
-}
-@media (max-width: 760px) { .cat-grid { grid-template-columns: repeat(3, 1fr); } }
-.cat-tile {
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: var(--white);
-  padding: 18px 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  text-align: center;
-  transition: all 0.2s ease;
-  box-shadow: var(--shadow-sm);
-}
-.cat-tile:hover {
-  border-color: var(--brand-blue);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow);
-}
-.cat-tile .ct-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--brand-blue-light);
-  color: var(--brand-blue);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  transition: background 0.2s ease;
-}
-.cat-tile:hover .ct-icon {
-  background: var(--brand-blue);
-  color: #ffffff;
-}
-.cat-tile span {
-  font-size: 12.5px;
-  font-weight: 700;
-  color: var(--navy-950);
-}
+  /* Category Grid */
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 14px;
+  }
+  @media (max-width: 760px) { .cat-grid { grid-template-columns: repeat(3, 1fr); } }
+  .cat-tile {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--white);
+    padding: 18px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-sm);
+  }
+  .cat-tile:hover {
+    border-color: var(--brand-blue);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+  }
+  .cat-tile .ct-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--brand-blue-light);
+    color: var(--brand-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    transition: background 0.2s ease;
+  }
+  .cat-tile:hover .ct-icon {
+    background: var(--brand-blue);
+    color: #ffffff;
+  }
+  .cat-tile span {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--navy-950);
+  }
 
-/* Product Card */
-.prod-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  gap: 18px;
-}
-.prod-card {
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  overflow: hidden;
-  position: relative;
-  transition: all 0.25s var(--ease-spring);
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  flex-direction: column;
-}
-.prod-card:hover {
-  border-color: var(--brand-blue);
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-}
-.prod-card .p-img {
-  aspect-ratio: 1/1;
-  background: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
-  position: relative;
-  border-bottom: 1px solid var(--line);
-}
-.prod-card .p-img img {
-  max-height: 100%;
-  max-width: 100%;
-  object-fit: contain;
-  margin: auto;
-  transition: transform 0.3s ease;
-}
-.prod-card:hover .p-img img {
-  transform: scale(1.06);
-}
-.prod-card .p-badge {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background: var(--orange);
-  color: #ffffff;
-  font-size: 10.5px;
-  font-weight: 700;
-  padding: 3px 8px;
-  border-radius: 4px;
-}
-.prod-card .p-body {
-  padding: 14px;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-.prod-card .p-brand {
-  font-size: 10.5px;
-  color: var(--brand-blue);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-weight: 700;
-  margin-bottom: 4px;
-}
-.prod-card .p-name {
-  font-size: 13.5px;
-  font-weight: 700;
-  color: var(--navy-950);
-  line-height: 1.4;
-  min-height: 38px;
-  margin-bottom: 8px;
-}
-.prod-card .p-specs {
-  list-style: none;
-  margin: 0 0 10px;
-  padding: 0;
-  font-size: 11.5px;
-  color: var(--ink-soft);
-  line-height: 1.6;
-}
-.prod-card .p-specs li::before {
-  content: "• ";
-  color: var(--brand-blue);
-  font-weight: bold;
-}
-.prod-card .p-price {
-  font-weight: 800;
-  color: var(--orange);
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 16px;
-  margin-top: auto;
-}
-.prod-card .p-bulk {
-  font-size: 11px;
-  color: var(--brand-blue);
-  margin-top: 4px;
-  font-weight: 600;
-}
-.prod-card .p-stock {
-  font-size: 11px;
-  color: var(--green);
-  font-weight: 700;
-  margin-top: 8px;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-}
-.prod-card .p-stock .d {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--green);
-}
+  /* Product Card */
+  .prod-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 18px;
+  }
+  .prod-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+  }
+  .prod-card:hover {
+    border-color: var(--brand-blue);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  .prod-card .p-img {
+    aspect-ratio: 1/1;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    position: relative;
+    border-bottom: 1px solid var(--line);
+  }
+  .prod-card .p-img img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    margin: auto;
+    transition: transform 0.3s ease;
+  }
+  .prod-card:hover .p-img img {
+    transform: scale(1.06);
+  }
+  .prod-card .p-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: var(--orange);
+    color: #ffffff;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+  .prod-card .p-body {
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .prod-card .p-brand {
+    font-size: 10.5px;
+    color: var(--brand-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .prod-card .p-name {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--navy-950);
+    line-height: 1.4;
+    min-height: 38px;
+    margin-bottom: 8px;
+  }
+  .prod-card .p-specs {
+    list-style: none;
+    margin: 0 0 10px;
+    padding: 0;
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .prod-card .p-specs li::before {
+    content: "• ";
+    color: var(--brand-blue);
+    font-weight: bold;
+  }
+  .prod-card .p-price {
+    font-weight: 800;
+    color: var(--orange);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 16px;
+    margin-top: auto;
+  }
+  .prod-card .p-bulk {
+    font-size: 11px;
+    color: var(--brand-blue);
+    margin-top: 4px;
+    font-weight: 600;
+  }
+  .prod-card .p-stock {
+    font-size: 11px;
+    color: var(--green);
+    font-weight: 700;
+    margin-top: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .prod-card .p-stock .d {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--green);
+  }
 
-/* Brand Strip */
-.brand-strip {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  gap: 12px;
-}
-@media (max-width: 760px) { .brand-strip { grid-template-columns: repeat(4, 1fr); } }
-.brand-tile {
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--white);
-  padding: 14px 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  color: var(--navy-950);
-  font-size: 12.5px;
-  text-align: center;
-  min-height: 54px;
-  transition: all 0.2s ease;
-}
-.brand-tile:hover {
-  border-color: var(--brand-blue);
-  color: var(--brand-blue);
-  box-shadow: var(--shadow);
-}
+  /* Brand Strip */
+  .brand-strip {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 12px;
+  }
+  @media (max-width: 760px) { .brand-strip { grid-template-columns: repeat(4, 1fr); } }
+  .brand-tile {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--white);
+    padding: 14px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: var(--navy-950);
+    font-size: 12.5px;
+    text-align: center;
+    min-height: 54px;
+    transition: all 0.2s ease;
+  }
+  .brand-tile:hover {
+    border-color: var(--brand-blue);
+    color: var(--brand-blue);
+    box-shadow: var(--shadow);
+  }
 
-/* Reception Band */
-.reception-band {
-  background: var(--brand-blue-light);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-.reception-inner {
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: 28px 20px;
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-.reception-text { flex: 1; min-width: 220px; }
-.reception-text h3 { margin: 0 0 4px; font-size: 17px; color: var(--navy-950); font-weight: 700; }
-.reception-text p { margin: 0; font-size: 13px; color: var(--ink-soft); }
-.reception-staff { display: flex; gap: 12px; flex-wrap: wrap; }
-.r-card {
-  background: #ffffff;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 10px 14px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  box-shadow: var(--shadow-sm);
-}
-.r-avatar {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 13px;
-  flex-shrink: 0;
-}
-.r-meta { font-size: 11.5px; line-height: 1.35; }
-.r-meta b { display: block; font-size: 12.5px; color: var(--navy-950); }
-.r-zalo {
-  background: #0068ff;
-  color: #ffffff;
-  font-size: 11px;
-  font-weight: 700;
-  padding: 5px 10px;
-  border-radius: 6px;
-  margin-left: 4px;
-}
+  /* Reception Band */
+  .reception-band {
+    background: var(--brand-blue-light);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .reception-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 28px 20px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .reception-text { flex: 1; min-width: 220px; }
+  .reception-text h3 { margin: 0 0 4px; font-size: 17px; color: var(--navy-950); font-weight: 700; }
+  .reception-text p { margin: 0; font-size: 13px; color: var(--ink-soft); }
+  .reception-staff { display: flex; gap: 12px; flex-wrap: wrap; }
+  .r-card {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: var(--shadow-sm);
+  }
+  .r-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .r-meta { font-size: 11.5px; line-height: 1.35; }
+  .r-meta b { display: block; font-size: 12.5px; color: var(--navy-950); }
+  .r-zalo {
+    background: #0068ff;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 6px;
+    margin-left: 4px;
+  }
 
-/* Footer */
-footer {
-  background: var(--navy-950);
-  color: #b9c7d4;
-  padding: 48px 20px 24px;
-  border-top: 3px solid var(--brand-blue);
-}
-.footer-inner {
-  max-width: 1240px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1fr;
-  gap: 32px;
-}
-@media (max-width: 820px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
-.footer-inner h4 { color: #ffffff; font-size: 14px; margin: 0 0 14px; font-weight: 700; }
-.footer-inner p, .footer-inner a { font-size: 12.5px; color: #a3b5c7; line-height: 2; display: block; }
-.footer-inner a:hover { color: #ffffff; text-decoration: underline; }
-.footer-bottom {
-  max-width: 1240px;
-  margin: 32px auto 0;
-  padding-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  font-size: 12px;
-  color: #7c8fa0;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-</style>
+  /* Footer */
+  footer {
+    background: var(--navy-950);
+    color: #b9c7d4;
+    padding: 48px 20px 24px;
+    border-top: 3px solid var(--brand-blue);
+  }
+  .footer-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 32px;
+  }
+  @media (max-width: 820px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+  .footer-inner h4 { color: #ffffff; font-size: 14px; margin: 0 0 14px; font-weight: 700; }
+  .footer-inner p, .footer-inner a { font-size: 12.5px; color: #a3b5c7; line-height: 2; display: block; }
+  .footer-inner a:hover { color: #ffffff; text-decoration: underline; }
+  .footer-bottom {
+    max-width: 1240px;
+    margin: 32px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 12px;
+    color: #7c8fa0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  </style>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -1109,19 +1109,19 @@ footer {
 <section>
   <div class="sec-head"><h2>Bạn đang cần mua cho việc gì?</h2><p>Chọn đúng nhu cầu để xem sản phẩm và chính sách phù hợp nhất</p></div>
   <div class="need-grid">
-    <a class="need-card" href="#">
+    <a class="need-card" href="san-pham.html">
       <div class="n-icon">🏠</div>
       <h3>Mua cho gia đình</h3>
       <p>Quạt trần, quạt cây, quạt treo tường dân dụng — giao nhanh, giá rõ ràng, đổi trả dễ dàng.</p>
       <span class="n-link">Xem sản phẩm →</span>
     </a>
-    <a class="need-card" href="#">
+    <a class="need-card" href="giai-phap.html">
       <div class="n-icon">🏭</div>
       <h3>Mua cho nhà xưởng — công trình</h3>
       <p>Quạt công nghiệp, quạt thông gió công suất lớn — có hồ sơ năng lực, bản vẽ lắp đặt, báo giá dự án.</p>
       <span class="n-link">Xem giải pháp →</span>
     </a>
-    <a class="need-card" href="#">
+    <a class="need-card" href="lien-he.html">
       <div class="n-icon">📦</div>
       <h3>Mua sỉ — đại lý</h3>
       <p>Nhập hàng số lượng lớn để bán lại — chính sách giá sỉ riêng, hỗ trợ hình ảnh &amp; thông tin sản phẩm.</p>
@@ -1133,12 +1133,12 @@ footer {
 <section style="padding-top:0;">
   <div class="sec-head"><h2>Danh mục sản phẩm</h2></div>
   <div class="cat-grid">
-    <a class="cat-tile" href="#"><div class="ct-icon">🌀</div><span>Quạt trần</span></a>
-    <a class="cat-tile" href="#"><div class="ct-icon">🧍</div><span>Quạt cây</span></a>
-    <a class="cat-tile" href="#"><div class="ct-icon">🪟</div><span>Quạt treo tường</span></a>
-    <a class="cat-tile" href="#"><div class="ct-icon">📦</div><span>Quạt hộp</span></a>
-    <a class="cat-tile" href="#"><div class="ct-icon">🏭</div><span>Quạt công nghiệp</span></a>
-    <a class="cat-tile" href="#"><div class="ct-icon">💨</div><span>Quạt thông gió</span></a>
+    <a class="cat-tile" href="san-pham.html"><div class="ct-icon">🌀</div><span>Quạt trần</span></a>
+    <a class="cat-tile" href="san-pham.html"><div class="ct-icon">🧍</div><span>Quạt cây</span></a>
+    <a class="cat-tile" href="san-pham.html"><div class="ct-icon">🪟</div><span>Quạt treo tường</span></a>
+    <a class="cat-tile" href="san-pham.html"><div class="ct-icon">📦</div><span>Quạt hộp</span></a>
+    <a class="cat-tile" href="san-pham.html"><div class="ct-icon">🏭</div><span>Quạt công nghiệp</span></a>
+    <a class="cat-tile" href="san-pham.html"><div class="ct-icon">💨</div><span>Quạt thông gió</span></a>
   </div>
 </section>
 
@@ -1146,62 +1146,68 @@ footer {
   <div class="sec-head"><h2>Sản phẩm bán chạy</h2><p>Sắp xếp theo số lượng đã bán, cập nhật liên tục</p></div>
   <div class="prod-grid">
     <div class="prod-card">
-      <div class="p-img" style="background:#fff; display:flex; align-items:center; justify-content:center; height:180px; position:relative; padding:10px; border-bottom:1px solid #f0f2f5;"><span class="p-badge">Bán chạy</span><img src="assets/images/km750s.jpg" alt="Sản phẩm" style="max-height:160px; max-width:100%; object-fit:contain; margin:auto;" onerror="this.src='assets/images/km750s.jpg'"></div>
+      <div class="p-img">
+        <span class="p-badge">Bán chạy</span>
+        <img src="assets/images/km750s.jpg" alt="Quạt cây công nghiệp Komasu KM-750S">
+      </div>
       <div class="p-body">
         <div class="p-brand">Komasu</div>
-        <div class="p-name"><a href="chi-tiet-san-pham.html" style="color:inherit; text-decoration:none;">Quạt cây công nghiệp Komasu KM-750S</a></div>
+        <div class="p-name"><a href="chi-tiet-san-pham.html">Quạt cây công nghiệp Komasu KM-750S</a></div>
         <ul class="p-specs"><li>Công suất 250W</li><li>Sải cánh 750mm · 3 tốc độ</li></ul>
-        <div class="p-price">2.630.000đ</div>
+        <div class="p-price">2.630.000₫</div>
         <div class="p-bulk">Giá tốt hơn khi mua từ 6 sản phẩm</div>
-        <div class="p-rating">★★★★★ <span>4.8 (36)</span></div>
         <div class="p-stock"><span class="d"></span>Còn hàng</div>
       </div>
     </div>
     <div class="prod-card">
-      <div class="p-img" style="background:#fff; display:flex; align-items:center; justify-content:center; height:180px; position:relative; padding:10px; border-bottom:1px solid #f0f2f5;"><img src="assets/images/km750s.jpg" alt="Sản phẩm" style="max-height:160px; max-width:100%; object-fit:contain; margin:auto;" onerror="this.src='assets/images/km750s.jpg'"></div>
+      <div class="p-img">
+        <img src="assets/images/km750s.jpg" alt="Quạt cây công nghiệp Tico TC-750">
+      </div>
       <div class="p-body">
         <div class="p-brand">Tico</div>
-        <div class="p-name"><a href="chi-tiet-san-pham.html" style="color:inherit; text-decoration:none;">Quạt cây công nghiệp Tico TC-750</a></div>
+        <div class="p-name"><a href="chi-tiet-san-pham.html">Quạt cây công nghiệp Tico TC-750</a></div>
         <ul class="p-specs"><li>Công suất 220W</li><li>Sải cánh 750mm · 3 tốc độ</li></ul>
-        <div class="p-price">2.480.000đ</div>
+        <div class="p-price">2.480.000₫</div>
         <div class="p-bulk">Giá tốt hơn khi mua từ 6 sản phẩm</div>
-        <div class="p-rating">★★★★★ <span>4.7 (18)</span></div>
         <div class="p-stock"><span class="d"></span>Còn hàng</div>
       </div>
     </div>
     <div class="prod-card">
-      <div class="p-img" style="background:#fff; display:flex; align-items:center; justify-content:center; height:180px; position:relative; padding:10px; border-bottom:1px solid #f0f2f5;"><img src="assets/images/km750s.jpg" alt="Sản phẩm" style="max-height:160px; max-width:100%; object-fit:contain; margin:auto;" onerror="this.src='assets/images/km750s.jpg'"></div>
+      <div class="p-img">
+        <img src="assets/images/km750s.jpg" alt="Quạt sàn công nghiệp Senko QS-500">
+      </div>
       <div class="p-body">
         <div class="p-brand">Senko</div>
-        <div class="p-name"><a href="chi-tiet-san-pham.html" style="color:inherit; text-decoration:none;">Quạt sàn công nghiệp Senko QS-500</a></div>
+        <div class="p-name"><a href="chi-tiet-san-pham.html">Quạt sàn công nghiệp Senko QS-500</a></div>
         <ul class="p-specs"><li>Công suất 165W</li><li>Sải cánh 500mm</li></ul>
-        <div class="p-price">1.650.000đ</div>
+        <div class="p-price">1.650.000₫</div>
         <div class="p-bulk">Giá tốt hơn khi mua từ 6 sản phẩm</div>
-        <div class="p-rating">★★★★☆ <span>4.4 (9)</span></div>
         <div class="p-stock"><span class="d"></span>Còn hàng</div>
       </div>
     </div>
     <div class="prod-card">
-      <div class="p-img" style="background:#fff; display:flex; align-items:center; justify-content:center; height:180px; position:relative; padding:10px; border-bottom:1px solid #f0f2f5;"><img src="assets/images/km750s.jpg" alt="Sản phẩm" style="max-height:160px; max-width:100%; object-fit:contain; margin:auto;" onerror="this.src='assets/images/km750s.jpg'"></div>
+      <div class="p-img">
+        <img src="assets/images/km750s.jpg" alt="Quạt thông gió công nghiệp Kyungjin KR-1000">
+      </div>
       <div class="p-body">
         <div class="p-brand">Kyungjin</div>
-        <div class="p-name"><a href="chi-tiet-san-pham.html" style="color:inherit; text-decoration:none;">Quạt thông gió công nghiệp Kyungjin KR-1000</a></div>
+        <div class="p-name"><a href="chi-tiet-san-pham.html">Quạt thông gió công nghiệp Kyungjin KR-1000</a></div>
         <ul class="p-specs"><li>Lưu lượng 8.500 m³/h</li><li>Lắp âm trần / tường</li></ul>
-        <div class="p-price">4.150.000đ</div>
+        <div class="p-price">4.150.000₫</div>
         <div class="p-bulk">Giá tốt hơn khi mua từ 6 sản phẩm</div>
-        <div class="p-rating">★★★★★ <span>4.9 (11)</span></div>
         <div class="p-stock"><span class="d"></span>Còn hàng</div>
       </div>
     </div>
     <div class="prod-card">
-      <div class="p-img" style="background:#fff; display:flex; align-items:center; justify-content:center; height:180px; position:relative; padding:10px; border-bottom:1px solid #f0f2f5;"><img src="assets/images/km750s.jpg" alt="Sản phẩm" style="max-height:160px; max-width:100%; object-fit:contain; margin:auto;" onerror="this.src='assets/images/km750s.jpg'"></div>
+      <div class="p-img">
+        <img src="assets/images/km750s.jpg" alt="Quạt treo tường công nghiệp Nedfon NF-650">
+      </div>
       <div class="p-body">
         <div class="p-brand">Nedfon</div>
-        <div class="p-name"><a href="chi-tiet-san-pham.html" style="color:inherit; text-decoration:none;">Quạt treo tường công nghiệp Nedfon NF-650</a></div>
+        <div class="p-name"><a href="chi-tiet-san-pham.html">Quạt treo tường công nghiệp Nedfon NF-650</a></div>
         <ul class="p-specs"><li>Công suất 190W</li><li>Sải cánh 650mm</li></ul>
-        <div class="p-price">1.890.000đ</div>
+        <div class="p-price">1.890.000₫</div>
         <div class="p-bulk">Giá tốt hơn khi mua từ 6 sản phẩm</div>
-        <div class="p-rating">★★★★★ <span>4.6 (22)</span></div>
         <div class="p-stock"><span class="d"></span>Còn hàng</div>
       </div>
     </div>
@@ -1211,34 +1217,43 @@ footer {
 <section style="padding-top:0;">
   <div class="sec-head"><h2>Thương hiệu đang phân phối</h2><p>Đại lý ủy quyền chính hãng</p></div>
   <div class="brand-strip">
-    <div class="brand-tile">KOMASU</div>
-    <div class="brand-tile">TICO</div>
-    <div class="brand-tile">SENKO</div>
-    <div class="brand-tile">PANASONIC</div>
-    <div class="brand-tile">NEDFON</div>
-    <div class="brand-tile">NANYOO</div>
-    <div class="brand-tile">KYUNGJIN</div>
-    <div class="brand-tile">HATARI</div>
+    <a href="thuong-hieu.html" class="brand-tile">KOMASU</a>
+    <a href="thuong-hieu.html" class="brand-tile">TICO</a>
+    <a href="thuong-hieu.html" class="brand-tile">SENKO</a>
+    <a href="thuong-hieu.html" class="brand-tile">PANASONIC</a>
+    <a href="thuong-hieu.html" class="brand-tile">NEDFON</a>
+    <a href="thuong-hieu.html" class="brand-tile">NANYOO</a>
+    <a href="thuong-hieu.html" class="brand-tile">KYUNGJIN</a>
+    <a href="thuong-hieu.html" class="brand-tile">HATARI</a>
   </div>
 </section>
 
 <section style="padding-top:0;">
   <div class="sec-head"><h2>Khách hàng nói gì về Winline</h2></div>
-  <div class="testi-grid">
-    <div class="testi-card">
-      <div class="t-stars">★★★★★</div>
-      <p>Đặt 8 quạt công nghiệp cho xưởng may, giao đúng hẹn dù đơn gấp. Nhân viên tư vấn đúng công suất theo diện tích, không phải tự đoán.</p>
-      <div class="t-who"><div class="t-avatar">D</div><div class="t-meta"><b>Anh Dũng</b>Xưởng may — Đông Anh, Hà Nội</div></div>
+  <div class="testi-grid" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:16px;">
+    <div style="background:#fff; border:1px solid var(--line); border-radius:12px; padding:20px; box-shadow:var(--shadow-sm);">
+      <div style="color:var(--orange); font-size:13px; margin-bottom:10px;">★★★★★</div>
+      <p style="font-size:13.5px; color:var(--ink); line-height:1.65; margin:0 0 14px;">Đặt 8 quạt công nghiệp cho xưởng may, giao đúng hẹn dù đơn gấp. Nhân viên tư vấn đúng công suất theo diện tích, không phải tự đoán.</p>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div style="width:34px; height:34px; border-radius:50%; background:var(--brand-blue-light); color:var(--brand-blue); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px;">D</div>
+        <div style="font-size:12px; color:var(--ink-soft);"><strong style="display:block; color:var(--navy-950); font-size:13px;">Anh Dũng</strong>Xưởng may — Đông Anh, Hà Nội</div>
+      </div>
     </div>
-    <div class="testi-card">
-      <div class="t-stars">★★★★★</div>
-      <p>Mua sỉ 20 quạt trần về bán lại, có bảng giá rõ ràng theo số lượng, không phải mặc cả từng đơn như chỗ khác.</p>
-      <div class="t-who"><div class="t-avatar">H</div><div class="t-meta"><b>Chị Hằng</b>Cửa hàng điện máy — Bắc Ninh</div></div>
+    <div style="background:#fff; border:1px solid var(--line); border-radius:12px; padding:20px; box-shadow:var(--shadow-sm);">
+      <div style="color:var(--orange); font-size:13px; margin-bottom:10px;">★★★★★</div>
+      <p style="font-size:13.5px; color:var(--ink); line-height:1.65; margin:0 0 14px;">Mua sỉ 20 quạt trần về bán lại, có bảng giá rõ ràng theo số lượng, không phải mặc cả từng đơn như chỗ khác.</p>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div style="width:34px; height:34px; border-radius:50%; background:var(--brand-blue-light); color:var(--brand-blue); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px;">H</div>
+        <div style="font-size:12px; color:var(--ink-soft);"><strong style="display:block; color:var(--navy-950); font-size:13px;">Chị Hằng</strong>Cửa hàng điện máy — Bắc Ninh</div>
+      </div>
     </div>
-    <div class="testi-card">
-      <div class="t-stars">★★★★★</div>
-      <p>Công trình cần gấp hồ sơ CQ/CO để trình chủ đầu tư, Winline gửi đủ trong ngày, không phải chờ đợi nhiều lần.</p>
-      <div class="t-who"><div class="t-avatar">M</div><div class="t-meta"><b>Anh Minh</b>Nhà thầu cơ điện — Hà Nội</div></div>
+    <div style="background:#fff; border:1px solid var(--line); border-radius:12px; padding:20px; box-shadow:var(--shadow-sm);">
+      <div style="color:var(--orange); font-size:13px; margin-bottom:10px;">★★★★★</div>
+      <p style="font-size:13.5px; color:var(--ink); line-height:1.65; margin:0 0 14px;">Công trình cần gấp hồ sơ CQ/CO để trình chủ đầu tư, Winline gửi đủ trong ngày, không phải chờ đợi nhiều lần.</p>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div style="width:34px; height:34px; border-radius:50%; background:var(--brand-blue-light); color:var(--brand-blue); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px;">M</div>
+        <div style="font-size:12px; color:var(--ink-soft);"><strong style="display:block; color:var(--navy-950); font-size:13px;">Anh Minh</strong>Nhà thầu cơ điện — Hà Nội</div>
+      </div>
     </div>
   </div>
 </section>
@@ -1251,14 +1266,14 @@ footer {
     </div>
     <div class="reception-staff">
       <div class="r-card">
-        <div class="r-avatar" style="background:linear-gradient(135deg,#d41e3d,#a71830);">KH</div>
+        <div class="r-avatar" style="background:var(--orange);">KH</div>
         <div class="r-meta"><b>Kim Huệ</b>Tư vấn mua lẻ, mua nhanh</div>
-        <a class="r-zalo" href="#">Zalo</a>
+        <a class="r-zalo" href="https://zalo.me/0949761893" target="_blank">Zalo</a>
       </div>
       <div class="r-card">
-        <div class="r-avatar" style="background:linear-gradient(135deg,#1f6690,#00354f);">NY</div>
-        <div class="r-meta"><b>Ngọc Yến</b>Tư vấn chung, mọi trang</div>
-        <a class="r-zalo" href="#">Zalo</a>
+        <div class="r-avatar" style="background:var(--brand-blue);">NY</div>
+        <div class="r-meta"><b>Ngọc Yến</b>Tư vấn công trình, B2B</div>
+        <a class="r-zalo" href="https://zalo.me/0949761893" target="_blank">Zalo</a>
       </div>
     </div>
   </div>
@@ -1275,92 +1290,31 @@ footer {
     </div>
     <div>
       <h4>Về Winline</h4>
-      <a href="#">Giới thiệu công ty</a>
+      <a href="gioi-thieu.html">Giới thiệu công ty</a>
       <a href="gioi-thieu.html">Hồ sơ năng lực</a>
       <a href="du-an.html">Đơn hàng tiêu biểu</a>
-      <a href="#">Tài liệu &amp; Hồ sơ</a>
+      <a href="gioi-thieu.html">Tài liệu &amp; Hồ sơ</a>
     </div>
     <div>
       <h4>Chính sách</h4>
-      <a href="#">Chính sách bán hàng</a>
-      <a href="#">Chính sách giao hàng</a>
-      <a href="#">Bảo hành &amp; đổi trả</a>
-      <a href="#">Hướng dẫn mua hàng</a>
+      <a href="gioi-thieu.html">Chính sách bán hàng</a>
+      <a href="gioi-thieu.html">Chính sách giao hàng</a>
+      <a href="gioi-thieu.html">Bảo hành &amp; đổi trả</a>
+      <a href="gioi-thieu.html">Hướng dẫn mua hàng</a>
     </div>
     <div>
       <h4>Liên hệ</h4>
       <a href="tel:0949761893">Hotline: 0949 761 893</a>
-      <a href="#">Kim Huệ — bán lẻ</a>
-      <a href="#">Ngọc Yến — tư vấn chung</a>
-      <a href="#">Zalo Official Account</a>
+      <a href="tel:0949761893">Kim Huệ — bán lẻ</a>
+      <a href="tel:0949761893">Ngọc Yến — tư vấn chung</a>
+      <a href="https://zalo.me/0949761893" target="_blank">Zalo Official Account</a>
     </div>
   </div>
   <div class="footer-bottom">
     <span>© 2026 Công ty TNHH Winline Việt Nam</span>
-    <span>/quat-cay-cong-nghiep/ · /quat-treo-tuong-cong-nghiep/ · /quat-thong-gio/</span>
+    <span>Quạt điện, quạt công nghiệp chính hãng toàn quốc</span>
   </div>
 </footer>
-
-<div class="float-contact">
-  <a class="fc-zalo" href="#" aria-label="Chat Zalo">
-    <svg viewBox="0 0 24 24" width="22" height="22" fill="#fff"><path d="M12 3C6.48 3 2 6.94 2 11.8c0 2.68 1.4 5.08 3.6 6.7-.12.9-.5 2.16-1.4 3.4a.5.5 0 00.55.78c1.8-.5 3.2-1.33 4.1-1.98A11.6 11.6 0 0012 20.6c5.52 0 10-3.94 10-8.8S17.52 3 12 3z"/></svg>
-  </a>
-  <a class="fc-call" href="tel:0949761893" aria-label="Gọi ngay">
-    <svg viewBox="0 0 24 24" width="20" height="20" fill="#fff"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.02l-2.2 2.19z"/></svg>
-  </a>
-</div>
-<div class="mobile-sticky">
-  <button class="msb-icon menu" onclick="toggleMobileMenu()">
-    <span class="msb-circle">
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="#fff"><rect x="3" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5"/></svg>
-    </span>
-    <span class="msb-label">Danh mục</span>
-  </button>
-  <a class="msb-icon zalo" href="#">
-    <span class="msb-circle">
-      <svg viewBox="0 0 24 24" width="19" height="19" fill="#fff"><path d="M12 3C6.48 3 2 6.94 2 11.8c0 2.68 1.4 5.08 3.6 6.7-.12.9-.5 2.16-1.4 3.4a.5.5 0 00.55.78c1.8-.5 3.2-1.33 4.1-1.98A11.6 11.6 0 0012 20.6c5.52 0 10-3.94 10-8.8S17.52 3 12 3z"/></svg>
-    </span>
-    <span class="msb-label">Zalo</span>
-  </a>
-  <a class="msb-icon call" href="tel:0949761893">
-    <span class="msb-circle">
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="#fff"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.02l-2.2 2.19z"/></svg>
-    </span>
-    <span class="msb-label">Gọi ngay</span>
-  </a>
-  <a class="msb-icon quote" href="san-pham.html">
-    <span class="msb-circle">
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="#fff"><path d="M4 4h7v7H4V4zm9 0h7v7h-7V4zM4 13h7v7H4v-7zm9 0h7v7h-7v-7z"/></svg>
-    </span>
-    <span class="msb-label">Sản phẩm</span>
-  </a>
-</div>
-
-<div class="menu-sheet-overlay" id="menuSheet">
-  <div class="menu-sheet">
-    <button class="ms-close" onclick="closeMobileMenu()">✕</button>
-    <div class="menu-sheet-handle"></div>
-    <h3>Danh mục</h3>
-    <div class="ms-grid">
-      <a class="ms-tile" href="san-pham.html"><span class="ms-icon">🌀</span><span>Quạt dân dụng</span></a>
-      <a class="ms-tile" href="san-pham.html"><span class="ms-icon">🏭</span><span>Quạt công nghiệp</span></a>
-      <a class="ms-tile" href="san-pham.html"><span class="ms-icon">💨</span><span>Thông gió &amp; làm mát</span></a>
-      <a class="ms-tile" href="san-pham.html"><span class="ms-icon">🏷️</span><span>Thương hiệu</span></a>
-      <a class="ms-tile" href="#"><span class="ms-icon">🏗️</span><span>Giải pháp theo nhu cầu</span></a>
-      <a class="ms-tile" href="gioi-thieu.html"><span class="ms-icon">📁</span><span>Hồ sơ &amp; Tài liệu</span></a>
-    </div>
-  </div>
-</div>
-
-<script>
-const searchBox=document.querySelector('.search-box');
-const suggest=document.getElementById('searchSuggest');
-searchBox.addEventListener('focus',()=>suggest.style.display='block');
-searchBox.addEventListener('blur',()=>setTimeout(()=>suggest.style.display='none',150));
-function toggleMobileMenu(){document.getElementById('menuSheet').classList.add('open');}
-function closeMobileMenu(){document.getElementById('menuSheet').classList.remove('open');}
-</script>
-
 
 <div class="mobile-floating-bar">
   <div class="mobile-floating-inner">
@@ -1382,30 +1336,6 @@ function closeMobileMenu(){document.getElementById('menuSheet').classList.remove
     </a>
   </div>
 </div>
-
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  // Mobile Nav Toggle
-  const toggleBtn = document.getElementById("mobile-nav-toggle");
-  const catNav = document.querySelector(".catnav");
-  if (toggleBtn && catNav) {
-    toggleBtn.addEventListener("click", function() {
-      catNav.classList.toggle("show-mobile");
-    });
-  }
-
-  // Mobile Filter Toggle on san-pham.html
-  const filterBtn = document.getElementById("btn-toggle-filters");
-  const filtersSection = document.getElementById("filtersSection");
-  if (filterBtn && filtersSection) {
-    filterBtn.addEventListener("click", function() {
-      filtersSection.classList.toggle("show-mobile-filter");
-      filterBtn.textContent = filtersSection.classList.contains("show-mobile-filter") ? "✕ Đóng bộ lọc" : "☰ Mở bộ lọc sản phẩm";
-    });
-  }
-});
-</script>
 
 <script src="js/products-data.js"></script>
 <script src="js/app.js"></script>
