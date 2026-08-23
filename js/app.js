@@ -97,7 +97,7 @@ function ensureAppContainers() {
   if (!document.getElementById("cart-drawer")) {
     const drawerDiv = document.createElement("div");
     drawerDiv.id = "cart-drawer";
-    drawerDiv.className = "pointer-events-none";
+    drawerDiv.style.display = "none";
     drawerDiv.innerHTML = `
       <div onclick="closeCartDrawer()" class="drawer-backdrop"></div>
       <div id="cart-drawer-panel" class="drawer-panel translate-x-full">
@@ -159,10 +159,9 @@ function ensureAppContainers() {
   if (!document.getElementById("quickview-modal")) {
     const qvModal = document.createElement("div");
     qvModal.id = "quickview-modal";
-    qvModal.style.cssText = "position:fixed; inset:0; z-index:10000; display:flex; align-items:center; justify-content:center; padding:16px; transition:opacity 0.25s ease;";
-    qvModal.className = "pointer-events-none";
+    qvModal.style.display = "none";
     qvModal.innerHTML = `
-      <div onclick="closeQuickView()" class="drawer-backdrop" style="position:absolute; inset:0; background:rgba(7,34,66,0.65); backdrop-filter:blur(3px);"></div>
+      <div onclick="closeQuickView()" class="drawer-backdrop"></div>
       <div style="background:#ffffff; border-radius:12px; box-shadow:0 15px 35px rgba(0,0,0,0.25); width:100%; max-width:800px; max-height:90vh; overflow-y:auto; position:relative; z-index:2;">
         <button onclick="closeQuickView()" style="position:absolute; top:16px; right:16px; background:#ffffff; border:1px solid var(--line); width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:10; color:var(--ink-soft);">
           <i class="fas fa-times"></i>
@@ -373,8 +372,9 @@ function openCartDrawer() {
   const drawer = document.getElementById("cart-drawer");
   const panel = document.getElementById("cart-drawer-panel");
   if (drawer && panel) {
-    drawer.classList.remove("pointer-events-none");
-    drawer.style.opacity = "1";
+    drawer.style.display = "block";
+    drawer.offsetHeight; // trigger reflow
+    drawer.classList.add("active");
     panel.classList.remove("translate-x-full");
     document.body.style.overflow = "hidden";
   }
@@ -384,10 +384,10 @@ function closeCartDrawer() {
   const drawer = document.getElementById("cart-drawer");
   const panel = document.getElementById("cart-drawer-panel");
   if (drawer && panel) {
-    drawer.style.opacity = "0";
+    drawer.classList.remove("active");
     panel.classList.add("translate-x-full");
     setTimeout(() => {
-      drawer.classList.add("pointer-events-none");
+      drawer.style.display = "none";
       document.body.style.overflow = "";
     }, 250);
   }
@@ -458,17 +458,18 @@ function openQuickView(productId) {
     </div>
   `;
 
-  modal.classList.remove("pointer-events-none");
-  modal.style.opacity = "1";
+  modal.style.display = "flex";
+  modal.offsetHeight; // trigger reflow
+  modal.classList.add("active");
   document.body.style.overflow = "hidden";
 }
 
 function closeQuickView() {
   const modal = document.getElementById("quickview-modal");
   if (modal) {
-    modal.style.opacity = "0";
+    modal.classList.remove("active");
     setTimeout(() => {
-      modal.classList.add("pointer-events-none");
+      modal.style.display = "none";
       document.body.style.overflow = "";
     }, 250);
   }

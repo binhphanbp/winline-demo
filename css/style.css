@@ -409,22 +409,42 @@ button {
    CART DRAWER & MODALS
    ========================================================================== */
 #cart-drawer {
+  display: none;
   position: fixed;
   inset: 0;
   z-index: 9999;
-  transition: opacity 0.25s ease;
+  opacity: 0;
+  transition: opacity 0.25s var(--ease-spring);
 }
 
-#cart-drawer.pointer-events-none {
-  pointer-events: none;
+#cart-drawer.active {
+  display: block;
+  opacity: 1;
+}
+
+#quickview-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
   opacity: 0;
+  transition: opacity 0.25s var(--ease-spring);
+}
+
+#quickview-modal.active {
+  display: flex;
+  opacity: 1;
 }
 
 .drawer-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(7, 34, 66, 0.65);
-  backdrop-filter: blur(3px);
+  background: rgba(7, 34, 66, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 .drawer-panel {
