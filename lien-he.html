@@ -403,22 +403,21 @@ footer.site {
 
   <!-- Top Utility Bar -->
   <div class="utility-bar">
-    <div class="wrap">
-      <div>
-        <span><i class="fas fa-certificate" style="color:var(--orange);"></i> Công ty TNHH Winline Việt Nam — MST: <strong class="mono">0106085370</strong></span>
-        <span class="sep">|</span>
-        <span><i class="fas fa-map-marker-alt" style="color:var(--orange);"></i> Số 17 Ngõ 46 Quan Nhân, Thanh Xuân, Hà Nội</span>
-      </div>
-      <div>
-        <a href="tel:0949761893"><i class="fas fa-phone-alt"></i> Hotline: <strong class="mono">0949.761.893</strong></a>
-        <span class="sep">|</span>
-        <a href="https://zalo.me/0949761893" target="_blank"><i class="fas fa-comment-dots"></i> Zalo Kỹ Thuật</a>
-      </div>
+  <div class="wrap">
+    <div class="u-left">
+      <span><i class="fas fa-shield-alt" style="color:var(--orange);"></i> Hơn 20 năm phân phối quạt điện &amp; quạt công nghiệp chính hãng</span>
+      <span class="sep">|</span>
+      <a href="gioi-thieu.html"><i class="fas fa-file-contract"></i> Hồ sơ năng lực &amp; CQ/CO</a>
+    </div>
+    <div class="u-right">
+      <a href="tel:0949761893"><i class="fas fa-phone-alt" style="color:var(--orange);"></i> Hotline tư vấn: <strong>0949.761.893</strong></a>
+      <span class="sep">|</span>
+      <a href="tel:0963230665"><i class="fas fa-tools"></i> Bảo hành: 0963.230.665</a>
     </div>
   </div>
+</div>
 
-  <!-- Site Header -->
-  <header class="site">
+<header class="site">
   <div class="header-inner">
     <div class="header-mobile-top-row">
       <button onclick="toggleMobileDrawer()" class="mobile-menu-btn" aria-label="Mở danh mục menu">
@@ -441,66 +440,108 @@ footer.site {
         </div>
       </div>
     </div>
+    
     <div class="search-wrap">
-      <input class="search-box header-search-input" type="text" placeholder="Tìm quạt công nghiệp, quạt ly tâm, quạt thông gió...">
-      <button class="search-btn" aria-label="Tìm kiếm"><i class="fas fa-search"></i></button>
+      <form action="san-pham.html" method="GET" style="display:flex; width:100%; position:relative;">
+        <input class="search-box header-search-input" name="q" type="text" placeholder="Tìm kiếm quạt công nghiệp, quạt ly tâm, quạt thông gió, quạt cây...">
+        <button class="search-btn" type="submit" aria-label="Tìm kiếm"><i class="fas fa-search"></i></button>
+      </form>
     </div>
   </div>
 </header>
 
-  <!-- Category Nav Bar (7 Menu Items) -->
-  <nav class="catnav">
-    <div class="catnav-inner">
-      <a href="index.html" class="nav-top">Trang chủ</a>
-      <a href="gioi-thieu.html" class="nav-top">Giới thiệu</a>
-
-      <div class="nav-drop">
-        <a href="san-pham.html" class="nav-top">Sản phẩm ▾</a>
-        <div class="nav-panel nav-panel-wide">
-          <div class="np-col">
-            <div class="np-title">Quạt dân dụng</div>
-            <a href="san-pham.html">Quạt trần</a>
-            <a href="san-pham.html">Quạt cây / quạt đứng</a>
-            <a href="san-pham.html">Quạt treo tường</a>
-            <a href="san-pham.html">Quạt sàn / quạt quỳ</a>
+<nav class="catnav">
+  <div class="catnav-inner">
+    <a href="index.html" class="nav-top"><i class="fas fa-home"></i> Trang chủ</a>
+    <a href="gioi-thieu.html" class="nav-top">Giới thiệu</a>
+    
+    <!-- Mega Menu Đa Cấp: SẢN PHẨM -->
+    <div class="nav-drop">
+      <a href="san-pham.html" class="nav-top">
+        Sản phẩm <i class="fas fa-chevron-down nav-arrow"></i>
+      </a>
+      <div class="nav-mega-panel">
+        <div class="mega-inner">
+          <div class="mega-col">
+            <div class="mega-col-title"><i class="fas fa-fan"></i> Quạt dân dụng</div>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt trần &amp; đảo trần</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt cây / quạt đứng gia đình</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt treo tường gia đình</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt sàn / quạt chân quỳ</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt hộp &amp; quạt bàn</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt tháp &amp; quạt không cánh</a>
           </div>
-          <div class="np-col">
-            <div class="np-title">Quạt công nghiệp</div>
-            <a href="san-pham.html">Quạt cây công nghiệp</a>
-            <a href="san-pham.html">Quạt treo tường công nghiệp</a>
-            <a href="san-pham.html">Quạt sàn công nghiệp</a>
+          <div class="mega-col">
+            <div class="mega-col-title"><i class="fas fa-wind"></i> Quạt công nghiệp</div>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt cây công nghiệp (KM-750, DHF-750)</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt treo tường công nghiệp</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt thông gió vuông trang trại &amp; xưởng</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt ly tâm hút bụi &amp; hút khói PCCC</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt hướng trục tăng áp buồng thang</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt hút xách tay có ống nối gió</a>
           </div>
-          <div class="np-col">
-            <div class="np-title">Thông gió &amp; làm mát</div>
-            <a href="san-pham.html">Quạt thông gió dân dụng</a>
-            <a href="san-pham.html">Quạt thông gió công nghiệp</a>
-            <a href="san-pham.html">Quạt cắt gió</a>
-            <a href="san-pham.html">Máy làm mát / điều hoà di động</a>
+          <div class="mega-col">
+            <div class="mega-col-title"><i class="fas fa-temperature-low"></i> Thông gió &amp; Làm mát</div>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Máy làm mát công nghiệp Air Cooler</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt thông gió gắn tường &amp; âm trần</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt cắt gió (Air Curtain) chống thoát nhiệt</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Tấm làm mát Cooling Pad</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt thu hồi nhiệt ERV Nedfon</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Ống gió mềm &amp; phụ kiện thông gió</a>
+          </div>
+          <div class="mega-col mega-col-featured">
+            <div class="mega-col-title"><i class="fas fa-star"></i> Dịch vụ dự án</div>
+            <div class="mega-promo-box">
+              <div class="mp-tag">CHIẾT KHẤU NHÀ THẦU</div>
+              <p class="mp-text">Chiết khấu tốt nhất cho đơn hàng số lượng từ 6 sản phẩm &amp; dự án thi công.</p>
+              <a href="tel:0949761893" class="mp-btn"><i class="fas fa-phone-alt"></i> 0949.761.893</a>
+            </div>
+            <a href="san-pham.html" class="mega-view-all">Xem toàn bộ 339+ sản phẩm <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
       </div>
-
-      <a href="giai-phap.html" class="nav-top">Giải pháp</a>
-
-      <div class="nav-drop">
-        <a href="thuong-hieu.html" class="nav-top">Thương hiệu ▾</a>
-        <div class="nav-panel">
-          <a href="thuong-hieu.html">Vinawind (Điện cơ Thống Nhất)</a>
-          <a href="thuong-hieu.html">Komasu Nhật Bản</a>
-          <a href="thuong-hieu.html">Deton</a>
-          <a href="thuong-hieu.html">Dasin</a>
-          <a href="thuong-hieu.html">Chinghai</a>
-          <a href="thuong-hieu.html">Hatari</a>
-          <a href="thuong-hieu.html">Panasonic</a>
-          <a href="thuong-hieu.html">Nedfon</a>
-        </div>
-      </div>
-
-      <a href="cong-cu-tinh-quat.html" class="nav-top">Công cụ tính quạt</a>
-      <a href="du-an.html" class="nav-top">Dự án</a>
-      <a href="lien-he.html" class="nav-top active">Liên hệ &amp; Báo giá</a>
     </div>
-  </nav>
+    
+    <a href="giai-phap.html" class="nav-top">Giải pháp</a>
+    
+    <!-- Mega Menu Đa Cấp: THƯƠNG HIỆU -->
+    <div class="nav-drop">
+      <a href="thuong-hieu.html" class="nav-top">
+        Thương hiệu <i class="fas fa-chevron-down nav-arrow"></i>
+      </a>
+      <div class="brand-mega-panel">
+        <div class="brand-dropdown-grid">
+          <div class="bd-col">
+            <div class="bd-col-title">Quạt công nghiệp</div>
+            <a href="thuong-hieu.html" class="bd-item"><strong>Komasu</strong> <span>Công nghệ Nhật Bản</span></a>
+            <a href="thuong-hieu.html" class="bd-item"><strong>Deton</strong> <span>Động cơ siêu bền</span></a>
+            <a href="thuong-hieu.html" class="bd-item"><strong>Dasin</strong> <span>Đài Loan chính hãng</span></a>
+            <a href="thuong-hieu.html" class="bd-item"><strong>Chinghai</strong> <span>Công suất lớn</span></a>
+            <a href="thuong-hieu.html" class="bd-item"><strong>Shoohan</strong> <span>Quạt hút xách tay</span></a>
+          </div>
+          <div class="bd-col">
+            <div class="bd-col-title">Dân dụng &amp; Cao cấp</div>
+            <a href="thuong-hieu.html" class="bd-item"><strong>Vinawind</strong> <span>Điện cơ Thống Nhất</span></a>
+            <a href="thuong-hieu.html" class="bd-item"><strong>Panasonic</strong> <span>Nhật Bản cao cấp</span></a>
+            <a href="thuong-hieu.html" class="bd-item"><strong>Hatari</strong> <span>Nhập khẩu Thái Lan</span></a>
+            <a href="thuong-hieu.html" class="bd-item"><strong>Mitsubishi</strong> <span>Vận hành êm ái</span></a>
+            <a href="thuong-hieu.html" class="bd-item"><strong>KDK</strong> <span>Thông gió cao cấp</span></a>
+          </div>
+          <div class="bd-col">
+            <div class="bd-col-title">Thông gió chuyên dụng</div>
+            <a href="thuong-hieu.html" class="bd-item"><strong>Nedfon</strong> <span>Quạt thông gió &amp; cắt gió</span></a>
+            <a href="thuong-hieu.html" class="bd-item"><strong>Kruger</strong> <span>Hệ thống HVAC PCCC</span></a>
+            <a href="thuong-hieu.html" class="bd-item"><strong>Nanyoo</strong> <span>Quạt cắt gió tiêu chuẩn</span></a>
+            <a href="thuong-hieu.html" class="bd-item"><strong>Superlite Max</strong> <span>Quạt thông gió vuông</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <a href="cong-cu-tinh-quat.html" class="nav-top"><i class="fas fa-calculator" style="color:var(--orange);"></i> Công cụ tính quạt</a>
+    <a href="du-an.html" class="nav-top">Dự án</a>
+  </div>
+</nav>
 
   <!-- Breadcrumb -->
   <div class="breadcrumb">
