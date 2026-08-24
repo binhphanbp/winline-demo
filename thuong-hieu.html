@@ -72,13 +72,13 @@ img{max-width:100%;display:block;}
 button{font-family:inherit;cursor:pointer;}
 
 /* ---------- utility / header / nav (đồng bộ toàn site) ---------- */
-.utility-bar{background:var(--navy-950);color:#c9d6e3;font-size:12.5px;}
-.utility-bar .wrap{max-width:1240px;margin:0 auto;padding:7px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;}
-.utility-bar a{color:#c9d6e3;opacity:.9;} .utility-bar a:hover{opacity:1;text-decoration:underline;}
-.utility-bar .sep{opacity:.4;margin:0 10px;}
 
-header.site{background:var(--white);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40;}
-.header-inner{max-width:1240px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;gap:24px;}
+
+ 
+
+
+
+
 .logo{font-weight:800;font-size:24px;letter-spacing:.5px;color:var(--navy-950);display:flex;align-items:baseline;gap:2px;flex-shrink:0;}
 .logo span{color:var(--orange);}
 .search-wrap{flex:1;position:relative;max-width:640px;}
@@ -89,28 +89,23 @@ header.site{background:var(--white);border-bottom:1px solid var(--line);position
 .header-actions .item{display:flex;flex-direction:column;align-items:center;font-size:11px;color:var(--ink-soft);gap:3px;}
 .header-actions .icon{width:22px;height:22px;color:var(--navy-800);}
 
-nav.catnav{background:var(--navy-950);}
-.catnav-inner{max-width:1240px;margin:0 auto;padding:0 20px;display:flex;gap:2px;font-size:13.5px;font-weight:500;overflow-x:auto;}
-.catnav-inner>a{padding:11px 14px;color:#dbe4ee;white-space:nowrap;border-bottom:2px solid transparent;}
-.catnav-inner>a:hover{color:#fff;border-bottom-color:var(--orange);background:rgba(255,255,255,.04);}
-.catnav-inner>a.active{color:#fff;border-bottom-color:var(--orange);}
 
-.nav-drop{position:relative;}
-.nav-top{padding:11px 14px;color:#dbe4ee;white-space:nowrap;border-bottom:2px solid transparent;cursor:pointer;display:inline-block;text-decoration:none;}
-.nav-drop:hover .nav-top,.nav-top.active{color:#fff;border-bottom-color:var(--orange);background:rgba(255,255,255,.04);}
-.nav-panel{
-  display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid var(--line);
-  box-shadow:0 10px 26px rgba(13,31,51,.16);border-radius:0 0 10px 10px;padding:14px;z-index:60;
-  min-width:230px;flex-direction:column;gap:1px;
-}
-.nav-drop:hover .nav-panel{display:flex;}
-.nav-panel a{color:var(--navy-950)!important;padding:7px 10px;border-radius:5px;font-size:13px;white-space:nowrap;text-decoration:none;}
-.nav-panel a:hover{background:var(--navy-100);}
-.nav-panel a.current-brand{background:var(--navy-100);font-weight:700;color:var(--orange-dark)!important;}
-.nav-panel-wide{flex-direction:row;gap:26px;min-width:540px;padding:16px;}
-.np-col{display:flex;flex-direction:column;gap:1px;min-width:170px;}
-.np-title{font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft);font-weight:700;padding:4px 10px 6px;}
-@media(max-width:960px){.nav-panel{display:none!important;}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media(max-width:960px){}
 
 .breadcrumb{max-width:1240px;margin:0 auto;padding:14px 20px 0;font-size:12.5px;color:var(--ink-soft);}
 .breadcrumb a:hover{color:var(--navy-800);text-decoration:underline;}
@@ -188,17 +183,7 @@ nav.catnav{background:var(--navy-950);}
 .pagination a{width:34px;height:34px;border:1px solid var(--line);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--ink-soft);background:#fff;}
 .pagination a.active{background:var(--navy-950);color:#fff;border-color:var(--navy-950);}
 
-/* ---------- footer ---------- */
-footer{background:var(--navy-950);color:#b9c7d4;padding:34px 20px 18px;margin-top:10px;}
-.footer-inner{max-width:1240px;margin:0 auto;font-size:12px;text-align:center;color:#9fb0bf;}
-
-/* ---------- sticky mobile bar ---------- */
-.mobile-sticky{
-  display:none;position:fixed;bottom:0;left:0;right:0;background:#fff;
-  border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(13,31,51,.10);
-  padding:9px 10px calc(9px + env(safe-area-inset-bottom));z-index:50;
-  justify-content:space-around;align-items:flex-start;
-}
+/* ---------- 
 .msb-icon{display:flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none;flex:1;background:none;border:none;font-family:inherit;}
 .msb-circle{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 2px 7px rgba(0,0,0,.14);}
 .msb-icon.menu .msb-circle{background:var(--navy-800);}
@@ -317,38 +302,13 @@ footer{background:var(--navy-950);color:#b9c7d4;padding:34px 20px 18px;margin-to
     display: block;
     background: var(--navy-950);
   }
-  .catnav.show-mobile .catnav-inner {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 10px 15px;
-    gap: 2px;
-  }
-  .catnav.show-mobile .nav-top {
-    padding: 10px;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-  }
-  .catnav.show-mobile .nav-panel {
-    position: static;
-    display: block;
-    box-shadow: none;
-    background: rgba(255,255,255,0.05);
-    border: none;
-    padding: 8px 15px;
-  }
-  .catnav.show-mobile .nav-panel a {
-    color: #cbd5e1;
-    padding: 6px 0;
-  }
-  .catnav.show-mobile .nav-panel-wide {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
+  .catnav.show-mobile 
+  .catnav.show-mobile 
+  .catnav.show-mobile 
+  .catnav.show-mobile 
+  .catnav.show-mobile 
   
-  .header-inner {
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
+  
   .search-wrap {
     order: 3;
     width: 100%;
@@ -385,7 +345,6 @@ footer{background:var(--navy-950);color:#b9c7d4;padding:34px 20px 18px;margin-to
     padding-bottom: 60px;
   }
 }
-
 </style>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -692,118 +651,46 @@ footer{background:var(--navy-950);color:#b9c7d4;padding:34px 20px 18px;margin-to
 
 <footer>
   <div class="footer-inner">
-    © 2026 Công ty TNHH Winline Việt Nam — Số 7 BT6 Pháp Vân – Tứ Hiệp, Hà Nội — MST 0106085370
-  </div>
-</footer>
-
-<div class="float-contact">
-  <a class="fc-zalo" href="#" aria-label="Chat Zalo">
-    <svg viewBox="0 0 24 24" width="22" height="22" fill="#fff"><path d="M12 3C6.48 3 2 6.94 2 11.8c0 2.68 1.4 5.08 3.6 6.7-.12.9-.5 2.16-1.4 3.4a.5.5 0 00.55.78c1.8-.5 3.2-1.33 4.1-1.98A11.6 11.6 0 0012 20.6c5.52 0 10-3.94 10-8.8S17.52 3 12 3z"/></svg>
-  </a>
-  <a class="fc-call" href="tel:0949761893" aria-label="Gọi ngay">
-    <svg viewBox="0 0 24 24" width="20" height="20" fill="#fff"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.02l-2.2 2.19z"/></svg>
-  </a>
-</div>
-
-<div class="mobile-sticky">
-  <button class="msb-icon menu" onclick="toggleMobileMenu()">
-    <span class="msb-circle">
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="#fff"><rect x="3" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5"/></svg>
-    </span>
-    <span class="msb-label">Danh mục</span>
-  </button>
-  <a class="msb-icon zalo" href="#">
-    <span class="msb-circle">
-      <svg viewBox="0 0 24 24" width="19" height="19" fill="#fff"><path d="M12 3C6.48 3 2 6.94 2 11.8c0 2.68 1.4 5.08 3.6 6.7-.12.9-.5 2.16-1.4 3.4a.5.5 0 00.55.78c1.8-.5 3.2-1.33 4.1-1.98A11.6 11.6 0 0012 20.6c5.52 0 10-3.94 10-8.8S17.52 3 12 3z"/></svg>
-    </span>
-    <span class="msb-label">Zalo</span>
-  </a>
-  <a class="msb-icon call" href="tel:0949761893">
-    <span class="msb-circle">
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="#fff"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.02l-2.2 2.19z"/></svg>
-    </span>
-    <span class="msb-label">Gọi ngay</span>
-  </a>
-  <button class="msb-icon quote" onclick="document.getElementById('filtersSection').scrollIntoView({behavior:'smooth'})">
-    <span class="msb-circle">
-      <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M6 12h12M10 18h4"/></svg>
-    </span>
-    <span class="msb-label">Bộ lọc</span>
-  </button>
-</div>
-
-<div class="menu-sheet-overlay" id="menuSheet">
-  <div class="menu-sheet">
-    <button class="ms-close" onclick="closeMobileMenu()">✕</button>
-    <div class="menu-sheet-handle"></div>
-    <h3>Danh mục</h3>
-    <div class="ms-grid">
-      <a class="ms-tile" href="san-pham.html"><span class="ms-icon">🌀</span><span>Quạt dân dụng</span></a>
-      <a class="ms-tile" href="san-pham.html"><span class="ms-icon">🏭</span><span>Quạt công nghiệp</span></a>
-      <a class="ms-tile" href="san-pham.html"><span class="ms-icon">💨</span><span>Thông gió &amp; làm mát</span></a>
-      <a class="ms-tile" href="thuong-hieu.html"><span class="ms-icon">🏷️</span><span>Thương hiệu</span></a>
-      <a class="ms-tile" href="#"><span class="ms-icon">🏗️</span><span>Giải pháp theo nhu cầu</span></a>
-      <a class="ms-tile" href="gioi-thieu.html"><span class="ms-icon">📁</span><span>Hồ sơ &amp; Tài liệu</span></a>
+    <div>
+      <h4 style="color:#ffffff; font-size:15px; margin:0 0 12px; font-weight:800; display:flex; align-items:center; gap:8px;">
+        <i class="fas fa-fan" style="color:var(--brand-blue);"></i> Công ty TNHH Winline Việt Nam
+      </h4>
+      <p style="margin:0 0 8px; line-height:1.6; color:#cbd5e1; font-size:13px;">Đơn vị phân phối chính hãng quạt điện dân dụng, quạt công nghiệp &amp; hệ thống thông gió làm mát hàng đầu miền Bắc.</p>
+      <p style="margin:0 0 4px; font-size:12.5px; color:#94a3b8;"><strong style="color:#ffffff;">Mã số thuế:</strong> 0106085370 (Sở KH&amp;ĐT TP Hà Nội cấp 15/01/2013)</p>
+      <p style="margin:0 0 4px; font-size:12.5px; color:#94a3b8;"><strong style="color:#ffffff;">Trụ sở chính:</strong> Số 7 BT6, Khu đô thị Pháp Vân - Tứ Hiệp, P. Hoàng Liệt, Q. Hoàng Mai, Hà Nội</p>
+      <p style="margin:0 0 4px; font-size:12.5px; color:#94a3b8;"><strong style="color:#ffffff;">Showroom:</strong> Số 17, Ngõ 46 Quan Nhân, P. Trung Hòa, Q. Cầu Giấy / Thanh Xuân, Hà Nội</p>
+    </div>
+    <div>
+      <h4>Danh mục giải pháp</h4>
+      <a href="san-pham.html"><i class="fas fa-chevron-right" style="font-size:10px; margin-right:6px; opacity:0.6;"></i> Quạt cây công nghiệp công suất lớn</a>
+      <a href="san-pham.html"><i class="fas fa-chevron-right" style="font-size:10px; margin-right:6px; opacity:0.6;"></i> Quạt thông gió vuông trang trại &amp; xưởng</a>
+      <a href="san-pham.html"><i class="fas fa-chevron-right" style="font-size:10px; margin-right:6px; opacity:0.6;"></i> Quạt ly tâm hút bụi &amp; hút khói PCCC</a>
+      <a href="san-pham.html"><i class="fas fa-chevron-right" style="font-size:10px; margin-right:6px; opacity:0.6;"></i> Máy làm mát Air Cooler &amp; Cooling Pad</a>
+      <a href="cong-cu-tinh-quat.html"><i class="fas fa-chevron-right" style="font-size:10px; margin-right:6px; opacity:0.6;"></i> Công cụ tính chọn quạt chuẩn TCVN</a>
+    </div>
+    <div>
+      <h4>Chính sách &amp; Cam kết</h4>
+      <a href="gioi-thieu.html"><i class="fas fa-chevron-right" style="font-size:10px; margin-right:6px; opacity:0.6;"></i> Hồ sơ năng lực &amp; Chứng nhận CQ/CO</a>
+      <a href="gioi-thieu.html"><i class="fas fa-chevron-right" style="font-size:10px; margin-right:6px; opacity:0.6;"></i> Chính sách bảo hành tận nơi</a>
+      <a href="san-pham.html"><i class="fas fa-chevron-right" style="font-size:10px; margin-right:6px; opacity:0.6;"></i> Chiết khấu số lượng lớn cho nhà thầu</a>
+      <a href="du-an.html"><i class="fas fa-chevron-right" style="font-size:10px; margin-right:6px; opacity:0.6;"></i> Dự án công trình tiêu biểu</a>
+      <a href="lien-he.html"><i class="fas fa-chevron-right" style="font-size:10px; margin-right:6px; opacity:0.6;"></i> Bản đồ chỉ đường &amp; liên hệ</a>
+    </div>
+    <div>
+      <h4>Hotline tư vấn 24/7</h4>
+      <p style="font-size:20px; font-weight:800; color:var(--orange); font-family:'IBM Plex Mono',monospace; margin:0 0 6px;">0949.761.893</p>
+      <p style="font-size:12px; color:#94a3b8; margin:0 0 12px;">Hỗ trợ kỹ thuật &amp; dự án: 1900 099 806</p>
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <a href="https://zalo.me/0949761893" target="_blank" style="background:#0068ff; color:#fff; padding:8px 16px; border-radius:6px; font-weight:700; font-size:12.5px; display:inline-flex; align-items:center; gap:6px;"><i class="fas fa-comment-dots"></i> Chat Zalo</a>
+        <a href="tel:0949761893" style="background:var(--orange); color:#fff; padding:8px 16px; border-radius:6px; font-weight:700; font-size:12.5px; display:inline-flex; align-items:center; gap:6px;"><i class="fas fa-phone-alt"></i> Gọi ngay</a>
+      </div>
     </div>
   </div>
-</div>
-
-<script>
-document.querySelectorAll('.price-chip').forEach(c=>{
-  c.addEventListener('click',()=>{
-    document.querySelectorAll('.price-chip').forEach(x=>x.classList.remove('active'));
-    c.classList.add('active');
-  });
-});
-function toggleMobileMenu(){document.getElementById('menuSheet').classList.add('open');}
-function closeMobileMenu(){document.getElementById('menuSheet').classList.remove('open');}
-</script>
-
-
-<div class="mobile-floating-bar">
-  <div class="mobile-floating-inner">
-    <a href="index.html" class="mobile-action-item">
-      <div class="m-icon home">🏠</div>
-      <span>Trang chủ</span>
-    </a>
-    <a href="cong-cu-tinh-quat.html" class="mobile-action-item">
-      <div class="m-icon calc">🧮</div>
-      <span>Tính quạt</span>
-    </a>
-    <a href="https://zalo.me/0949761893" target="_blank" class="mobile-action-item">
-      <div class="m-icon zalo">💬</div>
-      <span>Zalo</span>
-    </a>
-    <a href="tel:0949761893" class="mobile-action-item">
-      <div class="m-icon call">📞</div>
-      <span>Gọi ngay</span>
-    </a>
+  <div class="footer-bottom">
+    <div>© 2026 Winline Việt Nam. Tất cả quyền được bảo lưu.</div>
+    <div>Đầy đủ hóa đơn GTGT (VAT 10%) &amp; chứng chỉ xuất xưởng CQ/CO.</div>
   </div>
-</div>
-
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  // Mobile Nav Toggle
-  const toggleBtn = document.getElementById("mobile-nav-toggle");
-  const catNav = document.querySelector(".catnav");
-  if (toggleBtn && catNav) {
-    toggleBtn.addEventListener("click", function() {
-      catNav.classList.toggle("show-mobile");
-    });
-  }
-
-  // Mobile Filter Toggle on san-pham.html
-  const filterBtn = document.getElementById("btn-toggle-filters");
-  const filtersSection = document.getElementById("filtersSection");
-  if (filterBtn && filtersSection) {
-    filterBtn.addEventListener("click", function() {
-      filtersSection.classList.toggle("show-mobile-filter");
-      filterBtn.textContent = filtersSection.classList.contains("show-mobile-filter") ? "✕ Đóng bộ lọc" : "☰ Mở bộ lọc sản phẩm";
-    });
-  }
-});
-</script>
+</footer>
 
 <script src="js/products-data.js"></script>
 <script src="js/app.js"></script>

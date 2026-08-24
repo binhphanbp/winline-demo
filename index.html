@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Winline.vn — Quạt điện, quạt công nghiệp chính hãng</title>
   <style>
-  @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap');
 
   :root {
     --brand-blue: #0060B6;
@@ -50,43 +50,15 @@
   button { font-family: inherit; cursor: pointer; touch-action: manipulation; }
 
   /* ---------- Utility Bar ---------- */
-  .utility-bar {
-    background: var(--navy-950);
-    color: #c9d6e3;
-    font-size: 12.5px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  }
-  .utility-bar .wrap {
-    max-width: 1240px;
-    margin: 0 auto;
-    padding: 7px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-  .utility-bar a { color: #c9d6e3; }
-  .utility-bar a:hover { color: #ffffff; text-decoration: underline; }
-  .utility-bar .sep { opacity: 0.35; margin: 0 10px; }
+  
+  
+  
+  
+  
 
   /* ---------- Main Header ---------- */
-  header.site {
-    background: var(--white);
-    border-bottom: 1px solid var(--line);
-    position: sticky;
-    top: 0;
-    z-index: 90;
-    box-shadow: 0 2px 10px rgba(7, 34, 66, 0.04);
-  }
-  .header-inner {
-    max-width: 1240px;
-    margin: 0 auto;
-    padding: 12px 20px;
-    display: flex;
-    align-items: center;
-    gap: 24px;
-  }
+  
+  
   .site-logo-wrap {
     display: inline-flex;
     align-items: center;
@@ -164,85 +136,21 @@
   }
 
   /* ---------- Category Navigation ---------- */
-  nav.catnav {
-    background: var(--navy-950);
-    border-bottom: 2px solid var(--brand-blue);
-  }
-  .catnav-inner {
-    max-width: 1240px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    gap: 4px;
-    font-size: 13.5px;
-    font-weight: 600;
-    overflow-x: auto;
-  }
-  .catnav-inner a.nav-top {
-    padding: 12px 16px;
-    color: #dbe4ee;
-    white-space: nowrap;
-    border-bottom: 3px solid transparent;
-    transition: all 0.2s ease;
-    display: inline-flex;
-    align-items: center;
-  }
-  .catnav-inner a.nav-top:hover {
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.06);
-    border-bottom-color: var(--brand-blue);
-  }
-  .catnav-inner a.nav-top.active {
-    color: #ffffff;
-    border-bottom-color: var(--orange);
-    background: rgba(255, 255, 255, 0.08);
-  }
+  
+  
+  
+  
+  
 
   /* Dropdown */
-  .nav-drop { position: relative; display: inline-flex; }
-  .nav-panel {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: #ffffff;
-    border: 1px solid var(--line);
-    box-shadow: var(--shadow-lg);
-    border-radius: var(--radius);
-    padding: 12px 0;
-    min-width: 240px;
-    display: none;
-    z-index: 100;
-  }
-  .nav-panel.nav-panel-wide {
-    width: 720px;
-    display: none;
-    grid-template-columns: repeat(3, 1fr);
-    padding: 20px;
-    gap: 20px;
-  }
-  .nav-drop:hover .nav-panel { display: block; }
-  .nav-drop:hover .nav-panel-wide { display: grid; }
-  .nav-panel a {
-    display: block;
-    padding: 8px 16px;
-    font-size: 13px;
-    color: var(--ink);
-    font-weight: 500;
-  }
-  .nav-panel a:hover {
-    background: var(--brand-blue-light);
-    color: var(--brand-blue);
-  }
-  .np-col .np-title {
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: var(--brand-blue);
-    letter-spacing: 0.04em;
-    margin-bottom: 8px;
-    padding-bottom: 4px;
-    border-bottom: 1px solid var(--line);
-  }
+  
+  
+  
+  
+  
+  
+  
+  
 
   /* ---------- MODERN HERO SECTION (LIGHT & CRISP) ---------- */
   .hero {
@@ -890,36 +798,13 @@
   }
 
   /* Footer */
-  footer {
-    background: var(--navy-950);
-    color: #b9c7d4;
-    padding: 48px 20px 24px;
-    border-top: 3px solid var(--brand-blue);
-  }
-  .footer-inner {
-    max-width: 1240px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr 1fr;
-    gap: 32px;
-  }
-  @media (max-width: 820px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
-  .footer-inner h4 { color: #ffffff; font-size: 14px; margin: 0 0 14px; font-weight: 700; }
-  .footer-inner p, .footer-inner a { font-size: 12.5px; color: #a3b5c7; line-height: 2; display: block; }
-  .footer-inner a:hover { color: #ffffff; text-decoration: underline; }
-  .footer-bottom {
-    max-width: 1240px;
-    margin: 32px auto 0;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    font-size: 12px;
-    color: #7c8fa0;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  </style>
+  
+  
+  @media (max-width: 820px) {  }
+  .
+  .
+  .
+</style>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -1335,60 +1220,45 @@
 <footer>
   <div class="footer-inner">
     <div>
-      <h4>CÔNG TY TNHH WINLINE VIỆT NAM</h4>
-      <p>Văn phòng: Số 7 BT6, Pháp Vân – Tứ Hiệp, P. Yên Sở, Hà Nội</p>
-      <p>Cửa hàng: Số 17 ngõ 46 phố Quan Nhân, P. Thanh Xuân, Hà Nội</p>
-      <p>MST: 0106085370</p>
-      <p>Giờ làm việc: 8:00–17:30, Thứ 2 – Thứ 7</p>
+      <h4 style="color:#ffffff; font-size:15px; margin:0 0 12px; font-weight:800; display:flex; align-items:center; gap:8px;">
+        <i class="fas fa-fan" style="color:var(--brand-blue);"></i> Công ty TNHH Winline Việt Nam
+      </h4>
+      <p style="margin:0 0 8px; line-height:1.6; color:#cbd5e1; font-size:13px;">Đơn vị phân phối chính hãng quạt điện dân dụng, quạt công nghiệp &amp; hệ thống thông gió làm mát hàng đầu miền Bắc.</p>
+      <p style="margin:0 0 4px; font-size:12.5px; color:#94a3b8;"><strong style="color:#ffffff;">Mã số thuế:</strong> 0106085370 (Sở KH&amp;ĐT TP Hà Nội cấp 15/01/2013)</p>
+      <p style="margin:0 0 4px; font-size:12.5px; color:#94a3b8;"><strong style="color:#ffffff;">Trụ sở chính:</strong> Số 7 BT6, Khu đô thị Pháp Vân - Tứ Hiệp, P. Hoàng Liệt, Q. Hoàng Mai, Hà Nội</p>
+      <p style="margin:0 0 4px; font-size:12.5px; color:#94a3b8;"><strong style="color:#ffffff;">Showroom:</strong> Số 17, Ngõ 46 Quan Nhân, P. Trung Hòa, Q. Cầu Giấy / Thanh Xuân, Hà Nội</p>
     </div>
     <div>
-      <h4>Về Winline</h4>
-      <a href="gioi-thieu.html">Giới thiệu công ty</a>
-      <a href="gioi-thieu.html">Hồ sơ năng lực</a>
-      <a href="du-an.html">Đơn hàng tiêu biểu</a>
-      <a href="gioi-thieu.html">Tài liệu &amp; Hồ sơ</a>
+      <h4>Danh mục giải pháp</h4>
+      <a href="san-pham.html"><i class="fas fa-chevron-right" style="font-size:10px; margin-right:6px; opacity:0.6;"></i> Quạt cây công nghiệp công suất lớn</a>
+      <a href="san-pham.html"><i class="fas fa-chevron-right" style="font-size:10px; margin-right:6px; opacity:0.6;"></i> Quạt thông gió vuông trang trại &amp; xưởng</a>
+      <a href="san-pham.html"><i class="fas fa-chevron-right" style="font-size:10px; margin-right:6px; opacity:0.6;"></i> Quạt ly tâm hút bụi &amp; hút khói PCCC</a>
+      <a href="san-pham.html"><i class="fas fa-chevron-right" style="font-size:10px; margin-right:6px; opacity:0.6;"></i> Máy làm mát Air Cooler &amp; Cooling Pad</a>
+      <a href="cong-cu-tinh-quat.html"><i class="fas fa-chevron-right" style="font-size:10px; margin-right:6px; opacity:0.6;"></i> Công cụ tính chọn quạt chuẩn TCVN</a>
     </div>
     <div>
-      <h4>Chính sách</h4>
-      <a href="gioi-thieu.html">Chính sách bán hàng</a>
-      <a href="gioi-thieu.html">Chính sách giao hàng</a>
-      <a href="gioi-thieu.html">Bảo hành &amp; đổi trả</a>
-      <a href="gioi-thieu.html">Hướng dẫn mua hàng</a>
+      <h4>Chính sách &amp; Cam kết</h4>
+      <a href="gioi-thieu.html"><i class="fas fa-chevron-right" style="font-size:10px; margin-right:6px; opacity:0.6;"></i> Hồ sơ năng lực &amp; Chứng nhận CQ/CO</a>
+      <a href="gioi-thieu.html"><i class="fas fa-chevron-right" style="font-size:10px; margin-right:6px; opacity:0.6;"></i> Chính sách bảo hành tận nơi</a>
+      <a href="san-pham.html"><i class="fas fa-chevron-right" style="font-size:10px; margin-right:6px; opacity:0.6;"></i> Chiết khấu số lượng lớn cho nhà thầu</a>
+      <a href="du-an.html"><i class="fas fa-chevron-right" style="font-size:10px; margin-right:6px; opacity:0.6;"></i> Dự án công trình tiêu biểu</a>
+      <a href="lien-he.html"><i class="fas fa-chevron-right" style="font-size:10px; margin-right:6px; opacity:0.6;"></i> Bản đồ chỉ đường &amp; liên hệ</a>
     </div>
     <div>
-      <h4>Liên hệ</h4>
-      <a href="tel:0949761893">Hotline: 0949 761 893</a>
-      <a href="tel:0949761893">Kim Huệ — bán lẻ</a>
-      <a href="tel:0949761893">Ngọc Yến — tư vấn chung</a>
-      <a href="https://zalo.me/0949761893" target="_blank">Zalo Official Account</a>
+      <h4>Hotline tư vấn 24/7</h4>
+      <p style="font-size:20px; font-weight:800; color:var(--orange); font-family:'IBM Plex Mono',monospace; margin:0 0 6px;">0949.761.893</p>
+      <p style="font-size:12px; color:#94a3b8; margin:0 0 12px;">Hỗ trợ kỹ thuật &amp; dự án: 1900 099 806</p>
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <a href="https://zalo.me/0949761893" target="_blank" style="background:#0068ff; color:#fff; padding:8px 16px; border-radius:6px; font-weight:700; font-size:12.5px; display:inline-flex; align-items:center; gap:6px;"><i class="fas fa-comment-dots"></i> Chat Zalo</a>
+        <a href="tel:0949761893" style="background:var(--orange); color:#fff; padding:8px 16px; border-radius:6px; font-weight:700; font-size:12.5px; display:inline-flex; align-items:center; gap:6px;"><i class="fas fa-phone-alt"></i> Gọi ngay</a>
+      </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 Công ty TNHH Winline Việt Nam</span>
-    <span>Quạt điện, quạt công nghiệp chính hãng toàn quốc</span>
+    <div>© 2026 Winline Việt Nam. Tất cả quyền được bảo lưu.</div>
+    <div>Đầy đủ hóa đơn GTGT (VAT 10%) &amp; chứng chỉ xuất xưởng CQ/CO.</div>
   </div>
 </footer>
-
-<div class="mobile-floating-bar">
-  <div class="mobile-floating-inner">
-    <a href="index.html" class="mobile-action-item">
-      <div class="m-icon home">🏠</div>
-      <span>Trang chủ</span>
-    </a>
-    <a href="cong-cu-tinh-quat.html" class="mobile-action-item">
-      <div class="m-icon calc">🧮</div>
-      <span>Tính quạt</span>
-    </a>
-    <a href="https://zalo.me/0949761893" target="_blank" class="mobile-action-item">
-      <div class="m-icon zalo">💬</div>
-      <span>Zalo</span>
-    </a>
-    <a href="tel:0949761893" class="mobile-action-item">
-      <div class="m-icon call">📞</div>
-      <span>Gọi ngay</span>
-    </a>
-  </div>
-</div>
 
 <script src="js/products-data.js"></script>
 <script src="js/app.js"></script>
