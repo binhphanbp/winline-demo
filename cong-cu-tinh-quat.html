@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* Calculator Page Specific Polish */
+    /* ========== Calculator Page ========== */
     .calc-hero {
       background: linear-gradient(135deg, #072242 0%, #0c2b50 50%, #004e7d 100%);
       color: #ffffff;
@@ -51,41 +51,8 @@
       margin: 0;
       line-height: 1.6;
     }
-    .duct {
-      margin-top: 24px;
-      height: 44px;
-      border-radius: 8px;
-      background: #061527;
-      border: 1px solid #1a4a75;
-      overflow: hidden;
-      position: relative;
-    }
-    .duct-label {
-      position: absolute;
-      left: 14px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 11px;
-      color: #93c5fd;
-      z-index: 2;
-      letter-spacing: 0.06em;
-      font-weight: 700;
-    }
-    .duct-track {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-    }
-    .duct-arrow {
-      flex: 0 0 auto;
-      color: var(--orange);
-      opacity: 0.9;
-      font-size: 16px;
-      margin-right: 24px;
-    }
 
+    /* Tabs */
     .tabs {
       display: flex;
       gap: 8px;
@@ -118,6 +85,7 @@
       color: var(--brand-blue);
     }
 
+    /* Grid Layout */
     .calc-grid-layout {
       display: grid;
       grid-template-columns: 1fr 1.2fr;
@@ -128,6 +96,7 @@
       .calc-grid-layout { grid-template-columns: 1fr; }
     }
 
+    /* Cards */
     .calc-card {
       background: #ffffff;
       border: 1px solid var(--line);
@@ -155,8 +124,10 @@
       align-items: center;
       justify-content: center;
       font-family: 'IBM Plex Mono', monospace;
+      flex-shrink: 0;
     }
 
+    /* Inputs */
     .input-label {
       display: block;
       font-size: 13px;
@@ -184,6 +155,7 @@
       box-shadow: 0 0 0 3px rgba(0,96,182,0.12);
     }
 
+    /* Preset Chips */
     .preset-chips {
       display: flex;
       gap: 8px;
@@ -207,6 +179,7 @@
       border-color: var(--brand-blue);
     }
 
+    /* Results Dashboard */
     .results-dashboard {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -214,7 +187,7 @@
       margin-bottom: 18px;
     }
     .metric-box {
-      background: var(--brand-blue-light);
+      background: var(--brand-blue-light, #eef4fb);
       border: 1px solid rgba(0,96,182,0.15);
       border-radius: 10px;
       padding: 14px;
@@ -240,6 +213,107 @@
       font-weight: 500;
     }
 
+    /* Pool Tag */
+    .pool-tag {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--brand-blue);
+      background: #eef4fb;
+      border: 1px solid rgba(0,96,182,0.15);
+      padding: 8px 14px;
+      border-radius: 8px;
+      margin-bottom: 14px;
+    }
+
+    /* Browse Controls */
+    .browse-controls {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .browse-controls .calc-input { flex: 1; min-width: 160px; }
+
+    /* Fan Scroll List */
+    .fan-scroll {
+      max-height: 280px;
+      overflow-y: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+    }
+    .fan-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--line);
+      gap: 12px;
+      transition: background 0.1s;
+    }
+    .fan-row:last-child { border-bottom: none; }
+    .fan-row:hover { background: #f8fafc; }
+    .fan-row.active { background: #eef4fb; }
+    .fan-row .fr-main { flex: 1; min-width: 0; }
+    .fan-row .fr-name {
+      font-weight: 700;
+      color: var(--navy-950);
+      font-size: 13px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .fan-row .fr-meta {
+      font-size: 11.5px;
+      color: var(--ink-soft);
+      margin-top: 2px;
+    }
+    .fan-row .fr-count {
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 800;
+      font-size: 13px;
+      color: var(--navy-950);
+      white-space: nowrap;
+    }
+
+    /* Pick Button */
+    .pick-btn {
+      font-size: 11px;
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink-soft);
+      cursor: pointer;
+      white-space: nowrap;
+      font-weight: 600;
+      transition: all 0.15s;
+    }
+    .pick-btn:hover { border-color: var(--brand-blue); color: var(--brand-blue); }
+    .pick-btn.active { background: var(--brand-blue); border-color: var(--brand-blue); color: #fff; }
+
+    /* Copy Button */
+    .copy-btn {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink-soft);
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.15s;
+    }
+    .copy-btn:hover { border-color: var(--brand-blue); color: var(--brand-blue); }
+
+    /* Reco Block */
+    .reco { border: 1.5px solid var(--brand-blue); border-radius: 10px; padding: 14px 16px; background: #eef4fb; margin-bottom: 14px; }
+    .reco.empty { border: 1.5px dashed var(--line); background: var(--paper); text-align: center; color: var(--ink-soft); font-size: 13px; padding: 16px; }
+
+    /* Cooling Pad Banner */
     .cooling-pad-banner {
       background: #ffffff;
       border: 1px solid var(--line);
@@ -249,6 +323,7 @@
       box-shadow: var(--shadow-sm);
     }
 
+    /* Cooling Pad Table */
     .table-cooling-pad {
       width: 100%;
       border-collapse: collapse;
@@ -266,10 +341,40 @@
       padding: 10px 14px;
       border-bottom: 1px solid var(--line);
     }
-    .table-cooling-pad tr:hover {
-      background: var(--brand-blue-light);
+    .table-cooling-pad tr:hover { background: var(--brand-blue-light, #eef4fb); }
+
+    /* Accordion */
+    .acc { margin-top: 24px; }
+    .acc-h {
+      background: #ffffff;
+      padding: 16px 20px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 14px;
+      transition: background 0.15s;
+    }
+    .acc-h:hover { background: #f8fafc; }
+    .acc-h .chev { transition: transform 0.2s; color: var(--ink-soft); }
+    .acc-h.open .chev { transform: rotate(180deg); }
+    .acc-body { max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
+    .acc-body.open { max-height: 2000px; }
+    .acc-inner { padding: 0 20px 20px; }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .tabs { flex-direction: column; gap: 4px; }
+      .tab-btn { font-size: 12.5px; padding: 10px 14px; }
+      .results-dashboard { grid-template-columns: 1fr; }
+      .cooling-pad-banner > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+      .metric-box .m-val { font-size: 20px; }
     }
   </style>
+
 </head>
 <body>
 
@@ -421,10 +526,7 @@
     <div class="tag">WINLINE &middot; CÔNG CỤ TÍNH KỸ THUẬT HVAC</div>
     <h1>Tính chọn quạt công nghiệp &amp; Thông gió</h1>
     <p>Nhập diện tích và chiều cao không gian để tự động tính lưu lượng gió cần thiết theo tiêu chuẩn <strong>TCVN 5687:2010</strong>, gợi ý model quạt tối ưu và diện tích tấm làm mát Cooling Pad.</p>
-    <div class="duct">
-      <span class="duct-label">LƯU LƯỢNG GIÓ THỰC TẾ (m&sup3;/h)</span>
-      <div class="duct-track" id="heroDuct"></div>
-    </div>
+
   </div>
 </div>
 
@@ -476,7 +578,7 @@
           </div>
         </div>
 
-        <div class="flow" style="height:32px; margin-bottom:14px;"><div class="flow-track" id="c_flowAnim"></div></div>
+
         
         <div class="pool-tag" id="c_pooltag"><i class="fas fa-check-circle"></i> Nhóm quạt đề xuất: Quạt hút công nghiệp vuông (900 &ndash; 1380mm)</div>
         
@@ -561,7 +663,7 @@
           </div>
         </div>
         
-        <div class="flow" style="height:32px; margin-bottom:14px;"><div class="flow-track" id="e_flowAnim"></div></div>
+
         <div class="pool-tag" id="e_pooltag"></div>
         <div id="e_reco"></div>
 
