@@ -194,38 +194,28 @@ function ensureAppContainers() {
 
         <div class="mobile-drawer-nav">
           <div class="mobile-nav-group-title">Danh mục chính</div>
-          <a href="index.html" class="mobile-drawer-link" onclick="closeMobileDrawer()">
-            <span><i class="fas fa-home icon-lead"></i> Trang chủ</span>
+          <a href="san-pham.html" class="mobile-drawer-link" onclick="closeMobileDrawer()">
+            <span><i class="fas fa-bars-staggered icon-lead"></i> Danh mục sản phẩm</span>
             <i class="fas fa-chevron-right" style="font-size:11px; opacity:0.4;"></i>
           </a>
-          <a href="san-pham.html" class="mobile-drawer-link" onclick="closeMobileDrawer()">
-            <span><i class="fas fa-fan icon-lead"></i> Tất cả sản phẩm quạt</span>
+          <a href="gioi-thieu.html" class="mobile-drawer-link" onclick="closeMobileDrawer()">
+            <span><i class="fas fa-info-circle icon-lead"></i> Giới thiệu</span>
+            <i class="fas fa-chevron-right" style="font-size:11px; opacity:0.4;"></i>
+          </a>
+          <a href="giai-phap.html" class="mobile-drawer-link" onclick="closeMobileDrawer()">
+            <span><i class="fas fa-industry icon-lead"></i> Giải pháp</span>
+            <i class="fas fa-chevron-right" style="font-size:11px; opacity:0.4;"></i>
+          </a>
+          <a href="du-an.html" class="mobile-drawer-link" onclick="closeMobileDrawer()">
+            <span><i class="fas fa-building icon-lead"></i> Dự án</span>
             <i class="fas fa-chevron-right" style="font-size:11px; opacity:0.4;"></i>
           </a>
           <a href="cong-cu-tinh-quat.html" class="mobile-drawer-link" onclick="closeMobileDrawer()">
             <span><i class="fas fa-calculator icon-lead" style="color:#f59e0b;"></i> Công cụ tính quạt</span>
             <span style="background:#fef3c7; color:#b45309; font-size:10px; font-weight:700; padding:2px 6px; border-radius:4px;">HOT</span>
           </a>
-          <a href="giai-phap.html" class="mobile-drawer-link" onclick="closeMobileDrawer()">
-            <span><i class="fas fa-industry icon-lead"></i> Giải pháp nhà xưởng &amp; B2B</span>
-            <i class="fas fa-chevron-right" style="font-size:11px; opacity:0.4;"></i>
-          </a>
-          <a href="thuong-hieu.html" class="mobile-drawer-link" onclick="closeMobileDrawer()">
-            <span><i class="fas fa-tags icon-lead"></i> Thương hiệu chính hãng</span>
-            <i class="fas fa-chevron-right" style="font-size:11px; opacity:0.4;"></i>
-          </a>
-
-          <div class="mobile-nav-group-title">Thông tin &amp; Dự án</div>
-          <a href="du-an.html" class="mobile-drawer-link" onclick="closeMobileDrawer()">
-            <span><i class="fas fa-building icon-lead"></i> Dự án &amp; Đơn hàng tiêu biểu</span>
-            <i class="fas fa-chevron-right" style="font-size:11px; opacity:0.4;"></i>
-          </a>
           <a href="gioi-thieu.html" class="mobile-drawer-link" onclick="closeMobileDrawer()">
-            <span><i class="fas fa-file-shield icon-lead"></i> Hồ sơ năng lực &amp; CQ/CO</span>
-            <i class="fas fa-chevron-right" style="font-size:11px; opacity:0.4;"></i>
-          </a>
-          <a href="lien-he.html" class="mobile-drawer-link" onclick="closeMobileDrawer()">
-            <span><i class="fas fa-map-marker-alt icon-lead"></i> Địa chỉ showroom &amp; Liên hệ</span>
+            <span><i class="fas fa-newspaper icon-lead"></i> Tin tức &amp; Hỗ trợ</span>
             <i class="fas fa-chevron-right" style="font-size:11px; opacity:0.4;"></i>
           </a>
 

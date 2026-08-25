@@ -2286,3 +2286,29 @@ footer.footer, footer.site-footer {
   background: var(--brand-blue);
   color: #ffffff;
 }
+
+
+/* Mega Menu Brand Pills */
+.mega-brand-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.mb-pill {
+  background: #eef4fb !important;
+  color: #1d68c4 !important;
+  font-size: 11.5px !important;
+  font-weight: 700 !important;
+  padding: 4px 9px !important;
+  border-radius: 4px !important;
+  border: 1px solid rgba(29, 104, 196, 0.18) !important;
+  text-decoration: none !important;
+  display: inline-block !important;
+  transition: all 0.15s ease !important;
+}
+.mb-pill:hover {
+  background: #1d68c4 !important;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
