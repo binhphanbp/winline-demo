@@ -914,6 +914,33 @@ function initLiveSearch() {
   });
 }
 
+// Nav Dropdown & Mega Menu interaction support
+function initNavDropdowns() {
+  const drops = document.querySelectorAll(".nav-drop");
+  drops.forEach(drop => {
+    let timeout;
+    const panel = drop.querySelector(".nav-mega-panel, .nav-panel");
+    if (!panel) return;
+
+    drop.addEventListener("mouseenter", () => {
+      clearTimeout(timeout);
+      panel.style.display = panel.classList.contains("nav-panel-wide") ? "grid" : "block";
+      panel.style.opacity = "1";
+      panel.style.visibility = "visible";
+      panel.style.pointerEvents = "auto";
+    });
+
+    drop.addEventListener("mouseleave", () => {
+      timeout = setTimeout(() => {
+        panel.style.display = "";
+        panel.style.opacity = "";
+        panel.style.visibility = "";
+        panel.style.pointerEvents = "";
+      }, 100);
+    });
+  });
+}
+
 // Mobile Nav Toggle
 function initMobileToggle() {
   const toggleBtn = document.getElementById("mobile-nav-toggle");
@@ -931,5 +958,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initScrollProgress();
   updateCartUI();
   initLiveSearch();
+  initNavDropdowns();
   initMobileToggle();
 });
+
