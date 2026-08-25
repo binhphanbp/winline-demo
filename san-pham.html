@@ -712,6 +712,61 @@ button{font-family:inherit;cursor:pointer;}
 <!-- UNIVERSAL MASTER FOOTER (COMPACT & MODERN - WINLINE.VN STANDARD) -->
 <!-- EXACT 100% FOOTER WINLINE.VN -->
 <!-- EXACT 100% FOOTER WINLINE.VN WITH OFFICIAL SOCIAL & LEGAL LINKS -->
+
+<!-- ================= KHỐI MÔ TẢ & HƯỚNG DẪN CHỌN MUA SẢN PHẨM ================= -->
+<div class="category-desc-wrap">
+  <article class="category-desc-box">
+    <header class="cdb-header">
+      <i class="fas fa-book-open"></i>
+      <h2>Tư Vấn Chọn Mua Quạt Điện Dân Dụng &amp; Quạt Công Nghiệp Chính Hãng Tại Winline.vn</h2>
+    </header>
+
+    <div class="cdb-body">
+      <p>
+        <strong>Winline Việt Nam</strong> tự hào là tổng đại lý phân phối cấp 1 chính hãng các dòng quạt điện, quạt công nghiệp và thiết bị thông gió làm mát hàng đầu tại thị trường miền Bắc. Chúng tôi cung ứng giải pháp làm mát toàn diện cho mọi quy mô công trình từ căn hộ gia đình, văn phòng, nhà hàng, quán ăn đến kho hàng logistic, nhà xưởng may, cơ khí và trang trại chăn nuôi.
+      </p>
+
+      <div class="cdb-grid-cards">
+        <div class="cdb-card-item">
+          <h4><i class="fas fa-fan"></i> Quạt Cây &amp; Quạt Đứng</h4>
+          <p>Sải cánh 400mm – 750mm, công suất 55W – 250W. Chân đế gang đúc chống rung, 3 cấp tốc độ gió mạnh mẽ, linh hoạt di chuyển trong mọi không gian.</p>
+        </div>
+        <div class="cdb-card-item">
+          <h4><i class="fas fa-wind"></i> Quạt Treo &amp; Quạt Đảo Trần</h4>
+          <p>Tiết kiệm 100% diện tích sàn, góc quay 90° – 360°, có tuốc năng đảo chiều hoặc điều khiển từ xa thông minh cho quán cafe, lớp học, hội trường.</p>
+        </div>
+        <div class="cdb-card-item">
+          <h4><i class="fas fa-industry"></i> Quạt Hút Vuông Công Nghiệp</h4>
+          <p>Lưu lượng gió cực đại 8.000 – 44.000 m³/h, cánh inox 430 chống rỉ, chớp che mưa tự động, chuyên dụng làm mát áp suất âm với tấm Cooling Pad.</p>
+        </div>
+        <div class="cdb-card-item">
+          <h4><i class="fas fa-fire-extinguisher"></i> Quạt Ly Tâm &amp; PCCC</h4>
+          <p>Quạt ly tâm hút bụi gỗ, bụi sơn, hút khói sự cố PCCC đạt tiêu chuẩn kiểm định PCCC và TCVN 5687:2010, chịu nhiệt 280°C – 300°C trong 2 giờ.</p>
+        </div>
+      </div>
+
+      <div class="cdb-collapse-content" id="sp-more-desc">
+        <h3><i class="fas fa-check-circle"></i> Tiêu Chí Kỹ Thuật Khi Lựa Chọn Quạt Theo Nhu Cầu</h3>
+        <ul>
+          <li><strong>Xác định thể tích không gian (V = Dài x Rộng x Cao):</strong> Với nhà xưởng hoặc kho bãi, cần tính toán số lần trao đổi khí mỗi giờ (từ 30 – 60 lần/giờ) theo tiêu chuẩn <em>TCVN 5687:2010</em> để chọn tổng lưu lượng ($Q$) phù hợp, tránh lãng phí điện hoặc thiếu gió.</li>
+          <li><strong>Độ ồn cho phép:</strong> Đối với không gian dân dụng, văn phòng nên chọn quạt có độ ồn dưới 55dB; đối với môi trường sản xuất công nghiệp cho phép độ ồn từ 65dB – 75dB.</li>
+          <li><strong>Điện áp sử dụng:</strong> Quạt dân dụng dùng điện 1 pha 220V/50Hz. Các dòng quạt hút công nghiệp sải cánh từ 900mm – 1380mm thường yêu cầu nguồn điện 3 pha 380V để đảm bảo mô-men xoắn và độ bền motor.</li>
+        </ul>
+
+        <div class="cdb-highlight-box">
+          <strong><i class="fas fa-shield-halved"></i> Cam kết chất lượng tại Winline:</strong> 100% sản phẩm phân phối có xuất hóa đơn VAT 10%, giấy chứng nhận xuất xưởng (CQ), chứng nhận nguồn gốc xuất xứ (CO), kiểm định Quatest và phiếu bảo hành chính hãng từ 12 – 24 tháng (hư gì đổi nấy trong 30 ngày).
+        </div>
+      </div>
+
+      <div class="cdb-toggle-wrap">
+        <button type="button" class="cdb-toggle-btn" onclick="toggleCategoryDesc('sp-more-desc', this)">
+          <span>Xem thêm hướng dẫn &amp; thông số</span> <i class="fas fa-chevron-down"></i>
+        </button>
+      </div>
+    </div>
+  </article>
+</div>
+
 <footer class="footer">		
   <!-- Top Blue Bar: Đăng ký nhận tin & Icon mạng xã hội -->
   <div class="tt-footer-default">
@@ -820,5 +875,26 @@ button{font-family:inherit;cursor:pointer;}
 
 <script src="js/products-data.js"></script>
 <script src="js/app.js"></script>
+
+<script>
+function toggleCategoryDesc(id, btn) {
+  const content = document.getElementById(id);
+  if (!content) return;
+  const isOpen = content.classList.contains('open');
+  if (isOpen) {
+    content.classList.remove('open');
+    btn.querySelector('span').textContent = btn.getAttribute('data-text-more') || 'Xem thêm';
+    btn.querySelector('i').className = 'fas fa-chevron-down';
+  } else {
+    content.classList.add('open');
+    if (!btn.getAttribute('data-text-more')) {
+      btn.setAttribute('data-text-more', btn.querySelector('span').textContent);
+    }
+    btn.querySelector('span').textContent = 'Thu gọn nội dung';
+    btn.querySelector('i').className = 'fas fa-chevron-up';
+  }
+}
+</script>
+
 </body>
 </html>

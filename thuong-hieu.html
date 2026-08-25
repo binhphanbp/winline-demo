@@ -652,6 +652,62 @@ button{font-family:inherit;cursor:pointer;}
 <!-- UNIVERSAL MASTER FOOTER (COMPACT & MODERN - WINLINE.VN STANDARD) -->
 <!-- EXACT 100% FOOTER WINLINE.VN -->
 <!-- EXACT 100% FOOTER WINLINE.VN WITH OFFICIAL SOCIAL & LEGAL LINKS -->
+
+<!-- ================= KHỐI MÔ TẢ THƯƠNG HIỆU PHÂN PHỐI ================= -->
+<div class="category-desc-wrap">
+  <article class="category-desc-box">
+    <header class="cdb-header">
+      <i class="fas fa-award"></i>
+      <h2>Hệ Thống Thương Hiệu Quạt Điện &amp; Thiết Bị Thông Gió Uy Tín Phân Phối Tại Winline.vn</h2>
+    </header>
+
+    <div class="cdb-body">
+      <p>
+        Với hơn 20 năm kinh nghiệm trong ngành thiết bị điện cơ khí và thông gió công nghiệp, <strong>Winline Việt Nam</strong> luôn chọn lọc hợp tác với các nhà sản xuất quạt uy tín hàng đầu trong nước và quốc tế. Mọi sản phẩm xuất kho từ Winline đều được kiểm định chất lượng nghiêm ngặt, có đầy đủ tem chống hàng giả, phiếu bảo hành chính hãng và hỗ trợ hồ sơ pháp lý công trình hoàn chỉnh.
+      </p>
+
+      <div class="cdb-grid-cards">
+        <div class="cdb-card-item">
+          <h4><i class="fas fa-shield-alt"></i> Komasu (Việt Nam - Hàn Quốc)</h4>
+          <p>Thương hiệu quạt công nghiệp bán chạy nhất: motor 100% dây đồng nguyên chất, lồng mạ crom siêu bền, sải cánh 500 – 1000mm, độ phủ mát cực đại.</p>
+        </div>
+        <div class="cdb-card-item">
+          <h4><i class="fas fa-star"></i> Panasonic &amp; KDK (Nhật Bản)</h4>
+          <p>Đỉnh cao quạt trần và quạt gia dụng: động cơ DC êm ái, công nghệ Econavi cảm biến thông minh, thiết kế hiện đại sang trọng bậc nhất.</p>
+        </div>
+        <div class="cdb-card-item">
+          <h4><i class="fas fa-flag"></i> Vinawind (Điện Cơ Thống Nhất)</h4>
+          <p>Thương hiệu quốc dân hơn 50 năm tuổi: giá thành kinh tế nhất, độ bền bỉ vượt trội, phụ tùng thay thế sẵn có, được hàng triệu gia đình tin dùng.</p>
+        </div>
+        <div class="cdb-card-item">
+          <h4><i class="fas fa-gear"></i> Chinghai (Đài Loan)</h4>
+          <p>Chuyên quạt đứng, quạt sàn công nghiệp nặng: khung thân gang đúc chắc chắn, sải cánh nhôm dày dặn, chịu môi trường bụi bẩn khắc nghiệt.</p>
+        </div>
+      </div>
+
+      <div class="cdb-collapse-content" id="th-more-desc">
+        <h3><i class="fas fa-handshake"></i> Quyền Lợi Của Khách Hàng Khi Mua Hàng Tại Đại Lý Cấp 1 Winline</h3>
+        <ul>
+          <li><strong>Cam kết 100% chính hãng:</strong> Bồi thường gấp đôi giá trị đơn hàng nếu phát hiện hàng giả, hàng nhái hoặc linh kiện kém chất lượng.</li>
+          <li><strong>Giá đại lý tốt nhất:</strong> Mức chiết khấu từ 5% đến 25% cho các đơn hàng dự án, công trình nhà thầu M&amp;E hoặc khách hàng mua từ 6 sản phẩm.</li>
+          <li><strong>Bảo hành chính hãng:</strong> Hỗ trợ kích hoạt bảo hành điện tử hoặc phiếu bảo hành từ 12 – 24 tháng theo tiêu chuẩn của từng hãng, hỗ trợ linh kiện thay thế trọn đời.</li>
+          <li><strong>Hồ sơ trình nghiệm thu:</strong> Cung cấp nhanh chóng trọn bộ Catalog, bản vẽ kỹ thuật, chứng chỉ xuất xưởng, CQ/CO và hóa đơn VAT 10%.</li>
+        </ul>
+
+        <div class="cdb-highlight-box">
+          <strong><i class="fas fa-circle-check"></i> Tra cứu và liên hệ trực tiếp:</strong> Bạn đang cần tư vấn model phù hợp từ thương hiệu cụ thể? Hãy gọi ngay Hotline <strong>0949.761.893</strong> hoặc chat Zalo để nhận báo giá chiết khấu mới nhất trong 5 phút.
+        </div>
+      </div>
+
+      <div class="cdb-toggle-wrap">
+        <button type="button" class="cdb-toggle-btn" onclick="toggleCategoryDesc('th-more-desc', this)">
+          <span>Xem thêm quyền lợi &amp; danh sách thương hiệu</span> <i class="fas fa-chevron-down"></i>
+        </button>
+      </div>
+    </div>
+  </article>
+</div>
+
 <footer class="footer">		
   <!-- Top Blue Bar: Đăng ký nhận tin & Icon mạng xã hội -->
   <div class="tt-footer-default">
@@ -760,5 +816,26 @@ button{font-family:inherit;cursor:pointer;}
 
 <script src="js/products-data.js"></script>
 <script src="js/app.js"></script>
+
+<script>
+function toggleCategoryDesc(id, btn) {
+  const content = document.getElementById(id);
+  if (!content) return;
+  const isOpen = content.classList.contains('open');
+  if (isOpen) {
+    content.classList.remove('open');
+    btn.querySelector('span').textContent = btn.getAttribute('data-text-more') || 'Xem thêm';
+    btn.querySelector('i').className = 'fas fa-chevron-down';
+  } else {
+    content.classList.add('open');
+    if (!btn.getAttribute('data-text-more')) {
+      btn.setAttribute('data-text-more', btn.querySelector('span').textContent);
+    }
+    btn.querySelector('span').textContent = 'Thu gọn nội dung';
+    btn.querySelector('i').className = 'fas fa-chevron-up';
+  }
+}
+</script>
+
 </body>
 </html>
