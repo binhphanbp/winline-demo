@@ -58,10 +58,10 @@ button{font-family:inherit;cursor:pointer;}
 .sort-wrap select{padding:8px 10px;border:1.5px solid var(--line);border-radius:5px;font-family:inherit;font-size:13px;color:var(--navy-950);background:#fff;}
 
 /* ---------- layout: sidebar lọc + lưới sản phẩm ---------- */
-.listing{max-width:1240px;margin:0 auto;padding:18px 20px 60px;display:grid;grid-template-columns:250px 1fr;gap:26px;}
+.listing{max-width:1240px;margin:0 auto;padding:18px 20px 60px;display:grid;grid-template-columns:250px 1fr;gap:26px;position:relative;z-index:1;}
 @media(max-width:880px){.listing{grid-template-columns:1fr;}}
 
-.filters{background:#fff;border:1px solid var(--line);border-radius:9px;padding:18px;align-self:start;position:sticky;top:80px;}
+.filters{background:#fff;border:1px solid var(--line);border-radius:9px;padding:18px;align-self:start;position:sticky;top:80px;z-index:5;}
 @media(max-width:880px){.filters{position:static;}}
 .filter-group{margin-bottom:20px;padding-bottom:18px;border-bottom:1px solid var(--line);}
 .filter-group:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
