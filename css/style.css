@@ -2048,15 +2048,39 @@ footer.footer, footer.site-footer {
 .top-left-info li a i.fa-twitter { color: #0284c7; }
 .top-left-info li a i.fa-youtube { color: #ff0000; }
 
-.dmca-badge img {
-  height: 28px;
-  width: auto;
+/* DMCA & Bo Cong Thuong Badges (Exact Sizes & Ratios) */
+.dmca-badge {
   display: inline-block;
-  margin-top: 10px;
+  margin-top: 14px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.dmca-badge:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+}
+.dmca-badge img {
+  width: 105px !important;
+  height: auto !important;
+  display: block;
+  border-radius: 3px;
+}
+
+.bocongthuong {
+  display: block;
+  margin-top: 14px;
+}
+.bocongthuong a {
+  display: inline-block;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.bocongthuong a:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
 }
 .bocongthuong img {
-  max-width: 140px;
-  height: auto;
+  width: 135px !important;
+  max-width: 100% !important;
+  height: auto !important;
   display: block;
 }
 
