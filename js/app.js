@@ -919,12 +919,12 @@ function initNavDropdowns() {
   const drops = document.querySelectorAll(".nav-drop");
   drops.forEach(drop => {
     let timeout;
-    const panel = drop.querySelector(".nav-mega-panel, .nav-panel");
+    const panel = drop.querySelector(".nav-mega-panel, .nav-panel, .brand-mega-panel");
     if (!panel) return;
 
     drop.addEventListener("mouseenter", () => {
       clearTimeout(timeout);
-      panel.style.display = panel.classList.contains("nav-panel-wide") ? "grid" : "block";
+      panel.style.display = "block";
       panel.style.opacity = "1";
       panel.style.visibility = "visible";
       panel.style.pointerEvents = "auto";

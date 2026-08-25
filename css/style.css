@@ -442,46 +442,38 @@ nav.catnav {
   top: 100%;
   left: 0;
   background: #ffffff !important;
-  border: 1px solid var(--line);
-  border-top: 3px solid var(--brand-blue);
+  border: 1px solid #dbe4ee;
+  border-top: 3px solid var(--brand-blue, #0060B6);
   box-shadow: 0 16px 36px rgba(7, 34, 66, 0.18);
   border-radius: 0 0 8px 8px;
-  padding: 10px 0;
+  padding: 8px 0;
   min-width: 240px;
   display: none !important;
-  z-index: 999999;
-}
-.nav-panel.nav-panel-wide {
-  width: 760px;
-  display: none !important;
-  grid-template-columns: repeat(3, 1fr);
-  padding: 22px;
-  gap: 22px;
+  z-index: 9999999 !important;
+  white-space: normal !important;
+  box-sizing: border-box;
 }
 .nav-drop:hover > .nav-panel,
 .nav-drop:focus-within > .nav-panel {
   display: block !important;
   animation: fadeInMega 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
-.nav-drop:hover > .nav-panel.nav-panel-wide,
-.nav-drop:focus-within > .nav-panel.nav-panel-wide {
-  display: grid !important;
-  animation: fadeInMega 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
 .nav-panel a {
-  display: block;
-  padding: 7px 14px;
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
   font-size: 13px;
-  color: var(--navy-950) !important;
+  color: var(--navy-950, #072242) !important;
   font-weight: 500;
-  border-radius: 4px;
-  transition: all 0.15s;
+  transition: all 0.15s ease;
   background: transparent !important;
   border-bottom: none !important;
+  text-decoration: none !important;
+  white-space: nowrap;
 }
 .nav-panel a:hover {
-  background: var(--brand-blue-light) !important;
-  color: var(--brand-blue) !important;
+  background: #eef6fd !important;
+  color: #0060B6 !important;
   transform: translateX(3px);
 }
 .np-col .np-title {
@@ -1551,16 +1543,18 @@ nav.catnav {
   top: 100%;
   left: 0;
   background: #ffffff !important;
-  border: 1px solid var(--line);
-  border-top: 3px solid var(--brand-blue);
-  box-shadow: 0 20px 50px rgba(7, 34, 66, 0.28);
+  border: 1px solid #dbe4ee;
+  border-top: 3px solid var(--brand-blue, #0060B6);
+  box-shadow: 0 20px 45px rgba(7, 34, 66, 0.22), 0 4px 14px rgba(7, 34, 66, 0.08);
   border-radius: 0 0 12px 12px;
-  width: 960px;
-  max-width: 90vw;
-  padding: 24px;
+  width: 1020px;
+  max-width: min(1020px, calc(100vw - 32px));
+  padding: 22px 24px;
   z-index: 9999999 !important;
   display: none !important;
   pointer-events: auto;
+  white-space: normal !important;
+  box-sizing: border-box;
 }
 .nav-drop:hover > .nav-mega-panel,
 .nav-drop:focus-within > .nav-mega-panel {
@@ -1570,75 +1564,124 @@ nav.catnav {
 
 .mega-inner {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
   background: #ffffff !important;
+  width: 100%;
+  box-sizing: border-box;
+  white-space: normal !important;
+}
+.mega-col {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  white-space: normal !important;
 }
 .mega-col-title {
   font-size: 12px;
   font-weight: 800;
   text-transform: uppercase;
-  color: var(--navy-950);
-  letter-spacing: 0.05em;
+  color: var(--navy-950, #072242);
+  letter-spacing: 0.04em;
   margin-bottom: 12px;
-  padding-bottom: 6px;
-  border-bottom: 2px solid var(--line);
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e2e8f0;
   display: flex;
   align-items: center;
   gap: 6px;
+  white-space: nowrap;
 }
-.mega-col-title i { color: var(--brand-blue); }
+.mega-col-title i { color: var(--brand-blue, #0060B6); font-size: 13px; }
 .mega-col a {
   display: flex;
-  align-items: center;
-  gap: 6px;
+  align-items: flex-start;
+  gap: 7px;
   padding: 6px 8px;
   font-size: 12.5px;
-  color: var(--ink) !important;
+  color: #1e293b !important;
   font-weight: 500;
-  border-radius: 4px;
+  border-radius: 5px;
   transition: all 0.15s ease;
-  line-height: 1.4;
+  line-height: 1.35;
   margin-bottom: 2px;
+  white-space: normal !important;
+  text-decoration: none !important;
+  border-bottom: none !important;
+  background: transparent !important;
 }
-.mega-col a i { font-size: 10px; color: var(--ink-soft); }
+.mega-col a i { font-size: 10px; color: #94a3b8; margin-top: 3px; flex-shrink: 0; }
 .mega-col a:hover {
-  background: var(--brand-blue-light) !important;
-  color: var(--brand-blue) !important;
-  transform: translateX(4px);
+  background: #eef6fd !important;
+  color: #0060B6 !important;
+  transform: translateX(3px);
 }
-.mega-col a:hover i { color: var(--brand-blue); }
+.mega-col a:hover i { color: #0060B6; }
+
+.mega-brand-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.mb-pill {
+  display: inline-block;
+  background: #f1f5f9;
+  color: #0060B6 !important;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid #dbe4ee;
+  text-decoration: none !important;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+.mb-pill:hover {
+  background: #0060B6 !important;
+  color: #ffffff !important;
+  border-color: #0060B6;
+}
 
 .mega-promo-box {
-  background: #f0f7ff !important;
+  background: linear-gradient(135deg, #eff6ff 0%, #f8fafc 100%) !important;
   border: 1px solid #bfdbfe !important;
   border-radius: 8px;
   padding: 12px;
   margin-bottom: 12px;
+  box-sizing: border-box;
 }
 .mp-tag {
   font-size: 10px;
   font-weight: 800;
-  color: var(--orange);
+  color: #d41e3d;
   letter-spacing: 0.05em;
   margin-bottom: 4px;
+  text-transform: uppercase;
 }
 .mp-text {
   font-size: 11.5px;
-  color: var(--ink);
+  color: #334155;
   line-height: 1.4;
   margin: 0 0 8px;
+  white-space: normal;
 }
 .mp-btn {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  background: var(--orange);
+  gap: 6px;
+  background: linear-gradient(135deg, #d41e3d 0%, #b91c1c 100%);
   color: #ffffff !important;
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 700;
-  padding: 5px 10px;
+  padding: 6px 12px;
   border-radius: 4px;
+  text-decoration: none !important;
+  border: none;
+  box-shadow: 0 2px 6px rgba(212, 30, 61, 0.3);
+  transition: transform 0.15s ease;
+}
+.mp-btn:hover {
+  transform: translateY(-1px);
 }
 .mega-view-all {
   display: inline-flex;
@@ -1646,10 +1689,15 @@ nav.catnav {
   gap: 6px;
   font-size: 12px;
   font-weight: 700;
-  color: var(--brand-blue) !important;
-  padding: 6px 0;
+  color: #0060B6 !important;
+  text-decoration: none !important;
+  transition: gap 0.15s ease;
+  white-space: normal;
 }
-.mega-view-all:hover { text-decoration: underline; }
+.mega-view-all:hover {
+  text-decoration: underline !important;
+  gap: 9px;
+}
 
 /* Mega Panel: THƯƠNG HIỆU */
 .brand-mega-panel {
