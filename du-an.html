@@ -615,46 +615,112 @@
 </div>
 
 <!-- UNIVERSAL MASTER FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div>
-      <h4 style="color:#ffffff; font-size:15px; margin:0 0 12px; font-weight:800; display:flex; align-items:center; gap:8px;">
-        <i class="fas fa-fan" style="color:var(--brand-blue);"></i> Công ty TNHH Winline Việt Nam
-      </h4>
-      <p style="margin:0 0 8px; line-height:1.6; color:#cbd5e1; font-size:13px;">Đơn vị phân phối chính hãng quạt điện dân dụng, quạt công nghiệp &amp; hệ thống thông gió làm mát hàng đầu miền Bắc.</p>
-      <p style="margin:0 0 4px; font-size:12.5px; color:#94a3b8;"><strong style="color:#ffffff;">Mã số thuế:</strong> 0106085370 (Sở KH&amp;ĐT TP Hà Nội cấp 15/01/2013)</p>
-      <p style="margin:0 0 4px; font-size:12.5px; color:#94a3b8;"><strong style="color:#ffffff;">Trụ sở chính:</strong> Số 7 BT6, Khu đô thị Pháp Vân - Tứ Hiệp, P. Hoàng Liệt, Q. Hoàng Mai, Hà Nội</p>
-      <p style="margin:0 0 4px; font-size:12.5px; color:#94a3b8;"><strong style="color:#ffffff;">Showroom:</strong> Số 17, Ngõ 46 Quan Nhân, P. Trung Hòa, Q. Cầu Giấy / Thanh Xuân, Hà Nội</p>
-    </div>
-    <div>
-      <h4>Danh mục giải pháp</h4>
-      <a href="san-pham.html"><i class="fas fa-chevron-right" style="font-size:10px; margin-right:6px; opacity:0.6;"></i> Quạt cây công nghiệp công suất lớn</a>
-      <a href="san-pham.html"><i class="fas fa-chevron-right" style="font-size:10px; margin-right:6px; opacity:0.6;"></i> Quạt thông gió vuông trang trại &amp; xưởng</a>
-      <a href="san-pham.html"><i class="fas fa-chevron-right" style="font-size:10px; margin-right:6px; opacity:0.6;"></i> Quạt ly tâm hút bụi &amp; hút khói PCCC</a>
-      <a href="san-pham.html"><i class="fas fa-chevron-right" style="font-size:10px; margin-right:6px; opacity:0.6;"></i> Máy làm mát Air Cooler &amp; Cooling Pad</a>
-      <a href="cong-cu-tinh-quat.html"><i class="fas fa-chevron-right" style="font-size:10px; margin-right:6px; opacity:0.6;"></i> Công cụ tính chọn quạt chuẩn TCVN</a>
-    </div>
-    <div>
-      <h4>Chính sách &amp; Cam kết</h4>
-      <a href="gioi-thieu.html"><i class="fas fa-chevron-right" style="font-size:10px; margin-right:6px; opacity:0.6;"></i> Hồ sơ năng lực &amp; Chứng nhận CQ/CO</a>
-      <a href="gioi-thieu.html"><i class="fas fa-chevron-right" style="font-size:10px; margin-right:6px; opacity:0.6;"></i> Chính sách bảo hành tận nơi</a>
-      <a href="san-pham.html"><i class="fas fa-chevron-right" style="font-size:10px; margin-right:6px; opacity:0.6;"></i> Chiết khấu số lượng lớn cho nhà thầu</a>
-      <a href="du-an.html"><i class="fas fa-chevron-right" style="font-size:10px; margin-right:6px; opacity:0.6;"></i> Dự án công trình tiêu biểu</a>
-      <a href="lien-he.html"><i class="fas fa-chevron-right" style="font-size:10px; margin-right:6px; opacity:0.6;"></i> Bản đồ chỉ đường &amp; liên hệ</a>
-    </div>
-    <div>
-      <h4>Hotline tư vấn 24/7</h4>
-      <p style="font-size:20px; font-weight:800; color:var(--orange); font-family:'IBM Plex Mono',monospace; margin:0 0 6px;">0949.761.893</p>
-      <p style="font-size:12px; color:#94a3b8; margin:0 0 12px;">Hỗ trợ kỹ thuật &amp; dự án: 1900 099 806</p>
-      <div style="display:flex; gap:8px; flex-wrap:wrap;">
-        <a href="https://zalo.me/0949761893" target="_blank" style="background:#0068ff; color:#fff; padding:8px 16px; border-radius:6px; font-weight:700; font-size:12.5px; display:inline-flex; align-items:center; gap:6px;"><i class="fas fa-comment-dots"></i> Chat Zalo</a>
-        <a href="tel:0949761893" style="background:var(--orange); color:#fff; padding:8px 16px; border-radius:6px; font-weight:700; font-size:12.5px; display:inline-flex; align-items:center; gap:6px;"><i class="fas fa-phone-alt"></i> Gọi ngay</a>
+<!-- UNIVERSAL MASTER FOOTER (COMPACT & MODERN - WINLINE.VN STANDARD) -->
+<footer class="site-footer">
+  <!-- Top Bar: Đăng ký nhận tin + Mạng xã hội -->
+  <div class="footer-top-strip">
+    <div class="footer-top-inner">
+      <div class="footer-newsletter-wrap">
+        <div class="footer-newsletter-title">
+          <i class="fas fa-envelope-open-text" style="color:var(--orange);"></i> Đăng ký nhận báo giá &amp; Ưu đãi:
+        </div>
+        <form class="footer-newsletter-form" onsubmit="event.preventDefault(); alert('Cảm ơn bạn đã đăng ký! Winline sẽ gửi bảng giá và ưu đãi mới nhất qua email.');">
+          <input type="email" placeholder="Nhập email của bạn..." required aria-label="Email nhận tin">
+          <button type="submit"><i class="fas fa-paper-plane"></i> Gửi</button>
+        </form>
+      </div>
+
+      <div class="footer-social-pills">
+        <span style="font-size:12.5px; font-weight:700; color:#cbd5e1; margin-right:4px;">Kết nối:</span>
+        <a href="https://facebook.com" target="_blank" class="social-pill fb" title="Facebook Winline" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://youtube.com" target="_blank" class="social-pill yt" title="YouTube Channel" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://google.com" target="_blank" class="social-pill gg" title="Google Doanh Nghiệp" aria-label="Google"><i class="fab fa-google"></i></a>
+        <a href="https://zalo.me/0949761893" target="_blank" class="social-pill zl" title="Chat Zalo" aria-label="Zalo"><i class="fas fa-comment-dots"></i></a>
       </div>
     </div>
   </div>
-  <div class="footer-bottom">
-    <div>© 2026 Winline Việt Nam. Tất cả quyền được bảo lưu.</div>
-    <div>Đầy đủ hóa đơn GTGT (VAT 10%) &amp; chứng chỉ xuất xưởng CQ/CO.</div>
+
+  <!-- 4 Cột nội dung chính -->
+  <div class="footer-main">
+    <!-- Cột 1: Hỗ trợ khách hàng -->
+    <div class="footer-widget">
+      <h4><i class="fas fa-headset"></i> Hỗ trợ khách hàng</h4>
+      <ul class="footer-links">
+        <li><a href="gioi-thieu.html"><i class="fas fa-chevron-right"></i> Chính sách bảo hành tận nơi</a></li>
+        <li><a href="gioi-thieu.html"><i class="fas fa-chevron-right"></i> Chính sách đổi trả hàng 30 ngày</a></li>
+        <li><a href="gioi-thieu.html"><i class="fas fa-chevron-right"></i> Chính sách vận chuyển toàn quốc</a></li>
+        <li><a href="gioi-thieu.html"><i class="fas fa-chevron-right"></i> Phương thức thanh toán &amp; Hóa đơn VAT</a></li>
+        <li><a href="chi-tiet-san-pham.html"><i class="fas fa-chevron-right"></i> Câu hỏi thường gặp (FAQ)</a></li>
+      </ul>
+    </div>
+
+    <!-- Cột 2: Thông tin Winline.vn -->
+    <div class="footer-widget">
+      <h4><i class="fas fa-building"></i> Về Winline.vn</h4>
+      <ul class="footer-links">
+        <li><a href="gioi-thieu.html"><i class="fas fa-chevron-right"></i> Giới thiệu công ty Winline</a></li>
+        <li><a href="gioi-thieu.html"><i class="fas fa-chevron-right"></i> Hồ sơ năng lực &amp; Chứng nhận CQ/CO</a></li>
+        <li><a href="gioi-thieu.html"><i class="fas fa-chevron-right"></i> Cam kết chất lượng chính hãng 100%</a></li>
+        <li><a href="du-an.html"><i class="fas fa-chevron-right"></i> Dự án &amp; Đơn hàng tiêu biểu</a></li>
+        <li><a href="cong-cu-tinh-quat.html"><i class="fas fa-chevron-right"></i> Công cụ tính quạt chuẩn TCVN</a></li>
+      </ul>
+    </div>
+
+    <!-- Cột 3: Liên hệ & Tổng đài -->
+    <div class="footer-widget">
+      <h4><i class="fas fa-phone-volume"></i> Tổng đài liên hệ</h4>
+      <ul class="footer-contact-list">
+        <li>
+          <i class="fas fa-phone-alt"></i>
+          <div>Bán hàng: <a href="tel:0949761893">0949.761.893</a> <span style="font-size:11.5px;color:#94a3b8;">(8h00 - 17h30)</span></div>
+        </li>
+        <li>
+          <i class="fas fa-tools"></i>
+          <div>Bảo hành: <a href="tel:0963230665">0963.230.665</a></div>
+        </li>
+        <li>
+          <i class="fas fa-shield-alt"></i>
+          <div>Khiếu nại: <a href="tel:0949761893">0949.761.893</a></div>
+        </li>
+        <li>
+          <i class="fas fa-envelope"></i>
+          <div>Email: <a href="mailto:winlinevietnam@gmail.com">winlinevietnam@gmail.com</a></div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Cột 4: Kết nối & Chứng nhận -->
+    <div class="footer-widget">
+      <h4><i class="fas fa-share-nodes"></i> Mạng xã hội</h4>
+      <div class="footer-social-list">
+        <a href="https://facebook.com" target="_blank" class="footer-social-btn"><i class="fab fa-facebook-f" style="color:#1877f2;"></i> Facebook Winline</a>
+        <a href="https://youtube.com" target="_blank" class="footer-social-btn"><i class="fab fa-youtube" style="color:#ff0000;"></i> YouTube Channel</a>
+        <a href="https://google.com" target="_blank" class="footer-social-btn"><i class="fab fa-google" style="color:#ea4335;"></i> Google Doanh nghiệp</a>
+      </div>
+      <div class="footer-bct-badge">
+        <a href="http://online.gov.vn" target="_blank" title="Đã thông báo Bộ Công Thương">
+          <img src="https://bizweb.dktcdn.net/100/391/557/themes/903209/assets/bocongthuong.png?1786933451521" alt="Đã thông báo Bộ Công Thương" loading="lazy">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Thông tin pháp nhân & Địa chỉ (Căn giữa gọn gàng) -->
+  <div class="footer-legal-bar">
+    <div class="footer-legal-inner">
+      <p><strong>Công ty TNHH Winline Việt Nam</strong> &mdash; Giấy chứng nhận ĐKKD &amp; MST: <strong>0106085370</strong> do Sở KH&amp;ĐT TP Hà Nội cấp lần đầu ngày 15/01/2013.</p>
+      <p><strong>Trụ sở chính:</strong> Số 7 BT6, Khu đô thị Pháp Vân - Tứ Hiệp, P. Hoàng Liệt, Q. Hoàng Mai, TP Hà Nội.</p>
+      <p><strong>Văn phòng giao dịch &amp; Kho:</strong> Số 17, Ngõ 46 Quan Nhân, P. Trung Hòa, Q. Cầu Giấy / Thanh Xuân, TP Hà Nội.</p>
+      <p style="color:#64748b; font-size:11.5px; margin-top:4px;">Hệ thống Website: Winline.vn &middot; Quatdiencothongnhat.vn &middot; Chinghaihanoi.vn &middot; Quatdienco.vn</p>
+    </div>
+  </div>
+
+  <!-- Bản quyền -->
+  <div class="footer-copyright-bar">
+    <div class="footer-copyright-inner">
+      <div>&copy; 2026 Bản quyền thuộc về <strong>Winline.vn</strong>. Tất cả quyền được bảo lưu.</div>
+      <div>Đầy đủ hóa đơn GTGT (VAT 10%) &amp; chứng chỉ xuất xưởng CQ/CO.</div>
+    </div>
   </div>
 </footer>
 

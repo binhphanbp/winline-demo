@@ -1823,3 +1823,297 @@ nav.catnav {
   z-index: 2;
   clear: both;
 }
+
+
+/* ==========================================================================
+   UNIVERSAL COMPACT MASTER FOOTER (MATCHING WINLINE.VN STANDARD)
+   ========================================================================== */
+footer.site-footer {
+  background: var(--navy-950, #072242);
+  color: #cbd5e1;
+  padding: 0;
+  margin-top: 40px;
+  font-size: 13px;
+  line-height: 1.6;
+  border-top: 3px solid var(--brand-blue, #0060B6);
+}
+
+/* Footer Top Strip: Subscribe + Social Icons */
+.footer-top-strip {
+  background: rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 16px 20px;
+}
+.footer-top-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.footer-newsletter-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  min-width: 280px;
+  max-width: 600px;
+}
+.footer-newsletter-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.footer-newsletter-form {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+.footer-newsletter-form:focus-within {
+  background: #ffffff;
+  border-color: var(--brand-blue);
+}
+.footer-newsletter-form input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 8px 12px;
+  color: #ffffff;
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+}
+.footer-newsletter-form:focus-within input {
+  color: var(--navy-950);
+}
+.footer-newsletter-form input::placeholder {
+  color: #94a3b8;
+}
+.footer-newsletter-form button {
+  background: var(--orange, #d41e3d);
+  border: none;
+  color: #ffffff;
+  padding: 8px 16px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.15s ease;
+}
+.footer-newsletter-form button:hover {
+  background: var(--orange-dark, #a71830);
+}
+
+/* Social Icon Pills */
+.footer-social-pills {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.social-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-size: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+.social-pill:hover {
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+.social-pill.fb:hover { background: #1877f2; border-color: #1877f2; }
+.social-pill.yt:hover { background: #ff0000; border-color: #ff0000; }
+.social-pill.gg:hover { background: #ea4335; border-color: #ea4335; }
+.social-pill.zl:hover { background: #0068ff; border-color: #0068ff; }
+.social-pill.tw:hover { background: #000000; border-color: #ffffff; }
+
+/* Main 4-Column Footer */
+.footer-main {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 36px 20px 24px;
+  display: grid;
+  grid-template-columns: 1.1fr 1.1fr 1.3fr 0.9fr;
+  gap: 28px;
+}
+@media (max-width: 992px) {
+  .footer-main { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+}
+@media (max-width: 540px) {
+  .footer-main { grid-template-columns: 1fr; gap: 20px; }
+}
+
+.footer-widget h4 {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin: 0 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.footer-widget h4 i {
+  color: var(--orange);
+  font-size: 14px;
+}
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer-links li {
+  margin-bottom: 8px;
+}
+.footer-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+.footer-links a:hover {
+  color: #ffffff;
+  transform: translateX(3px);
+}
+.footer-links a i {
+  font-size: 10px;
+  opacity: 0.6;
+}
+
+/* Contact List */
+.footer-contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 13px;
+}
+.footer-contact-list li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.footer-contact-list li i {
+  font-size: 14px;
+  color: var(--orange);
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+.footer-contact-list a {
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: none;
+}
+.footer-contact-list a:hover {
+  color: var(--orange);
+  text-decoration: underline;
+}
+
+/* Social Buttons inside widget */
+.footer-social-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.footer-social-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 7px 12px;
+  border-radius: 6px;
+  color: #cbd5e1;
+  font-size: 12.5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+.footer-social-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  transform: translateX(2px);
+}
+.footer-social-btn i {
+  font-size: 14px;
+  width: 16px;
+  text-align: center;
+}
+
+.footer-bct-badge {
+  display: inline-block;
+  margin-top: 6px;
+}
+.footer-bct-badge img {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Legal & Corporate bottom info */
+.footer-legal-bar {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.35);
+  padding: 16px 20px;
+  font-size: 12px;
+  color: #94a3b8;
+  line-height: 1.7;
+}
+.footer-legal-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  text-align: center;
+}
+.footer-legal-inner p {
+  margin: 0 0 4px;
+}
+.footer-legal-inner strong {
+  color: #ffffff;
+}
+
+/* Copyright Bar */
+.footer-copyright-bar {
+  background: #041427;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 12px 20px;
+  font-size: 12px;
+  color: #64748b;
+}
+.footer-copyright-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
