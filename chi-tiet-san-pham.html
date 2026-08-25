@@ -67,20 +67,10 @@ button{font-family:inherit;cursor:pointer;}
   flex-shrink:0;
 }
 .logo span{color:var(--orange);}
-.search-wrap{flex:1;position:relative;max-width:640px;}
-.search-box{
-  width:100%;padding:11px 46px 11px 16px;
-  border:1.5px solid var(--line);border-radius:var(--radius);
-  font-size:14.5px;background:var(--paper);
-  font-family:inherit;
-}
-.search-box:focus{outline:none;border-color:var(--navy-700);background:var(--white);}
-.search-btn{
-  position:absolute;right:6px;top:50%;transform:translateY(-50%);
-  background:var(--navy-950);border:none;color:#fff;
-  width:34px;height:34px;border-radius:4px;
-  display:flex;align-items:center;justify-content:center;
-}
+
+
+
+
 .search-suggest{
   position:absolute;top:calc(100% + 6px);left:0;right:0;
   background:#fff;border:1px solid var(--line);border-radius:var(--radius);
@@ -91,9 +81,9 @@ button{font-family:inherit;cursor:pointer;}
 .search-suggest .row{display:flex;justify-content:space-between;padding:8px 10px;border-radius:4px;}
 .search-suggest .row:hover{background:var(--navy-100);}
 .search-suggest .row b{color:var(--ink);font-weight:600;}
-.header-actions{display:flex;align-items:center;gap:18px;flex-shrink:0;}
-.header-actions .item{display:flex;flex-direction:column;align-items:center;font-size:11px;color:var(--ink-soft);gap:3px;}
-.header-actions .icon{width:22px;height:22px;color:var(--navy-800);}
+
+
+
 
 /* ---------- category nav (grid-friendly for mobile ref) ---------- */
 
@@ -786,18 +776,8 @@ table.spec-table td:last-child{font-weight:600;color:var(--navy-950);font-family
    ========================================================================== */
 
 /* Logo styling */
-.site-logo-wrap {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-}
-.site-logo-img {
-  height: 36px;
-  width: auto;
-  object-fit: contain;
-  display: block;
-}
+
+
 
 /* Mobile Nav Toggle Button */
 .nav-toggle-btn {
@@ -876,11 +856,7 @@ table.spec-table td:last-child{font-weight:600;color:var(--navy-950);font-family
   .catnav.show-mobile 
   
   
-  .search-wrap {
-    order: 3;
-    width: 100%;
-    margin-top: 10px;
-  }
+  
   
   .listing {
     grid-template-columns: 1fr !important;
