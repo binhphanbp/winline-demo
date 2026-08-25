@@ -13000,79 +13000,263 @@ const WINLINE_DATA = {
       title: "Hướng dẫn tính toán lưu lượng thông gió nhà xưởng theo tiêu chuẩn TCVN 5687:2010",
       category: "Kỹ thuật HVAC",
       badge: "Tiêu chuẩn kỹ thuật",
-      excerpt: "Công thức chuẩn Q = V x T giúp tính toán chính xác tổng lưu lượng khí cần trao đổi mỗi giờ, xác định số lượng quạt vuông 1380 và dàn mát Cooling Pad phù hợp cho từng ngành nghề.",
-      readTime: "5 phút đọc",
+      image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=900&q=80",
+      author: "KS. Nguyễn Hoàng Nam - Ban Kỹ thuật Winline",
       date: "12/08/2026",
-      link: "cong-cu-tinh-quat.html",
-      keywords: ["tính toán", "lưu lượng", "tcvn 5687", "công thức", "hvac", "thông gió nhà xưởng", "ach", "cooling pad", "thể tích", "quạt vuông 1380"]
+      readTime: "6 phút đọc",
+      excerpt: "Công thức chuẩn Q = V x T giúp tính toán chính xác tổng lưu lượng khí cần trao đổi mỗi giờ, xác định số lượng quạt vuông 1380 và dàn mát Cooling Pad phù hợp cho từng ngành nghề.",
+      link: "chi-tiet-tin-tuc.html?id=art-1",
+      keywords: ["tính toán", "lưu lượng", "tcvn 5687", "công thức", "hvac", "thông gió nhà xưởng", "ach", "cooling pad", "thể tích", "quạt vuông 1380"],
+      contentHtml: `
+        <p class="lead-text">Tính toán lưu lượng thông gió là bước kỹ thuật nền tảng quan trọng hàng đầu trong thiết kế hệ thống HVAC nhà xưởng công nghiệp. Một hệ thống thông gió đạt chuẩn không chỉ giúp làm mát môi trường làm việc từ <strong>5 – 8°C</strong>, mà còn kiểm soát nồng độ bụi mịn, khí thải CO2 và đảm bảo sức khỏe cho hàng trăm công nhân vận hành liên tục.</p>
+
+        <div class="callout-box info-callout">
+          <div class="callout-icon"><i class="fas fa-calculator"></i></div>
+          <div class="callout-content">
+            <h4>Công cụ tính toán nhanh tự động của Winline</h4>
+            <p>Để rút ngắn thời gian tính toán thủ công, Winline cung cấp phần mềm tính toán lưu lượng thông gió online chuẩn TCVN. <a href="cong-cu-tinh-quat.html" class="inline-cta-link">Mở công cụ tính quạt ngay →</a></p>
+          </div>
+        </div>
+
+        <h2>1. Công thức tính toán lưu lượng tổng thể (Q = V x T)</h2>
+        <p>Theo tiêu chuẩn quốc gia <strong>TCVN 5687:2010</strong> về Thông gió và Điều hòa không khí, tổng lưu lượng gió tươi cần cung cấp cho nhà xưởng trong 1 giờ được xác định qua công thức:</p>
+        
+        <div class="formula-card">
+          <div class="formula-main">Q = V × T &nbsp;(m³/h)</div>
+          <div class="formula-legend">
+            <ul>
+              <li><strong>Q:</strong> Tổng lưu lượng gió cần thiết cho toàn bộ không gian xưởng (m³/h).</li>
+              <li><strong>V:</strong> Thể tích thực tế của nhà xưởng: <code>V = Dài (L) × Rộng (W) × Cao (H)</code> (m³).</li>
+              <li><strong>T:</strong> Số lần trao đổi không khí trong 1 giờ (Air Changes per Hour - ACH).</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2>2. Bảng tra cứu số lần trao đổi không khí (ACH) theo ngành sản xuất</h2>
+        <p>Tùy thuộc vào lượng nhiệt phát sinh từ máy móc cơ khí và mật độ nhân công, chỉ số trao đổi khí <strong>T</strong> sẽ dao động từ 30 đến 70 lần/giờ:</p>
+
+        <div class="table-responsive">
+          <table class="article-table">
+            <thead>
+              <tr>
+                <th>Ngành nghề / Loại hình xưởng</th>
+                <th>Mức độ phát nhiệt &amp; Bụi</th>
+                <th>Hệ số trao đổi khí T (lần/h)</th>
+                <th>Khuyến nghị thiết bị</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Xưởng may, dệt nhuộm, da giày</strong></td>
+                <td>Nhiệt cao do máy may + mật độ người đông</td>
+                <td><span class="highlight-badge">40 – 60 lần/h</span></td>
+                <td>Quạt hút 1380 + Tấm Cooling Pad</td>
+              </tr>
+              <tr>
+                <td><strong>Xưởng cơ khí, gia công kim loại, CNC</strong></td>
+                <td>Bụi mạt sắt, hơi dầu máy công nghiệp</td>
+                <td><span class="highlight-badge">35 – 50 lần/h</span></td>
+                <td>Quạt composite chống ăn mòn</td>
+              </tr>
+              <tr>
+                <td><strong>Kho chứa hàng, logistic, đóng gói</strong></td>
+                <td>Nhiệt độ trung bình, ít bụi</td>
+                <td><span class="highlight-badge">25 – 35 lần/h</span></td>
+                <td>Quạt thông gió gắn tường</td>
+              </tr>
+              <tr>
+                <td><strong>Trang trại chăn nuôi gia cầm, heo khép kín</strong></td>
+                <td>Khí NH3, độ ẩm cao, phân thải</td>
+                <td><span class="highlight-badge">50 – 70 lần/h</span></td>
+                <td>Quạt trang trại + Cooling Pad áp suất âm</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>3. Ví dụ thực tế: Tính số lượng quạt cho xưởng may 1.500m²</h2>
+        <p>Giả sử một xưởng may công nghiệp có kích thước: <strong>Dài 50m, Rộng 30m, Cao 6m</strong>, quy mô 250 công nhân:</p>
+        <ol class="step-list">
+          <li><strong>Bước 1: Tính thể tích xưởng:</strong> <br><code>V = 50 × 30 × 6 = 9.000 m³</code>.</li>
+          <li><strong>Bước 2: Chọn hệ số trao đổi khí:</strong> <br>Với xưởng may dệt, chọn <code>T = 50 lần/giờ</code>.</li>
+          <li><strong>Bước 3: Tổng lưu lượng khí yêu cầu:</strong> <br><code>Q = 9.000 × 50 = 450.000 m³/h</code>.</li>
+          <li><strong>Bước 4: Chọn model quạt thông gió:</strong> <br>Sử dụng <strong>Quạt thông gió vuông 1380×1380 (công suất lưu lượng 44.500 m³/h)</strong>.</li>
+          <li><strong>Bước 5: Tính số lượng quạt cần lắp đặt:</strong> <br><code>N = 450.000 / 44.500 ≈ 10,1 chiếc</code> $\rightarrow$ Chọn <strong>10 đến 11 quạt vuông 1380</strong>.</li>
+        </ol>
+
+        <div class="callout-box warning-callout">
+          <div class="callout-icon"><i class="fas fa-exclamation-triangle"></i></div>
+          <div class="callout-content">
+            <h4>Lưu ý quan trọng từ kỹ sư Winline</h4>
+            <p>Khi lắp đặt hệ thống làm mát áp suất âm, tổng diện tích dàn cooling pad phải tương thích với lưu lượng hút của quạt để đảm bảo vận tốc gió qua màng tổ ong duy trì từ <strong>1.5 – 2.0 m/s</strong>, tránh hiện tượng hút giọt nước vào xưởng.</p>
+          </div>
+        </div>
+      `
     },
     {
       id: "art-2",
       title: "Giải pháp thông gió áp suất âm kết hợp tấm làm mát Cooling Pad cho xưởng may",
       category: "Giải pháp nhà xưởng",
       badge: "Giải pháp thực tế",
-      excerpt: "Nguyên lý làm mát hạ nhiệt độ từ 5 - 8°C cho không gian dệt may, da giày có mật độ công nhân cao mà không gây ẩm mốc thiết bị cơ điện.",
-      readTime: "4 phút đọc",
+      image: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=900&q=80",
+      author: "Trần Đức Trọng - Trưởng phòng Dự án Winline",
       date: "08/08/2026",
-      link: "giai-phap.html",
-      keywords: ["áp suất âm", "cooling pad", "xưởng may", "dệt may", "giải pháp", "làm mát", "hạ nhiệt", "tấm làm mát"]
+      readTime: "5 phút đọc",
+      excerpt: "Nguyên lý làm mát hạ nhiệt độ từ 5 - 8°C cho không gian dệt may, da giày có mật độ công nhân cao mà không gây ẩm mốc thiết bị cơ điện.",
+      link: "chi-tiet-tin-tuc.html?id=art-2",
+      keywords: ["áp suất âm", "cooling pad", "xưởng may", "dệt may", "giải pháp", "làm mát", "hạ nhiệt", "tấm làm mát"],
+      contentHtml: `
+        <p class="lead-text">Hệ thống làm mát áp suất âm (Negative Pressure Cooling System) là giải pháp kinh tế và hiệu quả nhất hiện nay dành cho các doanh nghiệp may mặc, da giày và bao bì tại Việt Nam. Chi phí đầu tư chỉ bằng <strong>1/3 hệ thống điều hòa không khí trung tâm</strong> nhưng mang lại hiệu quả giảm nhiệt độ rõ rệt từ 5 – 8°C.</p>
+
+        <h2>1. Nguyên lý hoạt động của hệ thống áp suất âm</h2>
+        <p>Hệ thống hoạt động dựa trên sự chênh lệch áp suất không khí giữa bên trong và bên ngoài nhà xưởng:</p>
+        <ul>
+          <li><strong>Đầu hút khí:</strong> Các dãy quạt thông gió công nghiệp công suất lớn (quạt 1380 hoặc 1100) được lắp ở một phía đầu hồi nhà xưởng, liên tục hút khí nóng, bụi sợi vải và mùi hôi đẩy ra ngoài.</li>
+          <li><strong>Đầu cấp khí làm mát:</strong> Phía đối diện được bố trí dàn tấm làm mát Cooling Pad bằng giấy cellulose gợn sóng có nước tuần hoàn liên tục.</li>
+          <li>Khi quạt hút hoạt động, áp suất trong xưởng giảm xuống (áp suất âm), không khí tươi ngoài trời bị hút qua màng ướt Cooling Pad, quá trình bay hơi nước tự nhiên sẽ hấp thụ nhiệt lượng của không khí, thổi vào luồng gió mát lạnh 26 – 28°C.</li>
+        </ul>
+
+        <h2>2. Ưu điểm vượt trội so với điều hòa truyền thống</h2>
+        <div class="table-responsive">
+          <table class="article-table">
+            <thead>
+              <tr>
+                <th>Tiêu chí so sánh</th>
+                <th>Hệ thống Áp suất âm Cooling Pad</th>
+                <th>Điều hòa công nghiệp Chiller</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Chi phí đầu tư ban đầu</strong></td>
+                <td><span class="text-green font-bold">Thấp (Chỉ ~120.000đ - 180.000đ / m²)</span></td>
+                <td>Rất cao (Từ 600.000đ - 1.200.000đ / m²)</td>
+              </tr>
+              <tr>
+                <td><strong>Chi phí điện năng tiêu thụ</strong></td>
+                <td><span class="text-green font-bold">Tiết kiệm 80 - 85% điện năng</span></td>
+                <td>Tiêu hao điện năng rất lớn</td>
+              </tr>
+              <tr>
+                <td><strong>Chất lượng không khí</strong></td>
+                <td>Gió tươi 100% lưu thông liên tục, đẩy sạch bụi</td>
+                <td>Khí tuần hoàn kín, dễ tích tụ mùi</td>
+              </tr>
+              <tr>
+                <td><strong>Chi phí bảo trì</strong></td>
+                <td>Đơn giản, tự bảo dưỡng dễ dàng</td>
+                <td>Cần kỹ thuật viên chuyên sâu, nạp gas định kỳ</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      `
     },
     {
       id: "art-3",
       title: "Kinh nghiệm chọn quạt hút ly tâm vs quạt hướng trục trong hút khói PCCC tầng hầm",
       category: "PCCC & Khí động học",
       badge: "Tư vấn chuyên sâu",
-      excerpt: "Phân biệt ưu nhược điểm giữa quạt ly tâm cột áp cao và quạt hướng trục lưu lượng lớn khi thiết kế hệ thống tăng áp hút khói sự cố theo QCVN 06:2022/BXD.",
-      readTime: "6 phút đọc",
+      image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=900&q=80",
+      author: "KS. Lê Quốc Hùng - Chuyên gia PCCC",
       date: "25/07/2026",
-      link: "giai-phap.html",
-      keywords: ["quạt ly tâm", "quạt hướng trục", "pccc", "hút khói", "tầng hầm", "cột áp", "áp suất", "tăng áp cầu thang"]
+      readTime: "7 phút đọc",
+      excerpt: "Phân biệt ưu nhược điểm giữa quạt ly tâm cột áp cao và quạt hướng trục lưu lượng lớn khi thiết kế hệ thống tăng áp hút khói sự cố theo QCVN 06:2022/BXD.",
+      link: "chi-tiet-tin-tuc.html?id=art-3",
+      keywords: ["quạt ly tâm", "quạt hướng trục", "pccc", "hút khói", "tầng hầm", "cột áp", "áp suất", "tăng áp cầu thang"],
+      contentHtml: `
+        <p class="lead-text">Quy chuẩn kỹ thuật quốc gia <strong>QCVN 06:2022/BXD</strong> về an toàn cháy cho nhà và công trình đặt ra những tiêu chuẩn khắt khe về việc hút khói sự cố hành lang và tăng áp buồng thang thoát hiểm. Việc lựa chọn quạt ly tâm hay quạt hướng trục ảnh hưởng trực tiếp đến tính mạng con người và nghiệm thu công trình.</p>
+
+        <h2>1. Khi nào nên dùng Quạt hút ly tâm (Centrifugal Fan)?</h2>
+        <p>Quạt ly tâm có đặc tính <strong>tạo áp suất tĩnh (cột áp Pa) cực kỳ cao</strong>. Không khí đi vào theo phương dọc trục và bị cánh quạt quay cuốn văng ra theo phương tiếp tuyến với vỏ xoắn ốc.</p>
+        <ul>
+          <li><strong>Ứng dụng tối ưu:</strong> Hệ thống hút khói có đường ống gió dài, nhiều góc cua co/cút, đi qua nhiều tầng hầm hoặc các khu vực cần vượt qua trở lực khí động học lớn.</li>
+          <li><strong>Động cơ chịu nhiệt:</strong> Động cơ quạt ly tâm PCCC thường chịu nhiệt độ 280°C hoặc 300°C trong vòng 2 giờ liên tục.</li>
+        </ul>
+
+        <h2>2. Khi nào nên dùng Quạt hướng trục (Axial Fan)?</h2>
+        <p>Quạt hướng trục tạo ra <strong>lưu lượng gió khổng lồ</strong> với thiết kế nhỏ gọn, khí hút vào và thổi ra cùng phương dọc trục.</p>
+        <ul>
+          <li><strong>Ứng dụng tối ưu:</strong> Hệ thống tăng áp buồng thang bộ, tăng áp giếng thang máy, cấp gió tươi trực tiếp hoặc hút khói tầng hầm thông thoáng ít trở lực đường ống.</li>
+          <li><strong>Ưu điểm:</strong> Lắp đặt trực tiếp vào vách tường hoặc treo trần tiết kiệm tối đa không gian diện tích sàn tầng hầm.</li>
+        </ul>
+      `
     },
     {
       id: "art-4",
       title: "So sánh quạt công nghiệp Komasu, Dasin và Vinawind: Hãng nào bền và êm hơn?",
       category: "Tư vấn chọn mua",
       badge: "Đánh giá thiết bị",
-      excerpt: "Đánh giá chi tiết về động cơ 100% dây đồng, độ ồn, độ bền cánh nhôm đúc và mức tiêu thụ điện năng thực tế giữa 3 thương hiệu quạt công nghiệp hàng đầu hiện nay.",
-      readTime: "4 phút đọc",
+      image: "https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?auto=format&fit=crop&w=900&q=80",
+      author: "Phòng Đánh giá Sản phẩm Winline",
       date: "18/07/2026",
-      link: "thuong-hieu.html",
-      keywords: ["so sánh", "komasu", "dasin", "vinawind", "thương hiệu", "động cơ đồng", "độ bền", "tiết kiệm điện"]
+      readTime: "4 phút đọc",
+      excerpt: "Đánh giá chi tiết về động cơ 100% dây đồng, độ ồn, độ bền cánh nhôm đúc và mức tiêu thụ điện năng thực tế giữa 3 thương hiệu quạt công nghiệp hàng đầu hiện nay.",
+      link: "chi-tiet-tin-tuc.html?id=art-4",
+      keywords: ["so sánh", "komasu", "dasin", "vinawind", "thương hiệu", "động cơ đồng", "độ bền", "tiết kiệm điện"],
+      contentHtml: `
+        <p class="lead-text">Komasu, Dasin và Vinawind (Điện cơ Thống Nhất) là 3 cái tên quen thuộc nhất trên thị trường quạt đứng và quạt treo tường công nghiệp tại Việt Nam. Dưới đây là phân tích chi tiết từ dữ liệu bảo hành thực tế hơn 20 năm phân phối của Winline.</p>
+
+        <h2>1. Đánh giá Quạt Komasu: Sức gió mạnh mẽ & độ bền bỉ</h2>
+        <p>Komasu nổi tiếng với cánh quạt thiết kế bản rộng tạo luồng gió xoáy sâu, động cơ dây đồng quấn công suất thực và chân đế gang nặng đầm chống rung giật khi chạy ở số 3.</p>
+
+        <h2>2. Đánh giá Quạt Dasin: Tiết kiệm điện & linh kiện Đài Loan</h2>
+        <p>Dasin sử dụng công nghệ trục quay vòng bi Nhật Bản giúp vận hành êm dịu, rơ-le nhiệt tự ngắt bảo vệ motor chống cháy chập tối đa.</p>
+
+        <h2>3. Đánh giá Quạt Vinawind: Giá thành quốc dân & dễ sửa chữa</h2>
+        <p>Vinawind là thương hiệu quốc dân với linh kiện thay thế phổ biến, chi phí đầu tư tiết kiệm, phù hợp các công trình và nhà xưởng ngân sách vừa phải.</p>
+      `
     },
     {
       id: "art-5",
       title: "Tiêu chuẩn thông gió và kiểm soát nhiệt độ chuồng trại chăn nuôi khép kín",
       category: "Nông nghiệp kỹ thuật cao",
       badge: "Cẩm nang chăn nuôi",
-      excerpt: "Bí quyết duy trì tốc độ gió 2.0 - 2.5 m/s, hút khí NH3 và điều hòa nhiệt độ tối ưu cho đàn gia cầm, heo thịt trong chuồng trại kín mùa nắng nóng.",
-      readTime: "5 phút đọc",
+      image: "https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=900&q=80",
+      author: "KS. Vũ Minh Đức - Chuyên gia Nông nghiệp",
       date: "05/07/2026",
-      link: "giai-phap.html",
-      keywords: ["trang trại", "chăn nuôi", "chuồng kín", "gia cầm", "heo", "hút amoniac", "tốc độ gió", "cooling pad"]
+      readTime: "5 phút đọc",
+      excerpt: "Bí quyết duy trì tốc độ gió 2.0 - 2.5 m/s, hút khí NH3 và điều hòa nhiệt độ tối ưu cho đàn gia cầm, heo thịt trong chuồng trại kín mùa nắng nóng.",
+      link: "chi-tiet-tin-tuc.html?id=art-5",
+      keywords: ["trang trại", "chăn nuôi", "chuồng kín", "gia cầm", "heo", "hút amoniac", "tốc độ gió", "cooling pad"],
+      contentHtml: `
+        <p class="lead-text">Mô hình chăn nuôi chuồng kín (Tunnel Ventilation) đang trở thành tiêu chuẩn bắt buộc trong ngành chăn nuôi hiện đại nhằm phòng ngừa dịch bệnh và gia tăng trọng lượng đàn vật nuôi. Việc kiểm soát tốc độ gió qua cơ thể vật nuôi tạo ra hiệu ứng làm mát cảm nhận (Wind Chill Effect) vô cùng quan trọng.</p>
+      `
     },
     {
       id: "art-6",
       title: "Quy trình kiểm tra định kỳ, tra dầu mỡ và bảo dưỡng motor quạt công nghiệp",
       category: "Bảo dưỡng & Vận hành",
       badge: "Hướng dẫn kỹ thuật",
-      excerpt: "Các bước tra mỡ ổ bi bạc đạn, kiểm tra độ cân bằng cánh quạt và siết ốc chống rung giúp tăng tuổi thọ động cơ quạt lên trên 7 năm hoạt động liên tục.",
-      readTime: "3 phút đọc",
+      image: "https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?auto=format&fit=crop&w=900&q=80",
+      author: "Bộ phận Kỹ thuật Dịch vụ Winline",
       date: "20/06/2026",
-      link: "gioi-thieu.html",
-      keywords: ["bảo dưỡng", "tra dầu", "động cơ", "motor", "bạc đạn", "rung lắc", "vệ sinh cánh quạt", "bảo hành"]
+      readTime: "4 phút đọc",
+      excerpt: "Các bước tra mỡ ổ bi bạc đạn, kiểm tra độ cân bằng cánh quạt và siết ốc chống rung giúp tăng tuổi thọ động cơ quạt lên trên 7 năm hoạt động liên tục.",
+      link: "chi-tiet-tin-tuc.html?id=art-6",
+      keywords: ["bảo dưỡng", "tra dầu", "động cơ", "motor", "bạc đạn", "rung lắc", "vệ sinh cánh quạt", "bảo hành"],
+      contentHtml: `
+        <p class="lead-text">Bảo dưỡng định kỳ đúng cách có thể kéo dài tuổi thọ động cơ quạt công nghiệp từ 3 năm lên đến hơn 7 năm, đồng thời giảm 15% điện năng tiêu hao do ma sát ổ bạc.</p>
+      `
     },
     {
       id: "art-7",
       title: "Bảng tra cứu kích thước sải cánh, công suất (W) và lưu lượng gió (m³/h) chuẩn",
       category: "Cẩm nang tra cứu",
       badge: "Tài liệu kỹ thuật",
-      excerpt: "Tổng hợp bảng thông số sải cánh từ 500mm, 650mm, 750mm đến quạt thông gió 1380mm cho các kỹ sư cơ điện M&E và nhà thầu xây dựng.",
-      readTime: "4 phút đọc",
+      image: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=900&q=80",
+      author: "Phòng Tiêu chuẩn Kỹ thuật Winline",
       date: "10/06/2026",
-      link: "san-pham.html",
-      keywords: ["bảng tra cứu", "sải cánh", "công suất", "lưu lượng", "m3/h", "750mm", "650mm", "1380mm", "thông số"]
+      readTime: "4 phút đọc",
+      excerpt: "Tổng hợp bảng thông số sải cánh từ 500mm, 650mm, 750mm đến quạt thông gió 1380mm cho các kỹ sư cơ điện M&E và nhà thầu xây dựng.",
+      link: "chi-tiet-tin-tuc.html?id=art-7",
+      keywords: ["bảng tra cứu", "sải cánh", "công suất", "lưu lượng", "m3/h", "750mm", "650mm", "1380mm", "thông số"],
+      contentHtml: `
+        <p class="lead-text">Tổng hợp bảng tra cứu chi tiết các thông số kỹ thuật sải cánh, công suất điện và lưu lượng khí tiêu chuẩn được các kỹ sư M&E sử dụng phổ biến nhất khi lập hồ sơ mời thầu và bóc tách khối lượng quạt công nghiệp.</p>
+      `
     }
   ],
+
 
   popularSearches: [
     { text: "Quạt cây Komasu 750", tag: "Hot", query: "Komasu 750" },

@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chi tiết bài viết | Tin tức & Cẩm nang Kỹ thuật HVAC Winline</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap");
+
+:root {
+  --navy-950: #072242;
+  --navy-800: #0060B6;
+  --navy-700: #1f6690;
+  --navy-100: #e6eef3;
+  --paper: #f8fafc;
+  --white: #ffffff;
+  --ink: #1e293b;
+  --ink-soft: #64748b;
+  --line: #e2e8f0;
+  --orange: #d41e3d;
+  --orange-dark: #a71830;
+  --orange-100: #f4e6e9;
+  --green: #1e8a5f;
+  --radius: 8px;
+  --shadow: 0 4px 20px rgba(13,31,51,.07);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; overflow-x: hidden; max-width: 100%; }
+body {
+  font-family: "Be Vietnam Pro", system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  font-size: 15.5px;
+  line-height: 1.7;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font-family: inherit; cursor: pointer; }
+
+/* Breadcrumb */
+.breadcrumb { max-width: 1240px; margin: 0 auto; padding: 14px 20px 0; font-size: 12.5px; color: var(--ink-soft); }
+.breadcrumb a:hover { color: var(--navy-800); text-decoration: underline; }
+
+/* Article Container Layout */
+.article-detail-layout {
+  max-width: 1240px;
+  margin: 24px auto 60px;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 36px;
+  align-items: start;
+}
+@media (max-width: 960px) {
+  .article-detail-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+/* Main Article Content Card */
+.article-main-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 36px 40px;
+  box-shadow: var(--shadow);
+}
+@media (max-width: 640px) {
+  .article-main-card {
+    padding: 22px 18px;
+  }
+}
+
+/* Header Elements */
+.art-cat-badge {
+  display: inline-block;
+  background: var(--orange-100);
+  color: var(--orange);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+.article-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--navy-950);
+  line-height: 1.35;
+  margin: 0 0 16px;
+  letter-spacing: -0.01em;
+}
+@media (max-width: 640px) {
+  .article-title {
+    font-size: 22px;
+  }
+}
+.article-meta-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-bottom: 20px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+.art-meta-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.art-meta-left span i {
+  color: var(--navy-800);
+  margin-right: 5px;
+}
+.art-share-btns {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.share-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-soft);
+  font-size: 13px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.share-btn:hover {
+  background: var(--navy-800);
+  color: #ffffff;
+  border-color: var(--navy-800);
+}
+
+/* Featured Image */
+.article-cover-img {
+  width: 100%;
+  max-height: 440px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 28px;
+}
+
+/* Table of Contents */
+.toc-box {
+  background: #f8fafc;
+  border: 1.5px solid #dbe4ee;
+  border-left: 4px solid var(--navy-800);
+  border-radius: 8px;
+  padding: 18px 22px;
+  margin-bottom: 32px;
+}
+.toc-title {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--navy-950);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.toc-list {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 13.5px;
+  line-height: 1.8;
+  color: var(--navy-800);
+}
+.toc-list a:hover {
+  text-decoration: underline;
+  color: var(--orange);
+}
+
+/* Article Body Typography */
+.article-body h2 {
+  font-size: 21px;
+  font-weight: 800;
+  color: var(--navy-950);
+  margin: 32px 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 1.5px solid #e2e8f0;
+}
+.article-body h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--navy-950);
+  margin: 24px 0 10px;
+}
+.article-body p {
+  margin: 0 0 18px;
+  color: #334155;
+}
+.article-body .lead-text {
+  font-size: 16.5px;
+  line-height: 1.75;
+  color: #1e293b;
+  font-weight: 500;
+}
+.article-body ul, .article-body ol {
+  margin: 0 0 20px 20px;
+  padding-left: 0;
+}
+.article-body li {
+  margin-bottom: 8px;
+  color: #334155;
+}
+
+/* Callout Alert Boxes */
+.callout-box {
+  display: flex;
+  gap: 16px;
+  padding: 18px 20px;
+  border-radius: 8px;
+  margin: 24px 0;
+}
+.info-callout {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-left: 4px solid #0060B6;
+}
+.warning-callout {
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-left: 4px solid #f59e0b;
+}
+.callout-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.info-callout .callout-icon { color: #0060B6; }
+.warning-callout .callout-icon { color: #d97706; }
+.callout-content h4 {
+  font-size: 14.5px;
+  font-weight: 700;
+  margin: 0 0 4px;
+  color: var(--navy-950);
+}
+.callout-content p {
+  font-size: 13.5px;
+  margin: 0;
+  color: #475569;
+}
+.inline-cta-link {
+  color: var(--navy-800);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+/* Formula Card */
+.formula-card {
+  background: linear-gradient(135deg, #072242 0%, #1f6690 100%);
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 22px 26px;
+  margin: 24px 0;
+  box-shadow: 0 4px 15px rgba(7,34,66,0.15);
+}
+.formula-main {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 22px;
+  font-weight: 700;
+  color: #facc15;
+  text-align: center;
+  padding: 10px 0 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  margin-bottom: 14px;
+  letter-spacing: 0.05em;
+}
+.formula-legend ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 13.5px;
+}
+.formula-legend li {
+  color: #e2e8f0;
+  margin-bottom: 6px;
+}
+.formula-legend code {
+  background: rgba(255,255,255,0.15);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: "IBM Plex Mono", monospace;
+  color: #facc15;
+}
+
+/* Article Technical Table */
+.table-responsive {
+  overflow-x: auto;
+  margin: 24px 0;
+}
+.article-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.article-table th {
+  background: #f1f5f9;
+  color: var(--navy-950);
+  font-weight: 700;
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--line);
+}
+.article-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #334155;
+}
+.article-table tr:hover td {
+  background: #f8fafc;
+}
+.highlight-badge {
+  display: inline-block;
+  background: #dbeafe;
+  color: #1e40af;
+  font-weight: 700;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* Author Box */
+.author-box {
+  background: #f8fafc;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 22px 24px;
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.author-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--navy-800);
+  color: #ffffff;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.author-info h4 {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--navy-950);
+  margin: 0 0 4px;
+}
+.author-info p {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* Related Products Band inside Article */
+.related-prod-section {
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 2px dashed var(--line);
+}
+.rps-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--navy-950);
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.rps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+@media (max-width: 640px) {
+  .rps-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.rps-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+.rps-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--navy-800);
+}
+.rps-img {
+  width: 100%;
+  height: 120px;
+  object-fit: contain;
+  margin-bottom: 8px;
+}
+.rps-name {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--navy-950);
+  margin-bottom: 6px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 36px;
+}
+.rps-price {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--orange);
+}
+
+/* Sidebar Widgets */
+.news-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: sticky;
+  top: 20px;
+}
+.widget-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+.widget-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--navy-950);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin: 0 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--navy-800);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.widget-title i { color: var(--navy-800); }
+
+.side-art-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.side-art-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.side-art-thumb {
+  width: 70px;
+  height: 52px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.side-art-title {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--navy-950);
+  line-height: 1.35;
+  margin: 0 0 4px;
+}
+.side-art-title a:hover { color: var(--navy-800); }
+.side-art-date { font-size: 11px; color: #94a3b8; }
+</style>
+</head>
+<body>
+
+<div class="utility-bar">
+  <div class="wrap">
+    <div class="u-left">
+      <span><i class="fas fa-shield-alt" style="color:var(--orange);"></i> Hơn 20 năm phân phối quạt điện & quạt công nghiệp chính hãng</span>
+      <span class="sep">|</span>
+      <a href="gioi-thieu.html"><i class="fas fa-file-contract"></i> Hồ sơ năng lực & CQ/CO</a>
+    </div>
+    <div class="u-right">
+      <a href="tel:0949761893"><i class="fas fa-phone-alt" style="color:var(--orange);"></i> Hotline tư vấn: <strong>0949.761.893</strong></a>
+      <span class="sep">|</span>
+      <a href="tel:0963230665"><i class="fas fa-tools"></i> Bảo hành: 0963.230.665</a>
+    </div>
+  </div>
+</div>
+
+<header class="site">
+  <div class="header-inner">
+    <div class="header-mobile-top-row">
+      <button onclick="toggleMobileDrawer()" class="mobile-menu-btn" aria-label="Mở danh mục menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <a href="index.html" class="site-logo-wrap" aria-label="Trang chủ Winline.vn">
+        <img src="assets/images/logo.png" alt="Winline Việt Nam" class="site-logo-img">
+      </a>
+      <div class="header-actions">
+        <a href="tel:0949761893" class="item" aria-label="Gọi hotline">
+          <div class="icon"><i class="fas fa-phone-volume"></i></div>
+          <span class="desktop-only-label">Gọi ngay</span>
+        </a>
+        <div onclick="openCartDrawer()" class="item" style="cursor:pointer;" aria-label="Giỏ hàng">
+          <div class="icon" style="position:relative;">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-badge-count" style="position:absolute; top:-6px; right:-8px; background:var(--orange); color:#fff; font-size:10px; font-weight:700; width:17px; height:17px; border-radius:50%; display:none; align-items:center; justify-content:center;">0</span>
+          </div>
+          <span class="desktop-only-label">Giỏ hàng</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="search-wrap">
+      <form action="san-pham.html" method="GET" style="display:flex; width:100%; position:relative;">
+        <input class="search-box header-search-input" name="q" type="text" placeholder="Tìm kiếm quạt công nghiệp, quạt ly tâm, quạt thông gió, quạt cây...">
+        <button class="search-btn" type="submit" aria-label="Tìm kiếm"><i class="fas fa-search"></i></button>
+      </form>
+    </div>
+  </div>
+</header>
+
+<nav class="catnav">
+  <div class="catnav-inner">
+    <!-- 1. Danh mục sản phẩm (Mega Menu Đa Cấp) -->
+    <div class="nav-drop">
+      <a href="san-pham.html" class="nav-top">
+        <i class="fas fa-bars-staggered"></i> Danh mục sản phẩm <i class="fas fa-chevron-down nav-arrow"></i>
+      </a>
+      <div class="nav-mega-panel">
+        <div class="mega-inner">
+          <div class="mega-col">
+            <div class="mega-col-title"><i class="fas fa-fan"></i> Quạt dân dụng</div>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt trần & đảo trần</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt cây / quạt đứng gia đình</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt treo tường gia đình</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt sàn / quạt chân quỳ</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt hộp & quạt bàn</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt tháp & quạt không cánh</a>
+          </div>
+          <div class="mega-col">
+            <div class="mega-col-title"><i class="fas fa-wind"></i> Quạt công nghiệp</div>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt cây công nghiệp (KM-750, DHF-750)</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt treo tường công nghiệp</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt thông gió vuông trang trại & xưởng</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt ly tâm hút bụi & hút khói PCCC</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt hướng trục tăng áp buồng thang</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt hút xách tay có ống nối gió</a>
+          </div>
+          <div class="mega-col">
+            <div class="mega-col-title"><i class="fas fa-temperature-low"></i> Thông gió & Làm mát</div>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Máy làm mát công nghiệp Air Cooler</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt thông gió gắn tường & âm trần</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt cắt gió (Air Curtain) chống thoát nhiệt</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Tấm làm mát Cooling Pad</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt thu hồi nhiệt ERV Nedfon</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Ống gió mềm & phụ kiện thông gió</a>
+          </div>
+          <div class="mega-col mega-col-featured">
+            <div class="mega-col-title"><i class="fas fa-star"></i> Thương hiệu & Dự án</div>
+            <div class="mega-brand-pills">
+              <a href="thuong-hieu.html" class="mb-pill">Komasu</a>
+              <a href="thuong-hieu.html" class="mb-pill">Panasonic</a>
+              <a href="thuong-hieu.html" class="mb-pill">Vinawind</a>
+              <a href="thuong-hieu.html" class="mb-pill">Deton</a>
+              <a href="thuong-hieu.html" class="mb-pill">Chinghai</a>
+              <a href="thuong-hieu.html" class="mb-pill">Nedfon</a>
+            </div>
+            <div class="mega-promo-box">
+              <div class="mp-tag">CHIẾT KHẤU DỰ ÁN</div>
+              <p class="mp-text">Chiết khấu tốt nhất cho đơn hàng từ 6 sản phẩm & nhà thầu M&E.</p>
+              <a href="tel:0949761893" class="mp-btn"><i class="fas fa-phone-alt"></i> 0949.761.893</a>
+            </div>
+            <a href="san-pham.html" class="mega-view-all">Xem toàn bộ 339+ sản phẩm <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Giới thiệu -->
+    <a href="gioi-thieu.html" class="nav-top">Giới thiệu</a>
+
+    <!-- 3. Giải pháp -->
+    <a href="giai-phap.html" class="nav-top">Giải pháp</a>
+
+    <!-- 4. Dự án -->
+    <a href="du-an.html" class="nav-top">Dự án</a>
+
+    <!-- 5. Công cụ tính quạt -->
+    <a href="cong-cu-tinh-quat.html" class="nav-top"><i class="fas fa-calculator" style="color:var(--orange);"></i> Công cụ tính quạt</a>
+
+    <!-- 6. Tin tức & Hỗ trợ (Active) -->
+    <div class="nav-drop">
+      <a href="tin-tuc.html" class="nav-top active">
+        Tin tức & Hỗ trợ <i class="fas fa-chevron-down nav-arrow"></i>
+      </a>
+      <div class="nav-panel" style="min-width:240px; padding:8px 0;">
+        <a href="tin-tuc.html"><i class="fas fa-newspaper" style="margin-right:8px;color:var(--brand-blue);"></i> Tin tức & Cẩm nang HVAC</a>
+        <a href="gioi-thieu.html"><i class="fas fa-file-invoice" style="margin-right:8px;color:var(--brand-blue);"></i> Hồ sơ năng lực & CQ/CO</a>
+        <a href="gioi-thieu.html"><i class="fas fa-shield-alt" style="margin-right:8px;color:var(--brand-blue);"></i> Chính sách bảo hành tận nơi</a>
+        <a href="gioi-thieu.html"><i class="fas fa-truck-fast" style="margin-right:8px;color:var(--brand-blue);"></i> Chính sách giao hàng toàn quốc</a>
+        <a href="chi-tiet-san-pham.html#panel-desc"><i class="fas fa-circle-question" style="margin-right:8px;color:var(--brand-blue);"></i> Câu hỏi thường gặp (FAQ)</a>
+        <a href="lien-he.html"><i class="fas fa-headset" style="margin-right:8px;color:var(--brand-blue);"></i> Trung tâm hỗ trợ & Liên hệ</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="breadcrumb" id="artBreadcrumb">
+  <a href="index.html">Trang chủ</a> › <a href="tin-tuc.html">Tin tức & Cẩm nang HVAC</a> › <span id="bcCurrent">Chi tiết bài viết</span>
+</div>
+
+<main class="article-detail-layout">
+  <article class="article-main-card">
+    <div class="art-cat-badge" id="artCategory">Kỹ thuật HVAC</div>
+    <h1 class="article-title" id="artTitle">Tiêu đề bài viết đang tải...</h1>
+    
+    <div class="article-meta-bar">
+      <div class="art-meta-left">
+        <span><i class="far fa-user"></i> <strong id="artAuthor">Kỹ sư Winline</strong></span>
+        <span><i class="far fa-calendar-alt"></i> <span id="artDate">--/--/----</span></span>
+        <span><i class="far fa-clock"></i> <span id="artReadTime">5 phút đọc</span></span>
+      </div>
+      <div class="art-share-btns">
+        <span style="font-size:12px; font-weight:600; color:#64748b; margin-right:4px;">Chia sẻ:</span>
+        <button class="share-btn" onclick="copyArticleLink()" title="Sao chép liên kết"><i class="fas fa-link"></i></button>
+        <a href="#" class="share-btn" title="Chia sẻ Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href)); return false;"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="share-btn" title="Chia sẻ Zalo" onclick="window.open('https://zalo.me/share?url='+encodeURIComponent(location.href)); return false;"><i class="fas fa-comment-dots"></i></a>
+      </div>
+    </div>
+
+    <img src="" alt="Ảnh bài viết" class="article-cover-img" id="artCover">
+
+    <!-- Table of contents -->
+    <div class="toc-box">
+      <div class="toc-title"><i class="fas fa-list-ol"></i> Mục lục bài viết</div>
+      <ul class="toc-list" id="tocList">
+        <li><a href="#sec-1">1. Nguyên lý và tiêu chuẩn kỹ thuật cốt lõi</a></li>
+        <li><a href="#sec-2">2. Công thức và bảng tra thông số chuẩn TCVN</a></li>
+        <li><a href="#sec-3">3. Hướng dẫn chọn thiết bị & ví dụ thực tế</a></li>
+      </ul>
+    </div>
+
+    <!-- Article Rich Body -->
+    <div class="article-body" id="artBody">
+      <!-- Injected by JavaScript -->
+    </div>
+
+    <!-- Author Bio Box -->
+    <div class="author-box">
+      <div class="author-avatar"><i class="fas fa-user-tie"></i></div>
+      <div class="author-info">
+        <h4>Ban Kỹ thuật & Dự án Winline Việt Nam</h4>
+        <p>Hơn 20 năm chuyên môn trong lĩnh vực tư vấn thiết kế thông gió công nghiệp, phân phối quạt chính hãng CO/CQ và thi công hệ thống làm mát áp suất âm trên toàn quốc.</p>
+      </div>
+    </div>
+
+    <!-- Related Equipment Section -->
+    <section class="related-prod-section">
+      <div class="rps-title"><i class="fas fa-fan" style="color:var(--navy-800);"></i> Thiết bị liên quan đến bài viết</div>
+      <div class="rps-grid" id="relatedProductsGrid">
+        <!-- Injected by JS -->
+      </div>
+    </section>
+  </article>
+
+  <!-- Sidebar -->
+  <aside class="news-sidebar">
+    <!-- Calculator CTA -->
+    <div class="widget-card" style="background: linear-gradient(135deg, #072242 0%, #0060B6 100%); color:#fff; border:none; text-align:center;">
+      <i class="fas fa-calculator" style="font-size:32px; color:#facc15; margin-bottom:10px; display:inline-block;"></i>
+      <h3 style="font-size:16px; font-weight:800; margin:0 0 8px;">Cần tính số lượng quạt?</h3>
+      <p style="font-size:12.5px; color:#dbe4ee; margin:0 0 16px; line-height:1.5;">Phần mềm tự động tính tổng lưu lượng Q = V x T và gợi ý model quạt tối ưu cho diện tích xưởng của bạn.</p>
+      <a href="cong-cu-tinh-quat.html" style="display:inline-block; background:var(--orange); color:#fff; font-weight:700; font-size:13px; padding:10px 18px; border-radius:6px; box-shadow:0 4px 12px rgba(212,30,61,0.4);">Tính toán ngay →</a>
+    </div>
+
+    <!-- Other Articles List -->
+    <div class="widget-card">
+      <div class="widget-title"><i class="fas fa-newspaper"></i> Bài viết cùng chuyên mục</div>
+      <div class="side-art-list" id="sideArticleList">
+        <!-- Injected by JS -->
+      </div>
+    </div>
+
+    <!-- Technical Hotline -->
+    <div class="widget-card" style="background:#f8fafc; border:1.5px dashed #cbd5e1; text-align:center;">
+      <div style="font-size:12px; font-weight:700; color:var(--ink-soft); text-transform:uppercase;">Tư vấn kỹ thuật trực tiếp</div>
+      <a href="tel:0949761893" style="font-size:20px; font-weight:800; color:var(--orange); display:block; margin:6px 0;"><i class="fas fa-phone-alt"></i> 0949.761.893</a>
+      <div style="font-size:11.5px; color:#64748b;">Khảo sát nhà xưởng & gửi báo giá dự án miễn phí</div>
+    </div>
+  </aside>
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="tt-footer-default">
+    <div class="tt-footer-container">
+      <div class="tt-newsletter-wrap">
+        <h4 class="tt-collapse-title">Đăng ký nhận tin</h4>
+        <form action="#" method="post" class="tt-newsletter-form" onsubmit="event.preventDefault(); alert('Cảm ơn bạn đã đăng ký nhận tin từ Winline.vn!');">
+          <input type="email" placeholder="Email của bạn" name="EMAIL" required aria-label="Email nhận tin">
+          <button type="submit" aria-label="Đăng ký"><i class="fas fa-paper-plane"></i> <span>Đăng ký</span></button>
+        </form>
+      </div>
+
+      <ul class="tt-social-icon">
+        <li><a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+        <li><a href="#" aria-label="Youtube"><i class="fab fa-youtube"></i></a></li>
+        <li><a href="#" aria-label="Zalo"><i class="fas fa-comment-dots"></i></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div>
+        <div class="f-logo">WIN<span>LINE</span></div>
+        <p>CÔNG TY TNHH WINLINE VIỆT NAM</p>
+        <p>Số 17 ngõ 46 phố Quan Nhân, P. Trung Hòa, Q. Cầu Giấy, Hà Nội</p>
+        <p>Hotline: 0949.761.893 · Bảo hành: 0963.230.665</p>
+      </div>
+      <div>
+        <div class="f-title">Danh mục quạt</div>
+        <ul>
+          <li><a href="san-pham.html">Quạt cây công nghiệp</a></li>
+          <li><a href="san-pham.html">Quạt thông gió vuông</a></li>
+          <li><a href="san-pham.html">Quạt ly tâm hút khói</a></li>
+          <li><a href="san-pham.html">Tấm làm mát Cooling Pad</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="f-title">Hồ sơ & Hỗ trợ</div>
+        <ul>
+          <li><a href="tin-tuc.html">Tin tức & Cẩm nang HVAC</a></li>
+          <li><a href="gioi-thieu.html">Hồ sơ năng lực & CQ/CO</a></li>
+          <li><a href="cong-cu-tinh-quat.html">Công cụ tính toán lưu lượng</a></li>
+          <li><a href="lien-he.html">Liên hệ kỹ sư tư vấn</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/products-data.js"></script>
+<script src="js/app.js"></script>
+<script>
+function getQueryParam(param) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(param);
+}
+
+function copyArticleLink() {
+  navigator.clipboard.writeText(window.location.href).then(() => {
+    alert("Đã sao chép liên kết bài viết vào bộ nhớ tạm!");
+  }).catch(() => {
+    alert("Không thể sao chép liên kết.");
+  });
+}
+
+function loadArticleDetail() {
+  const artId = getQueryParam("id") || "art-1";
+  const allArticles = (window.WINLINE_DATA && window.WINLINE_DATA.articles) || [];
+  let article = allArticles.find(a => a.id === artId);
+
+  if (!article) {
+    article = allArticles[0] || {
+      id: "art-1",
+      title: "Hướng dẫn tính toán lưu lượng thông gió nhà xưởng",
+      category: "Kỹ thuật HVAC",
+      author: "Ban Kỹ thuật Winline",
+      date: "12/08/2026",
+      readTime: "6 phút đọc",
+      image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=900&q=80",
+      contentHtml: "<p>Nội dung bài viết đang được cập nhật...</p>"
+    };
+  }
+
+  document.title = article.title + " | Winline.vn";
+  document.getElementById("bcCurrent").textContent = article.title;
+  document.getElementById("artCategory").textContent = article.category;
+  document.getElementById("artTitle").textContent = article.title;
+  document.getElementById("artAuthor").textContent = article.author;
+  document.getElementById("artDate").textContent = article.date;
+  document.getElementById("artReadTime").textContent = article.readTime;
+  
+  const coverEl = document.getElementById("artCover");
+  if (coverEl) {
+    coverEl.src = article.image || "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=900&q=80";
+    coverEl.alt = article.title;
+  }
+
+  const bodyEl = document.getElementById("artBody");
+  if (bodyEl) {
+    bodyEl.innerHTML = article.contentHtml || `<p class="lead-text">${article.excerpt}</p>`;
+  }
+
+  // Render Side Articles
+  const sideList = document.getElementById("sideArticleList");
+  if (sideList) {
+    const otherArticles = allArticles.filter(a => a.id !== article.id).slice(0, 4);
+    sideList.innerHTML = otherArticles.map(a => `
+      <div class="side-art-item">
+        <img src="${a.image || 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=900&q=80'}" class="side-art-thumb" alt="${a.title}">
+        <div>
+          <h4 class="side-art-title"><a href="chi-tiet-tin-tuc.html?id=${a.id}">${a.title}</a></h4>
+          <div class="side-art-date">${a.date} · ${a.readTime}</div>
+        </div>
+      </div>
+    `).join("");
+  }
+
+  // Render Related Products
+  const rpsGrid = document.getElementById("relatedProductsGrid");
+  if (rpsGrid) {
+    const sampleProducts = [
+      { name: "Quạt cây công nghiệp Komasu KM-750S", price: "2.630.000 đ", img: "assets/images/km750s.jpg", link: "chi-tiet-san-pham.html" },
+      { name: "Quạt thông gió vuông 1380 inox 430", price: "3.450.000 đ", img: "https://bizweb.dktcdn.net/thumb/compact/100/391/557/products/thiet-bi-thong-gio-hoi-nhiet-co-loc-2-366d8ceb-f7df-4269-bf27-e2c6379fb850-78576d64-473f-477f-9e73-a7286f6d06c8-1e3c11a9-5f89-41f7-82e9-9946aa7488da-f8b60d43-4cb2-4fba-8261-2a64a7debcdb.jpg", link: "san-pham.html" },
+      { name: "Tấm làm mát Cooling Pad 1800x600x150", price: "420.000 đ", img: "https://bizweb.dktcdn.net/thumb/compact/100/391/557/products/thiet-bi-thong-gio-hoi-nhiet-co-loc-2-366d8ceb-f7df-4269-bf27-e2c6379fb850-78576d64-473f-477f-9e73-a7286f6d06c8-1e3c11a9-5f89-41f7-82e9-9946aa7488da.jpg", link: "san-pham.html" }
+    ];
+    rpsGrid.innerHTML = sampleProducts.map(p => `
+      <div class="rps-card">
+        <img src="${p.img}" alt="${p.name}" class="rps-img">
+        <div class="rps-name">${p.name}</div>
+        <div class="rps-price">${p.price}</div>
+        <a href="${p.link}" style="display:inline-block; margin-top:6px; font-size:11.5px; font-weight:700; color:var(--navy-800); text-decoration:underline;">Xem sản phẩm →</a>
+      </div>
+    `).join("");
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  loadArticleDetail();
+});
+</script>
+</body>
+</html>

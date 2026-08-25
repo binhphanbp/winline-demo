@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tin tức & Cẩm nang Kỹ thuật HVAC | Winline.vn</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap");
+
+:root {
+  --navy-950: #072242;
+  --navy-800: #0060B6;
+  --navy-700: #1f6690;
+  --navy-100: #e6eef3;
+  --paper: #f7f8fa;
+  --white: #ffffff;
+  --ink: #1a2230;
+  --ink-soft: #5c6773;
+  --line: #dde3ea;
+  --orange: #d41e3d;
+  --orange-dark: #a71830;
+  --orange-100: #f4e6e9;
+  --green: #1e8a5f;
+  --radius: 8px;
+  --shadow: 0 2px 12px rgba(13,31,51,.08);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; overflow-x: hidden; max-width: 100%; }
+body {
+  font-family: "Be Vietnam Pro", system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  font-size: 15px;
+  line-height: 1.6;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font-family: inherit; cursor: pointer; }
+
+/* Breadcrumb */
+.breadcrumb { max-width: 1240px; margin: 0 auto; padding: 14px 20px 0; font-size: 12.5px; color: var(--ink-soft); }
+.breadcrumb a:hover { color: var(--navy-800); text-decoration: underline; }
+
+/* News Hero Header */
+.news-hero {
+  background: linear-gradient(135deg, #072242 0%, #0060B6 100%);
+  color: #ffffff;
+  padding: 40px 20px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.news-hero::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at 80% 20%, rgba(255,255,255,0.12) 0%, transparent 60%);
+  pointer-events: none;
+}
+.news-hero h1 {
+  font-size: 30px;
+  font-weight: 800;
+  margin: 0 0 10px;
+  letter-spacing: -0.02em;
+}
+.news-hero p {
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: 15px;
+  color: #dbe4ee;
+  line-height: 1.6;
+}
+
+/* Category Filter Bar */
+.news-nav-wrap {
+  background: #ffffff;
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.news-nav-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.news-cat-btn {
+  padding: 14px 18px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  border: none;
+  background: none;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.news-cat-btn:hover {
+  color: var(--navy-800);
+}
+.news-cat-btn.active {
+  color: var(--orange);
+  border-bottom-color: var(--orange);
+  font-weight: 700;
+}
+
+/* Main Layout Grid */
+.news-layout {
+  max-width: 1240px;
+  margin: 28px auto 60px;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 32px;
+  align-items: start;
+}
+@media (max-width: 960px) {
+  .news-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+/* Featured Article Card */
+.featured-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  margin-bottom: 32px;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.featured-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(7,34,66,0.12);
+}
+@media (max-width: 768px) {
+  .featured-card {
+    grid-template-columns: 1fr;
+  }
+}
+.fc-img {
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  object-fit: cover;
+}
+.fc-body {
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.fc-badge {
+  align-self: flex-start;
+  background: var(--orange-100);
+  color: var(--orange);
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+.fc-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--navy-950);
+  line-height: 1.35;
+  margin: 0 0 12px;
+}
+.fc-title a:hover {
+  color: var(--navy-800);
+}
+.fc-excerpt {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  margin-bottom: 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.fc-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 12px;
+  color: #94a3b8;
+  margin-top: auto;
+}
+.fc-meta i { margin-right: 4px; }
+
+/* Article Grid */
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+@media (max-width: 640px) {
+  .article-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.art-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(13,31,51,0.06);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease;
+}
+.art-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(7,34,66,0.12);
+  border-color: #cbd5e1;
+}
+.art-thumb-wrap {
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  position: relative;
+  background: #e2e8f0;
+}
+.art-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.art-card:hover .art-thumb {
+  transform: scale(1.04);
+}
+.art-badge-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(7, 34, 66, 0.85);
+  backdrop-filter: blur(4px);
+  color: #ffffff;
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+.art-body {
+  padding: 18px 18px 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.art-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 11.5px;
+  color: #94a3b8;
+  margin-bottom: 8px;
+}
+.art-meta-row i { margin-right: 3px; }
+.art-card-title {
+  font-size: 15.5px;
+  font-weight: 700;
+  color: var(--navy-950);
+  line-height: 1.4;
+  margin: 0 0 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.art-card-title a:hover {
+  color: var(--navy-800);
+}
+.art-card-desc {
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  margin-bottom: 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.art-card-footer {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.art-read-btn {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--navy-800);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: gap 0.15s;
+}
+.art-read-btn:hover {
+  color: var(--orange);
+  gap: 8px;
+}
+
+/* Sidebar Widgets */
+.news-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.widget-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+.widget-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--navy-950);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin: 0 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--navy-800);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.widget-title i { color: var(--navy-800); }
+
+/* Sidebar Trending List */
+.trend-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.trend-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.trend-num {
+  font-size: 16px;
+  font-weight: 800;
+  color: #cbd5e1;
+  line-height: 1;
+  width: 20px;
+}
+.trend-item:nth-child(1) .trend-num { color: var(--orange); }
+.trend-item:nth-child(2) .trend-num { color: #f59e0b; }
+.trend-item:nth-child(3) .trend-num { color: var(--navy-800); }
+.trend-info { flex: 1; min-width: 0; }
+.trend-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy-950);
+  line-height: 1.35;
+  margin: 0 0 4px;
+}
+.trend-title a:hover { color: var(--navy-800); }
+.trend-meta { font-size: 11px; color: #94a3b8; }
+
+/* Promo Calculation Widget */
+.calc-promo-widget {
+  background: linear-gradient(135deg, #072242 0%, #1f6690 100%);
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 24px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.calc-promo-widget h3 {
+  font-size: 16px;
+  font-weight: 800;
+  margin: 0 0 8px;
+}
+.calc-promo-widget p {
+  font-size: 12.5px;
+  color: #dbe4ee;
+  margin: 0 0 16px;
+  line-height: 1.5;
+}
+.calc-btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--orange);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 10px 18px;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(212,30,61,0.4);
+  transition: transform 0.2s, background 0.2s;
+}
+.calc-btn-cta:hover {
+  background: var(--orange-dark);
+  transform: translateY(-2px);
+}
+
+/* Hotline Support Box */
+.hotline-widget {
+  background: #f8fafc;
+  border: 1.5px dashed #cbd5e1;
+  border-radius: 10px;
+  padding: 18px;
+  text-align: center;
+}
+.hw-phone {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--orange);
+  margin: 6px 0;
+  display: block;
+}
+.hw-sub {
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+</style>
+</head>
+<body>
+
+<div class="utility-bar">
+  <div class="wrap">
+    <div class="u-left">
+      <span><i class="fas fa-shield-alt" style="color:var(--orange);"></i> Hơn 20 năm phân phối quạt điện & quạt công nghiệp chính hãng</span>
+      <span class="sep">|</span>
+      <a href="gioi-thieu.html"><i class="fas fa-file-contract"></i> Hồ sơ năng lực & CQ/CO</a>
+    </div>
+    <div class="u-right">
+      <a href="tel:0949761893"><i class="fas fa-phone-alt" style="color:var(--orange);"></i> Hotline tư vấn: <strong>0949.761.893</strong></a>
+      <span class="sep">|</span>
+      <a href="tel:0963230665"><i class="fas fa-tools"></i> Bảo hành: 0963.230.665</a>
+    </div>
+  </div>
+</div>
+
+<header class="site">
+  <div class="header-inner">
+    <div class="header-mobile-top-row">
+      <button onclick="toggleMobileDrawer()" class="mobile-menu-btn" aria-label="Mở danh mục menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <a href="index.html" class="site-logo-wrap" aria-label="Trang chủ Winline.vn">
+        <img src="assets/images/logo.png" alt="Winline Việt Nam" class="site-logo-img">
+      </a>
+      <div class="header-actions">
+        <a href="tel:0949761893" class="item" aria-label="Gọi hotline">
+          <div class="icon"><i class="fas fa-phone-volume"></i></div>
+          <span class="desktop-only-label">Gọi ngay</span>
+        </a>
+        <div onclick="openCartDrawer()" class="item" style="cursor:pointer;" aria-label="Giỏ hàng">
+          <div class="icon" style="position:relative;">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-badge-count" style="position:absolute; top:-6px; right:-8px; background:var(--orange); color:#fff; font-size:10px; font-weight:700; width:17px; height:17px; border-radius:50%; display:none; align-items:center; justify-content:center;">0</span>
+          </div>
+          <span class="desktop-only-label">Giỏ hàng</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="search-wrap">
+      <form action="san-pham.html" method="GET" style="display:flex; width:100%; position:relative;">
+        <input class="search-box header-search-input" name="q" type="text" placeholder="Tìm kiếm quạt công nghiệp, quạt ly tâm, quạt thông gió, quạt cây...">
+        <button class="search-btn" type="submit" aria-label="Tìm kiếm"><i class="fas fa-search"></i></button>
+      </form>
+    </div>
+  </div>
+</header>
+
+<nav class="catnav">
+  <div class="catnav-inner">
+    <!-- 1. Danh mục sản phẩm (Mega Menu Đa Cấp) -->
+    <div class="nav-drop">
+      <a href="san-pham.html" class="nav-top">
+        <i class="fas fa-bars-staggered"></i> Danh mục sản phẩm <i class="fas fa-chevron-down nav-arrow"></i>
+      </a>
+      <div class="nav-mega-panel">
+        <div class="mega-inner">
+          <div class="mega-col">
+            <div class="mega-col-title"><i class="fas fa-fan"></i> Quạt dân dụng</div>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt trần & đảo trần</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt cây / quạt đứng gia đình</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt treo tường gia đình</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt sàn / quạt chân quỳ</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt hộp & quạt bàn</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt tháp & quạt không cánh</a>
+          </div>
+          <div class="mega-col">
+            <div class="mega-col-title"><i class="fas fa-wind"></i> Quạt công nghiệp</div>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt cây công nghiệp (KM-750, DHF-750)</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt treo tường công nghiệp</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt thông gió vuông trang trại & xưởng</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt ly tâm hút bụi & hút khói PCCC</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt hướng trục tăng áp buồng thang</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt hút xách tay có ống nối gió</a>
+          </div>
+          <div class="mega-col">
+            <div class="mega-col-title"><i class="fas fa-temperature-low"></i> Thông gió & Làm mát</div>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Máy làm mát công nghiệp Air Cooler</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt thông gió gắn tường & âm trần</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt cắt gió (Air Curtain) chống thoát nhiệt</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Tấm làm mát Cooling Pad</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Quạt thu hồi nhiệt ERV Nedfon</a>
+            <a href="san-pham.html"><i class="fas fa-angle-right"></i> Ống gió mềm & phụ kiện thông gió</a>
+          </div>
+          <div class="mega-col mega-col-featured">
+            <div class="mega-col-title"><i class="fas fa-star"></i> Thương hiệu & Dự án</div>
+            <div class="mega-brand-pills">
+              <a href="thuong-hieu.html" class="mb-pill">Komasu</a>
+              <a href="thuong-hieu.html" class="mb-pill">Panasonic</a>
+              <a href="thuong-hieu.html" class="mb-pill">Vinawind</a>
+              <a href="thuong-hieu.html" class="mb-pill">Deton</a>
+              <a href="thuong-hieu.html" class="mb-pill">Chinghai</a>
+              <a href="thuong-hieu.html" class="mb-pill">Nedfon</a>
+            </div>
+            <div class="mega-promo-box">
+              <div class="mp-tag">CHIẾT KHẤU DỰ ÁN</div>
+              <p class="mp-text">Chiết khấu tốt nhất cho đơn hàng từ 6 sản phẩm & nhà thầu M&E.</p>
+              <a href="tel:0949761893" class="mp-btn"><i class="fas fa-phone-alt"></i> 0949.761.893</a>
+            </div>
+            <a href="san-pham.html" class="mega-view-all">Xem toàn bộ 339+ sản phẩm <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Giới thiệu -->
+    <a href="gioi-thieu.html" class="nav-top">Giới thiệu</a>
+
+    <!-- 3. Giải pháp -->
+    <a href="giai-phap.html" class="nav-top">Giải pháp</a>
+
+    <!-- 4. Dự án -->
+    <a href="du-an.html" class="nav-top">Dự án</a>
+
+    <!-- 5. Công cụ tính quạt -->
+    <a href="cong-cu-tinh-quat.html" class="nav-top"><i class="fas fa-calculator" style="color:var(--orange);"></i> Công cụ tính quạt</a>
+
+    <!-- 6. Tin tức & Hỗ trợ (Active) -->
+    <div class="nav-drop">
+      <a href="tin-tuc.html" class="nav-top active">
+        Tin tức & Hỗ trợ <i class="fas fa-chevron-down nav-arrow"></i>
+      </a>
+      <div class="nav-panel" style="min-width:240px; padding:8px 0;">
+        <a href="tin-tuc.html"><i class="fas fa-newspaper" style="margin-right:8px;color:var(--brand-blue);"></i> Tin tức & Cẩm nang HVAC</a>
+        <a href="gioi-thieu.html"><i class="fas fa-file-invoice" style="margin-right:8px;color:var(--brand-blue);"></i> Hồ sơ năng lực & CQ/CO</a>
+        <a href="gioi-thieu.html"><i class="fas fa-shield-alt" style="margin-right:8px;color:var(--brand-blue);"></i> Chính sách bảo hành tận nơi</a>
+        <a href="gioi-thieu.html"><i class="fas fa-truck-fast" style="margin-right:8px;color:var(--brand-blue);"></i> Chính sách giao hàng toàn quốc</a>
+        <a href="chi-tiet-san-pham.html#panel-desc"><i class="fas fa-circle-question" style="margin-right:8px;color:var(--brand-blue);"></i> Câu hỏi thường gặp (FAQ)</a>
+        <a href="lien-he.html"><i class="fas fa-headset" style="margin-right:8px;color:var(--brand-blue);"></i> Trung tâm hỗ trợ & Liên hệ</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Trang chủ</a> › <span>Tin tức & Cẩm nang Kỹ thuật HVAC</span>
+</div>
+
+<div class="news-hero">
+  <h1>Tin tức & Cẩm nang Kỹ thuật HVAC</h1>
+  <p>Tổng hợp kiến thức tính toán lưu lượng thông gió, cẩm nang chọn mua quạt công nghiệp, quy chuẩn PCCC và kinh nghiệm lắp đặt từ đội ngũ kỹ sư Winline Việt Nam.</p>
+</div>
+
+<div class="news-nav-wrap">
+  <div class="news-nav-inner" id="newsCatTabs">
+    <button class="news-cat-btn active" onclick="filterCategory('all', this)"><i class="fas fa-border-all"></i> Tất cả bài viết</button>
+    <button class="news-cat-btn" onclick="filterCategory('Kỹ thuật HVAC', this)"><i class="fas fa-drafting-compass"></i> Kỹ thuật HVAC</button>
+    <button class="news-cat-btn" onclick="filterCategory('Giải pháp nhà xưởng', this)"><i class="fas fa-industry"></i> Giải pháp nhà xưởng</button>
+    <button class="news-cat-btn" onclick="filterCategory('PCCC & Khí động học', this)"><i class="fas fa-fire-extinguisher"></i> PCCC & Khí động học</button>
+    <button class="news-cat-btn" onclick="filterCategory('Tư vấn chọn mua', this)"><i class="fas fa-comments"></i> Tư vấn chọn mua</button>
+    <button class="news-cat-btn" onclick="filterCategory('Bảo dưỡng & Vận hành', this)"><i class="fas fa-wrench"></i> Bảo dưỡng & Vận hành</button>
+  </div>
+</div>
+
+<main class="news-layout">
+  <div class="news-main-col">
+    <!-- Featured Top Article -->
+    <article class="featured-card">
+      <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=900&q=80" alt="Tính toán lưu lượng thông gió" class="fc-img">
+      <div class="fc-body">
+        <div class="fc-badge">Tiêu chuẩn kỹ thuật HVAC</div>
+        <h2 class="fc-title">
+          <a href="chi-tiet-tin-tuc.html?id=art-1">Hướng dẫn tính toán lưu lượng thông gió nhà xưởng theo tiêu chuẩn TCVN 5687:2010</a>
+        </h2>
+        <p class="fc-excerpt">Công thức chuẩn Q = V x T giúp tính toán chính xác tổng lưu lượng khí cần trao đổi mỗi giờ, xác định số lượng quạt vuông 1380 và dàn mát Cooling Pad phù hợp cho từng ngành nghề.</p>
+        <div class="fc-meta">
+          <span><i class="far fa-calendar-alt"></i> 12/08/2026</span>
+          <span><i class="far fa-clock"></i> 6 phút đọc</span>
+          <span><i class="far fa-user"></i> Ban Kỹ thuật Winline</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Articles Grid -->
+    <div class="article-grid" id="articlesGrid">
+      <!-- Dynamically Rendered by JS -->
+    </div>
+  </div>
+
+  <aside class="news-sidebar">
+    <!-- Search Box Widget -->
+    <div class="widget-card">
+      <div class="widget-title"><i class="fas fa-search"></i> Tìm kiếm bài viết</div>
+      <div style="position:relative;">
+        <input type="text" id="articleSearchInput" placeholder="Nhập từ khóa (áp suất, cooling pad...)" oninput="handleArticleSearch(this.value)" style="width:100%; padding:10px 14px; border:1px solid var(--line); border-radius:6px; font-size:13px; outline:none;">
+      </div>
+    </div>
+
+    <!-- Trending / Most Read Widget -->
+    <div class="widget-card">
+      <div class="widget-title"><i class="fas fa-fire" style="color:var(--orange);"></i> Bài viết đọc nhiều</div>
+      <div class="trend-list" id="trendingList">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+
+    <!-- Sizing Tool Widget -->
+    <div class="calc-promo-widget">
+      <i class="fas fa-calculator" style="font-size:32px; color:#facc15; margin-bottom:12px; display:inline-block;"></i>
+      <h3>Công cụ tính quạt HVAC Online</h3>
+      <p>Nhập chiều dài, rộng, cao xưởng để tính toán tự động số lượng quạt thông gió và tấm màng nước Cooling Pad theo chuẩn TCVN.</p>
+      <a href="cong-cu-tinh-quat.html" class="calc-btn-cta"><i class="fas fa-bolt"></i> Dùng công cụ tính ngay</a>
+    </div>
+
+    <!-- Hotline Technical Widget -->
+    <div class="hotline-widget">
+      <i class="fas fa-headset" style="font-size:26px; color:var(--navy-800); margin-bottom:6px;"></i>
+      <div style="font-weight:700; font-size:13px; color:var(--navy-950);">Cần kỹ sư khảo sát & tư vấn?</div>
+      <a href="tel:0949761893" class="hw-phone"><i class="fas fa-phone-alt"></i> 0949.761.893</a>
+      <div class="hw-sub">Hỗ trợ kỹ thuật M&E và báo giá dự án 24/7</div>
+    </div>
+  </aside>
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="tt-footer-default">
+    <div class="tt-footer-container">
+      <div class="tt-newsletter-wrap">
+        <h4 class="tt-collapse-title">Đăng ký nhận tin</h4>
+        <form action="#" method="post" class="tt-newsletter-form" onsubmit="event.preventDefault(); alert('Cảm ơn bạn đã đăng ký nhận tin từ Winline.vn!');">
+          <input type="email" placeholder="Email của bạn" name="EMAIL" required aria-label="Email nhận tin">
+          <button type="submit" aria-label="Đăng ký"><i class="fas fa-paper-plane"></i> <span>Đăng ký</span></button>
+        </form>
+      </div>
+
+      <ul class="tt-social-icon">
+        <li><a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+        <li><a href="#" aria-label="Youtube"><i class="fab fa-youtube"></i></a></li>
+        <li><a href="#" aria-label="Zalo"><i class="fas fa-comment-dots"></i></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-main">
+    <div class="footer-grid">
+      <div>
+        <div class="f-logo">WIN<span>LINE</span></div>
+        <p>CÔNG TY TNHH WINLINE VIỆT NAM</p>
+        <p>Số 17 ngõ 46 phố Quan Nhân, P. Trung Hòa, Q. Cầu Giấy, Hà Nội</p>
+        <p>Hotline: 0949.761.893 · Bảo hành: 0963.230.665</p>
+      </div>
+      <div>
+        <div class="f-title">Danh mục quạt</div>
+        <ul>
+          <li><a href="san-pham.html">Quạt cây công nghiệp</a></li>
+          <li><a href="san-pham.html">Quạt thông gió vuông</a></li>
+          <li><a href="san-pham.html">Quạt ly tâm hút khói</a></li>
+          <li><a href="san-pham.html">Tấm làm mát Cooling Pad</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="f-title">Hồ sơ & Hỗ trợ</div>
+        <ul>
+          <li><a href="tin-tuc.html">Tin tức & Cẩm nang HVAC</a></li>
+          <li><a href="gioi-thieu.html">Hồ sơ năng lực & CQ/CO</a></li>
+          <li><a href="cong-cu-tinh-quat.html">Công cụ tính toán lưu lượng</a></li>
+          <li><a href="lien-he.html">Liên hệ kỹ sư tư vấn</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/products-data.js"></script>
+<script src="js/app.js"></script>
+<script>
+function renderArticles(articlesToRender) {
+  const grid = document.getElementById("articlesGrid");
+  if (!grid) return;
+
+  if (!articlesToRender || articlesToRender.length === 0) {
+    grid.innerHTML = '<div style="grid-column: 1/-1; text-align:center; padding:40px; background:#fff; border-radius:10px; color:#64748b;">Không tìm thấy bài viết nào phù hợp.</div>';
+    return;
+  }
+
+  grid.innerHTML = articlesToRender.map(art => `
+    <article class="art-card">
+      <div class="art-thumb-wrap">
+        <img src="${art.image || 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=900&q=80'}" alt="${art.title}" class="art-thumb" loading="lazy">
+        <span class="art-badge-tag">${art.category}</span>
+      </div>
+      <div class="art-body">
+        <div class="art-meta-row">
+          <span><i class="far fa-calendar-alt"></i> ${art.date}</span>
+          <span><i class="far fa-clock"></i> ${art.readTime}</span>
+        </div>
+        <h3 class="art-card-title">
+          <a href="chi-tiet-tin-tuc.html?id=${art.id}">${art.title}</a>
+        </h3>
+        <p class="art-card-desc">${art.excerpt}</p>
+        <div class="art-card-footer">
+          <span style="font-size:11.5px; color:#64748b;"><i class="fas fa-user-edit"></i> ${(art.author || 'Kỹ sư Winline').split('-')[0]}</span>
+          <a href="chi-tiet-tin-tuc.html?id=${art.id}" class="art-read-btn">Đọc chi tiết <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </article>
+  `).join("");
+}
+
+function renderTrending(articles) {
+  const trendList = document.getElementById("trendingList");
+  if (!trendList || !articles) return;
+  const topArticles = articles.slice(0, 4);
+
+  trendList.innerHTML = topArticles.map((art, idx) => `
+    <div class="trend-item">
+      <div class="trend-num">0${idx + 1}</div>
+      <div class="trend-info">
+        <h4 class="trend-title">
+          <a href="chi-tiet-tin-tuc.html?id=${art.id}">${art.title}</a>
+        </h4>
+        <div class="trend-meta">
+          <span>${art.category}</span> · <span>${art.date}</span>
+        </div>
+      </div>
+    </div>
+  `).join("");
+}
+
+let currentCategory = 'all';
+
+function filterCategory(cat, btn) {
+  currentCategory = cat;
+  document.querySelectorAll('.news-cat-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+
+  const allArticles = (window.WINLINE_DATA && window.WINLINE_DATA.articles) || [];
+  if (cat === 'all') {
+    renderArticles(allArticles);
+  } else {
+    const filtered = allArticles.filter(a => a.category.toLowerCase().includes(cat.toLowerCase()));
+    renderArticles(filtered);
+  }
+}
+
+function handleArticleSearch(keyword) {
+  const q = keyword.trim().toLowerCase();
+  const allArticles = (window.WINLINE_DATA && window.WINLINE_DATA.articles) || [];
+  if (!q) {
+    filterCategory(currentCategory, null);
+    return;
+  }
+  const results = allArticles.filter(a => 
+    a.title.toLowerCase().includes(q) ||
+    a.excerpt.toLowerCase().includes(q) ||
+    (a.keywords && a.keywords.some(k => k.toLowerCase().includes(q)))
+  );
+  renderArticles(results);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const allArticles = (window.WINLINE_DATA && window.WINLINE_DATA.articles) || [];
+  renderArticles(allArticles);
+  renderTrending(allArticles);
+});
+</script>
+</body>
+</html>
