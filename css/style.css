@@ -144,26 +144,42 @@ button { font-family: inherit; cursor: pointer; touch-action: manipulation; }
 /* ==========================================================================
    PERFECT BULLETPROOF HEADER (DESKTOP & MOBILE - 100% ROBUST)
    ========================================================================== */
-/* Utility Bar */
+/* Utility Bar - Synchronized with Footer Top Bar (Royal Blue Gradient #1d68c4 -> #2b77cf) */
 .utility-bar {
-  background: #144e96;
-  color: #e2e8f0;
-  font-size: 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  background: #1d68c4;
+  background: linear-gradient(90deg, #185db2 0%, #2b77cf 100%);
+  color: #ffffff;
+  font-size: 12.5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 .utility-bar .wrap {
   max-width: 1240px;
   margin: 0 auto;
-  padding: 6px 20px;
+  padding: 7px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 6px;
 }
-.utility-bar a { color: #f1f5f9; font-weight: 500; text-decoration: none; }
-.utility-bar a:hover { color: #ffffff; text-decoration: underline; }
-.utility-bar .sep { opacity: 0.45; margin: 0 8px; }
+.utility-bar a {
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.15s ease, color 0.15s ease;
+}
+.utility-bar a:hover {
+  color: #ffe066;
+  text-decoration: underline;
+}
+.utility-bar .sep {
+  opacity: 0.45;
+  margin: 0 10px;
+  color: #ffffff;
+}
+.utility-bar i {
+  color: #ffe066 !important;
+}
 
 /* Main Sticky Header Container */
 header.site {
@@ -1440,26 +1456,42 @@ footer {
 /* ==========================================================================
    PERFECT BULLETPROOF HEADER (DESKTOP & MOBILE - 100% ROBUST)
    ========================================================================== */
-/* Utility Bar */
+/* Utility Bar - Synchronized with Footer Top Bar (Royal Blue Gradient #1d68c4 -> #2b77cf) */
 .utility-bar {
-  background: #144e96;
-  color: #e2e8f0;
-  font-size: 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  background: #1d68c4;
+  background: linear-gradient(90deg, #185db2 0%, #2b77cf 100%);
+  color: #ffffff;
+  font-size: 12.5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 .utility-bar .wrap {
   max-width: 1240px;
   margin: 0 auto;
-  padding: 6px 20px;
+  padding: 7px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 6px;
 }
-.utility-bar a { color: #f1f5f9; font-weight: 500; text-decoration: none; }
-.utility-bar a:hover { color: #ffffff; text-decoration: underline; }
-.utility-bar .sep { opacity: 0.45; margin: 0 8px; }
+.utility-bar a {
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.15s ease, color 0.15s ease;
+}
+.utility-bar a:hover {
+  color: #ffe066;
+  text-decoration: underline;
+}
+.utility-bar .sep {
+  opacity: 0.45;
+  margin: 0 10px;
+  color: #ffffff;
+}
+.utility-bar i {
+  color: #ffe066 !important;
+}
 
 /* Main Sticky Header Container */
 header.site {
