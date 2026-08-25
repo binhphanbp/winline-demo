@@ -12992,6 +12992,95 @@ const WINLINE_DATA = {
       year: "2022",
       image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80"
     }
+  ],
+
+  articles: [
+    {
+      id: "art-1",
+      title: "Hướng dẫn tính toán lưu lượng thông gió nhà xưởng theo tiêu chuẩn TCVN 5687:2010",
+      category: "Kỹ thuật HVAC",
+      badge: "Tiêu chuẩn kỹ thuật",
+      excerpt: "Công thức chuẩn Q = V x T giúp tính toán chính xác tổng lưu lượng khí cần trao đổi mỗi giờ, xác định số lượng quạt vuông 1380 và dàn mát Cooling Pad phù hợp cho từng ngành nghề.",
+      readTime: "5 phút đọc",
+      date: "12/08/2026",
+      link: "cong-cu-tinh-quat.html",
+      keywords: ["tính toán", "lưu lượng", "tcvn 5687", "công thức", "hvac", "thông gió nhà xưởng", "ach", "cooling pad", "thể tích", "quạt vuông 1380"]
+    },
+    {
+      id: "art-2",
+      title: "Giải pháp thông gió áp suất âm kết hợp tấm làm mát Cooling Pad cho xưởng may",
+      category: "Giải pháp nhà xưởng",
+      badge: "Giải pháp thực tế",
+      excerpt: "Nguyên lý làm mát hạ nhiệt độ từ 5 - 8°C cho không gian dệt may, da giày có mật độ công nhân cao mà không gây ẩm mốc thiết bị cơ điện.",
+      readTime: "4 phút đọc",
+      date: "08/08/2026",
+      link: "giai-phap.html",
+      keywords: ["áp suất âm", "cooling pad", "xưởng may", "dệt may", "giải pháp", "làm mát", "hạ nhiệt", "tấm làm mát"]
+    },
+    {
+      id: "art-3",
+      title: "Kinh nghiệm chọn quạt hút ly tâm vs quạt hướng trục trong hút khói PCCC tầng hầm",
+      category: "PCCC & Khí động học",
+      badge: "Tư vấn chuyên sâu",
+      excerpt: "Phân biệt ưu nhược điểm giữa quạt ly tâm cột áp cao và quạt hướng trục lưu lượng lớn khi thiết kế hệ thống tăng áp hút khói sự cố theo QCVN 06:2022/BXD.",
+      readTime: "6 phút đọc",
+      date: "25/07/2026",
+      link: "giai-phap.html",
+      keywords: ["quạt ly tâm", "quạt hướng trục", "pccc", "hút khói", "tầng hầm", "cột áp", "áp suất", "tăng áp cầu thang"]
+    },
+    {
+      id: "art-4",
+      title: "So sánh quạt công nghiệp Komasu, Dasin và Vinawind: Hãng nào bền và êm hơn?",
+      category: "Tư vấn chọn mua",
+      badge: "Đánh giá thiết bị",
+      excerpt: "Đánh giá chi tiết về động cơ 100% dây đồng, độ ồn, độ bền cánh nhôm đúc và mức tiêu thụ điện năng thực tế giữa 3 thương hiệu quạt công nghiệp hàng đầu hiện nay.",
+      readTime: "4 phút đọc",
+      date: "18/07/2026",
+      link: "thuong-hieu.html",
+      keywords: ["so sánh", "komasu", "dasin", "vinawind", "thương hiệu", "động cơ đồng", "độ bền", "tiết kiệm điện"]
+    },
+    {
+      id: "art-5",
+      title: "Tiêu chuẩn thông gió và kiểm soát nhiệt độ chuồng trại chăn nuôi khép kín",
+      category: "Nông nghiệp kỹ thuật cao",
+      badge: "Cẩm nang chăn nuôi",
+      excerpt: "Bí quyết duy trì tốc độ gió 2.0 - 2.5 m/s, hút khí NH3 và điều hòa nhiệt độ tối ưu cho đàn gia cầm, heo thịt trong chuồng trại kín mùa nắng nóng.",
+      readTime: "5 phút đọc",
+      date: "05/07/2026",
+      link: "giai-phap.html",
+      keywords: ["trang trại", "chăn nuôi", "chuồng kín", "gia cầm", "heo", "hút amoniac", "tốc độ gió", "cooling pad"]
+    },
+    {
+      id: "art-6",
+      title: "Quy trình kiểm tra định kỳ, tra dầu mỡ và bảo dưỡng motor quạt công nghiệp",
+      category: "Bảo dưỡng & Vận hành",
+      badge: "Hướng dẫn kỹ thuật",
+      excerpt: "Các bước tra mỡ ổ bi bạc đạn, kiểm tra độ cân bằng cánh quạt và siết ốc chống rung giúp tăng tuổi thọ động cơ quạt lên trên 7 năm hoạt động liên tục.",
+      readTime: "3 phút đọc",
+      date: "20/06/2026",
+      link: "gioi-thieu.html",
+      keywords: ["bảo dưỡng", "tra dầu", "động cơ", "motor", "bạc đạn", "rung lắc", "vệ sinh cánh quạt", "bảo hành"]
+    },
+    {
+      id: "art-7",
+      title: "Bảng tra cứu kích thước sải cánh, công suất (W) và lưu lượng gió (m³/h) chuẩn",
+      category: "Cẩm nang tra cứu",
+      badge: "Tài liệu kỹ thuật",
+      excerpt: "Tổng hợp bảng thông số sải cánh từ 500mm, 650mm, 750mm đến quạt thông gió 1380mm cho các kỹ sư cơ điện M&E và nhà thầu xây dựng.",
+      readTime: "4 phút đọc",
+      date: "10/06/2026",
+      link: "san-pham.html",
+      keywords: ["bảng tra cứu", "sải cánh", "công suất", "lưu lượng", "m3/h", "750mm", "650mm", "1380mm", "thông số"]
+    }
+  ],
+
+  popularSearches: [
+    { text: "Quạt cây Komasu 750", tag: "Hot", query: "Komasu 750" },
+    { text: "Quạt thông gió vuông 1380", tag: "Bán chạy", query: "Quạt vuông 1380" },
+    { text: "Tính lưu lượng quạt xưởng", tag: "Công cụ", query: "tính lưu lượng" },
+    { text: "Tấm làm mát Cooling Pad", tag: "Giải pháp", query: "Cooling Pad" },
+    { text: "Quạt hút ly tâm PCCC", tag: "Kỹ thuật", query: "Quạt ly tâm" },
+    { text: "Quạt treo tường Vinawind", tag: "Phổ biến", query: "Vinawind" }
   ]
 };
 

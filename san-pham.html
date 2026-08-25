@@ -872,6 +872,31 @@ function toggleCategoryDesc(id, btn) {
     btn.querySelector('i').className = 'fas fa-chevron-up';
   }
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const searchQ = urlParams.get('search');
+  if (searchQ) {
+    const searchInputs = document.querySelectorAll('.header-search-input, .search-box');
+    searchInputs.forEach(i => i.value = searchQ);
+    const normQ = (typeof normalizeVN === 'function') 
+      ? normalizeVN(searchQ) 
+      : searchQ.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').trim();
+    const cards = document.querySelectorAll('.prod-card, .product-card, .card, .item-product');
+    let matchCount = 0;
+    cards.forEach(card => {
+      const text = (card.textContent || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd');
+      if (text.includes(normQ)) {
+        card.style.display = '';
+        matchCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+    const headTitle = document.querySelector('.page-head h1, .cat-title h1, h1');
+    if (headTitle) headTitle.textContent = `Kết quả tìm kiếm: "${searchQ}"`;
+  }
+});
 </script>
 
 </body>

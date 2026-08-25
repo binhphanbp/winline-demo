@@ -586,63 +586,325 @@ function handleConsultSubmit(e) {
   form.reset();
 }
 
-// Live Search Suggestions
+// Smart Multi-Category Search Engine (Categories, Products & Technical Articles)
+function normalizeVN(str) {
+  if (!str) return "";
+  return str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/đ/g, "d").replace(/Đ/g, "d").trim();
+}
+
+function highlightSearchMatch(text, query) {
+  if (!text || !query) return text || "";
+  const clean = text.toString();
+  const qNorm = normalizeVN(query);
+  const tNorm = normalizeVN(clean);
+  const idx = tNorm.indexOf(qNorm);
+  if (idx === -1) return clean;
+  const before = clean.substring(0, idx);
+  const match = clean.substring(idx, idx + query.length);
+  const after = clean.substring(idx + query.length);
+  return `${before}<mark style="background:#fef08a; color:#0f172a; font-weight:700; border-radius:2px; padding:0 2px;">${match}</mark>${after}`;
+}
+
 function initLiveSearch() {
-  const searchInputs = document.querySelectorAll(".header-search-input, .search-box");
+  const searchInputs = document.querySelectorAll(".header-search-input, .search-box, input[type='search']");
+  
   searchInputs.forEach(input => {
-    const parent = input.parentElement;
+    const parent = input.closest(".search-wrap") || input.closest(".search-container") || input.parentElement;
     if (!parent) return;
 
-    let dropdown = parent.querySelector(".search-suggest-dropdown");
+    let dropdown = parent.querySelector(".wn-smart-search-popover, .search-suggest-dropdown, .search-suggest");
     if (!dropdown) {
       dropdown = document.createElement("div");
-      dropdown.className = "search-suggest-dropdown";
-      dropdown.style.cssText = "position:absolute; top:calc(100% + 4px); left:0; right:0; background:#ffffff; border:1px solid var(--line); border-radius:6px; box-shadow:0 10px 25px rgba(7,34,66,0.14); z-index:9999; display:none; max-height:360px; overflow-y:auto;";
+      dropdown.className = "wn-smart-search-popover";
       parent.style.position = "relative";
       parent.appendChild(dropdown);
+    } else {
+      dropdown.className = "wn-smart-search-popover";
     }
 
-    input.addEventListener("input", (e) => {
-      const q = e.target.value.trim().toLowerCase();
-      if (q.length < 2) {
-        dropdown.style.display = "none";
-        dropdown.innerHTML = "";
+    // Default inline styling for safety across all layouts
+    dropdown.style.cssText = "position:absolute; top:calc(100% + 6px); left:0; right:0; background:#ffffff; border:1px solid #dbe4ee; border-radius:10px; box-shadow:0 18px 36px rgba(7,34,66,0.16), 0 4px 12px rgba(7,34,66,0.06); z-index:9999; display:none; max-height:480px; overflow-y:auto; text-align:left;";
+
+    let debounceTimer = null;
+
+    function renderTrending() {
+      const data = window.WINLINE_DATA || {};
+      const popular = data.popularSearches || [
+        { text: "Quạt cây Komasu 750", tag: "Hot", query: "Komasu 750" },
+        { text: "Quạt thông gió vuông 1380", tag: "Bán chạy", query: "Quạt vuông 1380" },
+        { text: "Tính lưu lượng quạt xưởng", tag: "Công cụ", query: "tính lưu lượng" },
+        { text: "Tấm làm mát Cooling Pad", tag: "Giải pháp", query: "Cooling Pad" },
+        { text: "Quạt hút ly tâm PCCC", tag: "Kỹ thuật", query: "Quạt ly tâm" }
+      ];
+      const articles = (data.articles || []).slice(0, 2);
+
+      dropdown.innerHTML = `
+        <div style="padding:14px 16px; display:flex; flex-direction:column; gap:14px;">
+          <!-- Trending keywords -->
+          <div>
+            <div style="display:flex; align-items:center; gap:6px; font-size:11.5px; font-weight:700; text-transform:uppercase; color:#0060B6; letter-spacing:0.04em; margin-bottom:8px;">
+              <span>🔥</span><span>Từ khóa tìm kiếm phổ biến</span>
+            </div>
+            <div style="display:flex; flex-wrap:wrap; gap:6px;">
+              ${popular.map(item => `
+                <button type="button" class="wn-tag-item" data-q="${item.query || item.text}" style="display:inline-flex; align-items:center; gap:5px; background:#f8fafc; border:1px solid #dbe4ee; padding:4px 10px; border-radius:6px; font-size:12px; font-weight:500; color:#1a2230; cursor:pointer; transition:all 0.15s;">
+                  <span>${item.text}</span>
+                  ${item.tag ? `<span style="font-size:9.5px; font-weight:700; background:#d41e3d; color:#fff; padding:1px 4px; border-radius:3px;">${item.tag}</span>` : ''}
+                </button>
+              `).join('')}
+            </div>
+          </div>
+
+          <!-- Quick categories -->
+          <div>
+            <div style="display:flex; align-items:center; gap:6px; font-size:11.5px; font-weight:700; text-transform:uppercase; color:#0060B6; letter-spacing:0.04em; margin-bottom:8px;">
+              <span>📁</span><span>Danh mục ngành hàng chủ lực</span>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:6px;">
+              <a href="san-pham.html?cat=quat-cay-cong-nghiep" style="display:flex; align-items:center; gap:8px; padding:7px 10px; background:#f8fafc; border:1px solid #dbe4ee; border-radius:6px; text-decoration:none; color:#1a2230; font-size:12.5px; font-weight:600;">
+                <span>🌪️</span><span>Quạt cây công nghiệp</span>
+              </a>
+              <a href="san-pham.html?cat=quat-thong-gio-vuong" style="display:flex; align-items:center; gap:8px; padding:7px 10px; background:#f8fafc; border:1px solid #dbe4ee; border-radius:6px; text-decoration:none; color:#1a2230; font-size:12.5px; font-weight:600;">
+                <span>🏭</span><span>Quạt thông gió vuông</span>
+              </a>
+              <a href="san-pham.html?cat=may-lam-mat-nha-xuong" style="display:flex; align-items:center; gap:8px; padding:7px 10px; background:#f8fafc; border:1px solid #dbe4ee; border-radius:6px; text-decoration:none; color:#1a2230; font-size:12.5px; font-weight:600;">
+                <span>❄️</span><span>Máy làm mát & Cooling Pad</span>
+              </a>
+              <a href="cong-cu-tinh-quat.html" style="display:flex; align-items:center; gap:8px; padding:7px 10px; background:#eef6fd; border:1px solid #bfdbfe; border-radius:6px; text-decoration:none; color:#0060B6; font-size:12.5px; font-weight:700;">
+                <span>🧮</span><span>Công cụ tính toán HVAC (Q = V x T)</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Featured Articles -->
+          ${articles.length > 0 ? `
+            <div>
+              <div style="display:flex; align-items:center; gap:6px; font-size:11.5px; font-weight:700; text-transform:uppercase; color:#0060B6; letter-spacing:0.04em; margin-bottom:8px;">
+                <span>📰</span><span>Cẩm nang kỹ thuật khuyên đọc</span>
+              </div>
+              <div style="display:flex; flex-direction:column; gap:6px;">
+                ${articles.map(art => `
+                  <a href="${art.link}" style="display:flex; flex-direction:column; gap:2px; padding:8px 10px; background:#f8fafc; border:1px solid #dbe4ee; border-radius:6px; text-decoration:none;">
+                    <div style="font-size:10px; font-weight:700; text-transform:uppercase; color:#0060B6;">${art.category}</div>
+                    <div style="font-size:12.5px; font-weight:600; color:#072242; line-height:1.35;">${art.title}</div>
+                    <div style="font-size:11px; color:#5c6773;">⏱ ${art.readTime} • ${art.badge}</div>
+                  </a>
+                `).join('')}
+              </div>
+            </div>
+          ` : ''}
+        </div>
+      `;
+
+      dropdown.querySelectorAll(".wn-tag-item").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          input.value = btn.dataset.q;
+          input.focus();
+          handleSearch();
+        });
+      });
+      dropdown.style.display = "block";
+    }
+
+    function handleSearch() {
+      const q = input.value.trim();
+      if (q.length === 0) {
+        renderTrending();
         return;
       }
 
-      let matches = [];
-      if (typeof WINLINE_DATA !== "undefined" && WINLINE_DATA.products) {
-        matches = WINLINE_DATA.products.filter(p =>
-          p.name.toLowerCase().includes(q) ||
-          (p.code && p.code.toLowerCase().includes(q)) ||
-          (p.brandName && p.brandName.toLowerCase().includes(q))
-        );
+      const qNorm = normalizeVN(q);
+      const words = qNorm.split(/\s+/).filter(Boolean);
+      const data = window.WINLINE_DATA || {};
+
+      // 1. Matched Categories
+      const matchedCats = [];
+      if (data.categories) {
+        data.categories.forEach(cat => {
+          const catNorm = normalizeVN(cat.name);
+          const matchCat = words.every(w => catNorm.includes(w));
+          if (cat.children) {
+            cat.children.forEach(sub => {
+              const subNorm = normalizeVN(sub.name);
+              if (words.every(w => subNorm.includes(w)) || matchCat) {
+                matchedCats.push({
+                  name: sub.name,
+                  parentName: cat.name,
+                  link: `san-pham.html?search=${encodeURIComponent(sub.name)}`
+                });
+              }
+            });
+          }
+        });
       }
 
-      if (matches.length === 0) {
-        dropdown.innerHTML = `<div style="padding:14px; text-align:center; font-size:12.5px; color:var(--ink-soft);">Không tìm thấy sản phẩm cho "<strong>${q}</strong>"</div>`;
+      // 2. Matched Products
+      let matchedProds = [];
+      if (data.products) {
+        matchedProds = data.products.filter(p => {
+          const allText = normalizeVN(`${p.name} ${p.code || ''} ${p.brandName || ''} ${p.powerText || ''} ${p.airflowText || ''} ${p.description || ''}`);
+          return words.every(w => allText.includes(w));
+        }).map(p => {
+          let score = 0;
+          const pCodeNorm = normalizeVN(p.code || '');
+          const pNameNorm = normalizeVN(p.name);
+          if (pCodeNorm === qNorm) score += 100;
+          else if (pCodeNorm.includes(qNorm)) score += 50;
+          if (pNameNorm.startsWith(qNorm)) score += 40;
+          else if (pNameNorm.includes(qNorm)) score += 20;
+          return { ...p, score };
+        }).sort((a, b) => b.score - a.score);
+      }
+
+      // 3. Matched Articles
+      let matchedArts = [];
+      if (data.articles) {
+        matchedArts = data.articles.filter(a => {
+          const allText = normalizeVN(`${a.title} ${a.category} ${a.excerpt || ''} ${(a.keywords || []).join(' ')}`);
+          return words.every(w => allText.includes(w));
+        });
+      }
+
+      const totalCount = matchedCats.length + matchedProds.length + matchedArts.length;
+
+      if (totalCount === 0) {
+        dropdown.innerHTML = `
+          <div style="padding:22px 16px; text-align:center;">
+            <div style="font-size:26px; margin-bottom:6px;">🔍</div>
+            <div style="font-size:13.5px; font-weight:600; color:#072242; margin-bottom:4px;">Không tìm thấy kết quả cho "<strong>${q}</strong>"</div>
+            <div style="font-size:12px; color:#5c6773;">Vui lòng thử lại với các từ khóa quạt công nghiệp phổ biến:</div>
+            <div style="display:flex; justify-content:center; flex-wrap:wrap; gap:6px; margin-top:10px;">
+              <button type="button" class="wn-tag-item" data-q="Komasu 750" style="background:#f8fafc; border:1px solid #dbe4ee; padding:4px 8px; border-radius:4px; font-size:11.5px; cursor:pointer;">Komasu 750</button>
+              <button type="button" class="wn-tag-item" data-q="Quạt vuông 1380" style="background:#f8fafc; border:1px solid #dbe4ee; padding:4px 8px; border-radius:4px; font-size:11.5px; cursor:pointer;">Quạt vuông 1380</button>
+              <button type="button" class="wn-tag-item" data-q="Cooling Pad" style="background:#f8fafc; border:1px solid #dbe4ee; padding:4px 8px; border-radius:4px; font-size:11.5px; cursor:pointer;">Cooling Pad</button>
+              <button type="button" class="wn-tag-item" data-q="tính lưu lượng" style="background:#f8fafc; border:1px solid #dbe4ee; padding:4px 8px; border-radius:4px; font-size:11.5px; cursor:pointer;">Tính lưu lượng</button>
+            </div>
+          </div>
+        `;
+        dropdown.querySelectorAll(".wn-tag-item").forEach(btn => {
+          btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            input.value = btn.dataset.q;
+            input.focus();
+            handleSearch();
+          });
+        });
       } else {
         dropdown.innerHTML = `
-          <div style="padding:8px 12px; font-size:11px; font-weight:700; color:var(--brand-blue); background:var(--brand-blue-subtle); border-bottom:1px solid var(--line); text-transform:uppercase;">
-            Gợi ý ${matches.length} sản phẩm phù hợp:
-          </div>
-          ${matches.slice(0, 5).map(p => `
-            <a href="chi-tiet-san-pham.html" style="display:flex; align-items:center; gap:10px; padding:10px 12px; border-bottom:1px solid var(--line); text-decoration:none; transition:background 0.15s;" onmouseover="this.style.background='var(--brand-blue-light)'" onmouseout="this.style.background='#fff'">
-              <img src="${p.image}" onerror="this.src='assets/images/km750s.jpg'" style="width:42px; height:42px; object-fit:contain; border:1px solid var(--line); border-radius:4px; padding:2px; flex-shrink:0; background:#fff;">
-              <div style="flex:1; min-width:0;">
-                <div style="font-size:13px; font-weight:600; color:var(--navy-950); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${p.name}</div>
-                <div style="font-size:11px; color:var(--ink-soft);">${p.powerText ? p.powerText + ' | ' : ''}Lưu lượng: ${p.airflowText || 'Tiêu chuẩn'}</div>
-                <div style="font-size:12.5px; font-weight:700; color:var(--orange); font-family:'IBM Plex Mono',monospace;">${formatVND(p.price)}</div>
+          <div style="padding:14px 16px; display:flex; flex-direction:column; gap:14px;">
+            <!-- Categories -->
+            ${matchedCats.length > 0 ? `
+              <div>
+                <div style="display:flex; align-items:center; gap:6px; font-size:11.5px; font-weight:700; text-transform:uppercase; color:#0060B6; letter-spacing:0.04em; margin-bottom:6px;">
+                  <span>📁</span><span>Danh mục phù hợp (${matchedCats.length})</span>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:3px;">
+                  ${matchedCats.slice(0, 3).map(c => `
+                    <a href="${c.link}" style="display:flex; align-items:center; justify-content:space-between; padding:6px 10px; background:#f8fafc; border-radius:6px; text-decoration:none; font-size:12.5px; transition:background 0.15s;">
+                      <div style="display:flex; align-items:center; gap:6px;">
+                        <span style="width:6px; height:6px; border-radius:50%; background:#d41e3d;"></span>
+                        <span style="font-weight:600; color:#072242;">${highlightSearchMatch(c.name, q)}</span>
+                        <span style="font-size:11px; color:#64748b;">(${c.parentName})</span>
+                      </div>
+                      <span style="color:#0060B6; font-weight:700;">&rarr;</span>
+                    </a>
+                  `).join('')}
+                </div>
               </div>
+            ` : ''}
+
+            <!-- Products -->
+            ${matchedProds.length > 0 ? `
+              <div>
+                <div style="display:flex; align-items:center; gap:6px; font-size:11.5px; font-weight:700; text-transform:uppercase; color:#0060B6; letter-spacing:0.04em; margin-bottom:6px;">
+                  <span>💨</span><span>Sản phẩm & Thiết bị (${matchedProds.length})</span>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:6px;">
+                  ${matchedProds.slice(0, 5).map(p => `
+                    <a href="chi-tiet-san-pham.html" style="display:flex; align-items:center; gap:10px; padding:8px 10px; border:1px solid #edf2f7; border-radius:6px; background:#ffffff; text-decoration:none; transition:all 0.15s;" onmouseover="this.style.background='#f8fafc'; this.style.borderColor='#bfdbfe';" onmouseout="this.style.background='#ffffff'; this.style.borderColor='#edf2f7';">
+                      <img src="${p.image}" onerror="this.src='assets/images/km750s.jpg'" style="width:42px; height:42px; object-fit:contain; border:1px solid #dbe4ee; border-radius:4px; padding:2px; flex-shrink:0; background:#fff;">
+                      <div style="flex:1; min-width:0;">
+                        <div style="display:flex; align-items:center; gap:5px; margin-bottom:2px;">
+                          ${p.code ? `<span style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; font-weight:700; background:#eef6fd; color:#0060B6; padding:1px 4px; border-radius:3px;">${highlightSearchMatch(p.code, q)}</span>` : ''}
+                          <span style="font-size:10px; font-weight:700; text-transform:uppercase; color:#64748b;">${p.brandName || ''}</span>
+                        </div>
+                        <div style="font-size:13px; font-weight:600; color:#072242; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; line-height:1.3;">${highlightSearchMatch(p.name, q)}</div>
+                        <div style="font-size:11px; color:#5c6773; margin-top:2px;">${p.powerText ? p.powerText + ' • ' : ''}Lưu lượng: ${p.airflowText || 'Tiêu chuẩn'}</div>
+                      </div>
+                      <div style="text-align:right; flex-shrink:0;">
+                        <div style="font-family:'IBM Plex Mono',monospace; font-size:13.5px; font-weight:700; color:#d41e3d;">${formatVND(p.price)}</div>
+                        ${p.discount ? `<div style="font-size:9.5px; font-weight:700; background:#d41e3d; color:#fff; padding:1px 4px; border-radius:3px; display:inline-block;">-${p.discount}%</div>` : ''}
+                      </div>
+                    </a>
+                  `).join('')}
+                </div>
+              </div>
+            ` : ''}
+
+            <!-- Articles -->
+            ${matchedArts.length > 0 ? `
+              <div>
+                <div style="display:flex; align-items:center; gap:6px; font-size:11.5px; font-weight:700; text-transform:uppercase; color:#0060B6; letter-spacing:0.04em; margin-bottom:6px;">
+                  <span>📰</span><span>Bài viết & Giải pháp kỹ thuật (${matchedArts.length})</span>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:6px;">
+                  ${matchedArts.slice(0, 3).map(art => `
+                    <a href="${art.link}" style="display:flex; flex-direction:column; gap:2px; padding:8px 10px; background:#f8fafc; border:1px solid #dbe4ee; border-radius:6px; text-decoration:none; transition:background 0.15s;" onmouseover="this.style.background='#eef6fd'" onmouseout="this.style.background='#f8fafc'">
+                      <div style="font-size:10px; font-weight:700; text-transform:uppercase; color:#0060B6;">${art.category}</div>
+                      <div style="font-size:12.5px; font-weight:600; color:#072242; line-height:1.35;">${highlightSearchMatch(art.title, q)}</div>
+                      <div style="font-size:11.5px; color:#5c6773; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">${highlightSearchMatch(art.excerpt || '', q)}</div>
+                      <div style="font-size:10.5px; color:#8c9ba8; margin-top:2px;">⏱ ${art.readTime} • ${art.badge}</div>
+                    </a>
+                  `).join('')}
+                </div>
+              </div>
+            ` : ''}
+
+            <!-- Footer CTA -->
+            <a href="san-pham.html?search=${encodeURIComponent(q)}" style="display:flex; align-items:center; justify-content:space-between; padding:10px 14px; background:#072242; color:#ffffff; border-radius:6px; font-size:12.5px; font-weight:700; text-decoration:none; transition:background 0.2s;" onmouseover="this.style.background='#0060B6'" onmouseout="this.style.background='#072242'">
+              <span>Xem tất cả ${totalCount} kết quả cho "<strong>${q}</strong>"</span>
+              <span>&rarr;</span>
             </a>
-          `).join("")}
-          <a href="san-pham.html" style="display:block; padding:9px; text-align:center; font-size:12px; font-weight:700; color:var(--brand-blue); background:var(--brand-blue-subtle);">
-            Xem toàn bộ sản phẩm &rarr;
-          </a>
+          </div>
         `;
       }
       dropdown.style.display = "block";
+    }
+
+    input.addEventListener("focus", () => {
+      handleSearch();
     });
+
+    input.addEventListener("input", () => {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(handleSearch, 120);
+    });
+
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        dropdown.style.display = "none";
+        input.blur();
+      } else if (e.key === "Enter") {
+        const q = input.value.trim();
+        if (q.length > 0) {
+          window.location.href = `san-pham.html?search=${encodeURIComponent(q)}`;
+        }
+      }
+    });
+
+    const searchBtn = parent.querySelector(".search-btn, button[type='submit'], .btn-search");
+    if (searchBtn) {
+      searchBtn.addEventListener("click", (e) => {
+        const q = input.value.trim();
+        if (q.length > 0) {
+          e.preventDefault();
+          window.location.href = `san-pham.html?search=${encodeURIComponent(q)}`;
+        }
+      });
+    }
 
     document.addEventListener("click", (e) => {
       if (!parent.contains(e.target)) {

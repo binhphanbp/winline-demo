@@ -2312,3 +2312,43 @@ footer.footer, footer.site-footer {
   color: #ffffff !important;
   transform: translateY(-1px);
 }
+
+/* ==========================================================================
+   SMART SEARCH MULTI-CATEGORY AUTOCOMPLETE
+   ========================================================================== */
+.wn-smart-search-popover {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  min-width: 320px;
+  background: #ffffff;
+  border: 1px solid #dbe4ee;
+  border-radius: 10px;
+  box-shadow: 0 20px 40px -6px rgba(7, 34, 66, 0.18), 0 6px 16px -2px rgba(7, 34, 66, 0.08);
+  z-index: 99999;
+  display: none;
+  max-height: 480px;
+  overflow-y: auto;
+  text-align: left;
+  animation: wnFadeInDown 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wn-tag-item:hover {
+  background: #eef6fd !important;
+  border-color: #0060B6 !important;
+  color: #0060B6 !important;
+  transform: translateY(-1px);
+}
+
+@keyframes wnFadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
