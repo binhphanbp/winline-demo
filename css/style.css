@@ -2135,73 +2135,43 @@ footer.footer, footer.site-footer {
   text-decoration: underline;
 }
 
-/* Col 4: Top-left-info Social list */
-.top-left-info {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 16px;
-}
-.top-left-info li {
-  margin-bottom: 10px;
-}
-.top-left-info li a {
-  color: #334155;
-  font-size: 13px;
-  font-weight: 600;
-  text-decoration: none;
-  display: inline-flex;
+/* Col 4: Trust Badges & Payment Methods */
+.footer-trust-badges {
+  display: flex;
   align-items: center;
-  gap: 10px;
-  transition: all 0.15s ease;
+  gap: 12px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
 }
-.top-left-info li a:hover {
-  color: #1d68c4;
-  transform: translateX(3px);
+.bocongthuong-link img {
+  height: 44px !important;
+  width: auto !important;
+  display: block;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
-.top-left-info li a i {
-  font-size: 16px;
-  width: 18px;
-  text-align: center;
-}
-.top-left-info li a i.fa-facebook { color: #1877f2; }
-.top-left-info li a i.fa-google-plus, .top-left-info li a i.fa-google { color: #ea4335; }
-.top-left-info li a i.fa-twitter { color: #0284c7; }
-.top-left-info li a i.fa-youtube { color: #ff0000; }
-
-/* DMCA & Bo Cong Thuong Badges (Exact Sizes & Ratios) */
-.dmca-badge {
-  display: inline-block;
-  margin-top: 14px;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-.dmca-badge:hover {
+.bocongthuong-link:hover img {
   opacity: 0.88;
   transform: translateY(-2px);
 }
 .dmca-badge img {
-  width: 105px !important;
-  height: auto !important;
+  height: 24px !important;
+  width: auto !important;
   display: block;
   border-radius: 3px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
-
-.bocongthuong {
-  display: block;
-  margin-top: 14px;
-}
-.bocongthuong a {
-  display: inline-block;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-.bocongthuong a:hover {
+.dmca-badge:hover img {
   opacity: 0.88;
   transform: translateY(-2px);
 }
-.bocongthuong img {
-  width: 135px !important;
-  max-width: 100% !important;
-  height: auto !important;
-  display: block;
+
+.payment-methods-grid span {
+  transition: all 0.15s ease;
+}
+.payment-methods-grid span:hover {
+  background: #e2e8f0 !important;
+  border-color: #94a3b8 !important;
+  transform: translateY(-1px);
 }
 
 /* Corporate Info Block */
