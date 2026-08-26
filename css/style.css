@@ -9,15 +9,15 @@
 
 :root {
   /* Official Winline Brand Identity */
-  --brand-blue: #0060B6;
-  --brand-blue-hover: #004d94;
+  --brand-blue: #072242;
+  --brand-blue-hover: #0c2b50;
   --brand-blue-light: #eef6fd;
   --brand-blue-subtle: #f4f8fe;
 
   /* Industrial Chrome & Structural Colors */
   --navy-950: #072242;
   --navy-900: #0c2b50;
-  --navy-800: #0060B6;
+  --navy-800: #072242;
   --navy-700: #1a73e8;
   --navy-100: #eaf3fc;
 
@@ -146,11 +146,11 @@ button { font-family: inherit; cursor: pointer; touch-action: manipulation; }
    ========================================================================== */
 /* Utility Bar - Synchronized with Footer Top Bar (Royal Blue Gradient #1d68c4 -> #2b77cf) */
 .utility-bar {
-  background: #1d68c4;
-  background: linear-gradient(90deg, #185db2 0%, #2b77cf 100%);
-  color: #ffffff;
+  background: #072242;
+  background: linear-gradient(90deg, #05182e 0%, #072242 50%, #0d2847 100%);
+  color: #dbe4ee;
   font-size: 12.5px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 .utility-bar .wrap {
   max-width: 1240px;
@@ -1147,7 +1147,13 @@ footer {
 @media (max-width: 768px) {
   body { padding-bottom: 68px; font-size: 14px; }
   .mobile-floating-bar { display: block; }
-  .utility-bar { display: none !important; }
+  .utility-bar {
+  background: #072242;
+  background: linear-gradient(90deg, #05182e 0%, #072242 50%, #0d2847 100%);
+  color: #dbe4ee;
+  font-size: 12.5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
   nav.catnav { display: none !important; }
 
   .header-inner {
@@ -1238,11 +1244,11 @@ footer {
    ========================================================================== */
 /* Utility Bar - Synchronized with Footer Top Bar (Royal Blue Gradient #1d68c4 -> #2b77cf) */
 .utility-bar {
-  background: #1d68c4;
-  background: linear-gradient(90deg, #185db2 0%, #2b77cf 100%);
-  color: #ffffff;
+  background: #072242;
+  background: linear-gradient(90deg, #05182e 0%, #072242 50%, #0d2847 100%);
+  color: #dbe4ee;
   font-size: 12.5px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 .utility-bar .wrap {
   max-width: 1240px;
@@ -1941,8 +1947,8 @@ footer.footer, footer.site-footer {
 
 /* Top Blue Bar: Newsletter & Social Icons */
 .tt-footer-default {
-  background: #2b77cf;
-  background: linear-gradient(90deg, #1d68c4 0%, #2b77cf 100%);
+  background: #072242;
+  background: linear-gradient(90deg, #05182e 0%, #072242 50%, #0d2847 100%);
   padding: 14px 20px;
   color: #ffffff;
 }
@@ -2079,7 +2085,7 @@ footer.footer, footer.site-footer {
 .footer-widget h3 {
   font-size: 13.5px;
   font-weight: 800;
-  color: #1d68c4;
+  color: #072242;
   text-transform: uppercase;
   letter-spacing: 0.03em;
   margin: 0 0 14px;

@@ -1,6 +1,6 @@
 /**
  * WINLINE VIETNAM - Core Application Logic
- * Brand Alignment: Winline Blue (#0060B6)
+ * Brand Alignment: Winline Blue (#072242)
  * Features:
  * - Circular Back-to-Top combined with Dynamic Scroll Progress Bar
  * - Auto-injected Cart Drawer & VAT Invoice Calculation
@@ -30,7 +30,7 @@ function showToast(message, type = "success") {
   }
 
   const toast = document.createElement("div");
-  const bg = type === "success" ? "#1e8a5f" : type === "info" ? "#0060B6" : "#d41e3d";
+  const bg = type === "success" ? "#1e8a5f" : type === "info" ? "#072242" : "#d41e3d";
   const icon = type === "success" ? "fa-check-circle" : type === "info" ? "fa-info-circle" : "fa-exclamation-circle";
 
   toast.style.cssText = `background:${bg}; color:#ffffff; padding:12px 18px; border-radius:8px; box-shadow:0 10px 25px rgba(7,34,66,0.25); font-size:13.5px; font-weight:500; display:flex; align-items:center; gap:10px; transition:all 0.3s cubic-bezier(0.22, 1, 0.36, 1); transform:translateY(10px); opacity:0; pointer-events:auto; max-width:420px; font-family:'Be Vietnam Pro',sans-serif;`;
@@ -642,7 +642,7 @@ function initLiveSearch() {
         <div style="padding:14px 16px; display:flex; flex-direction:column; gap:14px;">
           <!-- Trending keywords -->
           <div>
-            <div style="display:flex; align-items:center; gap:6px; font-size:11.5px; font-weight:700; text-transform:uppercase; color:#0060B6; letter-spacing:0.04em; margin-bottom:8px;">
+            <div style="display:flex; align-items:center; gap:6px; font-size:11.5px; font-weight:700; text-transform:uppercase; color:#072242; letter-spacing:0.04em; margin-bottom:8px;">
               <span>🔥</span><span>Từ khóa tìm kiếm phổ biến</span>
             </div>
             <div style="display:flex; flex-wrap:wrap; gap:6px;">
@@ -657,7 +657,7 @@ function initLiveSearch() {
 
           <!-- Quick categories -->
           <div>
-            <div style="display:flex; align-items:center; gap:6px; font-size:11.5px; font-weight:700; text-transform:uppercase; color:#0060B6; letter-spacing:0.04em; margin-bottom:8px;">
+            <div style="display:flex; align-items:center; gap:6px; font-size:11.5px; font-weight:700; text-transform:uppercase; color:#072242; letter-spacing:0.04em; margin-bottom:8px;">
               <span>📁</span><span>Danh mục ngành hàng chủ lực</span>
             </div>
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:6px;">
@@ -670,7 +670,7 @@ function initLiveSearch() {
               <a href="san-pham.html?cat=may-lam-mat-nha-xuong" style="display:flex; align-items:center; gap:8px; padding:7px 10px; background:#f8fafc; border:1px solid #dbe4ee; border-radius:6px; text-decoration:none; color:#1a2230; font-size:12.5px; font-weight:600;">
                 <span>❄️</span><span>Máy làm mát & Cooling Pad</span>
               </a>
-              <a href="cong-cu-tinh-quat.html" style="display:flex; align-items:center; gap:8px; padding:7px 10px; background:#eef6fd; border:1px solid #bfdbfe; border-radius:6px; text-decoration:none; color:#0060B6; font-size:12.5px; font-weight:700;">
+              <a href="cong-cu-tinh-quat.html" style="display:flex; align-items:center; gap:8px; padding:7px 10px; background:#eef6fd; border:1px solid #bfdbfe; border-radius:6px; text-decoration:none; color:#072242; font-size:12.5px; font-weight:700;">
                 <span>🧮</span><span>Công cụ tính toán HVAC (Q = V x T)</span>
               </a>
             </div>
@@ -679,13 +679,13 @@ function initLiveSearch() {
           <!-- Featured Articles -->
           ${articles.length > 0 ? `
             <div>
-              <div style="display:flex; align-items:center; gap:6px; font-size:11.5px; font-weight:700; text-transform:uppercase; color:#0060B6; letter-spacing:0.04em; margin-bottom:8px;">
+              <div style="display:flex; align-items:center; gap:6px; font-size:11.5px; font-weight:700; text-transform:uppercase; color:#072242; letter-spacing:0.04em; margin-bottom:8px;">
                 <span>📰</span><span>Cẩm nang kỹ thuật khuyên đọc</span>
               </div>
               <div style="display:flex; flex-direction:column; gap:6px;">
                 ${articles.map(art => `
                   <a href="${art.link}" style="display:flex; flex-direction:column; gap:2px; padding:8px 10px; background:#f8fafc; border:1px solid #dbe4ee; border-radius:6px; text-decoration:none;">
-                    <div style="font-size:10px; font-weight:700; text-transform:uppercase; color:#0060B6;">${art.category}</div>
+                    <div style="font-size:10px; font-weight:700; text-transform:uppercase; color:#072242;">${art.category}</div>
                     <div style="font-size:12.5px; font-weight:600; color:#072242; line-height:1.35;">${art.title}</div>
                     <div style="font-size:11px; color:#5c6773;">⏱ ${art.readTime} • ${art.badge}</div>
                   </a>
@@ -798,7 +798,7 @@ function initLiveSearch() {
             <!-- Categories -->
             ${matchedCats.length > 0 ? `
               <div>
-                <div style="display:flex; align-items:center; gap:6px; font-size:11.5px; font-weight:700; text-transform:uppercase; color:#0060B6; letter-spacing:0.04em; margin-bottom:6px;">
+                <div style="display:flex; align-items:center; gap:6px; font-size:11.5px; font-weight:700; text-transform:uppercase; color:#072242; letter-spacing:0.04em; margin-bottom:6px;">
                   <span>📁</span><span>Danh mục phù hợp (${matchedCats.length})</span>
                 </div>
                 <div style="display:flex; flex-direction:column; gap:3px;">
@@ -809,7 +809,7 @@ function initLiveSearch() {
                         <span style="font-weight:600; color:#072242;">${highlightSearchMatch(c.name, q)}</span>
                         <span style="font-size:11px; color:#64748b;">(${c.parentName})</span>
                       </div>
-                      <span style="color:#0060B6; font-weight:700;">&rarr;</span>
+                      <span style="color:#072242; font-weight:700;">&rarr;</span>
                     </a>
                   `).join('')}
                 </div>
@@ -819,7 +819,7 @@ function initLiveSearch() {
             <!-- Products -->
             ${matchedProds.length > 0 ? `
               <div>
-                <div style="display:flex; align-items:center; gap:6px; font-size:11.5px; font-weight:700; text-transform:uppercase; color:#0060B6; letter-spacing:0.04em; margin-bottom:6px;">
+                <div style="display:flex; align-items:center; gap:6px; font-size:11.5px; font-weight:700; text-transform:uppercase; color:#072242; letter-spacing:0.04em; margin-bottom:6px;">
                   <span>💨</span><span>Sản phẩm & Thiết bị (${matchedProds.length})</span>
                 </div>
                 <div style="display:flex; flex-direction:column; gap:6px;">
@@ -828,7 +828,7 @@ function initLiveSearch() {
                       <img src="${p.image}" onerror="this.src='assets/images/km750s.jpg'" style="width:42px; height:42px; object-fit:contain; border:1px solid #dbe4ee; border-radius:4px; padding:2px; flex-shrink:0; background:#fff;">
                       <div style="flex:1; min-width:0;">
                         <div style="display:flex; align-items:center; gap:5px; margin-bottom:2px;">
-                          ${p.code ? `<span style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; font-weight:700; background:#eef6fd; color:#0060B6; padding:1px 4px; border-radius:3px;">${highlightSearchMatch(p.code, q)}</span>` : ''}
+                          ${p.code ? `<span style="font-family:'IBM Plex Mono',monospace; font-size:9.5px; font-weight:700; background:#eef6fd; color:#072242; padding:1px 4px; border-radius:3px;">${highlightSearchMatch(p.code, q)}</span>` : ''}
                           <span style="font-size:10px; font-weight:700; text-transform:uppercase; color:#64748b;">${p.brandName || ''}</span>
                         </div>
                         <div style="font-size:13px; font-weight:600; color:#072242; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; line-height:1.3;">${highlightSearchMatch(p.name, q)}</div>
@@ -847,13 +847,13 @@ function initLiveSearch() {
             <!-- Articles -->
             ${matchedArts.length > 0 ? `
               <div>
-                <div style="display:flex; align-items:center; gap:6px; font-size:11.5px; font-weight:700; text-transform:uppercase; color:#0060B6; letter-spacing:0.04em; margin-bottom:6px;">
+                <div style="display:flex; align-items:center; gap:6px; font-size:11.5px; font-weight:700; text-transform:uppercase; color:#072242; letter-spacing:0.04em; margin-bottom:6px;">
                   <span>📰</span><span>Bài viết & Giải pháp kỹ thuật (${matchedArts.length})</span>
                 </div>
                 <div style="display:flex; flex-direction:column; gap:6px;">
                   ${matchedArts.slice(0, 3).map(art => `
                     <a href="${art.link}" style="display:flex; flex-direction:column; gap:2px; padding:8px 10px; background:#f8fafc; border:1px solid #dbe4ee; border-radius:6px; text-decoration:none; transition:background 0.15s;" onmouseover="this.style.background='#eef6fd'" onmouseout="this.style.background='#f8fafc'">
-                      <div style="font-size:10px; font-weight:700; text-transform:uppercase; color:#0060B6;">${art.category}</div>
+                      <div style="font-size:10px; font-weight:700; text-transform:uppercase; color:#072242;">${art.category}</div>
                       <div style="font-size:12.5px; font-weight:600; color:#072242; line-height:1.35;">${highlightSearchMatch(art.title, q)}</div>
                       <div style="font-size:11.5px; color:#5c6773; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">${highlightSearchMatch(art.excerpt || '', q)}</div>
                       <div style="font-size:10.5px; color:#8c9ba8; margin-top:2px;">⏱ ${art.readTime} • ${art.badge}</div>
@@ -864,7 +864,7 @@ function initLiveSearch() {
             ` : ''}
 
             <!-- Footer CTA -->
-            <a href="san-pham.html?search=${encodeURIComponent(q)}" style="display:flex; align-items:center; justify-content:space-between; padding:10px 14px; background:#072242; color:#ffffff; border-radius:6px; font-size:12.5px; font-weight:700; text-decoration:none; transition:background 0.2s;" onmouseover="this.style.background='#0060B6'" onmouseout="this.style.background='#072242'">
+            <a href="san-pham.html?search=${encodeURIComponent(q)}" style="display:flex; align-items:center; justify-content:space-between; padding:10px 14px; background:#072242; color:#ffffff; border-radius:6px; font-size:12.5px; font-weight:700; text-decoration:none; transition:background 0.2s;" onmouseover="this.style.background='#072242'" onmouseout="this.style.background='#072242'">
               <span>Xem tất cả ${totalCount} kết quả cho "<strong>${q}</strong>"</span>
               <span>&rarr;</span>
             </a>

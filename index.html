@@ -90,10 +90,10 @@
   
   
 
-  /* ---------- MODERN HERO SECTION (LIGHT & CRISP) ---------- */
+    /* ---------- MODERN HERO SECTION (DARK NAVY IDENTITY) ---------- */
   .hero {
-    background: radial-gradient(100% 120% at 50% 0%, #edf5fd 0%, #ffffff 80%);
-    border-bottom: 1px solid var(--line);
+    background: linear-gradient(135deg, #05182e 0%, #072242 50%, #0d2847 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     padding: 44px 0 0;
     position: relative;
     overflow: hidden;
@@ -102,7 +102,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(rgba(0, 96, 182, 0.08) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
     background-size: 24px 24px;
     pointer-events: none;
     opacity: 0.6;
@@ -123,45 +123,45 @@
   }
 
   .hero-text {
-    color: var(--navy-950);
+    color: #ffffff;
   }
   .hero-eyebrow {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: var(--white);
-    color: var(--brand-blue);
+    background: rgba(255, 255, 255, 0.1);
+    color: #cfe0f0;
     font-size: 12px;
     font-weight: 700;
     padding: 6px 14px;
     border-radius: 9999px;
     margin-bottom: 18px;
-    border: 1px solid rgba(0, 96, 182, 0.2);
-    box-shadow: 0 2px 8px rgba(0, 96, 182, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   }
   .hero-eyebrow .dot {
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: var(--brand-blue);
+    background: var(--orange);
     display: inline-block;
-    box-shadow: 0 0 0 3px rgba(0, 96, 182, 0.2);
+    box-shadow: 0 0 0 3px rgba(212, 30, 61, 0.3);
   }
   .hero-text h1 {
     font-size: 34px;
     line-height: 1.28;
     margin: 0 0 16px;
     font-weight: 800;
-    color: var(--navy-950);
+    color: #ffffff;
     letter-spacing: -0.02em;
   }
   .hero-text h1 .text-brand {
-    color: var(--brand-blue);
+    color: #facc15;
     position: relative;
   }
   .hero-desc {
     font-size: 15px;
-    color: var(--ink-soft);
+    color: #c9d6e3;
     line-height: 1.7;
     max-width: 540px;
     margin: 0 0 26px;
@@ -189,31 +189,32 @@
   .btn-primary {
     background: var(--orange);
     color: #ffffff;
-    box-shadow: 0 4px 14px rgba(212, 30, 61, 0.3);
+    box-shadow: 0 4px 14px rgba(212, 30, 61, 0.4);
   }
   .btn-primary:hover {
     background: var(--orange-dark);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(212, 30, 61, 0.4);
+    box-shadow: 0 6px 20px rgba(212, 30, 61, 0.5);
   }
   .btn-zalo {
-    background: #ffffff;
-    color: #0068ff;
-    border: 1.5px solid #0068ff;
-    box-shadow: 0 2px 8px rgba(0, 104, 255, 0.1);
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   }
   .btn-zalo:hover {
     background: #0068ff;
+    border-color: #0068ff;
     color: #ffffff;
     transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(0, 104, 255, 0.25);
+    box-shadow: 0 6px 18px rgba(0, 104, 255, 0.35);
   }
 
   .hero-fast-tags {
     display: flex;
     gap: 16px;
     font-size: 12.5px;
-    color: var(--ink-soft);
+    color: #dbe4ee;
     font-weight: 600;
     flex-wrap: wrap;
   }
@@ -223,7 +224,7 @@
     gap: 6px;
   }
   .hero-fast-tags i {
-    color: var(--green);
+    color: #4ade80;
   }
 
   /* Hero Showcase Card */
