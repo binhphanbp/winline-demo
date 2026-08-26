@@ -1,6 +1,6 @@
 /* ==========================================================================
    WINLINE VIETNAM - MASTER DESIGN SYSTEM & STYLESHEET (STATE-OF-THE-ART UX/UI)
-   Brand Identity: Official Winline Royal Blue (#0060B6) & Deep Industrial Navy (#072242)
+   Brand Identity: Official Winline Royal Blue (#072242) & Deep Industrial Navy (#072242)
    Accent Red: Signal Red (#d41e3d) for Price, CTA, Cart Badge
    Typography: Be Vietnam Pro & Inter + IBM Plex Mono (Technical Specs)
    ========================================================================== */
@@ -33,7 +33,7 @@
   --dark-2: #004e7d;
   --bg-card: #ffffff;
   --bg: #f8fafc;
-  --blue: #0060B6;
+  --blue: #072242;
   --blue-deep: #072242;
 
   /* Surface & Line Tokens */
@@ -144,7 +144,7 @@ button { font-family: inherit; cursor: pointer; touch-action: manipulation; }
 /* ==========================================================================
    PERFECT BULLETPROOF HEADER (DESKTOP & MOBILE - 100% ROBUST)
    ========================================================================== */
-/* Utility Bar - Synchronized with Footer Top Bar (Royal Blue Gradient #1d68c4 -> #2b77cf) */
+/* Utility Bar - Synchronized with Footer Top Bar (Royal Blue Gradient #072242 -> #0c2b50) */
 .utility-bar {
   background: #072242;
   background: linear-gradient(90deg, #05182e 0%, #072242 50%, #0d2847 100%);
@@ -243,7 +243,7 @@ header.site {
   }
   .search-box:focus {
     outline: none !important;
-    border-color: #1d68c4 !important;
+    border-color: #072242 !important;
     background: #ffffff !important;
     box-shadow: 0 0 0 3px rgba(29, 104, 196, 0.12) !important;
   }
@@ -265,7 +265,7 @@ header.site {
     cursor: pointer !important;
     transition: background 0.15s ease !important;
   }
-  .search-btn:hover { background: #1d68c4 !important; }
+  .search-btn:hover { background: #072242 !important; }
   
   .header-actions {
     order: 3 !important;
@@ -285,10 +285,10 @@ header.site {
     text-decoration: none !important;
     transition: color 0.15s ease !important;
   }
-  .header-actions .item:hover { color: #1d68c4 !important; }
+  .header-actions .item:hover { color: #072242 !important; }
   .header-actions .icon {
     font-size: 18px !important;
-    color: #1d68c4 !important;
+    color: #072242 !important;
   }
   .desktop-only-label {
     display: block !important;
@@ -318,7 +318,7 @@ header.site {
     height: 38px !important;
     border-radius: 8px !important;
     background: #eef4fb !important;
-    color: #1d68c4 !important;
+    color: #072242 !important;
     border: 1px solid rgba(29, 104, 196, 0.2) !important;
     font-size: 18px !important;
     cursor: pointer !important;
@@ -375,8 +375,8 @@ header.site {
 
 /* Category Navigation Bar */
 nav.catnav {
-  background: #185db2;
-  background: linear-gradient(90deg, #185db2 0%, #2b77cf 100%);
+  background: #05182e;
+  background: linear-gradient(90deg, #05182e 0%, #0c2b50 100%);
   border-bottom: 3px solid #134b8c;
   box-shadow: 0 2px 8px rgba(29, 104, 196, 0.15);
   width: 100%;
@@ -443,7 +443,7 @@ nav.catnav {
   left: 0;
   background: #ffffff !important;
   border: 1px solid #dbe4ee;
-  border-top: 3px solid var(--brand-blue, #0060B6);
+  border-top: 3px solid var(--brand-blue, #072242);
   box-shadow: 0 16px 36px rgba(7, 34, 66, 0.18);
   border-radius: 0 0 8px 8px;
   padding: 8px 0;
@@ -473,7 +473,7 @@ nav.catnav {
 }
 .nav-panel a:hover {
   background: #eef6fd !important;
-  color: #0060B6 !important;
+  color: #072242 !important;
   transform: translateX(3px);
 }
 .np-col .np-title {
@@ -492,9 +492,10 @@ nav.catnav {
 
 /* ---------- HERO SECTION (LIGHT, CLEAN & CRISP) ---------- */
 .hero {
-  background: radial-gradient(100% 120% at 50% 0%, #edf5fd 0%, #ffffff 80%);
-  border-bottom: 1px solid var(--line, #e2e8f0);
-  padding: 40px 0 0;
+  background: #072242;
+  background: linear-gradient(135deg, #05182e 0%, #072242 50%, #0d2847 100%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 44px 0 0;
   position: relative;
   overflow: hidden;
   margin-bottom: 0;
@@ -509,8 +510,9 @@ nav.catnav {
   opacity: 0.6;
 }
 .trust-strip {
-  background: #ffffff;
-  border-top: 1px solid var(--line, #e2e8f0);
+  background: #072242;
+  background: linear-gradient(90deg, #05182e 0%, #072242 50%, #0a2f58 100%) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
   z-index: 2;
   margin: 0;
@@ -1242,7 +1244,7 @@ footer {
 /* ==========================================================================
    PERFECT BULLETPROOF HEADER (DESKTOP & MOBILE - 100% ROBUST)
    ========================================================================== */
-/* Utility Bar - Synchronized with Footer Top Bar (Royal Blue Gradient #1d68c4 -> #2b77cf) */
+/* Utility Bar - Synchronized with Footer Top Bar (Royal Blue Gradient #072242 -> #0c2b50) */
 .utility-bar {
   background: #072242;
   background: linear-gradient(90deg, #05182e 0%, #072242 50%, #0d2847 100%);
@@ -1341,7 +1343,7 @@ header.site {
   }
   .search-box:focus {
     outline: none !important;
-    border-color: #1d68c4 !important;
+    border-color: #072242 !important;
     background: #ffffff !important;
     box-shadow: 0 0 0 3px rgba(29, 104, 196, 0.12) !important;
   }
@@ -1363,7 +1365,7 @@ header.site {
     cursor: pointer !important;
     transition: background 0.15s ease !important;
   }
-  .search-btn:hover { background: #1d68c4 !important; }
+  .search-btn:hover { background: #072242 !important; }
   
   .header-actions {
     order: 3 !important;
@@ -1383,10 +1385,10 @@ header.site {
     text-decoration: none !important;
     transition: color 0.15s ease !important;
   }
-  .header-actions .item:hover { color: #1d68c4 !important; }
+  .header-actions .item:hover { color: #072242 !important; }
   .header-actions .icon {
     font-size: 18px !important;
-    color: #1d68c4 !important;
+    color: #072242 !important;
   }
   .desktop-only-label {
     display: block !important;
@@ -1416,7 +1418,7 @@ header.site {
     height: 38px !important;
     border-radius: 8px !important;
     background: #eef4fb !important;
-    color: #1d68c4 !important;
+    color: #072242 !important;
     border: 1px solid rgba(29, 104, 196, 0.2) !important;
     font-size: 18px !important;
     cursor: pointer !important;
@@ -1473,8 +1475,8 @@ header.site {
 
 /* Category Navigation Bar */
 nav.catnav {
-  background: #185db2;
-  background: linear-gradient(90deg, #185db2 0%, #2b77cf 100%);
+  background: #05182e;
+  background: linear-gradient(90deg, #05182e 0%, #0c2b50 100%);
   border-bottom: 3px solid #134b8c;
   box-shadow: 0 2px 8px rgba(29, 104, 196, 0.15);
   width: 100%;
@@ -1550,7 +1552,7 @@ nav.catnav {
   left: 0;
   background: #ffffff !important;
   border: 1px solid #dbe4ee;
-  border-top: 3px solid var(--brand-blue, #0060B6);
+  border-top: 3px solid var(--brand-blue, #072242);
   box-shadow: 0 20px 45px rgba(7, 34, 66, 0.22), 0 4px 14px rgba(7, 34, 66, 0.08);
   border-radius: 0 0 12px 12px;
   width: 1020px;
@@ -1597,7 +1599,7 @@ nav.catnav {
   gap: 6px;
   white-space: nowrap;
 }
-.mega-col-title i { color: var(--brand-blue, #0060B6); font-size: 13px; }
+.mega-col-title i { color: var(--brand-blue, #072242); font-size: 13px; }
 .mega-col a {
   display: flex;
   align-items: flex-start;
@@ -1618,10 +1620,10 @@ nav.catnav {
 .mega-col a i { font-size: 10px; color: #94a3b8; margin-top: 3px; flex-shrink: 0; }
 .mega-col a:hover {
   background: #eef6fd !important;
-  color: #0060B6 !important;
+  color: #072242 !important;
   transform: translateX(3px);
 }
-.mega-col a:hover i { color: #0060B6; }
+.mega-col a:hover i { color: #072242; }
 
 .mega-brand-pills {
   display: flex;
@@ -1632,7 +1634,7 @@ nav.catnav {
 .mb-pill {
   display: inline-block;
   background: #f1f5f9;
-  color: #0060B6 !important;
+  color: #072242 !important;
   font-size: 11px;
   font-weight: 700;
   padding: 4px 8px;
@@ -1643,9 +1645,9 @@ nav.catnav {
   white-space: nowrap;
 }
 .mb-pill:hover {
-  background: #0060B6 !important;
+  background: #072242 !important;
   color: #ffffff !important;
-  border-color: #0060B6;
+  border-color: #072242;
 }
 
 .mega-promo-box {
@@ -1695,7 +1697,7 @@ nav.catnav {
   gap: 6px;
   font-size: 12px;
   font-weight: 700;
-  color: #0060B6 !important;
+  color: #072242 !important;
   text-decoration: none !important;
   transition: gap 0.15s ease;
   white-space: normal;
@@ -2059,7 +2061,7 @@ footer.footer, footer.site-footer {
 }
 .tt-social-icon li a:hover {
   background: #ffffff;
-  color: #1d68c4;
+  color: #072242;
   transform: translateY(-2px);
 }
 
@@ -2111,7 +2113,7 @@ footer.footer, footer.site-footer {
   display: inline-block;
 }
 .list-menu li a:hover {
-  color: #1d68c4;
+  color: #072242;
   transform: translateX(3px);
 }
 
@@ -2127,7 +2129,7 @@ footer.footer, footer.site-footer {
   gap: 8px;
 }
 .ul-footer-contact li i {
-  color: #1d68c4;
+  color: #072242;
   font-size: 13px;
 }
 .ul-footer-contact li a {
@@ -2246,7 +2248,7 @@ footer.footer, footer.site-footer {
   line-height: 1.4;
 }
 .cdb-header i {
-  color: var(--brand-blue, #0060B6);
+  color: var(--brand-blue, #072242);
   font-size: 22px;
   flex-shrink: 0;
 }
@@ -2299,7 +2301,7 @@ footer.footer, footer.site-footer {
 .cdb-card-item h4 {
   font-size: 14px;
   font-weight: 700;
-  color: var(--brand-blue, #0060B6);
+  color: var(--brand-blue, #072242);
   margin: 0 0 8px;
   display: flex;
   align-items: center;
@@ -2313,7 +2315,7 @@ footer.footer, footer.site-footer {
 }
 .cdb-highlight-box {
   background: #eff6ff;
-  border-left: 4px solid var(--brand-blue, #0060B6);
+  border-left: 4px solid var(--brand-blue, #072242);
   padding: 14px 18px;
   border-radius: 0 8px 8px 0;
   margin: 18px 0;
@@ -2365,7 +2367,7 @@ footer.footer, footer.site-footer {
 }
 .mb-pill {
   background: #eef4fb !important;
-  color: #1d68c4 !important;
+  color: #072242 !important;
   font-size: 11.5px !important;
   font-weight: 700 !important;
   padding: 4px 9px !important;
@@ -2376,7 +2378,7 @@ footer.footer, footer.site-footer {
   transition: all 0.15s ease !important;
 }
 .mb-pill:hover {
-  background: #1d68c4 !important;
+  background: #072242 !important;
   color: #ffffff !important;
   transform: translateY(-1px);
 }
@@ -2404,8 +2406,8 @@ footer.footer, footer.site-footer {
 
 .wn-tag-item:hover {
   background: #eef6fd !important;
-  border-color: #0060B6 !important;
-  color: #0060B6 !important;
+  border-color: #072242 !important;
+  color: #072242 !important;
   transform: translateY(-1px);
 }
 
